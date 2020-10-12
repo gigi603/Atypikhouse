@@ -1,0 +1,154 @@
+
+.dropdown-item {
+    color: #16181b;
+    text-decoration: none;
+    background-color: #f8f9fa;
+}
+#dataTable_length {
+    display: none !important;
+}
+
+#dataTable_filter {
+    display: none !important;
+}
+
+#dataTable_info{
+    display: none !important;
+}
+
+.pagination {
+    display: none !important;
+}
+
+.card-footer {
+    display: none !important;
+}
+
+.photo-size {
+    width: 250px;
+}
+
+.btn-tableau {
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+.btn-add-category {
+    margin: 2% 0;
+}
+
+.panel-default>.panel-heading {
+    color: #333;
+    background-color: #fff;
+    border-color: #d3e0e9;
+    border: solid 1px #d3e0e9;
+}
+
+.panel-heading {
+    padding: 10px 15px;
+    border-bottom: 1px solid transparent;
+    border-top-right-radius: 3px;
+    border-top-left-radius: 3px;
+    border: solid 1px #d3e0e9;
+}
+
+.panel-body {
+    padding: 15px;
+    border: solid 1px #d3e0e9;
+}
+
+.card-show {
+    display: block !important;
+    padding: 5px !important;
+    color: #000;
+    word-wrap: break-word;
+}
+
+.img-responsive {
+    display: block !important;
+    height: auto !important;
+}
+
+.img-responsive, .img-thumbnail, .table, label {
+    max-width: 100% !important;
+}
+
+.img_house {
+    margin: 0 auto !important;
+}
+
+.rating {
+    float: left;
+    width: 250px;
+}
+
+#input_comment {
+    height: 43px;
+}
+
+.block-description{
+    padding: 0 20px;
+}
+
+.rating:not(:checked) > label:before {
+    content: '★';
+    width: 5px;
+    height: 5px;
+}
+
+.rating:not(:checked) > input {
+    position: absolute;
+    top: -9999px;
+    clip: rect(0,0,0,0);
+}
+
+.rating > input:checked ~ label {
+    color: dodgerblue;
+}
+
+.rating:not(:checked) > label {
+    float: right;
+    width: 1em;
+    /* padding: 0 .1em; */
+    overflow: hidden;
+    white-space: nowrap;
+    cursor: pointer;
+    font-size: 150%;
+    /* line-height: 1.2; */
+    color: #ddd;
+}
+
+.rating > input:checked + label:hover, .rating > input:checked + label:hover ~ label, .rating > input:checked ~ label:hover, .rating > input:checked ~ label:hover ~ label, .rating > label:hover ~ input:checked ~ label {
+    color: dodgerblue;
+}
+
+.rating:not(:checked) > label:hover, .rating:not(:checked) > label:hover ~ label {
+    color: dodgerblue;
+}
+
+.admin-messages {
+    color: #fff;
+    text-decoration: none;
+}
+
+.admin-messages:hover {
+    color: #fff;
+    text-decoration: none;
+}
+
+#dataTable_previous {
+    display: none;
+}
+
+#dataTable_next {
+    display: none;
+}
+
+td.dataTables_empty {
+    content: 'Pas de données' !important;
+}
+/* .rating > label:active {
+    position: relative;
+    top: 2px;
+    left: 2px;
+} */
