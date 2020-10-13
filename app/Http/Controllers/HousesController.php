@@ -96,17 +96,16 @@ class HousesController extends Controller
     public function create_step2(Request $request) {        
         $houseTelephone = $request->session()->get('houseTelephone');
         if($houseTelephone == NULL){
-            $telephone = "";
+            $phone = "";
         } else {
-            $telephone = last($houseTelephone);
+            $phone = last($houseTelephone);
         }
         return view('houses.create_step2', [
-            'telephone' => $telephone
+            'phone' => $phone
         ]);
     }
 
     public function postcreate_step2(CreateHouseStep2Request $request) {
-          
         $houseTelephone = session('houseTelephone', $request->phone);
         $request->session()->push('houseTelephone', $request->phone);
 
@@ -123,6 +122,14 @@ class HousesController extends Controller
             $title = "";
         } else {
             $title = last($houseTitle);
+        }
+        
+        $houseTelephone = $request->session()->get('houseTelephone');
+        
+        if($houseTelephone == NULL){
+            $phone = "";
+        } else {
+            $phone = last($houseTelephone);
         }
 
         $houseCategory = $request->session()->get('houseCategory');
@@ -165,6 +172,7 @@ class HousesController extends Controller
         return view('houses.create_step3', [
             'categories' => $categories,
             'title' => $title,
+            'phone' => $phone,
             'houseCategory' => $houseCategory,
             'categorySelected' => $categorySelected,
             'nb_personnes' => $nb_personnes,
