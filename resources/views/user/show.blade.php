@@ -107,18 +107,18 @@
                         <div class="panel panel-default" style="margin: 0; border-radius: 0;">
                             <div class="panel-body">
                                 <div class="col-sm-9">
-                                    {{ $comment->comment }}
+                                    <p>{{ $comment->comment }}</p>
                                 </div>
                                 <div class="col-sm-3 text-right">
                                     @if($comment->user_id != "0")
-                                        <small>Posté par {{ $comment->user->prenom }} {{ $comment->user->nom }}</small><br/>
+                                        <small><p>Posté par {{ $comment->user->prenom }} {{ $comment->user->nom }}</small></p>
                                         @if($comment->note != "0")
-                                            <small>Note: {{$comment->note}}/5</small>
+                                            <small><p>Note: {{$comment->note}}/5</p></small>
                                         @endif
                                     @else
-                                        <small>Posté par {{ $comment->admin->name }}</small><br/>
+                                        <small><p>Posté par {{ $comment->admin->name }}</small></p>
                                         @if($comment->note != "0")
-                                            <small>Note: {{$comment->note}}/5</small> 
+                                            <small><p>Note: {{$comment->note}}/5</p></small>
                                         @endif
                                     @endif
                                 </div>
