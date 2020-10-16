@@ -51,7 +51,6 @@ class UsersController extends Controller
                 return redirect()->back();
             }
         } catch(Exception $e){
-
         }
     }
 

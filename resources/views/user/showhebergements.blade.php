@@ -57,7 +57,7 @@
                 </div>
             @endforeach 
             @if (Auth::check())
-                @if($house->user_id == Auth::user()->id)
+                @if($client_reserved > 0 && Auth::user()->id)
                 <div class="panel panel-default" style="margin: 0; border-radius: 0;">
                     <div class="panel-body">
                         <form action="{{ url('/comments') }}" method="POST" style="display: flex;">

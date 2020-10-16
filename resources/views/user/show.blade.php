@@ -126,7 +126,7 @@
                         </div>
                     @endforeach 
                     @if (Auth::check())
-                        @if($client_reserved->count() > 0 OR $house->user_id == Auth::user()->id)
+                        @if($client_reserved->count() > 0)
                             <div class="panel panel-default" style="margin: 0; border-radius: 0;">
                                 <div class="panel-body">
                                     <form action="{{ url('/comments') }}" method="POST" style="display: flex;">
