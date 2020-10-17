@@ -38,7 +38,7 @@ return [
     |
     */
 
-    'debug' => env('APP_DEBUG', false),
+    'debug' => env('APP_DEBUG', config('app.debug')),
 
     /*
     |--------------------------------------------------------------------------
@@ -51,7 +51,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'https://www.atypikhouse-projet.ovh'),
+    'url' => env('APP_URL', config('app.url')),
 
     /*
     |--------------------------------------------------------------------------

@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Validator;
 use App\Mail\SendNewsletter;
 use Illuminate\Support\Facades\Mail;
 use Carbon\Carbon;
+use Exception;
 
 class RegisterController extends Controller
 {

@@ -30,10 +30,6 @@ Route::get('/cgu', 'HomeController@cgu')->name('cgu');
 Route::get('/cgv', 'HomeController@cgv')->name('cgv');
 Route::get('/sendmail', 'Auth\RegisterController@sendmail')->name('user.sendmail');
 
-//Erreurs
-Route::get('/404', 'ErrorsController@render')->name('error404');
-Route::get('/500', 'ErrorsController@render')->name('error500');
-
 // admin route for our multi-auth system
 Route::get('/search', 'QueryController@index');
 

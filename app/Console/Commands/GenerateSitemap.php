@@ -69,15 +69,15 @@ class GenerateSitemap extends Command
             && strpos($uri, 'user/cancelreservation/{id}') === false;
             
             if($isShowable && $uri == '/') {
-                $sitemap->add(Url::create('https://www.atypikhouse-projet.ovh/')->setPriority(1.0));
+                $sitemap->add(Url::create(config('app.url'))->setPriority(1.0));
             } elseif($isShowable && strpos($uri, 'user/showHouse/') !== false){
                 foreach($reservations as $reservation){
-                    $sitemap->add(Url::create('https://www.atypikhouse-projet.ovh/' . str_replace($id, $reservation->id, $uri))->setPriority(1.0));
+                    $sitemap->add(Url::create(config('app.url') . str_replace($id, $reservation->id, $uri))->setPriority(1.0));
                 }
             } elseif($isShowable && strpos($uri, 'user/showhebergement/') !== false){
                 
                 foreach($annonces as $annonce){
-                    $sitemap->add(Url::create('https://www.atypikhouse-projet.ovh/' . str_replace($id, $annonce->id, $uri))->setPriority(1.0));
+                    $sitemap->add(Url::create(config('app.url') . str_replace($id, $annonce->id, $uri))->setPriority(1.0));
                 }
             } elseif($isShowable && strpos($uri, 'showreservations/') !== false){
                 $today = Carbon::now()->format('Y-m-d');
@@ -88,7 +88,7 @@ class GenerateSitemap extends Command
                 ->get();
 
                 foreach($reservations as $reservation){
-                    $sitemap->add(Url::create('https://www.atypikhouse-projet.ovh/' . str_replace($id, $reservation->id, $uri))->setPriority(1.0));
+                    $sitemap->add(Url::create(config('app.url') . str_replace($id, $reservation->id, $uri))->setPriority(1.0));
                 }
             } elseif($isShowable && strpos($uri, 'showhistoriques/') !== false){
                 $historiques = reservation::with('house')->where('start_date', '<=', $today)
@@ -96,33 +96,33 @@ class GenerateSitemap extends Command
                 ->orderBy('id', 'asc')->get();
 
                 foreach($historiques as $historique){
-                    $sitemap->add(Url::create('https://www.atypikhouse-projet.ovh/' . str_replace($id, $historique->id, $uri))->setPriority(1.0));
+                    $sitemap->add(Url::create(config('app.url') . str_replace($id, $historique->id, $uri))->setPriority(1.0));
                 }
             } elseif($isShowable && strpos($uri, 'showreservationsannulees/') !== false){
                 $reservationsCanceled = reservation::with('house')->where('reserved', '=', 0)
                 ->orderBy('id', 'asc')
                 ->get();
                 foreach($reservationsCanceled as $reservationCanceled){
-                    $sitemap->add(Url::create('https://www.atypikhouse-projet.ovh/' . str_replace($id, $reservationCanceled->id, $uri))->setPriority(1.0));
+                    $sitemap->add(Url::create(config('app.url') . str_replace($id, $reservationCanceled->id, $uri))->setPriority(1.0));
                 }
             } elseif($isShowable && strpos($uri, 'profile/') !== false){
                 foreach($users as $user){
-                    $sitemap->add(Url::create('https://www.atypikhouse-projet.ovh/' . str_replace($id, $user->id, $uri))->setPriority(1.0));
+                    $sitemap->add(Url::create(config('app.url') . str_replace($id, $user->id, $uri))->setPriority(1.0));
                 }
             } elseif($isShowable && strpos($uri, 'user/editHouse/') !== false){
                 foreach($annonces as $annonce){
-                    $sitemap->add(Url::create('https://www.atypikhouse-projet.ovh/' . str_replace($id, $annonce->id, $uri))->setPriority(1.0));
+                    $sitemap->add(Url::create(config('app.url') . str_replace($id, $annonce->id, $uri))->setPriority(1.0));
                 }
             } elseif($isShowable && strpos($uri, 'users/deleteHouse/') !== false){
                 foreach($annonces as $annonce){
-                    $sitemap->add(Url::create('https://www.atypikhouse-projet.ovh/' . str_replace($id, $annonce->id, $uri))->setPriority(1.0));
+                    $sitemap->add(Url::create(config('app.url') . str_replace($id, $annonce->id, $uri))->setPriority(1.0));
                 }
             } elseif($isShowable && strpos($uri, 'users/updateHouse/') !== false){
                 foreach($annonces as $annonce){
-                    $sitemap->add(Url::create('https://www.atypikhouse-projet.ovh/' . str_replace($id, $annonce->id, $uri))->setPriority(1.0));
+                    $sitemap->add(Url::create(config('app.url') . str_replace($id, $annonce->id, $uri))->setPriority(1.0));
                 }
             } elseif($isShowable){
-                $sitemap->add(Url::create('https://www.atypikhouse-projet.ovh/'. $uri)->setPriority(0.5));
+                $sitemap->add(Url::create(config('app.url'). $uri)->setPriority(0.5));
             }
         }
         $sitemap->writeToFile(public_path('sitemap.xml'));

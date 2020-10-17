@@ -46,7 +46,7 @@ class ResetPassword extends Notification
     {
         return (new MailMessage)
             ->line('Vous avez reçu un email car vous avez demandé la réinitialisation de votre mot de passe')
-            ->action('Reinitialiser mon mot de passe', 'https://www.atypikhouse-projet.ovh'.route('password.reset', $this->token, false))
+            ->action('Reinitialiser mon mot de passe', config('app.url').route('password.reset', $this->token, false))
             ->line("Si vous n'avez pas fait de demande de réinitialiser de votre mot de passe ne prenez pas en compte cet email");
     }
 }
