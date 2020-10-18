@@ -31,7 +31,7 @@ class LoginController extends Controller
 
     protected function redirectTo()
     {
-        return '/';
+        return 'http://127.0.0.1:8000/';
     }
 
     /**
@@ -125,7 +125,7 @@ class LoginController extends Controller
         $this->clearLoginAttempts($request);
 
         return $this->authenticated($request, $this->guard()->user())
-                ? : redirect()->intended($this->redirectPath());
+                ?: redirect()->intended($this->redirectPath());
     }
 
     /**
