@@ -41,11 +41,11 @@ return [
 
         'mysql' => [
             'driver' => 'mysql',
-            'host' => env('DB_HOST', 'atypikhokwgilber.mysql.db'),
+            'host' => env('DB_HOST', 'caca'),
             'port' => env('DB_PORT', '3306'),
-            'database' => env('DB_DATABASE', 'atypikhokwgilber'),
-            'username' => env('DB_USERNAME', 'atypikhokwgilber'),
-            'password' => env('DB_PASSWORD', 'Kronos603'),
+            'database' => env('DB_DATABASE', env('DB_DATABASE')),
+            'username' => env('DB_USERNAME', env('DB_USERNAME')),
+            'password' => env('DB_PASSWORD', env('DB_PASSWORD')),
             'unix_socket' => env('DB_SOCKET', ''),
             'charset' => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',
