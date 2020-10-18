@@ -33,6 +33,18 @@ class Handler extends ExceptionHandler
      */
     public function report(Exception $exception)
     {
+        // ini_set('display_errors', 1);
+        // ini_set('display_startup_errors', 1);
+        // error_reporting(E_ALL);
+        // $status = $exception->getStatusCode();
+        // dd($status);
+        // if($status == 404){
+        //     return view("errors.404");
+        // } else if($status >= 500){
+        //     return view("errors.500");
+        // } else {
+        //     parent::report($exception);
+        // }
         parent::report($exception);
     }
 
@@ -50,7 +62,7 @@ class Handler extends ExceptionHandler
         }
 
         if ( ! config('app.debug') && ! $this->isHttpException($exception)) {
-            return response(null, 500)->view('error');
+            return response(null, 500)->view('errors.500');
         }
         return parent::render($request, $exception);
     }

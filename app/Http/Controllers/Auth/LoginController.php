@@ -31,7 +31,7 @@ class LoginController extends Controller
 
     protected function redirectTo()
     {
-        return 'https://www.atypikhouse-projet.ovh/';
+        return config('app.url');
     }
 
     /**
@@ -53,11 +53,11 @@ class LoginController extends Controller
     public function login(LoginRequest $request)
     {
         $this->validateLogin($request);
-
         // If the class is using the ThrottlesLogins trait, we can automatically throttle
         // the login attempts for this application. We'll key this by the username and
         // the IP address of the client making these requests into this application.
         if ($this->hasTooManyLoginAttempts($request)) {
+
             $this->fireLockoutEvent($request);
 
             return $this->sendLockoutResponse($request);
@@ -71,7 +71,6 @@ class LoginController extends Controller
         // to login and redirect the user back to the login form. Of course, when this
         // user surpasses their maximum number of attempts they will get locked out.
         $this->incrementLoginAttempts($request);
-
         return $this->sendFailedLoginResponse($request);
     }
 
@@ -149,6 +148,7 @@ class LoginController extends Controller
      */
     protected function sendFailedLoginResponse(Request $request)
     {
+
         $errors = [$this->username() => trans('auth.failed')];
 
         if ($request->expectsJson()) {
@@ -182,7 +182,7 @@ class LoginController extends Controller
 
         $request->session()->invalidate();
 
-        return redirect('/');
+        return redirect(config('app.url'));
     }
 
     /**
