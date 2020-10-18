@@ -31,7 +31,7 @@ class LoginController extends Controller
 
     protected function redirectTo()
     {
-        return 'http://127.0.0.1:8000/';
+        return config('app.url');
     }
 
     /**
