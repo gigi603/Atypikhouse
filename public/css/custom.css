@@ -299,6 +299,12 @@ nav.navbar.navbar-default {
 	color: #000;
 }
 
+.hebergement-title {
+	text-align: center;
+	margin: 60px;
+	color: #FFF;
+}
+
 .list-category {
 	min-height: 500px !important;
 }
@@ -316,6 +322,13 @@ nav.navbar.navbar-default {
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
+}
+
+.background-houses {
+	background-color: #3f4b30;
+}
+.h-100{
+	text-align: center;
 }
 
 .card-houses {
@@ -361,8 +374,7 @@ nav.navbar.navbar-default {
 }
 
 .img-house-detail {
-	width: 100%;
-	height: auto;
+	max-width: 100%;
 }
 
 .card-show {

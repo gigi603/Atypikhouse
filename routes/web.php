@@ -160,7 +160,7 @@ Route::prefix('admin')->group(function () {
  });
 
 Route::middleware(['auth'])->group( function () {
-    Route::get('/profile/{id}', 'UsersController@profile');
+    Route::get('/profile', 'UsersController@profile');
     Route::get('/messages', 'MessagesController@messages')->name('user.messages');
 
     //Create a house, publish an offer
@@ -217,8 +217,6 @@ Route::middleware(['auth'])->group( function () {
 
 });
 
-Route::post('/create',    'UserController@create');
-Route::get('/user/{id}',  'UserController@get');
 Route::get('/users/confirmation{email_token}', 'Auth\RegisterController@confirmation');
 Route::get('/verifyemail/{token}', 'Auth\RegisterController@verify');
 Auth::routes();

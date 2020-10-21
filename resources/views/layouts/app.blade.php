@@ -89,7 +89,7 @@
                                     {{ Auth::user()->prenom }} <span class="caret"></span>
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="{{url('/profile')}}/{{Auth::user()->id}}">Mon profil</a></li>
+                                    <li><a href="{{url('/profile')}}">Mon profil</a></li>
                                     <li><a href="{{route('user.messages')}}">Mes notifications</a></li>
                                     <li><a href="{{route('user.houses')}}">Mes annonces</a></li>
                                     <li><a href="{{route('user.reservations')}}">Mes réservations</a></li>

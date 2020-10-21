@@ -44,14 +44,15 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
-        if ($exception instanceof ModelNotFoundException) {
-            return view("errors.404");
+        if($exception instanceof \Illuminate\Validation\ValidationException){
+            return redirect()->back();
         }
-
-        // if($exception->getStatus() >= 500){
-        //     return view("errors.500");
-        // }
-        return parent::render($request, $exception);
+        if(method_exists($exception, "getStatusCode" ) && $exception->getStatusCode() == 404){
+            return response()->view('errors.404', [], 404);
+        }
+        if($exception){   
+            return response()->view('errors.500', [], 500);
+        }
     }
 
     /**

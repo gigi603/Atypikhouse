@@ -29,11 +29,11 @@ use Session;
 
 class UsersController extends Controller
 {
-    public function profile($id) {
+    public function profile() {
         $userData = DB::table('users')
-        ->where('id', $id)
+        ->where('id', '=', Auth::user()->id)
         ->get();
-        return view('user.profile', compact('userData'))->with('data', Auth::user()->user);
+        return view('user.profile', compact('userData'))->with('data', Auth::user());
     }
 
     public function edit(EditUserRequest $request, $id) {

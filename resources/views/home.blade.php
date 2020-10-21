@@ -40,8 +40,8 @@
             <p>Profitez de promotions toute l'année sur de nombreuses locations atypique tels que les cabanes, les cocons pour amoureux et bien d'autres. </p>
         </div>
     </div>
-    <div class="container-fluid" role="annonces">
-        <h2 id="hebergements">Nos hébergements</h3>
+    <div class="container-fluid background-houses" role="annonces">
+        <h2 class="hebergement-title">Nos hébergements</h3>
         <div class="row">
             @foreach($houses as $house)
                 @if($house->statut == "Validé")
