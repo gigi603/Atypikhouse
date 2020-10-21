@@ -20,7 +20,6 @@ class Handler extends ExceptionHandler
         \Illuminate\Database\Eloquent\ModelNotFoundException::class,
         \Illuminate\Session\TokenMismatchException::class,
         \Illuminate\Validation\ValidationException::class,
-        \Illuminate\Database\Eloquent\ModelNotFoundException::class
     ];
 
     /**
@@ -33,18 +32,6 @@ class Handler extends ExceptionHandler
      */
     public function report(Exception $exception)
     {
-        // ini_set('display_errors', 1);
-        // ini_set('display_startup_errors', 1);
-        // error_reporting(E_ALL);
-        // $status = $exception->getStatusCode();
-        // dd($status);
-        // if($status == 404){
-        //     return view("errors.404");
-        // } else if($status >= 500){
-        //     return view("errors.500");
-        // } else {
-        //     parent::report($exception);
-        // }
         parent::report($exception);
     }
 
@@ -58,12 +45,12 @@ class Handler extends ExceptionHandler
     public function render($request, Exception $exception)
     {
         if ($exception instanceof ModelNotFoundException) {
-            return parent::render($request, new NotFoundHttpException);
+            return view("errors.404");
         }
 
-        if ( ! config('app.debug') && ! $this->isHttpException($exception)) {
-            return response(null, 500)->view('errors.500');
-        }
+        // if($exception->getStatus() >= 500){
+        //     return view("errors.500");
+        // }
         return parent::render($request, $exception);
     }
 
