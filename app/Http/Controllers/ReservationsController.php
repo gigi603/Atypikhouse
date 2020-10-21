@@ -25,19 +25,20 @@ use Input;
 use App\Notifications\ReplyToReservation;
 use Stripe\Error\Card;
 use Cartalyst\Stripe\Stripe;
-
+/**
+ * Controller qui gère le système de reservation
+ */
 class ReservationsController extends Controller
 {
 
     /**
-     * Store the reservation in the database.
+     * Récupère toutes les données de la réservation en cours
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(ReservationRequest $request, House $house)
     {
-        /*Récupère toutes les données de la réservation en cours */
         
         $format_startdate = str_replace('/', '-', $request->start_date);
         $format_enddate = str_replace('/', '-', $request->end_date);
@@ -107,11 +108,18 @@ class ReservationsController extends Controller
                                                              ->with('total', $total);
     }
 
+    /**
+     * Page de paiement
+     */
     public function payWithStripe()
     {
         return view('paywithstripe');
     }
 
+    /**
+     * Traitement des données de paiement si elles sont bonnes on enregistre
+     * la reservation dans la base de donnée
+     */
     public function postPaymentWithStripe(PaymentRequest $request)
     {
         $prix = last($request->session()->get('reservationPrice'));
@@ -186,6 +194,9 @@ class ReservationsController extends Controller
         }
     }
 
+    /**
+     * Confirmation que le paiement a bien était effectué
+     */
     public function confirmpaymentStripe(Request $request)
     {
         return view('reservations.confirmation_payment')->with('reservation', $reservation);
