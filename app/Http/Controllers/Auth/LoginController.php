@@ -9,9 +9,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\RedirectsUsers;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use App;
-// use Illuminate\Foundation\Auth\AuthenticatesUsers;
-// namespace Illuminate\Foundation\Auth;
-//use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
