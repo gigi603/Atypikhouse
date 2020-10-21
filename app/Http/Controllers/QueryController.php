@@ -11,12 +11,14 @@ use App\Http\Requests\SearchRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Carbon\Carbon;
-// use Jenssegers\Date\Date;
 
+/** Controller qui gère le système de recherche de locations se trouvant
+ *  sur la page d'accueil et la page des locations
+ */
 class QueryController extends Controller
 {
     /**
-     * Display the houses researched in the searchbar.
+     * Affiche les locations en fonction de ce qui est selectionné dans la barre de recherche
      *
      * @return \Illuminate\Http\Response
      */

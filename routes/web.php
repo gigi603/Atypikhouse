@@ -187,6 +187,7 @@ Route::middleware(['auth'])->group( function () {
     Route::post('/reservations', 'ReservationsController@store');
     Route::get('/user/cancelreservation/{id}', 'UsersController@cancelreservation')->name('user.cancelreservation');
     Route::post('/comments', 'CommentsController@index');
+    Route::post('/comments', 'UsersController@addComment');
     Route::post('note', 'HousesController@note');
     //Route::get('/houses/update/{id}', 'HousesController@update');
     Route::get('/list-users', 'UsersController@list');

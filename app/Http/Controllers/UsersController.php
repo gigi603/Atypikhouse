@@ -16,6 +16,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\EditUserRequest;
 use App\Http\Requests\EditHouseRequest;
 use App\Http\Requests\ReservationRequest;
+use App\Http\Requests\CommentRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -24,6 +25,7 @@ use Illuminate\Support\Facades\Mail;
 use Image;
 use Carbon\Carbon;
 use Jenssegers\Date\Date;
+use Session;
 
 class UsersController extends Controller
 {
@@ -296,6 +298,27 @@ class UsersController extends Controller
         $house = House::find($id);
         return view('user.showhebergements')->with('house', $house);
                                               
+    }
+
+    public function addComment(CommentRequest $request)
+    {
+        $comment = new Comment;
+        $comment->comment = $request->comment;
+        if($request->note == null){
+            $comment->note = 0;
+        } else {
+            $comment->note = $request->note;
+        }
+        $comment->user_id = Auth::user()->id;
+        if($comment->admin_id != 0){
+            $comment->admin_id = Auth::user()->id;
+        } else {
+            $comment->admin_id = 0;
+        }
+        $comment->house_id = $request->house_id;
+        $comment->save();
+        Session::flash('success', 'Votre commentaire a bien été ajouté');
+        return redirect()->back();
     }
 
 }
