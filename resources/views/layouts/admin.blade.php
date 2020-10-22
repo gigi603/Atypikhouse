@@ -12,19 +12,11 @@
 
   <title>Atypikhouse Admin - @yield('title')</title>
 
-  <!-- Custom fonts for this template-->
-  {{-- <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-  <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css"> --}}
-
-  <link href="{{ asset('admin-component/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet">
-
-
-  <!-- Page level plugin CSS-->
-  <link href="{{ asset('admin-component/vendor/datatables/dataTables.bootstrap4.css') }}" rel="stylesheet">
 
   <!-- Custom styles for this template-->
   <link href="{{ asset('admin-component/css/sb-admin.css') }}" rel="stylesheet">
   <link href="{{ asset('admin-component/css/custom-admin.css') }}" rel="stylesheet">
+  <link href="{{ asset('bootstrap-4.5.3-dist/css/bootstrap.min.css') }}" rel="stylesheet">
 
 </head>
 
@@ -227,25 +219,9 @@
     </div>
 </div>
 </div>
- <!-- Bootstrap core JavaScript-->
- <script src="{{ asset('admin/vendor/jquery/jquery.min.js') }}"></script>
- <script src="{{ asset('admin/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 
- <!-- Core plugin JavaScript-->
- <script src="{{ asset('admin/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
-
- <!-- Page level plugin JavaScript-->
- <script src="{{ asset('admin/vendor/datatables/jquery.dataTables.js') }}"></script>
- <script src="{{ asset('admin/vendor/datatables/dataTables.bootstrap4.js') }}"></script>
- <script src="{{ asset('admin/vendor/datatables/jquery.dataTables.js') }}"></script>
-
- <!-- Custom scripts for all pages-->
- <script src="{{ asset('admin/js/sb-admin.min.js') }}"></script>
-
-
- <!-- Demo scripts for this page-->
- <script src="{{ asset('admin/js/demo/datatables-demo.js') }}"></script>
-
+ <script src="{{ asset('js/jquery.min.js') }}"></script>
+ <script src="{{ asset('bootstrap-4.5.3-dist/js/bootstrap.min.js') }}"></script>
  <script src="{{ asset('js/admin.js') }}"></script>
  @yield('script')
 </body>
