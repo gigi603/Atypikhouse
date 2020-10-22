@@ -29,6 +29,7 @@ use Session;
 
 class UsersController extends Controller
 {
+    // Profile de l'utilisateur connecté
     public function profile() {
         $userData = DB::table('users')
         ->where('id', '=', Auth::user()->id)
@@ -36,6 +37,7 @@ class UsersController extends Controller
         return view('user.profile', compact('userData'))->with('data', Auth::user());
     }
 
+    // Modifie le profil (activation de la newsletter ou non) Envoie par mail si oui
     public function edit(EditUserRequest $request, $id) {
         $user = User::find($id);
         try {
@@ -48,7 +50,7 @@ class UsersController extends Controller
                 $user->save();
                 $newsletters = newsletter::all();
                 foreach($newsletters as $newsletter){
-                    Mail::to('fatboar')->send(new SendNewsletter($newsletter));
+                    Mail::to('notre.equipe.atypikhouse@gmail.com')->send(new SendNewsletter($newsletter));
                 }
                 return redirect()->back();
             }
@@ -56,6 +58,7 @@ class UsersController extends Controller
         }
     }
 
+    // Vue global des annonces
     public function houses(Request $request)
     {
         $user = $request->user();
@@ -65,12 +68,7 @@ class UsersController extends Controller
         return view('user.houses', compact('houses'));
     }
     
-    /**
-     * Display the house details.
-     *
-     * @param  \App\House  $house
-     * @return \Illuminate\Http\Response
-     */
+    // Vue de détail de l'annonce interface client/visiteur
     public function showHouse($id)
     {
         if (Auth::check()) {
@@ -91,8 +89,17 @@ class UsersController extends Controller
                                     ->with('house', $house);
         }
     }
-        
 
+    //Vue de détail de l'annonce interface de l'annonceur
+    public function showhebergements($id)
+    {
+        $house = House::find($id);
+        $client_reserved = reservation::where('house_id', $id)->where('user_id', Auth::user()->id)->get();
+        return view('user.showhebergements')->with('house', $house)->with('client_reserved', $client_reserved);
+                                              
+    }
+        
+    //Page de modification de l'annonce à modifier
     public function editHouse($id, Request $request)
     {
         $categories = category::all();
@@ -110,6 +117,7 @@ class UsersController extends Controller
                                 ->with('proprietes', $proprietes);
     }
 
+    // Mettre à jour l'annonce après avoir saisie les modifications
     public function updateHouse(EditHouseRequest $request, $id)
     {
         
@@ -181,6 +189,7 @@ class UsersController extends Controller
                                  ->with('success', "L'hébergement de l'utilisateur a bien été modifié");
     }
 
+    //Supprimer une annonce
     public function deleteHouse(Request $request, $id)
     {
         $user = User::find(Auth::user()->id);
@@ -213,6 +222,7 @@ class UsersController extends Controller
         }
     }
 
+    //Vue global des reservations
     public function reservations(Request $request)
     {
         $today = Date::today()->format('Y-m-d');
@@ -225,7 +235,8 @@ class UsersController extends Controller
         
         return view('user.reservations', compact('reservations'));
     }
-    
+
+    //Vue de détails des reservations
     public function showreservations($id)
     {
         $users = User::where('id', $id)->get();
@@ -236,27 +247,7 @@ class UsersController extends Controller
                                             ->with('reservation', $reservation);
     }
 
-    public function reservationsannulees(Request $request)
-    {
-        $today = Date::today()->format('Y-m-d');
-        $reservations = reservation::with('house')->where('reserved', '=', 0)
-        ->where('user_id', '=', Auth::user()->id)
-        ->orderBy('id', 'desc')
-        ->get();
-        
-        return view('user.reservationsannulees', compact('reservations'));
-    }
-    
-    public function showreservationsannulees($id)
-    {
-        $users = User::where('id', $id)->get();
-        $houses = House::where('user_id', $id)->get();
-        $reservation = reservation::find($id);
-        return view('user.showreservationsannulees')->with('houses', $houses)
-                                            ->with('users', $users)
-                                            ->with('reservation', $reservation);
-    }
-
+    //Annuler une reservation
     public function cancelreservation($id) {
         $today = Date::today()->format('Y-m-d');
 
@@ -272,6 +263,30 @@ class UsersController extends Controller
         return redirect()->back()->with('success', "Votre demande a bien été pris en compte, votre réservation a bien été annulée");
     }
 
+    //Vue global des reservations annulées
+    public function reservationsannulees(Request $request)
+    {
+        $today = Date::today()->format('Y-m-d');
+        $reservations = reservation::with('house')->where('reserved', '=', 0)
+        ->where('user_id', '=', Auth::user()->id)
+        ->orderBy('id', 'desc')
+        ->get();
+        
+        return view('user.reservationsannulees', compact('reservations'));
+    }
+
+    //Vue de détails des réservations annulées
+    public function showreservationsannulees($id)
+    {
+        $users = User::where('id', $id)->get();
+        $houses = House::where('user_id', $id)->get();
+        $reservation = reservation::find($id);
+        return view('user.showreservationsannulees')->with('houses', $houses)
+                                                    ->with('users', $users)
+                                                    ->with('reservation', $reservation);
+    }
+
+    //Vue global des reservations passées
     public function historiques(Request $request)
     {
         $today = Date::today()->format('Y-m-d');
@@ -282,7 +297,7 @@ class UsersController extends Controller
         return view('user.historiques', compact('historiques'));
     }
 
-    //Vue de détails des historiques
+    //Vue de détails des reservations passées
     public function showhistoriques($id)
     {
         $users = User::where('id', $id)->get();
@@ -293,13 +308,9 @@ class UsersController extends Controller
                                               ->with('historique', $historique);
     }
 
-    public function showhebergements($id)
-    {
-        $house = House::find($id);
-        return view('user.showhebergements')->with('house', $house);
-                                              
-    }
+    
 
+    //Utilisateur ajoute un commentaire sur un logement qu'il a déjà reservé
     public function addComment(CommentRequest $request)
     {
         $comment = new Comment;

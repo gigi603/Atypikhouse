@@ -25,10 +25,10 @@
                             <p>Annulation gratuite !</p>
                             <p>Location :  {{$house->adresse}}</p>
                             <p><i class="fas fa-calendar"></i> Début: <?php \Date::setLocale('fr'); $startdate = Date::parse($house->start_date)->format('l j F Y'); echo($startdate);?> </p>
-                        <p><i class="fas fa-calendar"></i> Fin:  <?php \Date::setLocale('fr'); $enddate = Date::parse($house->end_date)->format('l j F Y'); echo($enddate);?></p>
-                        <p>Pour {{$house->nb_personnes}} personne(s) maximum</p>        
-                        <p>Téléphone de l'annonceur : {{$house->phone}}</p>
-                        <p>Adresse mail de l'annonceur : {{$house->user->email}}</p>
+                            <p><i class="fas fa-calendar"></i> Fin:  <?php \Date::setLocale('fr'); $enddate = Date::parse($house->end_date)->format('l j F Y'); echo($enddate);?></p>
+                            <p>Pour {{$house->nb_personnes}} personne(s) maximum</p>       
+                            <p>Téléphone de l'annonceur : {{$house->phone}}</p>
+                            <p>Adresse mail de l'annonceur : {{$house->user->email}}</p>
                             <a href="{{route('user.editHouse', $house['id']) }}" class="btn btn-primary btn-color">Modifier</a>
                         </div>
                     </div>
@@ -57,7 +57,7 @@
                 </div>
             @endforeach 
             @if (Auth::check())
-                @if($client_reserved > 0 && Auth::user()->id)
+                @if($client_reserved->count() > 0)
                 <div class="panel panel-default" style="margin: 0; border-radius: 0;">
                     <div class="panel-body">
                         <form action="{{ url('/comments') }}" method="POST" style="display: flex;">
@@ -96,7 +96,6 @@
                 </div>
                 @endif
             @endif
-        </div>
         </div>
     </div>
 </div>

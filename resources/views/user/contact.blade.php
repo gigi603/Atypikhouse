@@ -15,24 +15,6 @@
                                 @include('flash-message')
                                 @yield('content')
                             </div>
-                            <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                                {!! Form::label('name', 'Nom : ', array('class' => 'formLabel control-label')) !!}
-                                <input type="text" readonly id="name" required name="name" class="form-control" value="{{ Auth::user()->nom }} {{ Auth::user()->prenom }}"/>
-                                @if ($errors->has('name'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('name') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                            <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}"> 
-                                {!! Form::label('email', 'Email : ', array('class' => 'formLabel control-label')) !!}
-                                <input type="email" readonly id="email" required name="email" class="form-control" value="{{ Auth::user()->email }}"/>
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div> 
                             <div class="form-group{{ $errors->has('content') ? ' has-error' : '' }}"> 
                                 {!! Form::label('content', 'Message : ', array('class' => 'formLabel control-label')) !!} 
                                 {!! Form::textarea('content', Form::old('content'), array( 

@@ -14,7 +14,9 @@
                         <div class="form-group{{ $errors->has('phone') ? ' has-error' : '' }}">
                             <label for="telephone" class="col-md-4 control-label">Téléphone</label>
                             <div class="col-md-6">
-                                <input type="text" required class="form-control" name="phone"id="telephone" placeholder="Saisir un numéro de téléphone sans espaces" value="{{old('phone')}}">
+                                <input type="text" required class="form-control" name="phone"id="telephone" placeholder="Saisir un numéro de téléphone sans espaces" value="{{
+                                    old('phone') ? : (isset($phone) ? $phone : old('phone'))
+                                }}">
                                 @if ($errors->has('phone'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('phone') }}</strong>

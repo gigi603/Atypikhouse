@@ -550,9 +550,9 @@ input[type=textarea] {
 	width: 250px;
 }
 .rating:hover {
-	float:left;
+	float: left;
 	width: 250px;
-	color: green;
+	color:#3f4b30;
 }
 
   /* :not(:checked) is a filter, so that browsers that don’t support :checked don’t 
@@ -567,13 +567,13 @@ input[type=textarea] {
   .rating:not(:checked) > label {
 	  float:right;
 	  width:1em;
-	  padding:0 .2em;
+	  padding:0;
 	  overflow:hidden;
 	  white-space:nowrap;
 	  cursor:pointer;
 	  font-size:150%;
-	  /* line-height:1.2; */
-	  color:#3f4b30;
+	  color:#ededeb;
+	  background-color: #3f4b30;
   }
 
   .rating:not(:checked) > label:before {
@@ -584,12 +584,14 @@ input[type=textarea] {
 
   .rating > input:checked ~ label {
 	  color: #3f4b30;
+	  background-color: #FFF;
 	  
   }
 
   .rating:not(:checked) > label:hover,
   .rating:not(:checked) > label:hover ~ label {
-	  color: #ededeb;
+	  color: #3f4b30;
+	  background-color: #FFF;
 	  
   }
 

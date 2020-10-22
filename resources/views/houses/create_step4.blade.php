@@ -17,7 +17,9 @@
                             <label for="name" class="col-md-4 control-label">Prix la nuit</label>
 
                             <div class="col-md-6">
-                                <input id="name" required type="text" class="form-control" name="price" value="{{old('price')}}">
+                                <input id="name" required type="text" class="form-control" name="price" value="{{
+                                    old('price') ? : (isset($price) ? $price : old('price'))
+                                }}">
                                 @if ($errors->has('price'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('price') }}</strong>

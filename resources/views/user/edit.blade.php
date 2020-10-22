@@ -4,9 +4,9 @@
 
 <div class="container margin-top">
     <div class="row">
-        <div class="col-md-10 col-md-offset-1">
+        <div class="col-md-12">
             <div class="panel panel-default">
-                <div class="panel-heading"><h1 style="font-size:30px;">Mon annonce</h1></div>
+                <div class="panel-heading"><h1 style="font-size:30px;text-align:center;">Mon annonce</h1></div>
                 <div class="panel-body">
                     @if ($success = Session::get('success'))
                         <div class="alert alert-success">
@@ -24,7 +24,9 @@
                             <label for="title" class="col-md-4 control-label">Titre</label>
 
                             <div class="col-md-6">
-                                <input id="title" type="text" class="form-control" name="title" maxlength="47" autofocus value="{{$house->title}}">
+                                <input id="title" type="text" class="form-control" name="title" maxlength="47" autofocus value="{{
+                                    old('title') ? : (isset($house->title) ? $house->title : old('title'))
+                                }}">
                                 @if ($errors->has('title'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('title') }}</strong>
@@ -70,7 +72,9 @@
                         <div class="form-group{{ $errors->has('adresse') ? ' has-error' : '' }}">
                             <label for="autocompleteadresse" class="col-md-4 control-label">Adresse</label>
                             <div class="col-md-6">
-                                <input type="text" class="form-control" id="autocompleteadresse" name="adresse" autofocus value="{{$house->adresse}}">
+                                <input type="text" class="form-control" id="autocompleteadresse" name="adresse" autofocus value="{{
+                                    old('adresse') ? : (isset($house->adresse) ? $house->adresse : old('adresse'))
+                                }}">
                                 @if ($errors->has('adresse'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('adresse') }}</strong>
@@ -84,7 +88,9 @@
                         <div class="form-group{{ $errors->has('price') ? ' has-error' : '' }}">
                             <label for="name" class="col-md-4 control-label">Prix / la nuit</label>
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control" name="price" autofocus value="{{$house->price}}">
+                                <input id="name" type="text" class="form-control" name="price" autofocus value="{{
+                                    old('price') ? : (isset($house->price) ? $house->price : old('price'))
+                                }}">
                                 @if ($errors->has('price'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('price') }}</strong>
@@ -93,18 +99,18 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('photo') ? ' has-error' : '' }}">
-                            <label for="image-photo" class="col-md-4 control-label">Photo</label>
-                            
-                            <div class="col-md-6">
+                        <div class="form-group{{ $errors->has('photo') ? ' has-error' : '' }}">                            
+                            <div class="col-md-12">
                                 <img class="img-responsive img_house" src="{{ asset('img/houses/'.$house->photo) }}" id="image-photo" alt="photo de l'annonce">
                             </div>
                         </div>
                         
                         <div class="form-group{{ $errors->has('photo') ? ' has-error' : '' }}">
-                            <label class="col-md-4" for="photo">Photo</label>
+                            <label class="col-md-4 control-label" for="photo">Photo</label>
                             <div class="col-md-6">
-                            <input id="photo" type="file" class="form-control" name="photo" autofocus value="{{$house->photo}}">
+                            <input id="photo" type="file" class="form-control" name="photo" autofocus value="{{
+                                old('photo') ? : (isset($house->photo) ? $house->photo : old('photo'))
+                            }}">
                             @if ($errors->has('photo'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('photo') }}</strong>
@@ -115,7 +121,10 @@
                         <div class="form-group{{ $errors->has('start_date') ? ' has-error' : '' }}">
                             <label for="from" class="col-md-4 control-label">Date de début</label>
                             <div class="col-md-6">
-                                <input type="text" class="form-control" id="from" placeholder="Date de début" name="start_date" value="<?php \Date::setLocale('fr'); $startdate = Date::parse($house->start_date)->format('d/m/Y'); echo($startdate);?>" />
+                                <?php \Date::setLocale('fr'); $house->start_date = Date::parse($house->start_date)->format('d/m/Y');?>
+                                <input type="text" class="form-control" id="from" placeholder="Date de début" name="start_date" value="{{
+                                    old('start_date') ? : (isset($house->start_date) ? $house->start_date : old('start_date'))
+                                }}" />
                                 @if ($errors->has('start_date'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('start_date') }}</strong>
@@ -126,7 +135,10 @@
                         <div class="form-group{{ $errors->has('end_date') ? ' has-error' : '' }}">
                             <label for="to" class="col-md-4 control-label">Date de fin</label>
                             <div class="col-md-6">
-                                <input type="text" class="form-control" id="to" placeholder="Date de fin" name="end_date" value="<?php \Date::setLocale('fr'); $enddate = Date::parse($house->end_date)->format('d/m/Y'); echo($enddate);?>" />
+                                <?php \Date::setLocale('fr'); $house->end_date = Date::parse($house->end_date)->format('d/m/Y');?>
+                                <input type="text" class="form-control" id="to" placeholder="Date de fin" name="end_date" value="{{
+                                    old('end_date') ? : (isset($house->end_date) ? $house->end_date : old('end_date'))
+                                }}" />
                                 @if ($errors->has('end_date'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('end_date') }}</strong>
@@ -138,7 +150,9 @@
                             <label for="description" class="col-md-4 control-label">Description</label>
 
                             <div class="col-md-6">
-                                <textarea class="form-control" name="description" rows="5" id="description">{{$house->description}}</textarea>
+                                <textarea class="form-control" name="description" rows="5" id="description">{{
+                                    old('description') ? : (isset($house->description) ? $house->description : old('description'))
+                                }}</textarea>
                                 @if ($errors->has('description'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('description') }}</strong>

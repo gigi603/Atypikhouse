@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('title', "Confirmation de la création de l'annonce")
 @section('content')
-<div class="container margin-top">
+<div class="container margin-top block-size">
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-default">

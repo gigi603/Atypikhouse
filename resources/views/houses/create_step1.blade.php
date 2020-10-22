@@ -14,7 +14,9 @@
                         <div class="form-group{{ $errors->has('adresse') ? ' has-error' : '' }}">
                             <label for="autocomplete" class="col-md-4 control-label">Adresse</label>
                             <div class="col-md-6">
-                            <input type="text" required class="form-control" id="autocomplete" name="adresse" placeholder="Saisir l'adresse" value="{{old('adresse')}}">
+                            <input type="text" required class="form-control" id="autocomplete" name="adresse" placeholder="Saisir l'adresse" value="{{
+                                old('adresse') ? : (isset($adresse) ? $adresse : old('adresse'))
+                            }}"/>
                                 @if ($errors->has('adresse'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('adresse') }}</strong>

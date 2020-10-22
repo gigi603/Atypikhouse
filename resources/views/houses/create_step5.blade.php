@@ -15,7 +15,9 @@
                             <label for="name" class="col-md-4 control-label">Photo</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="file" class="form-control" name="photo" required value={{old('photo')}}>
+                                <input id="name" type="file" class="form-control" name="photo" required value="{{
+                                    old('photo') ? : (isset($photo) ? $photo : old('photo'))
+                                }}">
                                 @if ($errors->has('photo'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('photo') }}</strong>
