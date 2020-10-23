@@ -9,9 +9,9 @@
                 <div class="panel panel-default">
                     <div class="panel-heading"><h1 class="h1-title">Se connecter</h1></div>
                     <div class="panel-body">
-                        @if ($status = Session::get('status'))
+                        @if (Session::has('errorLogin'))
                             <div class="alert alert-info">
-                                {{ $status }}
+                                {{ Session::get('errorLogin') }}
                             </div>
                         @endif
                         <form class="form-horizontal" method="POST" action="{{ route('login') }}">

@@ -14,22 +14,28 @@
 </button>
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="comment" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Saisir votre commentaire</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
+      <form action="{{ route('admin.addComment') }}" method="POST" style="display: flex;">
+        {{ csrf_field() }}
+        <div class="modal-body">
+            
+                <textarea class="form-control" name="comment" cols="5" rows="10"></textarea>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-primary">Envoyer</button>
+        </form>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+            
+        </div>
     </div>
   </div>
 </div>
@@ -87,7 +93,7 @@
                                             @endif
                                             <button class="btn btn-primary"
                                                 data-toggle="modal"
-                                                data-target="#exampleModal">Répondre à ce commentaire</button>
+                                                data-target="#comment" data-id={{$comment->id}}>Répondre à ce commentaire</button>
                                             <button class="btn btn-danger">Supprimer ce commentaire</button>
                                         </div>
                                     </div>
@@ -117,15 +123,15 @@
                                     <input type="hidden" name="house_id" value="{{ $house->id }}">
                                     <input type="hidden" name="admin_id" value="{{ Auth::user()->id }}">
                                     <input type="hidden" name="user_id" value="0">
-//                                    <input type="text" name="comment" placeholder="Saisir un commentaire" class="form-control" id="input_comment" style="border-radius: 0;">
-//                                    <div class="rating">
-//                                        <input type="radio" id="star5" name="note" value="5" /><label for="star5" title="Meh">5 stars</label>
-//                                        <input type="radio" id="star4" name="note" value="4" /><label for="star4" title="Kinda bad">4 stars</label>
-//                                        <input type="radio" id="star3" name="note" value="3" /><label for="star3" title="Kinda bad">3 stars</label>
-//                                        <input type="radio" id="star2" name="note" value="2" /><label for="star2" title="Sucks big tim">2 stars</label>
-//                                        <input type="radio" id="star1" name="note" value="1" /><label for="star1" title="Sucks big time">1 star</label>
-//                                    </div>
-//                                    <input type="submit" value="Envoyer" class="btn btn-primary btn-color" style="border-radius: 0;">
+                                    <input type="text" name="comment" placeholder="Saisir un commentaire" class="form-control" id="input_comment" style="border-radius: 0;">
+                                    <div class="rating">
+                                        <input type="radio" id="star5" name="note" value="5" /><label for="star5" title="Meh">5 stars</label>
+                                        <input type="radio" id="star4" name="note" value="4" /><label for="star4" title="Kinda bad">4 stars</label>
+                                        <input type="radio" id="star3" name="note" value="3" /><label for="star3" title="Kinda bad">3 stars</label>
+                                        <input type="radio" id="star2" name="note" value="2" /><label for="star2" title="Sucks big tim">2 stars</label>
+                                        <input type="radio" id="star1" name="note" value="1" /><label for="star1" title="Sucks big time">1 star</label>
+                                    </div>
+                                    <input type="submit" value="Envoyer" class="btn btn-primary btn-color" style="border-radius: 0;">
                                 </form>
                                 @if (@count($errors) > 0)
                                     <div class="alert alert-danger">

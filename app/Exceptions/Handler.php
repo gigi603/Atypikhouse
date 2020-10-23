@@ -3,6 +3,9 @@
 namespace App\Exceptions;
 
 use Exception;
+use Auth;
+use Session;
+use Illuminate\Http\Request;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
@@ -44,12 +47,18 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
+        
         if($exception instanceof \Illuminate\Validation\ValidationException){
             return redirect()->back();
         }
         if(method_exists($exception, "getStatusCode" ) && $exception->getStatusCode() == 404){
             return response()->view('errors.404', [], 404);
         }
+        if($exception instanceof \Illuminate\Auth\AuthenticationException){
+            $this->unauthenticated($request, $exception);
+            return parent::render($request, $exception);
+        }
+
         if($exception){   
             return response()->view('errors.500', [], 500);
         }
@@ -88,6 +97,7 @@ class Handler extends ExceptionHandler
                 $login = 'login';
                 break;
         }
+        $request->session(['errorLogin' => "Vous avez été déconnecté car vous avez été inactif trop longtemps"]);
         return redirect()->guest(route($login));
     }
 }
