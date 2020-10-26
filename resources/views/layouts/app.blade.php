@@ -57,7 +57,7 @@
                             @if (Auth::guest())
                             
                             <li class="link-position"><a href="{{ route('home') }}" >Accueil</a></li>
-                            <li class="link-position"><a href="{{ route('houses') }}" aria-label="Hebergements">Nos hébergements</a></li>
+                            <li class="link-position"><a href="{{ route('houses') }}" aria-label="Hebergements">Nos hébergements atypikhouse</a></li>
                             <li class="link-position"><a href="{{ route('register') }}" aria-label="Inscription">Inscription</a></li>
                             <li class="link-position"><a href="{{ route('login') }}" aria-label="Connexion">Connexion</a></li>
                             @elseif(Auth::guard('admin')->check())
@@ -83,7 +83,7 @@
                             </li>
                             @else
                             <li class="link-position"><a href="{{ route('home') }}">Accueil</a></li>
-                            <li class="link-position"><a href="{{ route('houses') }}">Nos hébergements</a></li>
+                            <li class="link-position"><a href="{{ route('houses') }}">Nos hébergements atypikhouse</a></li>
                             <li class="dropdown link-position">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                     {{ Auth::user()->prenom }} <span class="caret"></span>
@@ -92,7 +92,7 @@
                                     <li><a href="{{url('/profile')}}">Mon profil</a></li>
                                     <li><a href="{{route('user.messages')}}">Mes notifications</a></li>
                                     <li><a href="{{route('user.houses')}}">Mes annonces</a></li>
-                                    <li><a href="{{route('user.reservations')}}">Mes réservations</a></li>
+                                    <li><a href="{{route('user.reservations')}}">Mes réservations en cours</a></li>
                                     <li><a href="{{route('user.historiques')}}">Mes réservations passées</a></li>
                                     <li><a href="{{route('user.reservationsannulees')}}">Mes réservations annulées</a></li>
                                     <li><a href="{{ url('/house/create_step1') }}">Ajouter une annonce</a></li>

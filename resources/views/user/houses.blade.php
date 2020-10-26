@@ -1,8 +1,8 @@
 @extends('layouts.app')
-@section('title', 'Nos Hébergements')
+@section('title', 'Nos Hébergements atypikhouse')
 @section('content')
 <div class="container-fluid block-container block-size" role="annonces">
-    <h1 class="h1-title" id="hebergements">Mes hébergements atypiques</h1>
+    <h1 class="h1-title" id="hebergements">Mes hébergements atypikhouse</h1>
     <div class="row text-center" style="margin-bottom: 50px;">
         <a href="{{route('house.create_step1')}}" class="btn btn-primary btn-color">Ajouter une annonce</a>
     </div>

@@ -41,7 +41,7 @@
         </div>
     </div>
     <div class="container-fluid background-houses" role="annonces">
-        <h2 class="hebergement-title">Nos hébergements</h3>
+        <h2 class="hebergement-title">Nos hébergements atypikhouse</h3>
         <div class="row">
             @foreach($houses as $house)
                 @if($house->statut == "Validé")
