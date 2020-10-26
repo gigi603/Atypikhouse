@@ -48,20 +48,21 @@ class Handler extends ExceptionHandler
     public function render($request, Exception $exception)
     {
         
-        if($exception instanceof \Illuminate\Validation\ValidationException){
-            return redirect()->back();
-        }
-        if(method_exists($exception, "getStatusCode" ) && $exception->getStatusCode() == 404){
-            return response()->view('errors.404', [], 404);
-        }
-        if($exception instanceof \Illuminate\Auth\AuthenticationException){
-            $this->unauthenticated($request, $exception);
-            return parent::render($request, $exception);
-        }
+        // if($exception instanceof \Illuminate\Validation\ValidationException){
+        //     return redirect()->back();
+        // }
+        // if(method_exists($exception, "getStatusCode" ) && $exception->getStatusCode() == 404){
+        //     return response()->view('errors.404', [], 404);
+        // }
+        // if($exception instanceof \Illuminate\Auth\AuthenticationException){
+        //     $this->unauthenticated($request, $exception);
+        //     return parent::render($request, $exception);
+        // }
 
-        if($exception){   
-            return response()->view('errors.500', [], 500);
-        }
+        // if($exception){   
+        //     return response()->view('errors.500', [], 500);
+        // }
+        return parent::render($request, $exception);
     }
 
     /**
@@ -97,7 +98,6 @@ class Handler extends ExceptionHandler
                 $login = 'login';
                 break;
         }
-        $request->session(['errorLogin' => "Vous avez été déconnecté car vous avez été inactif trop longtemps"]);
         return redirect()->guest(route($login));
     }
 }

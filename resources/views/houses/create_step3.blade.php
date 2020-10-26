@@ -31,7 +31,8 @@
                                         <option id="" value="">Choisissez votre categorie</option>
                                         @foreach($categories as $category)
                                             @if($category->id > 1)
-                                                <option {{ $categorySelected == $category->id ? "selected" : "" }} value="{{$category->id}}">{{$category->category}}</option>
+                                                <option {{ $categorySelected == $category->id ? "selected" : "" }} {{ (old("category_id") == $category->id ? "selected":"") }}
+                                                    {{ (old("category_id") ? $categorySelected = ""  : "") }} value="{{ $category->id }}" >{{ $category->category }}</option>
                                             @endif
                                         @endforeach
                                     </select>
@@ -49,7 +50,8 @@
                                     <select id="select_nb_personnes" required name="nb_personnes" class="form-control">
                                         <option id="" value="" autofocus>Nombre de personnes</option>
                                         @for($i=1;$i<17;$i++)
-                                            <option value="{{ ($i > 16 || $i < 0) ? "" : $i }}" {{ ($i == $nb_personnes) ? "selected" : "" }}>{{$i}}</option>
+                                            <option {{ (old("nb_personnes") == $i ? "selected" : "") }} {{ $nb_personnes == $i ? "selected" : "" }} 
+                                            {{ (old("nb_personnes") ? $nb_personnes = ""  : "") }}value="{{ $i }}"  >{{ $i }}</option>
                                         @endfor 
                                     </select>
                                     @if ($errors->has('nb_personnes'))

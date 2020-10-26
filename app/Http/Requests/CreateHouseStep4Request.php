@@ -24,7 +24,7 @@ class CreateHouseStep4Request extends FormRequest
     public function rules()
     {
         return [
-            'price' => 'required|numeric|between:1,9999|not_in:0'
+            'price' => 'required|numeric|between:1,9999'
         ];
     }
 
@@ -37,9 +37,9 @@ class CreateHouseStep4Request extends FormRequest
     {
         return [
             'price.required' => 'Veuillez saisir le prix par nuit',
-            'price.numeric' => 'Veuillez saisir uniquement des chiffres',
+            'price.numeric' => 'Veuillez saisir uniquement des chiffres,les nombres décimaux ne sont pas autorisés',
             'price.not_in' => 'Le prix ne doit pas être une valeur negative',
-            'price.between' => 'Le prix doit être compris entre 1 et 9999 euros'
+            'price.between' => 'Le prix doit être compris entre 1 et 9999 euros, les nombres décimaux ne sont pas autorisés',
         ];
     }
 }
