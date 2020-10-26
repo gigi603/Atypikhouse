@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title', "Détails de l'annonce")
+@section('title', "Détails de l'annonce atypikhouse")
 @section('content')
 <div class="admin-user-profil">
     @if (Session::has('success'))
@@ -49,9 +49,9 @@
 </div>
 
 <div class="container list-category" role="details-annonce">
-    <h1 class="h1-title" style="font-size:30px;text-align:center;">Détails de l'annonce</h1>
+    <h1 class="h1-title" style="font-size:30px;text-align:center;">Détails de l'annonce atypikhouse</h1>
     <div class="panel panel-default">
-        <div class="panel-heading text-center">Détails de l'annonce</div>
+        <div class="panel-heading text-center">Détails de l'annonce atypikhouse</div>
         <div class="panel-body">
             <div class="row">
                 <div class="col-lg-12 col-md-12">

@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title', "Détails de la réservation")
+@section('title', "Détails de la réservation atypikhouse")
 @section('content')
 <div class="admin-user-profil">
     @if (Session::has('success-valide'))
@@ -10,7 +10,7 @@
     @endif
     <div class="container list-category">
         <div class="panel panel-default">
-            <div class="panel-heading"><h1 style="font-size:20px;">Détails de la réservation</h1></div>
+            <div class="panel-heading"><h1 style="font-size:20px;">Détails de la réservation atypikhouse</h1></div>
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-lg-12 col-md-12 mb-4">

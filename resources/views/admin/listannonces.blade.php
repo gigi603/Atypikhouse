@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title', "Détails de l'annonce")
+@section('title', "Détails de l'annonce atypikhouse")
 @section('content')
     <div class="card mb-3">
         <div class="card-header">

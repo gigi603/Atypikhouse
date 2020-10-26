@@ -1,9 +1,9 @@
 @extends('layouts.app')
-@section('title', "Détails de l'historique")
+@section('title', "Détails de la reservation passée atypikhouse")
 @section('content')
 <div class="admin-user-profil">   
 <div class="container">
-    <h1 class="h1-title" id="hebergements">Détails de la réservation passée</h1>
+    <h1 class="h1-title" id="hebergements">Détails de la réservation passée atypikhouse</h1>
     <div class="panel panel-default">
         <div class="panel-heading text-center">
             <h2>{{$historique->house->title}}</h2>

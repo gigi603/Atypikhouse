@@ -1,8 +1,8 @@
 @extends('layouts.app')
-@section('title', "Détail de l'annonce")
+@section('title', "Détail de l'annonce atypikhouse")
 @section('content')
 <div class="container">
-    <h1 class="h1-title" id="hebergements">Détails de l'annonce</h1>
+    <h1 class="h1-title" id="hebergements">Détails de l'annonce atypikhouse</h1>
     <div class="panel panel-default">
         <div class="panel-heading text-center">
             <h2>{{$house->title}}</h2>

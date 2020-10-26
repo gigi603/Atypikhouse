@@ -43,8 +43,6 @@
 @endsection
 @section('footer', 'footer_absolute')
 @section('script')
-    <script src="{{ asset('js/jquery.js') }}"></script>
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     <script
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCOt3g2OEb6Br_DmsDwVgciAFiDdE5Qh0E&callback=initAutocomplete&libraries=places&v=weekly&language=fr"
       defer

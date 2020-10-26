@@ -72,7 +72,7 @@
                         <div class="form-group{{ $errors->has('adresse') ? ' has-error' : '' }}">
                             <label for="autocompleteadresse" class="col-md-4 control-label">Adresse</label>
                             <div class="col-md-6">
-                                <input type="text" class="form-control" id="autocompleteadresse" name="adresse" autofocus value="{{
+                                <input type="text" class="form-control" id="autocomplete" name="adresse" autofocus value="{{
                                     old('adresse') ? : (isset($house->adresse) ? $house->adresse : old('adresse'))
                                 }}">
                                 @if ($errors->has('adresse'))
@@ -122,7 +122,7 @@
                             <label for="from" class="col-md-4 control-label">Date de début</label>
                             <div class="col-md-6">
                                 <?php \Date::setLocale('fr'); $house->start_date = Date::parse($house->start_date)->format('d/m/Y');?>
-                                <input type="text" class="form-control" id="from" placeholder="Date de début" name="start_date" value="{{
+                                <input type="text" required class="form-control" id="from" placeholder="Date de début" name="start_date" value="{{
                                     old('start_date') ? : (isset($house->start_date) ? $house->start_date : old('start_date'))
                                 }}" />
                                 @if ($errors->has('start_date'))
@@ -136,7 +136,7 @@
                             <label for="to" class="col-md-4 control-label">Date de fin</label>
                             <div class="col-md-6">
                                 <?php \Date::setLocale('fr'); $house->end_date = Date::parse($house->end_date)->format('d/m/Y');?>
-                                <input type="text" class="form-control" id="to" placeholder="Date de fin" name="end_date" value="{{
+                                <input type="text" required class="form-control" id="to" placeholder="Date de fin" name="end_date" value="{{
                                     old('end_date') ? : (isset($house->end_date) ? $house->end_date : old('end_date'))
                                 }}" />
                                 @if ($errors->has('end_date'))
@@ -175,11 +175,13 @@
 </div>
 @endsection
 @section('script')
-    <script>let site = "{{ env('APP_URL_SITE') }}"; </script>
-    <script src="{{ asset('js/jquery.js') }}"></script>
-    <script src="{{ asset('js/jquery-ui.min.js') }}"></script>
+    <script>let site = "{{ env('APP_URL') }}"; </script>
     <script src="{{ asset('js/calendarCreateAnnonce.js') }}"></script>
-    <script src="{{ asset('js/create_house.js') }}"></script>
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCOt3g2OEb6Br_DmsDwVgciAFiDdE5Qh0E&libraries=places&language=fr"></script>
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCOt3g2OEb6Br_DmsDwVgciAFiDdE5Qh0E&callback=initAutocomplete&libraries=places&v=weekly&language=fr"
+      defer
+    ></script>
     <script src="{{ asset('js/autocomplete_address.js') }}"></script>
+    <script src="{{ asset('js/create_house.js') }}"></script>
+    <script src="{{ asset('js/proprietes.js') }}"></script>
 @endsection
