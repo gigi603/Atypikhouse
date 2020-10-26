@@ -2,7 +2,7 @@
 @section('title', 'Nos Hébergements')
 @section('content')
 <div class="container-fluid block-container block-size" role="annonces">
-    <h1 class="h1-title" id="hebergements">Mes hébergements</h1>
+    <h1 class="h1-title" id="hebergements">Mes hébergements atypiques</h1>
     <div class="row text-center" style="margin-bottom: 50px;">
         <a href="{{route('house.create_step1')}}" class="btn btn-primary btn-color">Ajouter une annonce</a>
     </div>
@@ -35,7 +35,7 @@
                             <p>Statut: <span style="color:green;">{{$house->statut}}</span></p>
                         @endif
                         <div class="text-center">
-                            <a href="{{route('user.showHouse', $house['id']) }}" class="btn btn-primary btn-color">Voir</a>
+                            <a href="{{route('user.showhebergements', $house['id']) }}" class="btn btn-primary btn-color">Voir</a>
                             <a href="{{route('user.editHouse', $house['id']) }}" class="btn btn-primary btn-color">Modifier</a>
                             <a href="{{route('user.deleteHouse', $house['id']) }}" class="btn btn-danger delete-annonce">Supprimer</a>
                         </div>
