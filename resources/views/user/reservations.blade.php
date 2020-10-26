@@ -1,8 +1,8 @@
 @extends('layouts.app')
-@section('title', 'Nos Réservations')
+@section('title', 'Mes réservations atypikhouse')
 @section('content')
 <div class="container-fluid block-container block-size" role="reservations">
-    <h1 class="h1-title" id="hebergements">Mes réservations</h1>
+    <h1 class="h1-title" id="hebergements">Mes réservations atypikhouse</h1>
     <div class="row">
         @foreach ($reservations as $reservation)
             @if($reservation->house->statut == "Validé")

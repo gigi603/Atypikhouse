@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Confirmation paiement')
+@section('title', 'Confirmation paiement sur atypikhouse')
 @section('link')
 @section('footer', 'footer_absolute')
 @section('content')
