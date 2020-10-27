@@ -8,6 +8,22 @@
             <h2>{{$house->title}}</h2>
         </div>
         <div class="panel-body">
+            @if (Session::has('success'))
+                <div class="alert alert-success">
+                    <a href="#" class="close" data-dismiss="alert">&times;</a>
+                    {{ Session::get('success') }}
+                </div>
+            @endif
+            @if (@count($errors) > 0)
+                <div class="alert alert-danger">
+                    <a href="#" class="close" data-dismiss="alert">&times;</a>
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            {{ $error }}
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
             <div class="row">
                 <div class="col-lg-12 col-md-12">
                     <div class="card-show h-100">
@@ -34,30 +50,36 @@
                     </div>
                 </div>
             </div>
-            @foreach ($house->comments as $comment)
-                <div class="panel panel-default" style="margin: 0; border-radius: 0;">
-                    <div class="panel-body">
-                        <div class="col-sm-9">
-                            {{ $comment->comment }}
-                        </div>
-                        <div class="col-sm-3 text-right">
-                            @if($comment->user_id != "0")
-                                    <small>Posté par {{ $comment->user->prenom }} {{ $comment->user->nom }}</small><br/>
+            <div class="panel panel-default" style="margin: 0; border-radius: 0;">
+                @foreach ($house->comments as $comment)
+                    @if($comment->user_id != "0")
+                        <div class="panel-body">
+                            <div class="col-sm-9">
+                                {{ $comment->comment }}
+                            </div>
+                            <div class="col-sm-3 text-right">
+                                <small>Posté par {{ $comment->user->prenom }} {{ $comment->user->nom }}</small><br/>
                                 @if($comment->note != "0")
                                     <small>Note: {{$comment->note}}/5</small>
                                 @endif
-                            @else
-                                <small>Posté par {{ $comment->admin->name }}</small><br/>
-                                @if($comment->note != "0")
-                                    <small>Note: {{$comment->note}}/5</small> 
-                                @endif  
-                            @endif
+                            </div>
                         </div>
-                    </div>
-                </div>
-            @endforeach 
+                    @endif
+                    @if($comment->children->count() > 0)
+                        @foreach($comment->children as $child)
+                            <div class="panel-body alert-comment alert-success">
+                                <div class="col-sm-9">
+                                    <p style="color: #636b6f;">Un administrateur a répondu à {{$comment->user->prenom}} {{$comment->user->nom}}</p>
+                                    <p>{{ $child->comment }}</p>
+                                </div>
+                            </div>
+                        @endforeach
+                    @endif
+                @endforeach 
+            </div>
+            
             @if (Auth::check())
-                @if($client_reserved->count() > 0)
+                @if($client_reserved->count() > 0 && $house->statut == "Validé")
                 <div class="panel panel-default" style="margin: 0; border-radius: 0;">
                     <div class="panel-body">
                         <form action="{{ url('/comments') }}" method="POST" style="display: flex;">
@@ -76,22 +98,6 @@
                             </div>
                             <input type="submit" value="Envoyer" class="btn btn-primary btn-color" style="border-radius: 0;">
                         </form>
-                        @if (@count($errors) > 0)
-                            <div class="alert alert-danger">
-                                <a href="#" class="close" data-dismiss="alert">&times;</a>
-                                <ul>
-                                    @foreach ($errors->all() as $error)
-                                        {{ $error }}
-                                    @endforeach
-                                </ul>
-                            </div>
-                        @endif
-                        @if (Session::has('success'))
-                            <div class="alert alert-success">
-                                <a href="#" class="close" data-dismiss="alert">&times;</a>
-                                {{ Session::get('success') }}
-                            </div>
-                        @endif
                     </div>
                 </div>
                 @endif
@@ -99,9 +105,4 @@
         </div>
     </div>
 </div>
-@endsection
-@section('script')
-<script src="{{ asset('js/jquery.js') }}"></script>
-<script src="{{ asset('js/jquery-ui.min.js') }}"></script>
-<script src="{{ asset('js/calendarReservation.js') }}"></script>
 @endsection

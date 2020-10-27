@@ -41,7 +41,7 @@
 
     <!-- Navbar -->
     <ul class="navbar-nav ml-auto ml-md-0">
-      <li><a class="dropdown-item" href="{{ route('admin.logout') }}">Se déconnecter</a></li>
+      <li><a class="dropdown-item" style="background-color: #f8f9fa;" href="{{ route('admin.logout') }}">Se déconnecter</a></li>
     </ul>
 
   </nav>
@@ -208,15 +208,6 @@
               </div>
 
         @yield('content')
-
-        <!-- Sticky Footer -->
-        <footer class="sticky-footer">
-            <div class="container my-auto">
-                <div class="copyright text-center my-auto">
-                    <span>Copyright © Your Website 2019</span>
-                </div>
-            </div>
-        </footer>
     </div>
 </div>
 </div>

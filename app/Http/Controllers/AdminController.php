@@ -626,6 +626,7 @@ class AdminController extends Controller
     {
         $user = User::find($id);
         $house = house::find($id);
+        //dd($house);
         return view('admin.showannonces')->with('house', $house)
                                          ->with('user', $user);
     }
@@ -669,14 +670,41 @@ class AdminController extends Controller
         $comment->user_id = "0";
         $comment->admin_id = "1";
         $comment->house_id = $request->house_id;
+        $comment->parent_id = $request->parent_id;
         $comment->save();
         Session::flash('success', 'Votre commentaire a bien été ajouté');
+        return redirect()->back();
+    }
+
+    public function modifyComment(CommentRequest $request)
+    {
+        $comment = comment::find($request->parent_id);
+
+        $comment->comment = $request->comment;
+        if($request->note == null){
+            $comment->note = 0;
+        } else {
+            $comment->note = $request->note;
+        }
+        $comment->save();
+        Session::flash('success', 'Ce commentaire a bien été modifié');
         return redirect()->back();
     }
 
     public function deleteComment($id) {
         $comment = comment::find($id);
         $comment->delete();
+        return redirect()->back()->with('success', 'Le commentaire a bien été supprimé');
+    }
+
+    public function deleteCommentParent($id) {
+        $commentParent = comment::find($id);
+        $commentsChild = comment::where('parent_id', $id)->get();
+
+        foreach($commentsChild as $child){
+            $child->delete();
+        }
+        $commentParent->delete();
         return redirect()->back()->with('success', 'Le commentaire a bien été supprimé');
     }
 

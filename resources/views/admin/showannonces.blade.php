@@ -8,6 +8,12 @@
             {{ Session::get('success') }}
         </div>
     @endif
+    @if (Session::has('success-valide'))
+        <div class="alert alert-success">
+            <a href="#" class="close" data-dismiss="alert">&times;</a>
+            {{ Session::get('success-valide') }}
+        </div>
+    @endif
     @if (@count($errors) > 0)
         <div class="alert alert-danger">
             <a href="#" class="close" data-dismiss="alert">&times;</a>
@@ -19,7 +25,7 @@
         </div>
     @endif
 
-    <!-- Modal -->
+    <!-- Modal Répondre au commentaire-->
     <div class="modal fade" id="comment" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -36,6 +42,7 @@
                         <textarea class="form-control col-md-12" name="comment" cols="5" rows="10"></textarea>
                         <input type="hidden" name="house_id" value="{{ $house->id }}">
                         <input type="hidden" name="admin_id" value="{{ Auth::user()->id }}">
+                        <input type="hidden" name="parent_id" id="parent_id" value="">
                         <input type="hidden" name="user_id" value="0">
                     </form>
                 </div>
@@ -43,7 +50,36 @@
                     <button type="submit" class="btn btn-primary"  form="commentForm">Envoyer</button>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
                 </div>
-            </div>  
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Modifier le commentaire-->
+    <div class="modal fade" id="modifyComment" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <p class="modal-title">Modifier ce commentaire</p>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                
+                <div class="modal-body">
+                    <form action="{{ route('admin.modifyComment') }}" method="POST" id="commentFormModify" style="display: flex;">
+                        {{ csrf_field() }}
+                        <textarea class="form-control col-md-12 textarea_modify_comment" name="comment" cols="5" rows="10"></textarea>
+                        <input type="hidden" name="house_id" value="{{ $house->id }}">
+                        <input type="hidden" name="admin_id" value="{{ Auth::user()->id }}">
+                        <input type="hidden" name="parent_id" id="current_id" value="">
+                        <input type="hidden" name="user_id" value="0">
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary"  form="commentFormModify">Envoyer</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                </div>
+            </div>
         </div>
     </div>
 </div>
@@ -99,27 +135,33 @@
                                     @if($comment->note != "0")
                                         <small><p>Note: {{$comment->note}}/5</p></small>
                                     @endif
-                                    <button class="btn btn-primary"
-                                        data-toggle="modal"
-                                        data-target="#comment" data-id={{$comment->id}}>Répondre à ce commentaire</button>
-                                    <button class="btn btn-danger">Supprimer ce commentaire</button>
+                                    <button class="btn btn-primary passingId"
+                                         data-id={{$comment->id}} onclick="$('#parent_id').val($(this).attr('data-id')); $('#comment').modal('show');">Répondre à ce commentaire
+                                    </button>
+                                    <a href="{{ route('admin.deleteCommentParent', $comment->id) }}" class="btn btn-danger delete-comment">Supprimer ce commentaire</a>
                                 </div>
                             </div>
-                        @else
-                            <div class="panel-body alert alert-success">
-                                <div class="col-sm-9">
-                                    <p>{{ $comment->comment }}</p>
+                        @endif
+                        @if($comment->children->count() > 0)
+                            @foreach($comment->children as $child)
+                                <div class="panel-body alert-success">
+                                    <div class="col-sm-9">
+                                        <p><b>Un administrateur a répondu à {{$comment->user->prenom}} {{$comment->user->nom}}</b></p>
+                                        <p>{{ $child->comment }}</p>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <button class="btn btn-primary"
+                                            data-toggle="modal"
+                                            data-target="#modifyComment" 
+                                            data-id={{$child->id}} 
+                                            onclick="$('#current_id').val($(this).attr('data-id')); 
+                                                     $('#modifyComment').modal('show');
+                                                     $('.textarea_modify_comment').val('<?php echo (isset($child->comment))? $child->comment : '';?>')">Modifier ce commentaire
+                                        </button>
+                                        <a href="{{ route('admin.deleteComment', $child->id) }}" class="btn btn-danger delete-comment">Supprimer ce commentaire</a>
+                                    </div>
                                 </div>
-                                <div class="col-sm-3 text-right">
-                                    <small><p>Posté par {{ $comment->admin->name }}</p></small>
-                                    @if($comment->note != "0")
-                                        <small><p>Note: {{$comment->note}}/5</p></small>
-                                    @endif
-                                    <button class="btn btn-primary" data-toggle="modal" >Modifier ce commentaire</button>
-                                    <button class="btn btn-danger">Supprimer ce commentaire</button>
-
-                                </div>
-                            </div>
+                            @endforeach
                         @endif
                     </div>
                 @endforeach
@@ -128,7 +170,4 @@
     </div>
 </div>
 @endsection
-@section('script')
-    <script src="{{ asset('js/jquery.js') }}"></script>
-    <script src="{{ asset('js/jquery-ui.min.js') }}"></script>
-@endsection
+<script src="{{ asset('js/getCommentId.js') }}"></script>

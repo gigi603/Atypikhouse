@@ -25,7 +25,12 @@ class House extends Model
     }
     
     public function comments() {
-        return $this->hasMany('App\Comment');
+        return $this->hasMany('App\Comment')->orderBy('id', 'DESC');
+    }
+
+    public function children()
+    {
+           return $this->hasMany('App\Comment', 'parent_id')->orderBy('id', 'DESC');
     }
 
     public function reservations() {

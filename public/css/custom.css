@@ -13,6 +13,11 @@ html, body {
 	min-height:100vh;
 }
 
+.alert-comment {
+	border: 1px solid lightgray !important;
+    border-radius: 4px !important;
+}
+
 .margin-top {
 	margin-top: 10vh;
 }
