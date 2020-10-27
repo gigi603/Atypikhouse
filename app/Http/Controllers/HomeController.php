@@ -31,7 +31,7 @@ class HomeController extends Controller
         ->where('statut', '=', "Validé")
         ->where('disponible', '=', "oui")
         ->orderBy('id', 'desc')
-        ->get();
+        ->paginate(4);
         $categories = category::all();
         return view('home')->with('houses', $houses)
                            ->with('categories', $categories);

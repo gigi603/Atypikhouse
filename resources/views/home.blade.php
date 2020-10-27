@@ -59,6 +59,9 @@
                 @endif  
             @endforeach
         </div>
+        <div class="text-right mb-3 mt-3">
+            <span>{{ $houses->links() }}</span>
+        </div>
     </div>
     @section('script')
         <script src="{{ asset('js/jquery.js') }}"></script>
