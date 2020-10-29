@@ -133,17 +133,19 @@ class ReservationsController extends Controller
         $category_id = last($request->session()->get('reservationCategoryId'));
         $stripe_payment = $total * 100;
         
-        \Stripe\Stripe::setApiKey("sk_test_TyJ4IhA3qzhaTaCmv6IhW6Hk");
-
         // Token is created using Checkout or Elements!
         // Get the payment token ID submitted by the form:
         $token = $_POST['stripeToken'];
-        $charge = \Stripe\Charge::create([
+
+        $stripe = new Stripe('sk_test_TyJ4IhA3qzhaTaCmv6IhW6Hk');
+        
+        $charge = $stripe->charges()->create([
             'amount' => $stripe_payment,
             'currency' => 'eur',
             'description' => 'Paiement de la réservation',
             'source' => $token,
         ]);
+        
 
         if($charge['status'] == 'succeeded') {
             Session::flash('success', 'Vous avez bien payé');
@@ -189,7 +191,7 @@ class ReservationsController extends Controller
 
             return view('reservations.confirmation_payment')->with('reservation', $reservation);
         } else {
-            Session::flash('error', 'Il y a une erreur dans votre saisie');
+            Session::flash('error-stripe', 'Il y a une erreur dans votre saisie');
             return redirect()->back();
         }
     }

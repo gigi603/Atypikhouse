@@ -4,6 +4,12 @@
 @section('footer', 'footer_absolute')
 @section('content')
     <div class="container margin-top block-size">
+        @if (Session::has('error-stripe'))
+            <div class="alert alert-danger">
+                <a href="#" class="close" data-dismiss="alert">&times;</a>
+                {{ Session::get('error-stripe') }}
+            </div>
+        @endif
         <div class="panel panel-default">
             <div class="panel-heading text-center"><h1 style="font-size:30px;">Confirmation de votre paiement</h1></div>
             <div class="panel-body">
