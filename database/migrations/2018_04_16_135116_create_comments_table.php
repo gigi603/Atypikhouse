@@ -19,7 +19,8 @@ class CreateCommentsTable extends Migration
             $table->integer('note'); 
             $table->integer('user_id');
             $table->integer('admin_id');
-            $table->integer('house_id');     
+            $table->integer('house_id');
+            $table->integer('parent_id')->unsigned()->nullable(false)->change();    
             $table->timestamps();
         });
     }
