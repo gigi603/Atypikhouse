@@ -17,14 +17,16 @@ class CommentsTableSeeder extends Seeder
                 'note' => 3,
                 'user_id' => 1,
                 'admin_id' => 0,
-                'house_id' => 1
+                'house_id' => 1,
+                'parent_id' => NULL
             ],
             [
                 'comment' => "Merci pour votre réservation",
                 'note' => 4,
                 'user_id' => 1,
                 'admin_id' => 0,
-                'house_id' => 1
+                'house_id' => 1,
+                'parent_id' => NULL
             ]
         ];
         DB::table('comments')->insert($comments);
