@@ -155,11 +155,6 @@
         <script src="{{ asset('js/cookieconsent.min.js') }}"></script>
         <script src="{{ asset('js/cookie.js') }}"></script>
         <script src="{{ asset('js/field-empty.js') }}"></script>
-        <script>
-            $(document).ready(function(){
-                $('img').lazyload();
-            });
-        </script>
         @yield('script')
 
     </body>
