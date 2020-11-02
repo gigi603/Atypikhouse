@@ -547,6 +547,7 @@ class ComposerStaticInit786c548c8152f99c80aa2a3f459b9d5f
     );
 
     public static $classMap = array (
+        'AddParentIdToComments' => __DIR__ . '/../..' . '/database/migrations/2020_11_02_163119_add_parent_id_to_comments.php',
         'AdminsTableSeeder' => __DIR__ . '/../..' . '/database/seeds/AdminsTableSeeder.php',
         'Anhskohbo\\NoCaptcha\\Facades\\NoCaptcha' => __DIR__ . '/..' . '/anhskohbo/no-captcha/src/Facades/NoCaptcha.php',
         'Anhskohbo\\NoCaptcha\\NoCaptcha' => __DIR__ . '/..' . '/anhskohbo/no-captcha/src/NoCaptcha.php',
@@ -574,7 +575,6 @@ class ComposerStaticInit786c548c8152f99c80aa2a3f459b9d5f
         'App\\Http\\Controllers\\PostsController' => __DIR__ . '/../..' . '/app/Http/Controllers/PostsController.php',
         'App\\Http\\Controllers\\QueryController' => __DIR__ . '/../..' . '/app/Http/Controllers/QueryController.php',
         'App\\Http\\Controllers\\ReservationsController' => __DIR__ . '/../..' . '/app/Http/Controllers/ReservationsController.php',
-        'App\\Http\\Controllers\\UserController' => __DIR__ . '/../..' . '/app/Http/Controllers/UserController.php',
         'App\\Http\\Controllers\\UsersController' => __DIR__ . '/../..' . '/app/Http/Controllers/UsersController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Admin' => __DIR__ . '/../..' . '/app/Http/Middleware/Admin.php',
@@ -5102,10 +5102,17 @@ class ComposerStaticInit786c548c8152f99c80aa2a3f459b9d5f
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
+<<<<<<< HEAD
             $loader->prefixLengthsPsr4 = ComposerStaticInit786c548c8152f99c80aa2a3f459b9d5f::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInit786c548c8152f99c80aa2a3f459b9d5f::$prefixDirsPsr4;
             $loader->prefixesPsr0 = ComposerStaticInit786c548c8152f99c80aa2a3f459b9d5f::$prefixesPsr0;
             $loader->classMap = ComposerStaticInit786c548c8152f99c80aa2a3f459b9d5f::$classMap;
+=======
+            $loader->prefixLengthsPsr4 = ComposerStaticInit42cb480f8c94721b63b682d370e9ee28::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit42cb480f8c94721b63b682d370e9ee28::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit42cb480f8c94721b63b682d370e9ee28::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInit42cb480f8c94721b63b682d370e9ee28::$classMap;
+>>>>>>> 6509e0a42dc3d6e0da984a4dc2e3a447c16dc7eb
 
         }, null, ClassLoader::class);
     }

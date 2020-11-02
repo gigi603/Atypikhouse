@@ -52,7 +52,7 @@
                                 <div class="card-body">
                                     <h3 class="card-title title-houses"><a href="{{action('UsersController@showHouse', $house->id)}}"> {{$house->title}} </a></h3>
                                 </div>
-                                <p class="price"> {{$house->price}}€ / nuit</p>
+                                <h4 class="price">{{$house->price}}€ / nuit</h4>
                             </div>
                         </div>
                     </div>
