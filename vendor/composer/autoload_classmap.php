@@ -6,7 +6,6 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'AddParentIdToComments' => $baseDir . '/database/migrations/2020_11_02_163119_add_parent_id_to_comments.php',
     'AdminsTableSeeder' => $baseDir . '/database/seeds/AdminsTableSeeder.php',
     'Anhskohbo\\NoCaptcha\\Facades\\NoCaptcha' => $vendorDir . '/anhskohbo/no-captcha/src/Facades/NoCaptcha.php',
     'Anhskohbo\\NoCaptcha\\NoCaptcha' => $vendorDir . '/anhskohbo/no-captcha/src/NoCaptcha.php',
@@ -216,7 +215,6 @@ return array(
     'Collective\\Html\\HtmlBuilder' => $vendorDir . '/laravelcollective/html/src/HtmlBuilder.php',
     'Collective\\Html\\HtmlFacade' => $vendorDir . '/laravelcollective/html/src/HtmlFacade.php',
     'Collective\\Html\\HtmlServiceProvider' => $vendorDir . '/laravelcollective/html/src/HtmlServiceProvider.php',
-    'CommentsTableSeeder' => $baseDir . '/database/seeds/CommentsTableSeeder.php',
     'CreateAdminTable' => $baseDir . '/database/migrations/2018_04_27_091041_create_admin_table.php',
     'CreateAdminsTable' => $baseDir . '/database/migrations/2018_05_14_202742_create_admins_table.php',
     'CreateCategoriesTable' => $baseDir . '/database/migrations/2018_10_22_144619_create_categories_table.php',

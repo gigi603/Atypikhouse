@@ -547,7 +547,6 @@ class ComposerStaticInit786c548c8152f99c80aa2a3f459b9d5f
     );
 
     public static $classMap = array (
-        'AddParentIdToComments' => __DIR__ . '/../..' . '/database/migrations/2020_11_02_163119_add_parent_id_to_comments.php',
         'AdminsTableSeeder' => __DIR__ . '/../..' . '/database/seeds/AdminsTableSeeder.php',
         'Anhskohbo\\NoCaptcha\\Facades\\NoCaptcha' => __DIR__ . '/..' . '/anhskohbo/no-captcha/src/Facades/NoCaptcha.php',
         'Anhskohbo\\NoCaptcha\\NoCaptcha' => __DIR__ . '/..' . '/anhskohbo/no-captcha/src/NoCaptcha.php',
@@ -757,7 +756,6 @@ class ComposerStaticInit786c548c8152f99c80aa2a3f459b9d5f
         'Collective\\Html\\HtmlBuilder' => __DIR__ . '/..' . '/laravelcollective/html/src/HtmlBuilder.php',
         'Collective\\Html\\HtmlFacade' => __DIR__ . '/..' . '/laravelcollective/html/src/HtmlFacade.php',
         'Collective\\Html\\HtmlServiceProvider' => __DIR__ . '/..' . '/laravelcollective/html/src/HtmlServiceProvider.php',
-        'CommentsTableSeeder' => __DIR__ . '/../..' . '/database/seeds/CommentsTableSeeder.php',
         'CreateAdminTable' => __DIR__ . '/../..' . '/database/migrations/2018_04_27_091041_create_admin_table.php',
         'CreateAdminsTable' => __DIR__ . '/../..' . '/database/migrations/2018_05_14_202742_create_admins_table.php',
         'CreateCategoriesTable' => __DIR__ . '/../..' . '/database/migrations/2018_10_22_144619_create_categories_table.php',
@@ -5102,17 +5100,10 @@ class ComposerStaticInit786c548c8152f99c80aa2a3f459b9d5f
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-<<<<<<< HEAD
             $loader->prefixLengthsPsr4 = ComposerStaticInit786c548c8152f99c80aa2a3f459b9d5f::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInit786c548c8152f99c80aa2a3f459b9d5f::$prefixDirsPsr4;
             $loader->prefixesPsr0 = ComposerStaticInit786c548c8152f99c80aa2a3f459b9d5f::$prefixesPsr0;
             $loader->classMap = ComposerStaticInit786c548c8152f99c80aa2a3f459b9d5f::$classMap;
-=======
-            $loader->prefixLengthsPsr4 = ComposerStaticInit42cb480f8c94721b63b682d370e9ee28::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit42cb480f8c94721b63b682d370e9ee28::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInit42cb480f8c94721b63b682d370e9ee28::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInit42cb480f8c94721b63b682d370e9ee28::$classMap;
->>>>>>> 6509e0a42dc3d6e0da984a4dc2e3a447c16dc7eb
 
         }, null, ClassLoader::class);
     }
