@@ -161,7 +161,7 @@ html, body {
 	background-color: #FFF;
 	padding: 20px 0;
 	border-radius: 4px !important;
-	margin: 10vh 0;
+	margin: 18.6vh 0;
 }
 .title-intro {
 	color: #000;
@@ -297,10 +297,12 @@ nav.navbar.navbar-default {
 
 /* HomePage */
 .banner {
-	background: url("/img/carte_monde_2.jpg") no-repeat center bottom scroll;
+	background: url("/img/carte_monde_2.jpg") no-repeat bottom scroll;
 	background-size: cover;
+	-webkit-background-size: cover;
+  	-moz-background-size: cover;
+ 	-o-background-size: cover;
 	display: table;
-	height: 100%;
     width: 100%;
     max-width: 100%;
 }
