@@ -54,9 +54,7 @@
                         <!-- Right Side Of Navbar -->
                         <ul class="nav navbar-nav navbar-right">
                             <!-- Authentication/Visitors Links -->
-                            @if (Auth::guest())
-                            
-                            <li class="link-position"><a href="{{ route('home') }}" >Accueil</a></li>
+                            @if (Auth::guest())                            
                             <li class="link-position"><a href="{{ route('houses') }}" aria-label="Hebergements">Nos hébergements atypikhouse</a></li>
                             <li class="link-position"><a href="{{ route('register') }}" aria-label="Inscription">Inscription</a></li>
                             <li class="link-position"><a href="{{ route('login') }}" aria-label="Connexion">Connexion</a></li>
