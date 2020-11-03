@@ -42,23 +42,13 @@
     </div>
     <div class="container-fluid background-houses" role="annonces">
         <h2 class="hebergement-title">Nos hébergements atypikhouse</h3>
-        <div class="row">
+        
+        <div class="container" style="background-color:gray;height:1000px;"></div>
             @foreach($houses as $house)
                 @if($house->statut == "Validé")
-                    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">         
-                        <div class="card-houses h-100">       
-                            <a href="{{action('UsersController@showHouse', $house['id'])}}"><img class="img-houses-list" src="{{ asset('img/houses/'.$house->photo) }}" loading="lazy" alt="Hébergement insolite - {{$house->title}}"></a>
-                            <div class="card-block">
-                                <div class="card-body">
-                                    <h3 class="card-title title-houses"><a href="{{action('UsersController@showHouse', $house->id)}}"> {{$house->title}} </a></h3>
-                                </div>
-                                <h4 class="price">{{$house->price}}€ / nuit</h4>
-                            </div>
-                        </div>
-                    </div>
-                @endif  
+            <img loading="lazy" class="img-houses-list" src="{{ asset('img/houses/'.$house->photo) }}" alt="Hébergement insolite - {{$house->title}}">
+            @endif
             @endforeach
-        </div>
         <div class="text-right mb-3 mt-3">
             <span>{{ $houses->links() }}</span>
         </div>
