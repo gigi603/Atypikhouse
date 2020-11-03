@@ -41,14 +41,10 @@
         </div>
     </div>
     <div class="container-fluid background-houses" role="annonces">
-        <h2 class="hebergement-title">Nos hébergements atypikhouse</h3>
-        
-        <div class="container" style="background-color:gray;height:1000px;"></div>
-            @foreach($houses as $house)
-                @if($house->statut == "Validé")
-            <img loading="lazy" class="img-houses-list" src="{{ asset('img/houses/'.$house->photo) }}" alt="Hébergement insolite - {{$house->title}}">
-            @endif
-            @endforeach
+        <h2 class="hebergement-title">Parmis nos hebergements voici</h3>
+        <div class="row">
+            
+        </div>
         <div class="text-right mb-3 mt-3">
             <span>{{ $houses->links() }}</span>
         </div>
