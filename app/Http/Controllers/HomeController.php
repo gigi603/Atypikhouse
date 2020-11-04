@@ -32,8 +32,8 @@ class HomeController extends Controller
         // ->where('disponible', '=', "oui")
         // ->orderBy('id', 'desc')
         // ->paginate(4);
-        $categories = category::all()->with('categories', $categories);
-        return view('home');
+        $categories = category::all();
+        return view('home')->with('categories', $categories);
         // ->with('houses', $houses)
         //                    ->with('categories', $categories);
     }
