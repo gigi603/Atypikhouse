@@ -32,7 +32,7 @@ class HomeController extends Controller
         // ->where('disponible', '=', "oui")
         // ->orderBy('id', 'desc')
         // ->paginate(4);
-        $categories = category::all();
+        $categories = DB::table('categories')->get();
         return view('home')->with('categories', $categories);
         // ->with('houses', $houses)
         //                    ->with('categories', $categories);
