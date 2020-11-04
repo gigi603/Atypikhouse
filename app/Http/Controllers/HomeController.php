@@ -25,17 +25,16 @@ class HomeController extends Controller
 {
     public function index(Request $request)
     {
-        // $today = Date::today()->format('Y-m-d');
-        // $houses = house::with('valuecatproprietes', 'proprietes', 'category')
-        // ->where('end_date', '>=', $today)
-        // ->where('statut', '=', "Validé")
-        // ->where('disponible', '=', "oui")
-        // ->orderBy('id', 'desc')
-        // ->paginate(4);
-        $categories = DB::table('categories')->get();
-        return view('home')->with('categories', $categories);
-        // ->with('houses', $houses)
-        //                    ->with('categories', $categories);
+        $today = Date::today()->format('Y-m-d');
+        $houses = house::with('valuecatproprietes', 'proprietes', 'category')
+        ->where('end_date', '>=', $today)
+        ->where('statut', '=', "Validé")
+        ->where('disponible', '=', "oui")
+        ->orderBy('id', 'desc')
+        ->paginate(4);
+        $categories = category::all();
+        return view('home')->with('houses', $houses)
+                           ->with('categories', $categories);
     }
 
     public function apropos() {
