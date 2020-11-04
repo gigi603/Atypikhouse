@@ -486,6 +486,7 @@ nav.navbar.navbar-default {
 	display: flex;
 	flex-flow: row wrap;
 	justify-content: space-around;
+	padding: 10vh 0;
 }
 .block_home_2_child {
 	width: 350px;
@@ -499,6 +500,16 @@ nav.navbar.navbar-default {
 .block_home_2_child p {
 	margin: 15px 0;
 	color: #3f4b30;
+}
+
+.nature_yours {
+	background-color: #FFF;
+	color: #000;
+}
+
+.become_hote {
+	background-color: #FFF;
+	color: #000;
 }
 
 

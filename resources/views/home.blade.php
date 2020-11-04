@@ -40,6 +40,40 @@
             <p>Profitez de promotions toute l'année sur de nombreuses locations atypique tels que les cabanes, les cocons pour amoureux et bien d'autres. </p>
         </div>
     </div>
+    <div class="container-fluid nature_yours">
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="text-center">La nature vous appartient</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <p>cabanes, igloos, yourtes et pleins de types d'hebergements sont à votre dispositions</p>
+                    <img data-src="{{ asset('img/maison_foret.jpg')}}" class="lazy" style="width:200px; height:150px;"/>
+                    <img data-src="{{ asset('img/igloo_demo.jpg')}}"   class="lazy" style="width:200px; height:150px;"/>
+                    <img data-src="{{ asset('img/yourte_demo.jpg')}}"  class="lazy" style="width:200px; height:150px;"/>
+            </div>
+            <div class="col-md-6">
+                <p>Parcourez le monde et explorez des endroits inconnus</p>
+                <img data-src="{{ asset('img/voyage_demo.jpg')}}" class="lazy"/>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid become_hote">
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="text-center">Partagez votre logement sur Airbnb</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <p>Rejoignez une communauté dynamique d'hôtes, créez des expériences mémorables pour les voyageurs et gagnez de l'argent pour vivre vos passions.</p>
+            </div>
+            <div class="col-md-6">
+                <img data-src="{{ asset('img/proprietaire.jpg')}}" class="lazy"/>
+            </div>
+        </div>
+    </div>
     <div class="container-fluid background-houses" role="annonces">
         <h2 class="hebergement-title">Nos hébergements atypikhouse</h3>
         <div class="row">
@@ -47,7 +81,7 @@
                 @if($house->statut == "Validé")
                     <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">         
                         <div class="card-houses h-100">       
-                            <a href="{{action('UsersController@showHouse', $house['id'])}}"><img loading="lazy" class="img-houses-list" src="{{ asset('img/houses/'.$house->photo) }}" alt="Hébergement insolite - {{$house->title}}"></a>
+                            <a href="{{action('UsersController@showHouse', $house['id'])}}"><img class="img-houses-list lazy" data-src="{{ asset('img/houses/'.$house->photo) }}" alt="Hébergement insolite - {{$house->title}}"></a>
                             <div class="card-block">
                                 <div class="card-body">
                                     <h3 class="card-title title-houses"><a href="{{action('UsersController@showHouse', $house->id)}}"> {{$house->title}} </a></h3>
@@ -63,8 +97,4 @@
             <span>{{ $houses->links() }}</span>
         </div>
     </div>
-    @section('script')
-        <script src="{{ asset('js/jQuery.loadScroll.js') }}"></script>
-        <script src="{{ asset('js/calendarHome.js') }}"></script>
-    @endsection
 @endsection

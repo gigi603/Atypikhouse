@@ -16,7 +16,7 @@
         <link href="https://fonts.googleapis.com/css?family=Karla" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Archivo" rel="stylesheet">
 
-        <script src="{{ asset('js/jquery.min.js') }}"></script>
+        
 
         <!-- Styles -->
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css" integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1" crossorigin="anonymous">
@@ -144,12 +144,8 @@
         <!-- Scripts -->
 
         <script src="{{ asset('js/app.js') }}"></script>
-        <script src="{{ asset('js/jquery.js') }}"></script>
+        <script src="{{ asset('js/jquery.min.js') }}"></script>
         <script src="{{ asset('js/jquery-ui.min.js') }}"></script>
-        <script src="{{ asset('js/user.js') }}"></script>
-        <script src="{{ asset('js/cookieconsent.min.js') }}"></script>
-        <script src="{{ asset('js/cookie.js') }}"></script>
-        <script src="{{ asset('js/field-empty.js') }}"></script>
         @yield('script')
 
     </body>
