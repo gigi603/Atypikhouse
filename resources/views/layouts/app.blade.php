@@ -15,7 +15,7 @@
         <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Karla" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Archivo" rel="stylesheet">
-
+        <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap" rel="stylesheet">
         
 
         <!-- Styles -->

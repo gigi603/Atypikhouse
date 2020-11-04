@@ -42,59 +42,62 @@
     </div>
     <div class="container-fluid nature_yours">
         <div class="row">
-            <div class="col-md-12">
-                <h2 class="text-center">La nature vous appartient</h2>
+            <div class="col-md-6">
+                <h2 class="text-center" style="font-size:50px;margin-top:10vh;">La nature vous appartient</h2>
+                <h2 class="text-center" style="margin-top:5%;">Parcourez le monde et explorez des endroits inconnus</h2>
+            </div>
+            <div class="col-md-5">
+                <img data-src="{{ asset('img/voyage_demo.jpg')}}" class="lazy voyage"/>
             </div>
         </div>
+    </div>
+    
+    <div class="container-fluid background-houses" role="annonces">
+        <h2 class="hebergement-title">Nos hebergements atypikhouse sont à votre disposition</h3>
         <div class="row">
-            <div class="col-md-6">
-                <p>cabanes, igloos, yourtes et pleins de types d'hebergements sont à votre dispositions</p>
-                    <img data-src="{{ asset('img/maison_foret.jpg')}}" class="lazy" style="width:200px; height:150px;"/>
-                    <img data-src="{{ asset('img/igloo_demo.jpg')}}"   class="lazy" style="width:200px; height:150px;"/>
-                    <img data-src="{{ asset('img/yourte_demo.jpg')}}"  class="lazy" style="width:200px; height:150px;"/>
+            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">         
+                <div class="card-houses h-100">       
+                    <a href="#"><img class="img-houses-list lazy" data-src="{{ asset('img/maison_foret.jpg') }}" alt="Hébergement insolite - maison_foret"></a>
+                    <div class="card-block">
+                        <div class="card-body">
+                            <h3 class="card-title title-houses"><a href="#"> Des cabanes </a></h3>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="col-md-6">
-                <p>Parcourez le monde et explorez des endroits inconnus</p>
-                <img data-src="{{ asset('img/voyage_demo.jpg')}}" class="lazy"/>
+            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">         
+                <div class="card-houses h-100">       
+                    <a href="#"><img class="img-houses-list lazy" data-src="{{ asset('img/igloo_demo.jpg') }}" alt="Hébergement insolite - igloo"></a>
+                    <div class="card-block">
+                        <div class="card-body">
+                            <h3 class="card-title title-houses"><a href="#"> Des igloos </a></h3>
+                        </div>
+                    </div>
+                </div>
             </div>
+            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">         
+                <div class="card-houses h-100">       
+                    <a href="#"><img class="img-houses-list lazy" data-src="{{ asset('img/yourte_demo.jpg') }}" alt="Hébergement insolite - yourte"></a>
+                    <div class="card-block">
+                        <div class="card-body">
+                            <h3 class="card-title title-houses"><a href="#"> Des yourtes </a></h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="btn btn-principal-black">Voir nos hebergements</button>
         </div>
     </div>
     <div class="container-fluid become_hote">
         <div class="row">
-            <div class="col-md-12">
-                <h2 class="text-center">Partagez votre logement sur Airbnb</h2>
-            </div>
-        </div>
-        <div class="row">
             <div class="col-md-6">
-                <p>Rejoignez une communauté dynamique d'hôtes, créez des expériences mémorables pour les voyageurs et gagnez de l'argent pour vivre vos passions.</p>
+                <h3 class="text-center" style="font-size:50px;margin-top:10vh;">Partagez votre logement sur Atypikhouse</h2>
+                <h3 class="text-center" style="margin-top: 5%;">Rejoignez une communauté dynamique d'hôtes, créez des expériences mémorables pour les voyageurs et gagnez de l'argent pour vivre vos passions.</p>
+                <button class="btn btn-principal">Commencer</button>
             </div>
-            <div class="col-md-6">
-                <img data-src="{{ asset('img/proprietaire.jpg')}}" class="lazy"/>
+            <div class="col-md-5">
+                <img data-src="{{ asset('img/proprietaire.jpg')}}" class="lazy voyage"/>
             </div>
-        </div>
-    </div>
-    <div class="container-fluid background-houses" role="annonces">
-        <h2 class="hebergement-title">Nos hébergements atypikhouse</h3>
-        <div class="row">
-            @foreach($houses as $house)
-                @if($house->statut == "Validé")
-                    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">         
-                        <div class="card-houses h-100">       
-                            <a href="{{action('UsersController@showHouse', $house['id'])}}"><img class="img-houses-list lazy" data-src="{{ asset('img/houses/'.$house->photo) }}" alt="Hébergement insolite - {{$house->title}}"></a>
-                            <div class="card-block">
-                                <div class="card-body">
-                                    <h3 class="card-title title-houses"><a href="{{action('UsersController@showHouse', $house->id)}}"> {{$house->title}} </a></h3>
-                                </div>
-                                <h4 class="price">{{$house->price}}€ / nuit</h4>
-                            </div>
-                        </div>
-                    </div>
-                @endif  
-            @endforeach
-        </div>
-        <div class="text-right mb-3 mt-3">
-            <span>{{ $houses->links() }}</span>
         </div>
     </div>
 @endsection

@@ -297,7 +297,7 @@ nav.navbar.navbar-default {
 
 /* HomePage */
 .banner {
-	background: url("/img/carte_monde_2.jpg") no-repeat bottom scroll;
+	background: url("/img/home.jpg") no-repeat bottom scroll;
 	background-size: cover;
 	-webkit-background-size: cover;
   	-moz-background-size: cover;
@@ -317,18 +317,40 @@ nav.navbar.navbar-default {
 	width: 50%;
 }
 
-.btn-searchbar{
+.btn-principal-black{
+	background-color: #000;
+	color: #FFF;
+	border-color: #000;
+	padding: 12px 24px;
+	font-size: 18px;
+	border-radius: 30px;
+	margin: 15vh 5vh 0 5vh;
+}
+
+.btn-principal-black:hover {
+	background-color: #FFF;
+	color: #000;
+	border-color: #000;
+}
+
+.btn-principal{
 	background-color: #3f4b30;
 	color: #FFFBFC;
 	border-color: #3f4b30;
 	padding: 12px 24px;
 	font-size: 18px;
+	border-radius: 30px;
+	margin-top: 5vh;
+	transition: transform .2s;
 }
-.btn-searchbar:hover {
+
+.btn-principal:hover {
 	background-color: #3f4b30;
 	color: #FFFBFC;
 	border-color: #3f4b30;
+	transform: scale(1.1);
 }
+
 .annonces-block {
 	margin-top: 120px;
 	min-height: 500px !important;
@@ -357,6 +379,7 @@ nav.navbar.navbar-default {
 	text-align: center;
 	margin: 60px;
 	color: #FFF;
+	font-family: 'Comfortaa', cursive;
 }
 
 .list-category {
@@ -505,11 +528,29 @@ nav.navbar.navbar-default {
 .nature_yours {
 	background-color: #FFF;
 	color: #000;
+	font-family: 'Open Sans', sans-serif;
+	font-family: 'Comfortaa', cursive;
+	font-size: 60px;
+	padding-bottom: 5%;
+}
+
+#hebergement-title{
+	font-family: 'Comfortaa', cursive;
+}
+
+.voyage {
+	border-radius: 20px;
+	width:100%;
 }
 
 .become_hote {
 	background-color: #FFF;
 	color: #000;
+	font-family: 'Open Sans', sans-serif;
+	font-family: 'Comfortaa', cursive;
+	font-size: 60px;
+	padding: 5% 0;
+	
 }
 
 
@@ -522,16 +563,17 @@ nav.navbar.navbar-default {
 
 /* Footer */
 footer {
-	background-color: #fff;
+	background-color: #ededeb;
 	padding: 20px;
 	position:relative;
 	bottom: 0;
 	width: 100%;
 	clear: both;
+	border: solid 1px #ededeb
 }
 
 .footer-absolute {
-	background-color: #fff;
+	background-color: #ededeb;
 	padding: 20px;
 	position:absolute !important;
 	bottom: 0;

@@ -56,7 +56,7 @@
                         </span>
                 @endif
         </div>
-        {!! Form::submit('Rechercher',array('class'=>'btn btn-searchbar')) !!}
+        {!! Form::submit('Rechercher',array('class'=>'btn btn-principal')) !!}
                 
 {!! Form::close() !!}
 @section('script')
