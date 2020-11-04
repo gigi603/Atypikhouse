@@ -64,8 +64,7 @@
         </div>
     </div>
     @section('script')
-        <script src="{{ asset('js/jquery.js') }}"></script>
-        <script src="{{ asset('js/jquery-ui.min.js') }}"></script>
+        <script src="{{ asset('js/jQuery.loadScroll.js') }}"></script>
         <script src="{{ asset('js/calendarHome.js') }}"></script>
     @endsection
 @endsection
