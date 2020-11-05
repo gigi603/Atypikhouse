@@ -18,6 +18,7 @@
   <link href="{{ asset('admin-component/css/custom-admin.css') }}" rel="stylesheet">
   <link href="{{ asset('bootstrap-4.5.3-dist/css/bootstrap.min.css') }}" rel="stylesheet">
   <link href="{{ asset('css/jquery-ui.min.css') }}" rel="stylesheet">
+  
 
 </head>
 

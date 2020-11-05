@@ -23,6 +23,9 @@
                             </div>
                         </div>
                     @endforeach
+                    <div class="text-right mb-3 mt-3">
+                        <span>{{ $messages->links() }}</span>
+                    </div>
                 </div>
             </div>
         </div>

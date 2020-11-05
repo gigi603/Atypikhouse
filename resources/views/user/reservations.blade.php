@@ -26,7 +26,6 @@
                             @else
                                 <p>Statut: <span style="color:red;">Annulée</span></p>
                             @endif
-                            <!-- <div class="text-center"><a href="{{route('user.showreservations', $reservation['id']) }}" class="btn btn-primary btn-color">Voir</a></div>-->
                             </div>
                         
                     </div>
@@ -34,9 +33,8 @@
             @endif  
         @endforeach
     </div>
+    <div class="text-right mb-3 mt-3">
+        <span>{{ $reservations->links() }}</span>
+    </div>
 </div>
-@endsection
-@section('script')
-<script src="{{ asset('js/jquery.js') }}"></script>
-<script src="{{ asset('js/jquery-ui.min.js') }}"></script>
 @endsection

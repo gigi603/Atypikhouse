@@ -48,6 +48,13 @@
                     @endif
                 @endforeach
             </table>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <span>{{ $posts->links() }}</span>
+                    </div>
+                </div>
+            </div>  
             </div>
         </div>
         <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>

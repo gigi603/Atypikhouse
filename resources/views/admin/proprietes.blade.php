@@ -26,6 +26,13 @@
         </table>
     </div>
     @endforeach
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <span>{{ $proprietes->links() }}</span>
+            </div>
+        </div>
+    </div>  
     <div class="col-md-10 text-center">
         <a href="{{action('AdminController@createpropriete', $category->id) }}" class="btn btn-primary btn-color">Ajouter une proprieté</a>
     </div>

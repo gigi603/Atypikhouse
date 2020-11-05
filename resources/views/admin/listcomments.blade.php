@@ -32,5 +32,12 @@
         </table>
     </div>
     @endforeach
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <span>{{ $comments->links() }}</span>
+            </div>
+        </div>
+    </div>  
 </div>
 @endsection

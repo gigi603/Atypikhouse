@@ -40,9 +40,8 @@
             </div>
         @endforeach
     </div>
+    <div class="text-right mb-3 mt-3">
+        <span>{{ $reservations->links() }}</span>
+    </div>
 </div>
-@endsection
-@section('script')
-    <script src="{{ asset('js/jquery.js') }}"></script>
-    <script src="{{ asset('js/jquery-ui.min.js') }}"></script>
 @endsection

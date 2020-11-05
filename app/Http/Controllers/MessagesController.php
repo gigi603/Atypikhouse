@@ -10,7 +10,7 @@ use App\Message;
 class MessagesController extends Controller
 {
     public function messages() {
-        $messages = message::where('user_id', Auth::user()->id)->orderBy('id', 'desc')->get();
+        $messages = message::where('user_id', Auth::user()->id)->orderBy('id', 'desc')->paginate(2);
         return view('user.messages')->with('messages', $messages);
     }
 }

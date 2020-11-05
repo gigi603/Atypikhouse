@@ -16,9 +16,6 @@
     display: none !important;
 }
 
-.pagination {
-    display: none !important;
-}
 
 .card-footer {
     display: none !important;
@@ -35,6 +32,35 @@
 
 .btn-add-category {
     margin: 2% 0;
+}
+
+.pagination {
+    padding-left: 0;
+    margin: 22px 0;
+    border-radius: 4px;
+}
+.breadcrumb>li, .pagination {
+    display: inline-block;
+}
+
+.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover {
+    z-index: 3;
+    color: #fff;
+    background-color: dodgerblue;
+    border-color: dodgerblue;
+    cursor: default;
+}
+
+.pagination>li>a, .pagination>li>span {
+    position: relative;
+    float: left;
+    padding: 6px 12px;
+    line-height: 1.6;
+    text-decoration: none;
+    color: dodgerblue;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    margin-left: -1px;
 }
 
 .panel-default>.panel-heading {

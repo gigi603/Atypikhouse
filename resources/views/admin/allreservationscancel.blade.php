@@ -38,7 +38,14 @@
                             </tr>
                         </tbody>
                     @endforeach
-                </table>         
+                </table>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <span>{{ $reservations->links() }}</span>
+                        </div>
+                    </div>
+                </div>         
             </div>
         </div>
     </div>

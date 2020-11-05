@@ -17,6 +17,13 @@
                             </div>
                         </div>
                     @endforeach
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <span>{{ $messages->links() }}</span>
+                            </div>
+                        </div>
+                    </div>  
                     <div class="panel panel-default" style="margin: 0; border-radius: 0;">
                         <div class="panel-body">
                             <form action="{{ route('admin.addMessage', $user->id) }}" method="POST" style="display: flex;">

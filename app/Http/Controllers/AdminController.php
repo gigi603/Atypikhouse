@@ -42,13 +42,13 @@ class AdminController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-     // Utilisateurs
+     // Lisye des Utilisateurs
     public function listusers(User $users, Category $categories, Propriete $proprietes)
     {
-        $proprietes = propriete::all();
-        $categories = category::all();
-        $users = user::all();
-        $houses = house::all();
+        $proprietes = DB::table('proprietes')->get();
+        $categories = DB::table('categories')->get();
+        $users = user::paginate(1);
+        $houses = DB::table('houses')->get();
         return view('admin.listusers')->with('users', $users)
                             ->with('categories', $categories)
                             ->with('proprietes', $proprietes)
@@ -61,10 +61,10 @@ class AdminController extends Controller
         return redirect()->back()->with('success', 'Le client a bien été supprimé');
     }
 
-    //Message des clients (formulaire de contact)
+    //Notifications Message des clients (Ex: 3 nouveaux messages)
     public function listposts(Post $posts)
     {
-        $posts = post::where('type', 'message')->orderBy('id', 'desc')->get();
+        $posts = post::where('type', 'message')->orderBy('id', 'desc')->paginate(1);
         $userUnreadNotifications = auth()->user()->unreadNotifications;
 
         foreach($userUnreadNotifications as $userUnreadNotification) {
@@ -79,7 +79,7 @@ class AdminController extends Controller
     }
 
 
-    //Vue de détails des messages clients
+    //Vue de détails de la notifications des messages clients
     public function showposts($id)
     {
         $post = post::find($id);
@@ -94,10 +94,10 @@ class AdminController extends Controller
         return view('admin.showposts')->with('post', $post);
     }
 
-    //Message des clients (formulaire de contact)
+    //Notifications des clients inscrits (Ex: 3 nouveaux utilisateurs)
     public function listpostsuser(Post $posts)
     {
-        $posts = post::where('type', 'utilisateur')->orderBy('id', 'desc')->get();
+        $posts = post::where('type', 'utilisateur')->orderBy('id', 'desc')->paginate(1);
         $userUnreadNotifications = auth()->user()->unreadNotifications;
 
         foreach($userUnreadNotifications as $userUnreadNotification) {
@@ -111,7 +111,7 @@ class AdminController extends Controller
         return view('admin.listposts_user')->with('posts', $posts);
     }
 
-    //Vue de détails des messages clients
+    //Vue de détails de la notifications des nouveaux clients inscrits
     public function showpostsuser($id)
     {
         $post = post::find($id);
@@ -125,9 +125,10 @@ class AdminController extends Controller
         return view('admin.showposts_user')->with('post', $post);
     }
 
+    //Notifications des nouvelles annonces (Ex: 3 nouvelles annonces)
     public function listpostsannonce(Post $posts)
     {
-        $posts = post::where('type', 'annonce')->orderBy('id', 'desc')->get();
+        $posts = post::where('type', 'annonce')->orderBy('id', 'desc')->paginate(1);
         $userUnreadNotifications = auth()->user()->unreadNotifications;
 
         foreach($userUnreadNotifications as $userUnreadNotification) {
@@ -141,7 +142,7 @@ class AdminController extends Controller
         return view('admin.listposts_annonce')->with('posts', $posts);
     }
 
-    //Vue de détails des messages clients
+    //Vue de détails de la notifications des nouvelles annonces créées
     public function showpostsannonce($id)
     {
         $post = post::find($id);
@@ -156,9 +157,10 @@ class AdminController extends Controller
         return view('admin.showposts_annonce')->with('post', $post)->with('house', $house);
     }
 
+    //Notifications des nouvelles reservations (Ex: 3 nouvelles reservations)
     public function listpostsreservation(Post $posts)
     {
-        $posts = post::where('type', 'reservation')->orderBy('id', 'desc')->get();
+        $posts = post::where('type', 'reservation')->orderBy('id', 'desc')->paginate(1);
         $userUnreadNotifications = auth()->user()->unreadNotifications;
 
         foreach($userUnreadNotifications as $userUnreadNotification) {
@@ -172,7 +174,7 @@ class AdminController extends Controller
         return view('admin.listposts_reservation')->with('posts', $posts);
     }
 
-    //Vue de détails des messages clients
+    //Vue de détails de la notification des nouvelles reservations des clients
     public function showpostsreservation($id)
     {
         $post = post::find($id);
@@ -187,11 +189,10 @@ class AdminController extends Controller
         return view('admin.showposts_reservation')->with('post', $post)->with('reservation', $reservation);
     }
 
-    //Categories
-
+    //Liste des categories
     public function listcategories(Category $categories)
     {
-        $categories = category::all();
+        $categories = DB::table('categories')->paginate(1);
         return view('admin.listcategories')->with('categories', $categories);
     }
 
@@ -256,7 +257,7 @@ class AdminController extends Controller
     public function proprietescategory(Request $request, Category $categories, $id)  
     {
         $category = category::find($id);
-        $proprietes = propriete::where('category_id', $id)->get();
+        $proprietes = propriete::where('category_id', $id)->paginate(1);
         //var_dump($proprietes);
         return view('admin.proprietes')->with('category', $category)
                                        ->with('proprietes', $proprietes);
@@ -524,7 +525,7 @@ class AdminController extends Controller
 
     public function allreservations()
     {
-        $reservations = Reservation::where('end_date', '>=', Carbon::now())->where('reserved', '=', 1)->orderBy('id', 'desc')->get();
+        $reservations = Reservation::where('end_date', '>=', Carbon::now())->where('reserved', '=', 1)->orderBy('id', 'desc')->paginate(1);
         return view('admin.allreservations')->with('reservations', $reservations);
     }
 
@@ -533,7 +534,7 @@ class AdminController extends Controller
     {
         $today = Date::today()->format('Y-m-d');
         $reservations = reservation::where('user_id','=', $id)->where('start_date', '>=', $today)
-        ->where('reserved', '=', 1)->get();
+        ->where('reserved', '=', 1)->paginate(1);
         return view('admin.listreservations')->with('reservations', $reservations);
     }
 
@@ -550,7 +551,7 @@ class AdminController extends Controller
 
     public function allreservationscancel()
     {
-        $reservations = Reservation::where('reserved', '=', 0)->orderBy('id', 'desc')->get();
+        $reservations = Reservation::where('reserved', '=', 0)->orderBy('id', 'desc')->paginate(1);
         return view('admin.allreservationscancel')->with('reservations', $reservations);
     }
 
@@ -570,7 +571,7 @@ class AdminController extends Controller
         $historiques = Reservation::with('house')->where([
                                                     ['start_date', '<', $today],
                                                     ['end_date', '<=', $today]
-                                                ])->get();
+                                                ])->paginate(1);
         return view('admin.allhistoriques')->with('historiques', $historiques);
     }
 
@@ -582,7 +583,7 @@ class AdminController extends Controller
                                                     ['start_date', '<', $today],
                                                     ['end_date', '<=', $today],
                                                     ['user_id','=', $id]
-                                                ])->get();
+                                                ])->paginate(1);
         return view('admin.allhistoriques')->with('historiques', $historiques);
     }
 
@@ -604,20 +605,20 @@ class AdminController extends Controller
         $reservations = Reservation::with('house')->where([
                                                     ['reserved', '=', 0],
                                                     ['user_id','=', $id]
-                                                ])->get();
+                                                ])->paginate(1);
         return view('admin.listreservationscancel')->with('reservations', $reservations);
     }
     
     public function allannonces()
     {
-        $houses = House::where('disponible', "oui")->orderBy('id', 'desc')->get();
+        $houses = House::where('disponible', "oui")->orderBy('id', 'desc')->paginate(1);
         return view('admin.allannonces')->with('houses', $houses);
     }
     //Vue de détails des annonces des utilisateurs
     public function listannonces($id)
     {
         $user = User::find($id);
-        $houses = House::where('user_id', $id)->where('disponible', "oui")->get();
+        $houses = House::where('user_id', $id)->where('disponible', "oui")->paginate(1);
         return view('admin.listannonces')->with('houses', $houses)
                                          ->with('user', $user);
     }
@@ -650,7 +651,7 @@ class AdminController extends Controller
         $comments = DB::table('comments')->join('houses', 'houses.id', '=', 'comments.house_id')
                                          ->join('users', 'users.id', '=', 'comments.user_id')
                                                 ->where('comments.user_id','=', $id)
-                                                ->get();
+                                                ->paginate(1);
         return view('admin.listcomments')->with('comments', $comments);
     }
 
@@ -716,7 +717,7 @@ class AdminController extends Controller
     }
 
     public function messages($id) {
-        $messages = message::where('user_id','=', $id)->orderBy('id', 'desc')->get();
+        $messages = message::where('user_id','=', $id)->orderBy('id', 'desc')->paginate(1);
         $user = user::find($id);
         return view('admin.user_messages')->with('messages', $messages)->with('user', $user);
     }
