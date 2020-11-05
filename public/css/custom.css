@@ -1,5 +1,19 @@
 /* Infos : Commenter bien votre code afin qu'il soit plus lisible, merci. */
 /* Générale */
+
+/* Font utilisés */
+@font-face {
+	font-family: "Archivo";
+	src: url("{{ asset('fonts/Archivo/Archivo-Regular.ttf')}}"),
+}
+/* Sur la page d'accueil seulement */
+@font-face {
+	font-family: "Comfortaa";
+	font-style: bold;
+  	font-weight: 700;
+	src: url("{{ asset('fonts/Comfortaa/static/Comfortaa-VariableFont_wght.ttf')}}"),
+}
+
 html, body {
 	font-family: 'Archivo', sans-serif;
 	margin: 0;
@@ -324,6 +338,7 @@ nav.navbar.navbar-default {
 	padding: 12px 24px;
 	font-size: 18px;
 	border-radius: 30px;
+	text-align: center;
 	margin: 15vh 5vh 0 5vh;
 }
 
@@ -333,7 +348,7 @@ nav.navbar.navbar-default {
 	border-color: #000;
 }
 
-.btn-principal{
+.btn-principal {
 	background-color: #3f4b30;
 	color: #FFFBFC;
 	border-color: #3f4b30;

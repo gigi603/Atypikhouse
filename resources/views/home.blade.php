@@ -85,7 +85,9 @@
                     </div>
                 </div>
             </div>
-            <button class="btn btn-principal-black">Voir nos hebergements</button>
+            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12"> 
+                <a href="{{ route('houses') }}" class="btn btn-principal-black">Voir nos hebergements</a>
+            </div>
         </div>
     </div>
     <div class="container-fluid become_hote">
@@ -93,7 +95,7 @@
             <div class="col-md-6">
                 <h3 class="text-center" style="font-size:50px;margin-top:10vh;">Partagez votre logement sur Atypikhouse</h2>
                 <h3 class="text-center" style="margin-top: 5%;">Rejoignez une communauté dynamique d'hôtes, créez des expériences mémorables pour les voyageurs et gagnez de l'argent pour vivre vos passions.</p>
-                <button class="btn btn-principal">Commencer</button>
+                <a href="{{ route('register') }}" class="btn btn-principal">Commencer</a>
             </div>
             <div class="col-md-5">
                 <img data-src="{{ asset('img/proprietaire.jpg')}}" class="lazy voyage"/>
