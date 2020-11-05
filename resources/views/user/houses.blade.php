@@ -17,7 +17,7 @@
         @foreach ($houses as $house)
             <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">         
                 <div class="card-houses h-100">       
-                    <a href="{{action('UsersController@showhebergements', $house['id'])}}"><img class="img-houses-list" src="{{ asset('img/houses/'.$house->photo) }}" alt="Hébergement insolite - {{$house->title}}"></a>
+                    <a href="{{action('UsersController@showhebergements', $house['id'])}}"><img class="img-houses-list" data-src="{{ asset('img/houses/'.$house->photo) }}" alt="Hébergement insolite - {{$house->title}}"></a>
                     <div class="card-block">
                         <div class="card-body">
                             <h2 class="card-title title-houses"><a href="{{route('user.showhebergements', $house['id']) }}"> {{$house->title}} </a></h2>
@@ -44,9 +44,8 @@
             </div>  
         @endforeach
     </div>
+    <div class="text-right mb-3 mt-3">
+        <span>{{ $houses->links() }}</span>
+    </div>
 </div>
-@endsection
-@section('script')
-    <script src="{{ asset('js/jquery.js') }}"></script>
-    <script src="{{ asset('js/jquery-ui.min.js') }}"></script>
 @endsection

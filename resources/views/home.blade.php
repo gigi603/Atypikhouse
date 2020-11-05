@@ -47,7 +47,7 @@
                 <h2 class="text-center" style="margin-top:5%;">Parcourez le monde et explorez des endroits inconnus</h2>
             </div>
             <div class="col-md-5">
-                <img data-src="{{ asset('img/voyage_demo.jpg')}}" class="lazy voyage"/>
+                <img data-src="{{ asset('img/voyage_demo.jpg')}}" class="voyage"/>
             </div>
         </div>
     </div>
@@ -57,7 +57,7 @@
         <div class="row">
             <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">         
                 <div class="card-houses h-100">       
-                    <a href="#"><img class="img-houses-list lazy" data-src="{{ asset('img/maison_foret.jpg') }}" alt="Hébergement insolite - maison_foret"></a>
+                    <a href="#"><img class="img-houses-list" data-src="{{ asset('img/maison_foret.jpg') }}" alt="Hébergement insolite - maison_foret"></a>
                     <div class="card-block">
                         <div class="card-body">
                             <h3 class="card-title title-houses"><a href="#"> Des cabanes </a></h3>
@@ -67,7 +67,7 @@
             </div>
             <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">         
                 <div class="card-houses h-100">       
-                    <a href="#"><img class="img-houses-list lazy" data-src="{{ asset('img/igloo_demo.jpg') }}" alt="Hébergement insolite - igloo"></a>
+                    <a href="#"><img class="img-houses-list" data-src="{{ asset('img/igloo_demo.jpg') }}" alt="Hébergement insolite - igloo"></a>
                     <div class="card-block">
                         <div class="card-body">
                             <h3 class="card-title title-houses"><a href="#"> Des igloos </a></h3>
@@ -77,7 +77,7 @@
             </div>
             <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">         
                 <div class="card-houses h-100">       
-                    <a href="#"><img class="img-houses-list lazy" data-src="{{ asset('img/yourte_demo.jpg') }}" alt="Hébergement insolite - yourte"></a>
+                    <a href="#"><img class="img-houses-list" data-src="{{ asset('img/yourte_demo.jpg') }}" alt="Hébergement insolite - yourte"></a>
                     <div class="card-block">
                         <div class="card-body">
                             <h3 class="card-title title-houses"><a href="#"> Des yourtes </a></h3>
@@ -95,10 +95,14 @@
             <div class="col-md-6">
                 <h3 class="text-center" style="font-size:50px;margin-top:10vh;">Partagez votre logement sur Atypikhouse</h2>
                 <h3 class="text-center" style="margin-top: 5%;">Rejoignez une communauté dynamique d'hôtes, créez des expériences mémorables pour les voyageurs et gagnez de l'argent pour vivre vos passions.</p>
-                <a href="{{ route('register') }}" class="btn btn-principal">Commencer</a>
+                @if(Auth::check())
+                    <a href="{{ route('house.create_step1') }}" class="btn btn-principal">Commencer</a>
+                @else
+                    <a href="{{ route('register') }}" class="btn btn-principal">Commencer</a>
+                @endif
             </div>
             <div class="col-md-5">
-                <img data-src="{{ asset('img/proprietaire.jpg')}}" class="lazy voyage"/>
+                <img data-src="{{ asset('img/proprietaire.jpg')}}" class="voyage"/>
             </div>
         </div>
     </div>

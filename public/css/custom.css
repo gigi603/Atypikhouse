@@ -463,6 +463,7 @@ nav.navbar.navbar-default {
 	display: block;
 	width: 100%;
 	height: 250px;
+	background-color: gray;
 }
 
 .img-house-detail {

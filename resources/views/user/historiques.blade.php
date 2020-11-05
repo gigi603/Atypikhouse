@@ -7,7 +7,7 @@
         @foreach ($historiques as $historique)
             <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">         
                 <div class="card-houses h-100">       
-                    <a href="{{action('UsersController@showhistoriques', $historique->id)}}"><img class="img-houses-list" src="{{ asset('img/houses/'.$historique->house->photo) }}" alt="Hébergement insolite - {{$historique->house->title}}"></a>
+                    <a href="{{action('UsersController@showhistoriques', $historique->id)}}"><img class="img-houses-list" data-src="{{ asset('img/houses/'.$historique->house->photo) }}" alt="Hébergement insolite - {{$historique->house->title}}"></a>
                     <div class="card-block">
                         <div class="card-body">
                             <h2 class="card-title title-houses"><a href="{{route('user.showhistoriques', $historique->id) }}">{{$historique->house->title}}</a></h2>

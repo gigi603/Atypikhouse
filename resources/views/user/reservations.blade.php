@@ -8,7 +8,7 @@
             @if($reservation->house->statut == "Validé")
                 <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">         
                     <div class="card-houses h-100">       
-                        <a href="{{action('UsersController@showreservations', $reservation['id'])}}"><img class="img-houses-list" src="{{ asset('img/houses/'.$reservation->house->photo) }}" alt="Hébergement insolite - {{$reservation->house->title}}"></a>
+                        <a href="{{action('UsersController@showreservations', $reservation['id'])}}"><img class="img-houses-list" data-src="{{ asset('img/houses/'.$reservation->house->photo) }}" alt="Hébergement insolite - {{$reservation->house->title}}"></a>
                         <div class="card-block">
                             <div class="card-body">
                                 <h2 class="card-title title-houses"><a href="{{route('user.showreservations', $reservation['id']) }}"> {{$reservation->house->title}} </a></h2>

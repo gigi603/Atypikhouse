@@ -63,7 +63,7 @@ class UsersController extends Controller
     {
         $user = $request->user();
         $houses = house::with('valuecatproprietes', 'proprietes', 'category', 'user')->where('user_id', '=', Auth::user()->id)
-        ->where('disponible', '=', 'oui')->orderBy('id', 'desc')->paginate(6);
+        ->where('disponible', '=', 'oui')->orderBy('id', 'desc')->paginate(12);
         
         return view('user.houses', compact('houses'));
     }
@@ -232,7 +232,7 @@ class UsersController extends Controller
         ->where('user_id', '=', Auth::user()->id)
         ->where('reserved', '=', 1)
         ->orderBy('id', 'desc')
-        ->paginate(1);
+        ->paginate(12);
         
         return view('user.reservations', compact('reservations'));
     }
@@ -271,7 +271,7 @@ class UsersController extends Controller
         $reservations = reservation::with('house')->where('reserved', '=', 0)
         ->where('user_id', '=', Auth::user()->id)
         ->orderBy('id', 'desc')
-        ->paginate(6);
+        ->paginate(12);
         
         return view('user.reservationsannulees', compact('reservations'));
     }
@@ -294,7 +294,7 @@ class UsersController extends Controller
         $historiques = reservation::with('house')->where('start_date', '<=', $today)
         ->where('end_date', '<', $today)
         ->where('user_id', '=', Auth::user()->id)
-        ->orderBy('id', 'desc')->paginate(6);
+        ->orderBy('id', 'desc')->paginate(12);
         return view('user.historiques', compact('historiques'));
     }
 

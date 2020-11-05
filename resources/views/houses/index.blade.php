@@ -20,7 +20,7 @@
                             @if($house->statut == "Validé")
                                 <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
                                     <div class="card-houses h-100">       
-                                        <a href="{{action('UsersController@showHouse', $house['id'])}}"><img class="img-houses-list" src="{{ asset('img/houses/'.$house->photo) }}" alt="Hébergement insolite - {{$house->title}}"></a>
+                                        <a href="{{action('UsersController@showHouse', $house['id'])}}"><img class="img-houses-list" data-src="{{ asset('img/houses/'.$house->photo) }}" alt="Hébergement insolite - {{$house->title}}"></a>
                                         <div class="card-block">
                                             <div class="card-body">
                                                 <h3 class="card-title title-houses"><a href="{{action('UsersController@showHouse', $house->id)}}"> {{$house->title}} </a><br> {{$house->adresse}}<br></h3> 
