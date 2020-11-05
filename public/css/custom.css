@@ -4,14 +4,12 @@
 /* Font utilisés */
 @font-face {
 	font-family: "Archivo";
-	src: url("{{ asset('fonts/Archivo/Archivo-Regular.ttf')}}"),
+	src: url('/fonts/Archivo/Archivo-Regular.ttf') format('truetype'),
 }
 /* Sur la page d'accueil seulement */
 @font-face {
-	font-family: "Comfortaa";
-	font-style: bold;
-  	font-weight: 700;
-	src: url("{{ asset('fonts/Comfortaa/static/Comfortaa-VariableFont_wght.ttf')}}"),
+	font-family: 'Comfortaa';
+	src: url('/fonts/Comfortaa/static/Comfortaa-Bold.ttf') format('truetype');
 }
 
 html, body {
