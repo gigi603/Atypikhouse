@@ -2,7 +2,7 @@
 @section('title', "Atypikhouse offre les meilleurs espaces atypiques en europe")
 @section('meta_description', "Atypikhouse contient des espaces atypiques un peu partout en europe notamment en france à grenoble, seine et marne, vous pouvez réserver à tout moment et profitez de nos promotions pouvant aller jusqu'à 60% de réduction à ne pas manquer")
 @section('styles')
-    {{-- <link href="{{asset("/fontawesome/css/all.min.css") }}" rel="stylesheet"> --}}
+    <link href="{{asset("/fontawesome/css/all.min.css") }}" rel="stylesheet">
 @endsection
 @section('content')
     <div class="container-fluid banner">
