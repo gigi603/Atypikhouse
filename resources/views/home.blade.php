@@ -62,9 +62,9 @@
             <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">         
                 <div class="card-houses h-100">       
                     <a href="#"><img class="img-houses-list" data-src="{{ asset('img/maison_foret.jpg') }}" alt="Hébergement insolite - maison_foret"></a>
-                    <div class="card-block">
+                    <div class="card-block-home">
                         <div class="card-body">
-                            <h3 class="card-title title-houses"><a href="#"> Des cabanes </a></h3>
+                            <h3 class="card-title-home title-houses"><a href="#"> Des cabanes </a></h3>
                         </div>
                     </div>
                 </div>
@@ -72,9 +72,9 @@
             <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">         
                 <div class="card-houses h-100">       
                     <a href="#"><img class="img-houses-list" data-src="{{ asset('img/igloo_demo.jpg') }}" alt="Hébergement insolite - igloo"></a>
-                    <div class="card-block">
+                    <div class="card-block-home">
                         <div class="card-body">
-                            <h3 class="card-title title-houses"><a href="#"> Des igloos </a></h3>
+                            <h3 class="card-title-home title-houses"><a href="#"> Des igloos </a></h3>
                         </div>
                     </div>
                 </div>
@@ -82,9 +82,9 @@
             <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">         
                 <div class="card-houses h-100">       
                     <a href="#"><img class="img-houses-list" data-src="{{ asset('img/yourte_demo.jpg') }}" alt="Hébergement insolite - yourte"></a>
-                    <div class="card-block">
+                    <div class="card-block-home">
                         <div class="card-body">
-                            <h3 class="card-title title-houses"><a href="#"> Des yourtes </a></h3>
+                            <h3 class="card-title-home title-houses"><a href="#"> Des yourtes </a></h3>
                         </div>
                     </div>
                 </div>

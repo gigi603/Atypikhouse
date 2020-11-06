@@ -433,13 +433,21 @@ nav.navbar.navbar-default {
 	transform: scale(1.1);
 }
 
-.card-block {
+.card-block-home {
 	padding: 15px 15px;
 	background-color: #000;
 }
 
-.card-title a{
+.card-title-home a{
 	color: #FFF;
+}
+.card-block {
+	padding: 15px 15px;
+	background-color: #FFF;
+}
+
+.card-title a{
+	color: #000;
 }
 
 
