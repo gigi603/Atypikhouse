@@ -12,7 +12,7 @@
                     <div class="col-lg-12 col-md-12 col-sm-12">
                         <div class="input-group reservation-search">
                             <div class="row">
-                                <div class="col-lg-4 col-md-4 col-sm-12 cadre">
+                                <div class="col-lg-4 col-md-4 col-sm-12 cadre-home">
                                     <h1 class="title title-intro">Atypikhouse offre les meilleurs espaces atypiques en Europe !</h1>
                                     <div class="form-group reservation-search">
                                         @include('search',['url'=>'search','link'=>'search'])
