@@ -47,7 +47,7 @@ class AdminController extends Controller
     {
         $proprietes = DB::table('proprietes')->get();
         $categories = DB::table('categories')->get();
-        $users = user::paginate(1);
+        $users = user::paginate(10);
         $houses = DB::table('houses')->get();
         return view('admin.listusers')->with('users', $users)
                             ->with('categories', $categories)
