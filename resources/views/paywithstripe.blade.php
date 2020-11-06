@@ -1,5 +1,9 @@
 @extends('layouts.app')
 @section('title', 'Paiement par stripe')
+@section('styles')
+    <link href="{{ asset('css/stripe.css') }}" rel="stylesheet">
+@endsection
+
 @section('footer', 'footer_absolute')
 
  

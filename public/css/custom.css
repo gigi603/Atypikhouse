@@ -435,8 +435,14 @@ nav.navbar.navbar-default {
 
 .card-block {
 	padding: 15px 15px;
-	background-color: #FFFFFF;
+	background-color: #000;
 }
+
+.card-title a{
+	color: #FFF;
+}
+
+
 
 .card-center {
 	display: block;
@@ -484,9 +490,7 @@ nav.navbar.navbar-default {
 	padding: 15px 0px;
 }
 
-.card-title a{
-	color: #000;
-}
+
 
 .space-top {
 	padding-top: 30px;
@@ -523,7 +527,7 @@ nav.navbar.navbar-default {
 	display: flex;
 	flex-flow: row wrap;
 	justify-content: space-around;
-	padding: 10vh 0;
+	padding: 5vh 0;
 }
 .block_home_2_child {
 	width: 350px;
@@ -545,7 +549,7 @@ nav.navbar.navbar-default {
 	font-family: 'Open Sans', sans-serif;
 	font-family: 'Comfortaa', cursive;
 	font-size: 60px;
-	padding-bottom: 5%;
+	padding-top: 5%;
 }
 
 #hebergement-title{
@@ -557,13 +561,16 @@ nav.navbar.navbar-default {
 	width:100%;
 }
 
+.avantage-title {
+	font-family: 'Comfortaa', cursive;
+}
+
 .become_hote {
 	background-color: #FFF;
 	color: #000;
-	font-family: 'Open Sans', sans-serif;
 	font-family: 'Comfortaa', cursive;
 	font-size: 60px;
-	padding: 5% 0;
+	padding: 13% 0 5% 0;
 	
 }
 

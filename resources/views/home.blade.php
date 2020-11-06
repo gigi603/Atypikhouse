@@ -1,6 +1,9 @@
 @extends('layouts.app')
 @section('title', "Atypikhouse offre les meilleurs espaces atypiques en europe")
 @section('meta_description', "Atypikhouse contient des espaces atypiques un peu partout en europe notamment en france à grenoble, seine et marne, vous pouvez réserver à tout moment et profitez de nos promotions pouvant aller jusqu'à 60% de réduction à ne pas manquer")
+@section('styles')
+    <link href="{{asset("/fontawesome/css/all.min.css") }}" rel="stylesheet">
+@endsection
 @section('content')
     <div class="container-fluid banner">
         <div class="intro-body">
@@ -23,23 +26,7 @@
         </div>
     </div>
 
-    <div id="block_home_2" role="avantages">
-        <div id="tranquilite" class="block_home_2_child">
-            <i class="fas fa-procedures fa-5x"></i>
-            <h2>Tranquilité</h2>
-            <p>Rester au calme pendant votre séjour dans nos habitats insolite. Nos cabanes et yourtes sauront combler vos désirs les plus variés</p>
-        </div>
-        <div id="depaysement" class="block_home_2_child">
-            <i class="fab fa-angellist fa-5x"></i>
-            <h2>Dépaysement</h2>
-            <p>Sortez de la routine quotidienne et venez vivre des expérience unique dans des décors à couper le souffle</p>
-        </div>
-        <div id="money" class="block_home_2_child">
-            <i class="far fa-money-bill-alt fa-5x"></i>
-            <h2>Economie</h2>
-            <p>Profitez de promotions toute l'année sur de nombreuses locations atypique tels que les cabanes, les cocons pour amoureux et bien d'autres. </p>
-        </div>
-    </div>
+    
     <div class="container-fluid nature_yours">
         <div class="row">
             <div class="col-md-6">
@@ -49,6 +36,23 @@
             <div class="col-md-5">
                 <img data-src="{{ asset('img/voyage_demo.jpg')}}" class="voyage"/>
             </div>
+        </div>
+    </div>
+    <div id="block_home_2" role="avantages">
+        <div id="tranquilite" class="block_home_2_child">
+            <i class="fas fa-procedures fa-5x"></i>
+            <h2 class="avantage-title">Tranquilité</h2>
+            <p class="avantage-title">Rester au calme pendant votre séjour dans nos habitats insolite. Nos cabanes et yourtes sauront combler vos désirs les plus variés</p>
+        </div>
+        <div id="depaysement" class="block_home_2_child">
+            <i class="fab fa-angellist fa-5x"></i>
+            <h2 class="avantage-title">Dépaysement</h2>
+            <p class="avantage-title">Sortez de la routine quotidienne et venez vivre des expérience unique dans des décors à couper le souffle</p>
+        </div>
+        <div id="money" class="block_home_2_child">
+            <i class="far fa-money-bill-alt fa-5x"></i>
+            <h2 class="avantage-title">Economie</h2>
+            <p class="avantage-title">Profitez de promotions toute l'année sur de nombreuses locations atypique tels que les cabanes, les cocons pour amoureux et bien d'autres. </p>
         </div>
     </div>
     
@@ -90,7 +94,7 @@
             </div>
         </div>
     </div>
-    <div class="container-fluid become_hote">
+    <div class="container-fluid become_hote" id="become_hote">
         <div class="row">
             <div class="col-md-6">
                 <h3 class="text-center" style="font-size:50px;margin-top:10vh;">Partagez votre logement sur Atypikhouse</h2>

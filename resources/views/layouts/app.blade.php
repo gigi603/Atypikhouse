@@ -12,13 +12,11 @@
         <link rel="icon" type="image/png" href="{{ asset('img/LogoNavigateur.png') }}" />
 
         <!-- Styles -->
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css" integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1" crossorigin="anonymous">
-        {{-- <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap" rel="stylesheet"> --}}
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
         <link href="{{ asset('css/jquery-ui.min.css') }}" rel="stylesheet">
         <link href="{{ asset('css/cookieconsent.min.css') }}" rel="stylesheet">
-        <link href="{{ asset('css/stripe.css') }}" rel="stylesheet">
+        @yield('styles')
     </head>
     <body>
         <div id="app">
@@ -47,7 +45,8 @@
                         <!-- Right Side Of Navbar -->
                         <ul class="nav navbar-nav navbar-right">
                             <!-- Authentication/Visitors Links -->
-                            @if (Auth::guest())                            
+                            @if (Auth::guest())
+                            <li class="link-position"><a href="{{ route('home') }}/#become_hote" id="hote_link" aria-label="Devenir hôtes">Devenir hôte</a></li>                            
                             <li class="link-position"><a href="{{ route('houses') }}" aria-label="Hebergements">Nos hébergements atypikhouse</a></li>
                             <li class="link-position"><a href="{{ route('register') }}" aria-label="Inscription">Inscription</a></li>
                             <li class="link-position"><a href="{{ route('login') }}" aria-label="Connexion">Connexion</a></li>
@@ -73,6 +72,7 @@
                                 </ul>
                             </li>
                             @else
+                            <li class="link-position"><a href="#become_hote" aria-label="Devenir hôtes">Devenir hôte</a></li>
                             <li class="link-position"><a href="{{ route('houses') }}">Nos hébergements atypikhouse</a></li>
                             <li class="dropdown link-position">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -143,6 +143,11 @@
         <script>
             $(function() {
                 $("img").unveil();
+            });
+            $('#hote_link').click(function() {
+                $('html, body').animate({
+                    scrollTop: $("#become_hote").offset().top
+                }, 1000);
             });
         </script>
         @yield('script')
