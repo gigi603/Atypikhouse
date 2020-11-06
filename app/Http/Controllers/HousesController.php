@@ -49,7 +49,7 @@ class HousesController extends Controller
         ->where('statut', 'Validé')
         ->where('disponible', 'oui')
         ->orderBy('id', 'desc')
-        ->paginate(9);
+        ->paginate(14);
         return view('houses.index')->with('houses', $houses)
                                    ->with('categories', $categories);
     }
