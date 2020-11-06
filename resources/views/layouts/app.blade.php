@@ -46,35 +46,14 @@
                         <ul class="nav navbar-nav navbar-right">
                             <!-- Authentication/Visitors Links -->
                             @if (Auth::guest())
-                            <li class="link-position"><a href="{{ route('home') }}/#become_hote" id="hote_link" aria-label="Devenir hôtes">Devenir hôte</a></li>                            
-                            <li class="link-position"><a href="{{ route('houses') }}" aria-label="Hebergements">Nos hébergements atypikhouse</a></li>
-                            <li class="link-position"><a href="{{ route('register') }}" aria-label="Inscription">Inscription</a></li>
-                            <li class="link-position"><a href="{{ route('login') }}" aria-label="Connexion">Connexion</a></li>
-                            @elseif(Auth::guard('admin')->check())
-                            <li class="link-position"><a href="{{ route('admin.home') }}">Accueil</a></li>
-                            <li class="dropdown link-position">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                    {{ Auth::user()->prenom }} <span class="caret"></span>
-                                </a>
-                                <ul class="dropdown-menu" role="menu">
-                                    <li>
-                                        <a href="{{ route('logout') }}"
-                                            onclick="event.preventDefault();
-                                            document.getElementById('logout-form').submit();">
-                                            Se déconnecter
-                                        </a>
-
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                            {{ csrf_field() }}
-                                        </form>
-                                    </li>
-                                    <li class="link-position"><a href="{{ route('user.contact') }}" aria-label="Contact">Contact</a></li>
-                                </ul>
-                            </li>
+                                <li class="link-position"><a href="{{ route('home') }}/#become_hote" id="hote_link" aria-label="Devenir hôtes">Devenir hôte</a></li>                            
+                                <li class="link-position"><a href="{{ route('houses') }}" aria-label="Hebergements">Nos hébergements atypikhouse</a></li>
+                                <li class="link-position"><a href="{{ route('register') }}" aria-label="Inscription">Inscription</a></li>
+                                <li class="link-position"><a href="{{ route('login') }}" aria-label="Connexion">Connexion</a></li>
                             @else
-                            <li class="link-position"><a href="{{ route('home') }}/#become_hote" aria-label="Devenir hôtes">Devenir hôte</a></li>
-                            <li class="link-position"><a href="{{ route('houses') }}">Nos hébergements atypikhouse</a></li>
-                            <li class="dropdown link-position">
+                                <li class="link-position"><a href="{{ route('home') }}/#become_hote" id="hote_link" aria-label="Devenir hôtes">Devenir hôte</a></li>
+                                <li class="link-position"><a href="{{ route('houses') }}">Nos hébergements atypikhouse</a></li>
+                                <li class="dropdown link-position">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                     {{ Auth::user()->prenom }} <span class="caret"></span>
                                 </a>

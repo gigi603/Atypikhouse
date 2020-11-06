@@ -111,3 +111,12 @@
         </div>
     </div>
 @endsection
+@section('script')
+    <script>
+        $('#hote_link').click(function() {
+            $('html, body').animate({
+                scrollTop: $("#become_hote").offset().top
+            }, 1000);
+        });
+    </script>
+@endsection
