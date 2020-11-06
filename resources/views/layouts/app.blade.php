@@ -72,7 +72,7 @@
                                 </ul>
                             </li>
                             @else
-                            <li class="link-position"><a href="#become_hote" aria-label="Devenir hôtes">Devenir hôte</a></li>
+                            <li class="link-position"><a href="{{ route('home') }}/#become_hote" aria-label="Devenir hôtes">Devenir hôte</a></li>
                             <li class="link-position"><a href="{{ route('houses') }}">Nos hébergements atypikhouse</a></li>
                             <li class="dropdown link-position">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
