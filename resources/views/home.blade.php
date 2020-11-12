@@ -24,9 +24,7 @@
                 </div>
             </div>
         </div>
-    </div>
-
-    
+    </div>    
     <div class="container-fluid nature_yours">
         <div class="row">
             <div class="col-md-6">

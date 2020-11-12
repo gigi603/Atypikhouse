@@ -116,7 +116,7 @@
                         <i class="fas fa-fw fa-comments"></i>
                       </div>
                       <div class="mr-5">
-                        <?php $i = 0; ?>
+                        <?php $i = 0;?>
                           @foreach (auth()->user()->unreadNotifications as $notification)
                             @if($notification->type == 'App\Notifications\ReplyToMessage')
                               <?php $i++; ?>

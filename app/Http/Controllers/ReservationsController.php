@@ -7,6 +7,7 @@ use App\Reservation;
 use App\Post;
 use App\User;
 use App\Admin;
+use App\Message;
 
 use App\Http\Requests;
 use Illuminate\Http\Request;
@@ -177,8 +178,20 @@ class ReservationsController extends Controller
             $admins = Admin::all();
 
             foreach ($admins as $admin) {
+                //Envoyer la notifs à tous les admins
                 $admin->notify(new ReplyToReservation($post));
             }
+
+            //Message à envoyer à l'utilisateur
+            $message = new message;
+            $message->content = "Vous avez effectué une réservation, pour la consulter veuillez aller dans 'Mes reservations en cours'";
+            $message->user_id = $user_id;
+            $message->save();
+
+            //Notification envoyé à l'utilisateur
+            $user = User::find(Auth::user()->id);
+            $user->notify(new ReplyToReservation($post));
+
             $request->session()->forget('reservationPrice');
             $request->session()->forget('reservationStartDate');
             $request->session()->forget('reservationEndDate');

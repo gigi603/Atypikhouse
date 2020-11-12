@@ -30,6 +30,11 @@ html, body {
     border-radius: 4px !important;
 }
 
+.badge-success {
+	background-color: #3f4b30;
+	color: #FFF;
+}
+
 .margin-top {
 	margin-top: 10vh;
 }

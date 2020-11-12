@@ -343,6 +343,9 @@ class HousesController extends Controller
             $admin->notify(new ReplyToAnnonce($post));
         }
 
+        $user = User::find(Auth::user()->id);
+        $user->notify(new ReplyToAnnonce($post));
+
         $request->session()->forget('houseAdresse');
         $request->session()->forget('houseTelephone');
         $request->session()->forget('houseTitle');

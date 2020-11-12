@@ -55,11 +55,40 @@
                                 <li class="link-position"><a href="{{ route('houses') }}">Nos hébergements atypikhouse</a></li>
                                 <li class="dropdown link-position">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                    <?php
+                                    $posts = App\Post::orderBy('id', 'desc')->get();
+                                    $messages = App\Message::orderBy('id', 'desc')->get();
+                                    $userUnreadNotifications = Auth::user()->unreadNotifications;
+                                    foreach($userUnreadNotifications as $userUnreadNotification) {
+                                        $data = $userUnreadNotification->data;
+                                        foreach($posts as $post){
+                                            if(isset($data["post_id"])){
+                                                if($post->id == $data["post_id"]){
+                                                    $post["unread"] = true;
+                                                }
+                                            }
+                                        }
+                                        foreach($messages as $message){
+                                            if(isset($data["message_id"])){
+                                                if($message->id == $data["message_id"]){
+                                                    $message["unread"] = true;
+                                                }
+                                            }
+                                        }
+                                    }?>
+                                    <?php $i = 0; ?>
+                                    <span class="badge badge-pill badge-success">
+                                    @foreach (Auth::user()->unreadNotifications as $notification)
+                                        <?php $i++;?>
+                                    @endforeach
+                                    <?php echo $i;?>
+                                    </span>
                                     {{ Auth::user()->prenom }} <span class="caret"></span>
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li><a href="{{url('/profile')}}">Mon profil</a></li>
-                                    <li><a href="{{route('user.messages')}}">Mes notifications</a></li>
+
+                                    <li><a href="{{route('user.messages')}}">@if($i == 0) Mes notifications @else <span class="badge badge-pill badge-success"><?php echo $i; ?> </span>Mes notifications @endif</a></li>
                                     <li><a href="{{route('user.houses')}}">Mes annonces</a></li>
                                     <li><a href="{{route('user.reservations')}}">Mes réservations en cours</a></li>
                                     <li><a href="{{route('user.historiques')}}">Mes réservations passées</a></li>

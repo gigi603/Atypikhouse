@@ -28,11 +28,11 @@
                         <p><i class="fas fa-calendar"></i> Du: <?php \Date::setLocale('fr'); $startdate = Date::parse($house->start_date)->format('l j F Y'); echo($startdate);?> </p>
                         <p><i class="fas fa-calendar"></i> au:  <?php \Date::setLocale('fr'); $enddate = Date::parse($house->end_date)->format('l j F Y'); echo($enddate);?></p>
                         @if($house->statut == "En attente de validation")
-                            <p>Statut: <span style="color:red;">{{$house->statut}}</span></p>
+                            <p>Statut: <span style="color:darkred;">{{$house->statut}}</span></p>
                         @elseif($house->statut == "Refusé")
-                            <p>Statut: <span style="color:red;">{{$house->statut}}</span></p>
+                            <p>Statut: <span style="color:darkred;">{{$house->statut}}</span></p>
                         @else
-                            <p>Statut: <span style="color:green;">{{$house->statut}}</span></p>
+                            <p>Statut: <span style="color:darkgreen;">{{$house->statut}}</span></p>
                         @endif
                         <div class="text-center">
                             <a href="{{route('user.showhebergements', $house['id']) }}" class="btn btn-primary btn-color">Voir</a>

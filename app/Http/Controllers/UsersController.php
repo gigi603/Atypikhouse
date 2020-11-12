@@ -11,11 +11,13 @@ use App\Propriete;
 use App\Valuecatpropriete;
 use App\Ville;
 use App\Post;
+use App\Message;
 use App\Newsletter;
 use Illuminate\Http\Request;
 use App\Http\Requests\EditUserRequest;
 use App\Http\Requests\EditHouseRequest;
 use App\Http\Requests\ReservationRequest;
+use App\Notifications\ReplyToReservation;
 use App\Http\Requests\CommentRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -94,7 +96,6 @@ class UsersController extends Controller
     public function showhebergements($id)
     {
         $house = House::find($id);
-        dd($house);
         $client_reserved = reservation::where('house_id', $id)->where('user_id', Auth::user()->id)->get();
         return view('user.showhebergements')->with('house', $house)->with('client_reserved', $client_reserved);
                                               
@@ -261,6 +262,17 @@ class UsersController extends Controller
         $reservation = reservation::find($id);
         $reservation->reserved = 0;
         $reservation->save();
+
+        //Message à envoyer à l'utilisateur
+        $message = new message;
+        $message->content = "Vous avez annulé une réservation, pour la consulter veuillez aller dans 'Mes reservations annulées'";
+        $message->user_id = Auth::user()->id;
+        $message->save();
+
+        //Notification envoyé à l'utilisateur
+        $user = User::find(Auth::user()->id);
+        $user->notify(new ReplyToReservation($message));
+
         return redirect()->back()->with('success', "Votre demande a bien été pris en compte, votre réservation a bien été annulée");
     }
 

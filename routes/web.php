@@ -134,10 +134,8 @@ Route::prefix('admin')->group(function () {
     
     //Liste des catégories
     Route::get('/categories', 'AdminController@listcategories')->name('admin.categories');
-    Route::get('/create/categorie', 'AdminController@createcategory')->name('admin.create_category');
     Route::post('/register/categorie', 'AdminController@registercategory')->name('admin.register_category');
-    Route::get('/enable/categorie/{id}', 'AdminController@enableCategory')->name('admin.enable_category');
-    Route::get('/disable/categorie/{id}', 'AdminController@disableCategory')->name('admin.disable_category');
+    Route::get('/delete/categorie/{id}', 'AdminController@deleteCategory')->name('admin.delete_category');
 
     //Activer Désactiver compte utilisateur
     Route::get('/disable/user/{id}', 'AdminController@disableUser')->name('admin.disable_user');
@@ -145,7 +143,6 @@ Route::prefix('admin')->group(function () {
 
     //Propriétés de la catégorie
     Route::get('/proprietes/{id}', 'AdminController@proprietescategory')->name('admin.proprietes_category');
-    Route::get('/create/propriete/{id}', 'AdminController@createpropriete')->name('admin.create_propriete');
     Route::post('/register/propriete', 'AdminController@registerpropriete')->name('admin.register_propriete');
     Route::get('/delete/propriete/{id}', 'AdminController@deletepropriete')->name('admin.delete_propriete');
 

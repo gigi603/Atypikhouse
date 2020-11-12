@@ -129,11 +129,13 @@ class RegisterController extends Controller
             $user->newsletter = $request->input('newsletter') ? 1 : 0;
             $user->save();
             
-            //Après avoir inscrit l'utilisateur, l'utilisateur recoit une notification
+            //Après avoir inscrit l'utilisateur, Message que l'utilisateur va recevoir comme notification
             $message = new message;
             $message->content = "Bienvenue ".$user->prenom.", vous pouvez dès à présent créer des annonces en tant que propriétaire ou bien réserver des hébergements, notre équipe vous remercie.";
             $message->user_id = $user->id;
             $message->save();
+
+            
             
             //Envoyer une notification à l'admin
             $post = new post;
@@ -150,6 +152,11 @@ class RegisterController extends Controller
             foreach ($admins as $admin) {
                 $admin->notify(new ReplyToUser($post));
             }
+
+            //Envoie de la notification à l'utilisateur 
+            $user = User::find($data['id']);
+            $user->notify(new ReplyToUser($post));
+
             if($user->newsletter == 1) {
                 $newsletters = newsletter::all();
                 foreach($newsletters as $newsletter){
