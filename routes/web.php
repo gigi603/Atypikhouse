@@ -13,6 +13,9 @@
 
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/houses', 'HousesController@index')->name('houses');
+Route::get('/cabanes', 'HousesController@cabanes')->name('cabanes');
+Route::get('/igloos', 'HousesController@igloos')->name('igloos');
+Route::get('/yourtes', 'HousesController@yourtes')->name('yourtes');
 Route::get('/register', 'RegistersController@create');
 Route::post('/register', 'RegistersController@register');
 Route::get('/users/confirmation{email_token}', 'Auth\RegisterController@confirmation');
@@ -127,7 +130,6 @@ Route::prefix('admin')->group(function () {
     //Gestion des hébergement
     Route::get('/house/editHouse/{id}', 'AdminController@editHouse')->name('admin.editHouse');
     Route::post('/house/updateHouse/{id}', 'AdminController@updateHouse')->name('admin.updateHouse');
-    //Route::post('/house/statutHouse/{id}', 'AdminController@statutHouse')->name('admin.statutHouse');
     Route::get('/house/valideHouse/{id}', 'AdminController@valideHouse')->name('admin.valideHouse');
     Route::get('/house/refuseHouse/{id}', 'AdminController@refuseHouse')->name('admin.refuseHouse');
     Route::get('/houses/deleteHouse/{id}', 'AdminController@disableHouse')->name('admin.disableHouse');

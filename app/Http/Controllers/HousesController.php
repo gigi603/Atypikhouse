@@ -54,6 +54,66 @@ class HousesController extends Controller
                                    ->with('categories', $categories);
     }
 
+    public function cabanes(House $house)
+    {
+        $today = Date::today()->format('Y-m-d');
+        $categories = category::all();
+        $houses = house::with('valuecatproprietes', 'proprietes', 'category')
+        ->where('end_date', '>=', $today)
+        ->where('statut', 'Validé')
+        ->where('category_id', 3)
+        ->where('disponible', 'oui')
+        ->orderBy('id', 'desc')
+        ->paginate(14);
+
+        if(count($houses) > 0){
+            return view('houses.index')->with('houses', $houses)->with('categories', $categories);
+        } else {
+            $houses = house::paginate(14);
+            return view('houses.index')->with('houses', $houses)->with('categories', $categories);
+        }
+    }
+
+    public function igloos(House $house)
+    {
+        $today = Date::today()->format('Y-m-d');
+        $categories = category::all();
+        $houses = house::with('valuecatproprietes', 'proprietes', 'category')
+        ->where('end_date', '>=', $today)
+        ->where('statut', 'Validé')
+        ->where('category_id', 4)
+        ->where('disponible', 'oui')
+        ->orderBy('id', 'desc')
+        ->paginate(14);
+
+        if(count($houses) > 0){
+            return view('houses.index')->with('houses', $houses)->with('categories', $categories);
+        } else {
+            $houses = house::paginate(14);
+            return view('houses.index')->with('houses', $houses)->with('categories', $categories);
+        }        
+    }
+
+    public function yourtes(House $house)
+    {
+        $today = Date::today()->format('Y-m-d');
+        $categories = category::all();
+        $houses = house::with('valuecatproprietes', 'proprietes', 'category')
+        ->where('end_date', '>=', $today)
+        ->where('statut', 'Validé')
+        ->where('category_id', 5)
+        ->where('disponible', 'oui')
+        ->orderBy('id', 'desc')
+        ->paginate(14);
+
+        if(count($houses) > 0){
+            return view('houses.index')->with('houses', $houses)->with('categories', $categories);
+        } else {
+            $houses = house::paginate(14);
+            return view('houses.index')->with('houses', $houses)->with('categories', $categories);
+        }
+    }
+
     /**
      * Show the form for creating a new resource.
      *

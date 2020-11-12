@@ -36,11 +36,11 @@
                             </div>
                         @endforelse
                     </form>
-                    <div class="text-right mb-3 mt-3">
-                        <span>{{ $houses->links() }}</span>
-                    </div>
-                </div>                    
+                </div>                 
             </div>
+            <div class="text-right mb-3 mt-3">
+                <span>{{ $houses->links() }}</span>
+            </div>  
         </div>
     </div>
 </div>
