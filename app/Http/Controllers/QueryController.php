@@ -32,22 +32,55 @@ class QueryController extends Controller
         if($request->category_id == 1){
             $houses = house::with('valuecatproprietes', 'proprietes', 'category')
             ->where('statut', 'Validé')
-            ->where('end_date', '>=', $today)
+            ->where('end_date', '>', $today)
             ->where('end_date', '>=', $end_date)
-            ->where('nb_personnes', '>=', $request->nb_personnes)
+            ->orWhere('nb_personnes', '>=', $request->nb_personnes)
             ->where('disponible', '=', "oui")
+            ->orderBy('id','DESC')
             ->paginate(6);
             return view('houses.index')->with('houses', $houses)
                                     ->with('categories', $categories)
                                     ->with('datas', $datas);
-        } else {
+        }
+        if($request->category_id > 1){
+            $houses = house::with('valuecatproprietes', 'proprietes', 'category')
+                ->where('statut', 'Validé')
+                ->where('end_date', '>', $today)
+                ->where('end_date', '>=', $end_date)
+                ->where('disponible', '=', "oui")
+                ->where('category_id', '=', $request->category_id)
+                ->orWhere('nb_personnes', '>=', $request->nb_personnes)
+                ->orderBy('id','DESC')
+                ->paginate(6);
+
+            if(count($houses) > 0){
+                return view('houses.index')->with('houses', $houses)
+                ->with('categories', $categories)
+                ->with('datas', $datas);
+            } else {
+                $houses = house::with('valuecatproprietes', 'proprietes', 'category')
+                    ->where('statut', 'Validé')
+                    ->where('end_date', '>', $today)
+                    ->where('end_date', '>=', $end_date)
+                    ->orWhere('nb_personnes', '>=', $request->nb_personnes)
+                    ->where('disponible', '=', "oui")
+                    ->orderBy('id','DESC')
+                    ->paginate(6);
+                    return view('houses.index')->with('houses', $houses)
+                                            ->with('categories', $categories)
+                                            ->with('datas', $datas);
+            }
+            
+        }
+        else {
             $houses = house::with('valuecatproprietes', 'proprietes', 'category')
             ->where('statut', 'Validé')
-            ->where('end_date', '>=', $today)
+            ->where('end_date', '>', $today)
             ->where('end_date', '>=', $end_date)
-            ->where('category_id', '=', $request->category_id)
-            ->where('nb_personnes', '>=', $request->nb_personnes)
             ->where('disponible', '=', "oui")
+            ->where('category_id', '=', $request->category_id)
+            ->orWhere('nb_personnes', '>=', $request->nb_personnes)
+            ->orderBy('id','DESC')
             ->paginate(6);
             return view('houses.index')->with('houses', $houses)
                                     ->with('categories', $categories)
