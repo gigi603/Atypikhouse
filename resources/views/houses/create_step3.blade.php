@@ -118,7 +118,11 @@
 @section('script')
     <script>let site = "{{env('APP_URL')}}";</script>
     <script src="{{ asset('js/calendarCreateAnnonce.js') }}"></script>
+    <script type="text/javascript">
+        var proprietesChecked = <?php echo json_encode($housePropriete); ?>;
+    </script>
     <script src="{{ asset('js/create_house.js') }}"></script>
+    
 @endsection
 
 

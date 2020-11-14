@@ -2,44 +2,41 @@ $(document).ready(function(){
     $("#select_category option:checked").each(function(){
         var house_id = $("#house_id").val();
         var category_id = $("#select_category option:checked").val();
+        var atLeastOneIsChecked = $('#checkArray:checkbox:checked').length > 0;
         $.ajax({
             type: 'GET',
             url: site+'/json_propriete/'+house_id+'/'+category_id,
             dataType: "json",
             data: "",
             success: function(data) {
-                $('.proprietes').empty();
-                var idArr = [];
-
-                for (j in data.valArray){
-                    idArr.push(data.valArray[j].propriete_id);
-                }                
-
+                // var idArr = [];
+                // for (j in data.valArray){
+                //     idArr.push(data.valArray[j].propriete_id);
+                // }                
                 for (i in data.proprietes) {
-                    if (idArr.indexOf(data.proprietes[i].id) !== -1) {
-                        $( ".proprietes" ).append(`
-                        <div class="form-group">
-                            <label class="col-md-4 control-label" for="${data.proprietes[i].id}">
-                                ${data.proprietes[i].propriete}
-                            </label>
-                            <div class="col-md-6">
-                                <input type="checkbox" checked id="${data.proprietes[i].id}" class="checkbox_propertie" name="propriete[]" autofocus value="${data.proprietes[i].id}"/>
-                            </div>
-                        </div>`);
-                    } else {
-                    
-                        $( ".proprietes" ).append(`
-                        <div class="form-group">
-                            <label class="col-md-4 control-label" for="${data.proprietes[i].id}">
-                                ${data.proprietes[i].propriete}
-                            </label>
-                            <div class="col-md-6">
-                                <input type="checkbox" class="checkbox_propertie" name="propriete[]" autofocus id="${data.proprietes[i].id}"value="${data.proprietes[i].id}"/>
-                            </div>
-                        </div>`);
-                    }
+                    $( ".proprietes" ).append(`
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="${data.proprietes[i].id}">
+                            ${data.proprietes[i].propriete}
+                        </label>
+                        <div class="col-md-6">
+                            <input type="checkbox" class="checkbox_propertie" name="propriete[]" autofocus id="${data.proprietes[i].id}"value="${data.proprietes[i].id}"/>
+                        </div>
+                    </div>`);
+
+                    $("input[name='propriete[]']").each(function () {
+                        // if( $(this).is(':checked') ){
+                        //     $(this).val("true");
+                        //     console.log('true');
+                        // } else {
+                        //     $(this).val("false");
+                        //     console.log('false');
+                        // }
+                        console.log('this', $(this));
+                        $(this).prop('checked', localStorage.getItem(this.id) === 'true');
+                    });      
                 }
-            },error: function (data){
+                },error: function (data){
                 $('.proprietes').empty();
             }
         });
@@ -62,28 +59,15 @@ $(document).ready(function(){
                 }                
 
                 for (i in data.proprietes) {
-                    if (idArr.indexOf(data.proprietes[i].id) !== -1) {
-                        $( ".proprietes" ).append(`
-                        <div class="form-group">
-                            <label class="col-md-4 control-label">
-                                ${data.proprietes[i].propriete}
-                            </label>
-                            <div class="col-md-6">
-                                <input type="checkbox" checked class="checkbox_propertie" name="propriete[]" autofocus value="${data.proprietes[i].id}"/>
-                            </div>
-                        </div>`);
-                    } else {
-       
-                        $( ".proprietes" ).append(`
-                        <div class="form-group">
-                            <label class="col-md-4 control-label">
-                                ${data.proprietes[i].propriete}
-                            </label>
-                            <div class="col-md-6">
-                                <input type="checkbox" class="checkbox_propertie" name="propriete[]" autofocus value="${data.proprietes[i].id}"/>
-                            </div>
-                        </div>`);
-                    }
+                    $( ".proprietes" ).append(`
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">
+                            ${data.proprietes[i].propriete}
+                        </label>
+                        <div class="col-md-6">
+                            <input type="checkbox" class="checkbox_propertie" name="propriete[]" autofocus value="${data.proprietes[i].id}"/>
+                        </div>
+                    </div>`);
                 }
                 },error: function (data){
                     $('.proprietes').empty();
@@ -93,13 +77,9 @@ $(document).ready(function(){
     });
 });
 
-// $(document).on("click", "input[name='propriete[]']", function(){
-//     $("input[name='propriete[]']").each(function () {
-//         if( $(this).is(':checked') ){
-//             $(this).val("true");
-//         } else {
-//             $(this).val("false");
-//         }
-//     });
-// });
+$(document).on("click", "input[name='propriete[]']", function(){
+    $("input[name='propriete[]']").each(function () {
+        localStorage.setItem(this.id, $(this).prop('checked'));
+    })
+});
 /*<input type="hidden" name="propriete_id[]" value="${data.proprietes[i].id}"/>*/

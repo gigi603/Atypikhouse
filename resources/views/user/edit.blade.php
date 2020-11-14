@@ -182,6 +182,6 @@
       defer
     ></script>
     <script src="{{ asset('js/autocomplete_address.js') }}"></script>
-    <script src="{{ asset('js/create_house.js') }}"></script>
+    <script src="{{ asset('js/edit_house.js') }}"></script>
     <script src="{{ asset('js/proprietes.js') }}"></script>
 @endsection

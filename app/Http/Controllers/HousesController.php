@@ -201,6 +201,8 @@ class HousesController extends Controller
         
         $categories = category::where('statut','=', 1)->get();
 
+        $housePropriete = $request->session()->get('houseProprietes');
+
         $houseNbPersonnes = $request->session()->get('houseNbPersonnes');
         if($houseNbPersonnes == NULL){
             $nb_personnes = "";
@@ -235,6 +237,7 @@ class HousesController extends Controller
             'phone' => $phone,
             'houseCategory' => $houseCategory,
             'categorySelected' => $categorySelected,
+            'housePropriete' => $housePropriete,
             'nb_personnes' => $nb_personnes,
             'start_date' => $start_date,
             'end_date' => $end_date,
