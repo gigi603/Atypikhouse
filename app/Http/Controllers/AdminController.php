@@ -417,7 +417,7 @@ class AdminController extends Controller
             $categorySelected = last($houseCategoryEditAdmin);
         }
 
-        if($house->title != $request->title || $house->category_id != $request->category_id
+        if($house->title != $request->title || $house->phone != $request->phone || $house->category_id != $request->category_id
         || $house->nb_personnes != $request->nb_personnes || $house->price != $request->price 
         || $house->adresse != $request->adresse || $house->photo != $request->photo
         || $house->description != $request->description || $house->start_date != $request->start_date 
@@ -431,6 +431,7 @@ class AdminController extends Controller
             }
             $house->category_id = $request->category_id;
             $house->nb_personnes = $request->nb_personnes;
+            $house->phone = $request->phone;
             $house->price = $request->price;
             $house->adresse = $request->adresse;
             
