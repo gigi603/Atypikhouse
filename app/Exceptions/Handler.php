@@ -56,7 +56,6 @@ class Handler extends ExceptionHandler
         }
         if($exception instanceof \Illuminate\Auth\AuthenticationException){
             $this->unauthenticated($request, $exception);
-            return parent::render($request, $exception);
         }
 
         if($exception){   
