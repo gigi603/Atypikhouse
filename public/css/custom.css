@@ -692,6 +692,10 @@ input[type=textarea] {
 	margin-top: 150px;
 }
 
+#etoilesNoteGenerale {
+	pointer-events: none;
+}
+
 .rating {
 	float:left;
 	width: 250px;

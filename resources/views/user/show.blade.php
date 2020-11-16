@@ -80,29 +80,58 @@
                         </div>
                     </div> 
                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                        <div class="card-show">
-                            <h3 class="title card-title text-center">{{$house->title}}</h3>
-                            <h4 class="price">{{$house->price}}€ / la nuit</h4>
-                            <p>Type de bien : {{$house->category->category}}</p>
-                            <p>Disponible du <?php \Date::setLocale('fr'); $startdate = Date::parse($house->start_date)->format('l j F Y'); echo($startdate);?> au
-                            <?php \Date::setLocale('fr'); $enddate = Date::parse($house->end_date)->format('l j F Y'); echo($enddate);?> </p>
-                            <p>Pour {{$house->nb_personnes}} personne(s) maximum</p>
-                            @foreach($house->valuecatproprietes as $valuecatpropriete)
-                                @if(@count($valuecatpropriete) != 0)
-                                    <p>{{$valuecatpropriete->propriete->propriete}}</p>
-                   		 @endif
-                            @endforeach
+                        <div class="calendar panel panel-default">
+                            <h3 class="text-center panel-heading">{{$house->title}}</h3>
+                            <div class="form-horizontal">
+                                <div class="form-group" style="min-height: 358px;">
+                                    <h4 class="price">{{$house->price}}€ / la nuit</h4>
+                                    <p>Type de bien : {{$house->category->category}}</p>
+                                    <p>Disponible du <?php \Date::setLocale('fr'); $startdate = Date::parse($house->start_date)->format('l j F Y'); echo($startdate);?> au
+                                    <?php \Date::setLocale('fr'); $enddate = Date::parse($house->end_date)->format('l j F Y'); echo($enddate);?> </p>
+                                    <p>Pour {{$house->nb_personnes}} personne(s) maximum</p>
+                                    
+                                    <p> Adresse: {{$house->adresse}}</p>
+                                    <p> Téléphone de l'annonceur : {{$house->phone}}</p>
+                                    <p> Adresse mail de l'annonceur : {{$house->user->email}}</p>
+                                    <p>Annulation gratuite !</p><br>
+                                    <label>Equipements:</label><br>
+                                    @if(@count($house->valuecatproprietes) > 0 && isset($house->valuecatproprietes))
+                                        @foreach($house->valuecatproprietes as $valuecatpropriete)
+                                            <span>{{$valuecatpropriete->propriete->propriete}} </span>
+                                        @endforeach
+                                    @else
+                                        <span>Il n y a pas d'équipements sur cette annonce</span>
+                                    @endif
+                                    
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="col-md-12 space-top">
                         <p>{{$house->description}}</p>
-                        <p>Annulation gratuite !</p>
-                        <p> Adresse: {{$house->adresse}}</p>
-                        <p> Téléphone de l'annonceur : {{$house->phone}}</p>
-                        <p> Adresse mail de l'annonceur : {{$house->user->email}}</p>
                     </div>
                 </div>
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="row">
+                        <h4 class="price">Notes et avis</h4>
+                        <div class="col-md-3 text-center rating">
+                            <h4 class="price"><?php echo number_format($moyenneNote,1);?> ({{$nbTotalNote}})</h4>
+                            @for($i = 5; $i >= 1; $i--)
+                                @if($i == floor($moyenneNote))
+                                    <input type="radio" checked id="etoile{{$i}}" disabled name="displaynote" value={{$i}} /><label for="etoile{{$i}}" title="Meh">{{$i}} etoile</label>
+                                @else
+                                    <input type="radio" id="etoile{{$i}}" disabled name="displaynote" value={{$i}} /><label for="etoile{{$i}}" title="Meh">{{$i}} etoile</label>
+                                @endif
+                            @endfor
+                        </div>
+                        <div class="col-md-3">
+                            <p> 5 ({{$nb5etoiles}}) </p>
+                            <p> 4 ({{$nb4etoiles}}) </p>
+                            <p> 3 ({{$nb3etoiles}}) </p>
+                            <p> 2 ({{$nb2etoiles}}) </p>
+                            <p> 1 ({{$nb1etoiles}}) </p>
+                        </div>
+                    </div>
                     @foreach ($house->comments as $comment)
                         <div class="panel panel-default" style="margin: 0; border-radius: 0;">
                             <div class="panel-body">
@@ -135,7 +164,7 @@
                                         <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
                                         <input type="hidden" name="admin_id" value="0"> 
                                         <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12">
-                                            <label for="input_comment" class="label-home">Saisir un commentaire</label>
+                                            <label for="input_comment" class="label-home">Saisir votre avis</label>
                                             <input type="text" name="comment" placeholder="Saisir un commentaire" class="form-control" id="input_comment" style="border-radius: 0;">
                                         </div>
                                         <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 rating">
