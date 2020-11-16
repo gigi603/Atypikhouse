@@ -692,6 +692,14 @@ input[type=textarea] {
 	margin-top: 150px;
 }
 
+.note-title {
+	padding-left:10.5%;
+}
+
+.moyenne-title {
+	padding-left: 22%;
+}
+
 #etoilesNoteGenerale {
 	pointer-events: none;
 }

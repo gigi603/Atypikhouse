@@ -112,10 +112,10 @@
                     </div>
                 </div>
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="row">
-                        <h4 class="price">Notes et avis</h4>
+                    <div class="row" style="margin-bottom:1%;">
+                        <h4 class="price note-title">Notes et avis</h4>
                         <div class="col-md-3 text-center rating">
-                            <h4 class="price"><?php echo number_format($moyenneNote,1);?> ({{$nbTotalNote}})</h4>
+                            <h4 class="price moyenne-title"><?php echo number_format($moyenneNote,1);?> ({{$nbTotalNote}})</h4>
                             @for($i = 5; $i >= 1; $i--)
                                 @if($i == floor($moyenneNote))
                                     <input type="radio" checked id="etoile{{$i}}" disabled name="displaynote" value={{$i}} /><label for="etoile{{$i}}" title="Meh">{{$i}} etoile</label>
@@ -124,7 +124,7 @@
                                 @endif
                             @endfor
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-3 col-sm-12 col-xs-12 text-center">
                             <p> 5 ({{$nb5etoiles}}) </p>
                             <p> 4 ({{$nb4etoiles}}) </p>
                             <p> 3 ({{$nb3etoiles}}) </p>
