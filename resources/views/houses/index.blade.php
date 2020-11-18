@@ -54,7 +54,7 @@
                                                             <img class="star-size" data-src="{{ asset('img/star-empty.png') }}" alt="star-empty">
                                                         @endif
                                                     @endfor
-                                                    <span class="price" style="margin-top: 10px; padding-left: 5px;"><?php echo number_format($moyenneNote,1);?></span>
+                                                    <span class="price"><?php echo number_format($moyenneNote,1);?></span>
                                                     
                                                 </div>
                                             @endif

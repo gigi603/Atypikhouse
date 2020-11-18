@@ -714,6 +714,10 @@ input[type=textarea] {
 .rating:hover {
 }
 
+.rating span {
+	vertical-align: top;
+}
+
 .rating-comment:hover {
 	float: left;
 	width: 250px;
