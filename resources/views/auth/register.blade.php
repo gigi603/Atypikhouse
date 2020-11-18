@@ -106,7 +106,7 @@
                         </div>
                         <div class="form-check{{ $errors->has('conditions') ? ' has-error' : '' }} text-center">
                             <input type="checkbox" id="accept-cgu" class="form-check-input" name="conditions" required value="true" {{ !old('conditions') ?: 'checked' }}>
-                            <label class="form-check-label" for="accept-cgu">J'accepte les condition générales d'utilisation</label>
+                            <label class="form-check-label" for="accept-cgu">J'accepte les conditions générales d'utilisation</label>
                             @if ($errors->has('conditions'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('conditions') }}</strong>
@@ -134,7 +134,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <p>Nous vous enverrons des promotions commerciales, des offres spéciales, des idées de voyage et des informations réglementaires par e-mail à conditions de cocher la case autorisant notre équipe à vous envoyer des newsletters</p>
+                            <p>Nous vous enverrons des promotions commerciales, des offres spéciales, des idées de voyage et des informations réglementaires par e-mail à condition de cocher la case autorisant notre équipe à vous envoyer des newsletters</p>
                         </div>
                         <div class="form-group form-check">
                             
