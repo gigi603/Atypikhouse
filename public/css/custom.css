@@ -596,7 +596,9 @@ nav.navbar.navbar-default {
 
 /* Registration */
 
-
+.captcha-label {
+	visibility: hidden;
+}
 .notifications-panel {
 	min-height: 500px !important;
 }
@@ -703,12 +705,16 @@ input[type=textarea] {
 #etoilesNoteGenerale {
 	pointer-events: none;
 }
-
+.star-size {
+	width: 30px;
+	height: 30px;
+}
 .rating {
-	float:left;
-	width: 250px;
 }
 .rating:hover {
+}
+
+.rating-comment:hover {
 	float: left;
 	width: 250px;
 	color:#3f4b30;
@@ -731,8 +737,8 @@ input[type=textarea] {
 	  white-space:nowrap;
 	  cursor:pointer;
 	  font-size:150%;
-	  color:#ededeb;
-	  background-color: #3f4b30;
+	  color: lightgray;
+	  /*background-color: #3f4b30;*/
   }
 
   .rating:not(:checked) > label:before {

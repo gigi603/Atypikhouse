@@ -48,19 +48,19 @@ class Handler extends ExceptionHandler
     public function render($request, Exception $exception)
     {
         
-        // if($exception instanceof \Illuminate\Validation\ValidationException){
-        //     return redirect()->back();
-        // }
-        // if(method_exists($exception, "getStatusCode" ) && $exception->getStatusCode() == 404){
-        //     return response()->view('errors.404', [], 404);
-        // }
-        // if($exception instanceof \Illuminate\Auth\AuthenticationException){
-        //     $this->unauthenticated($request, $exception);
-        // }
+        if($exception instanceof \Illuminate\Validation\ValidationException){
+            return redirect()->back();
+        }
+        if(method_exists($exception, "getStatusCode" ) && $exception->getStatusCode() == 404){
+            return response()->view('errors.404', [], 404);
+        }
+        if($exception instanceof \Illuminate\Auth\AuthenticationException){
+            $this->unauthenticated($request, $exception);
+        }
 
-        // if($exception){   
-        //     return response()->view('errors.500', [], 500);
-        // }
+        if($exception){   
+            return response()->view('errors.500', [], 500);
+        }
         return parent::render($request, $exception);
     }
 

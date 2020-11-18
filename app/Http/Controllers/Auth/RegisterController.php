@@ -101,73 +101,68 @@ class RegisterController extends Controller
 
     protected function register(Request $request)
     {
-        try {
-           $input = $request->all();
+        $input = $request->all();
 
-            $validator = $this->validate($request, [
-                'nom' => 'required|max:30|regex:/^[\pL\s\-\']+$/u',
-                'prenom' => 'required|min:1|max:30|regex:/^[\pL\s\-\']+$/u',
-                'email' => 'required|unique:users|max:30|email',
-                'email_confirmation' => 'required|same:email|max:30',
-                'password' => 'required|min:8|max:30',
-                'password_confirmation' => 'required|same:password|max:30',
-                'conditions' => 'accepted',
-                'date_birth' => 'required|date_format:d/m/Y|before:'.Carbon::now()->subYears(18),
-                'newsletter' => 'boolean',
-                'g-recaptcha-response'=>'required|captcha'
-            ]);
+        $validator = $this->validate($request, [
+            'nom' => 'required|max:30|regex:/^[\pL\s\-\']+$/u',
+            'prenom' => 'required|min:1|max:30|regex:/^[\pL\s\-\']+$/u',
+            'email' => 'required|unique:users|max:30|email',
+            'email_confirmation' => 'required|same:email|max:30',
+            'password' => 'required|min:8|max:30',
+            'password_confirmation' => 'required|same:password|max:30',
+            'conditions' => 'accepted',
+            'date_birth' => 'required|date_format:d/m/Y|before:'.Carbon::now()->subYears(18),
+            'newsletter' => 'boolean',
+            'g-recaptcha-response'=>'required|captcha'
+        ]);
 
-            $data = $this->create($input)->toArray();
-    
-            $user = User::find($data['id']);
-            $user->email_token = $data['email_token'];
-            $user->nom = $data["nom"];
-            $user->prenom = $data["prenom"];
-            $data["date_birth"] = Carbon::parse($request->date_birth)->format('Y-d-m');
-            $user->date_birth = $data["date_birth"];
-            $user->email_token = str_random(25);
-            $user->newsletter = $request->input('newsletter') ? 1 : 0;
-            $user->save();
-            
-            //Après avoir inscrit l'utilisateur, Message que l'utilisateur va recevoir comme notification
-            $message = new message;
-            $message->content = "Bienvenue ".$user->prenom.", vous pouvez dès à présent créer des annonces en tant que propriétaire ou bien réserver des hébergements, notre équipe vous remercie.";
-            $message->user_id = $user->id;
-            $message->save();
+        $data = $this->create($input)->toArray();
 
-            
-            
-            //Envoyer une notification à l'admin
-            $post = new post;
-            $post->name = $user->nom.' '.$user->prenom;
-            $post->email = $user->email;
-            $post->content = "Un nouvel utilisateur qui se nomme ".$user->prenom." ".$user->nom." vient de s'inscrire sur le site";
-            $post->type = "utilisateur";
-            $post->house_id = 0;
-            $post->reservation_id = 0;
-            $post->user_id = $user->id;
-            $post->save();
-            
-            $admins = Admin::all();
-            foreach ($admins as $admin) {
-                $admin->notify(new ReplyToUser($post));
-            }
+        $user = User::find($data['id']);
+        $user->email_token = $data['email_token'];
+        $user->nom = $data["nom"];
+        $user->prenom = $data["prenom"];
+        $data["date_birth"] = Carbon::parse($request->date_birth)->format('Y-d-m');
+        $user->date_birth = $data["date_birth"];
+        $user->email_token = str_random(25);
+        $user->newsletter = $request->input('newsletter') ? 1 : 0;
+        $user->save();
+        
+        //Après avoir inscrit l'utilisateur, Message que l'utilisateur va recevoir comme notification
+        $message = new message;
+        $message->content = "Bienvenue ".$user->prenom.", vous pouvez dès à présent créer des annonces en tant que propriétaire ou bien réserver des hébergements, notre équipe vous remercie.";
+        $message->user_id = $user->id;
+        $message->save();
 
-            //Envoie de la notification à l'utilisateur 
-            $user = User::find($data['id']);
-            $user->notify(new ReplyToUser($post));
-
-            if($user->newsletter == 1) {
-                $newsletters = newsletter::all();
-                foreach($newsletters as $newsletter){
-                    Mail::to($user->email)->send(new SendNewsletter($newsletter));
-                }
-            }
-            return redirect(route('login'))->with('status', 'Merci pour votre inscription, vous pouvez dès à présent vous connecter sur le site.');
-        } catch (Exception $e) {
-            abort(404);
+        
+        
+        //Envoyer une notification à l'admin
+        $post = new post;
+        $post->name = $user->nom.' '.$user->prenom;
+        $post->email = $user->email;
+        $post->content = "Un nouvel utilisateur qui se nomme ".$user->prenom." ".$user->nom." vient de s'inscrire sur le site";
+        $post->type = "utilisateur";
+        $post->house_id = 0;
+        $post->reservation_id = 0;
+        $post->user_id = $user->id;
+        $post->save();
+        
+        $admins = Admin::all();
+        foreach ($admins as $admin) {
+            $admin->notify(new ReplyToUser($post));
         }
-        //
+
+        //Envoie de la notification à l'utilisateur 
+        $user = User::find($data['id']);
+        $user->notify(new ReplyToUser($post));
+
+        if($user->newsletter == 1) {
+            $newsletters = newsletter::all();
+            foreach($newsletters as $newsletter){
+                Mail::to($user->email)->send(new SendNewsletter($newsletter));
+            }
+        }
+        return redirect(route('login'))->with('status', 'Merci pour votre inscription, vous pouvez dès à présent vous connecter sur le site.');
     }
 
     public function sendmail(){

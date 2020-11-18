@@ -114,7 +114,7 @@
                             @endif
                         </div>
                         <div class="form-group{{ $errors->has('g-recaptcha-response') ? ' has-error' : '' }}">
-                            <label for="g-recaptcha-response" class="col-md-4 control-label">Captcha</label>
+                            <label for="g-recaptcha-response" class="col-md-4 control-label captcha-label">Captcha</label>
 
                             <div class="col-md-6">
                             {!! NoCaptcha::display() !!}
@@ -130,6 +130,7 @@
                                 <button type="submit" class="btn btn-primary btn-color">
                                     M'inscrire
                                 </button>
+                                <a href="{{route('login')}}" class="link-color">Vous avez un compte ?</a>
                             </div>
                         </div>
                         <div class="form-group">

@@ -15,7 +15,7 @@
                             <div class="form-group reservation-search">
                                 @include('search',['url'=>'search','link'=>'search'])
                             </div>
-                        </div> 
+                        </div>
                         @forelse($houses as $house)
                             @if($house->statut == "Validé")
                                 <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
@@ -26,6 +26,38 @@
                                                 <h3 class="card-title title-houses"><a href="{{action('UsersController@showHouse', $house->id)}}"> {{$house->title}} </a><br> {{$house->adresse}}<br></h3> 
                                             </div>
                                             <p class="price"> {{$house->price}}€ / nuit</p>
+                                            <?php $note = 0; $i = 0; $moyenneNote = 0; ?>
+                                            @foreach($house->comments as $comment)
+                                                @if($comment->note > 0)
+                                                    <?php $note = $note + $comment->note; $i++; ?>
+                                                @endif
+                                            @endforeach
+                                            <?php $moyenneNote = $note; ?>
+                                            @if($moyenneNote == 0)
+                                                <div class="rating">
+                                                    @for($i = 5; $i >= 1; $i--)
+                                                        @if($i == floor($moyenneNote))
+                                                            <img class="star-size" data-src="{{ asset('img/star.png') }}" alt="star">
+                                                        @else
+                                                            <img class="star-size" data-src="{{ asset('img/star-empty.png') }}" alt="star-empty">
+                                                        @endif
+                                                    @endfor
+                                                    <span class="price" style="margin-top: 10px; padding-left: 5px;">{{$moyenneNote}}</span>
+                                                </div>
+                                            @else
+                                                <?php $moyenneNote = $note / $i; ?>
+                                                <div class="rating">
+                                                    @for($i = 5; $i >= 1; $i--)
+                                                        @if($i >= floor($moyenneNote))
+                                                            <img class="star-size" data-src="{{ asset('img/star.png') }}" alt="star">
+                                                        @else
+                                                            <img class="star-size" data-src="{{ asset('img/star-empty.png') }}" alt="star-empty">
+                                                        @endif
+                                                    @endfor
+                                                    <span class="price" style="margin-top: 10px; padding-left: 5px;"><?php echo number_format($moyenneNote,1);?></span>
+                                                    
+                                                </div>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
