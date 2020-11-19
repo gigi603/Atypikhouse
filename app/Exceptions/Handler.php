@@ -7,6 +7,7 @@ use Auth;
 use Session;
 use Illuminate\Http\Request;
 use Illuminate\Auth\AuthenticationException;
+use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
 class Handler extends ExceptionHandler
@@ -21,6 +22,7 @@ class Handler extends ExceptionHandler
         \Illuminate\Auth\Access\AuthorizationException::class,
         \Symfony\Component\HttpKernel\Exception\HttpException::class,
         \Illuminate\Database\Eloquent\ModelNotFoundException::class,
+        \Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException::class,
         \Illuminate\Session\TokenMismatchException::class,
         \Illuminate\Validation\ValidationException::class,
     ];
@@ -56,29 +58,18 @@ class Handler extends ExceptionHandler
         }
         if($exception instanceof \Illuminate\Auth\AuthenticationException){
             $this->unauthenticated($request, $exception);
+            return parent::render($request, $exception);
         }
-
-        if($exception){   
+        // if($exception instanceof \Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException){
+        //     dd('r');
+        //     $this->unauthenticated($request, $exception);
+        // }
+        if($exception){
+            dd($exception);
             return response()->view('errors.500', [], 500);
         }
-        return parent::render($request, $exception);
+        //return parent::render($request, $exception);
     }
-
-    /**
-     * Convert an authentication exception into an unauthenticated response.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Illuminate\Auth\AuthenticationException  $exception
-     * @return \Illuminate\Http\Response
-     */
-    // protected function unauthenticated($request, AuthenticationException $exception)
-    // {
-    //     if ($request->expectsJson()) {
-    //         return response()->json(['error' => 'Unauthenticated.'], 401);
-    //     }
-
-    //     return redirect()->guest(route('login'));
-    // }
 
     protected function unauthenticated($request, AuthenticationException $exception)
     {
@@ -87,7 +78,7 @@ class Handler extends ExceptionHandler
         }
  
         $guard = array_get($exception->guards(),0);
- 
+
         //using switch statement to switch between the guards
         switch ($guard) {
             case 'admin':
@@ -97,6 +88,9 @@ class Handler extends ExceptionHandler
                 $login = 'login';
                 break;
         }
+        //$url = $request->session()->put('url.intended',url()->previous());
+        $url = session('url', url()->previous());
+        $request->session()->push('url', url()->previous());
         return redirect()->guest(route($login));
     }
 }

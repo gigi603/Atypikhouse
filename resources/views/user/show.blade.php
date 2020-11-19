@@ -71,11 +71,8 @@
                                 <input type="hidden" name="category_id" value="{{$house->category_id}}"/>
 
                                 </div>
-                                @if (Auth::check())
-                                    {!! Form::submit('Réserver', array('class' => 'btn btn-success btn_reserve')) !!}
-                                @else
-                                    <a href= "{{ route('login') }}" class="btn btn-success btn_reserve btn-color">Réserver</a>
-                                @endif 
+                                {!! Form::submit('Réserver', array('class' => 'btn btn-success btn_reserve')) !!}
+                                
                             </form>   
                         </div>
                     </div> 

@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\RedirectsUsers;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use App;
+use Session;
 
 class LoginController extends Controller
 {
@@ -36,7 +37,7 @@ class LoginController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function showLoginForm()
+    public function showLoginForm(Request $request)
     {
         return view('auth.login');
     }
@@ -117,12 +118,15 @@ class LoginController extends Controller
      */
     protected function sendLoginResponse(Request $request)
     {
+        $url = $request->session()->get('url');
+        $request->session()->forget('url');
+
         $request->session()->regenerate();
 
         $this->clearLoginAttempts($request);
-
+        
         return $this->authenticated($request, $this->guard()->user())
-                ?: redirect()->intended($this->redirectPath());
+                ?: redirect()->intended(last($url));
     }
 
     /**
@@ -197,9 +201,9 @@ class LoginController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('guest')->except('logout');
-    }
+    // public function __construct(Request $request)
+    // {
+    //     $this->middleware('guest')->except('logout');
+    // }
 
 }
