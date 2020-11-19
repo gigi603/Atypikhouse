@@ -49,7 +49,6 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
-        
         if($exception instanceof \Illuminate\Validation\ValidationException){
             return redirect()->back();
         }
@@ -60,9 +59,9 @@ class Handler extends ExceptionHandler
             $this->unauthenticated($request, $exception);
             return parent::render($request, $exception);
         }
-        // if($exception instanceof \Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException){
-        //     $this->unauthenticated($request, $exception);
-        // }
+        if($exception instanceof \Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException){
+            return parent::render($request, $exception);
+        }
         if($exception){
             return response()->view('errors.500', [], 500);
         }
@@ -86,7 +85,7 @@ class Handler extends ExceptionHandler
                 $login = 'login';
                 break;
         }
-        //$url = $request->session()->put('url.intended',url()->previous());
+        $url = "";
         $url = session('url', url()->previous());
         $request->session()->push('url', url()->previous());
         return redirect()->guest(route($login));
