@@ -519,6 +519,13 @@ nav.navbar.navbar-default {
 	padding:20px 20px;
 }
 
+.space-top span {
+	color: black;
+    line-height: 1.4;
+    letter-spacing: 1px;
+    margin: 0;
+}
+
 .breadcrumb {
     padding: 8px 15px;
     margin-bottom: 22px;

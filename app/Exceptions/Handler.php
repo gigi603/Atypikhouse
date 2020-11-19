@@ -61,14 +61,12 @@ class Handler extends ExceptionHandler
             return parent::render($request, $exception);
         }
         // if($exception instanceof \Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException){
-        //     dd('r');
         //     $this->unauthenticated($request, $exception);
         // }
         if($exception){
-            dd($exception);
             return response()->view('errors.500', [], 500);
         }
-        //return parent::render($request, $exception);
+        return parent::render($request, $exception);
     }
 
     protected function unauthenticated($request, AuthenticationException $exception)
