@@ -645,7 +645,6 @@ class AdminController extends Controller
     {
         $user = User::find($id);
         $house = house::find($id);
-        //dd($house);
         return view('admin.showannonces')->with('house', $house)
                                          ->with('user', $user);
     }
@@ -675,10 +674,11 @@ class AdminController extends Controller
 
     public function addComment(CommentRequest $request)
     {
-        // $this->validate($request, [
-        //     'house_id' => 'exists:houses,id|numeric',
-        //     'comment' => 'required|max:255'
-        // ]);
+        $house = house::find($request->house_id);
+        
+        //$user = User::find(Auth::user()->id);
+
+        //Créer le commentaire dans la bdd
         $comment = new Comment;
         $comment->comment = $request->comment;
         if($request->note == null){
@@ -691,6 +691,13 @@ class AdminController extends Controller
         $comment->house_id = $request->house_id;
         $comment->parent_id = $request->parent_id;
         $comment->save();
+
+        //Créer le message à envoyer à l'utilisateur
+        $message = new message;
+        $message->content = "Un administrateur a supprimé votre commentaire '".$comment->comment."' de l'annonce '".$house->title."'";
+        $message->user_id = $comment->user_id;
+        $message->save();
+
         Session::flash('success', 'Votre commentaire a bien été ajouté');
         return redirect()->back();
     }

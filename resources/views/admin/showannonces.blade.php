@@ -130,15 +130,15 @@
                                 <div class="col-sm-9">
                                     <p>{{ $comment->comment }}</p>
                                 </div>
-                                <div class="col-sm-3 text-right">
+                                <div class="text-right">
                                     <small><p>Posté par {{ $comment->user->prenom }} {{ $comment->user->nom }}</p></small>
                                     @if($comment->note != "0")
                                         <small><p>Note: {{$comment->note}}/5</p></small>
                                     @endif
                                     <button class="btn btn-primary passingId"
-                                         data-id={{$comment->id}} onclick="$('#parent_id').val($(this).attr('data-id')); $('#comment').modal('show');">Répondre à ce commentaire
+                                         data-id={{$comment->id}} onclick="$('#parent_id').val($(this).attr('data-id')); $('#comment').modal('show');">Répondre
                                     </button>
-                                    <a href="{{ route('admin.deleteCommentParent', $comment->id) }}" class="btn btn-danger delete-comment">Supprimer ce commentaire</a>
+                                    <a href="{{ route('admin.deleteCommentParent', $comment->id) }}" class="btn btn-danger delete-comment">Supprimer</a>
                                 </div>
                             </div>
                         @endif
@@ -149,16 +149,16 @@
                                         <p><b>Un administrateur a répondu à {{$comment->user->prenom}} {{$comment->user->nom}}</b></p>
                                         <p>{{ $child->comment }}</p>
                                     </div>
-                                    <div class="col-sm-3">
+                                    <div class="text-right">
                                         <button class="btn btn-primary"
                                             data-toggle="modal"
                                             data-target="#modifyComment" 
                                             data-id={{$child->id}} 
                                             onclick="$('#current_id').val($(this).attr('data-id')); 
                                                      $('#modifyComment').modal('show');
-                                                     $('.textarea_modify_comment').val('<?php echo (isset($child->comment))? $child->comment : '';?>')">Modifier ce commentaire
+                                                     $('.textarea_modify_comment').val('<?php echo (isset($child->comment))? $child->comment : '';?>')">Modifier
                                         </button>
-                                        <a href="{{ route('admin.deleteComment', $child->id) }}" class="btn btn-danger delete-comment">Supprimer ce commentaire</a>
+                                        <a href="{{ route('admin.deleteComment', $child->id) }}" class="btn btn-danger delete-comment">Supprimer</a>
                                     </div>
                                 </div>
                             @endforeach

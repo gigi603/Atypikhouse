@@ -390,6 +390,7 @@ class UsersController extends Controller
         }
         $comment->house_id = $request->house_id;
         $comment->save();
+    
         Session::flash('success', 'Votre commentaire a bien été ajouté');
         return redirect()->back();
     }

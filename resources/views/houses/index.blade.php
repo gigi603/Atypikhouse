@@ -35,20 +35,16 @@
                                             <?php $moyenneNote = $note; ?>
                                             @if($moyenneNote == 0)
                                                 <div class="rating">
-                                                    @for($i = 5; $i >= 1; $i--)
-                                                        @if($i == floor($moyenneNote))
-                                                            <img class="star-size" data-src="{{ asset('img/star.png') }}" alt="star">
-                                                        @else
-                                                            <img class="star-size" data-src="{{ asset('img/star-empty.png') }}" alt="star-empty">
-                                                        @endif
+                                                    @for($i = 1; $i <= 5; $i++)
+                                                        <img class="star-size" src="{{ asset('img/star-empty.png') }}" alt="star-empty">
                                                     @endfor
                                                     <span class="price" style="margin-top: 10px; padding-left: 5px;">{{$moyenneNote}}</span>
                                                 </div>
                                             @else
                                                 <?php $moyenneNote = $note / $i; ?>
                                                 <div class="rating">
-                                                    @for($i = 5; $i >= 1; $i--)
-                                                        @if($i >= floor($moyenneNote))
+                                                    @for($i = 1; $i <= 5; $i++)
+                                                        @if($i <= floor($moyenneNote))
                                                             <img class="star-size" data-src="{{ asset('img/star.png') }}" alt="star">
                                                         @else
                                                             <img class="star-size" data-src="{{ asset('img/star-empty.png') }}" alt="star-empty">
