@@ -76,7 +76,6 @@ class UsersController extends Controller
         //Données de l'annonce
         $reservation = reservation::all();
         $house = house::find($id);
-        $house::where('disponible', "oui")->first();
 
         //Notes de l'annonce
         $moyenneNote = 0;
@@ -126,8 +125,6 @@ class UsersController extends Controller
                                     ->with('nb1etoiles', $nb1etoiles)
                                     ->with('nbTotalNote', $nbTotalNote);
         } else {
-            $reservation = reservation::all();
-            $house = house::find($id);
             return view('user.show')->with('reservation', $reservation)
                                     ->with('house', $house)
                                     ->with('moyenneNote', $moyenneNote)

@@ -630,6 +630,8 @@ class AdminController extends Controller
     public function allannonces()
     {
         $houses = House::where('disponible', "oui")->orderBy('id', 'desc')->paginate(10);
+
+        
         return view('admin.allannonces')->with('houses', $houses);
     }
     //Vue de détails des annonces des utilisateurs
@@ -637,16 +639,75 @@ class AdminController extends Controller
     {
         $user = User::find($id);
         $houses = House::where('user_id', $id)->where('disponible', "oui")->paginate(10);
+        $moyenneNote = 0;
+        $nb5etoiles = 0;
+        $nb4etoiles = 0;
+        $nb3etoiles = 0;
+        $nb2etoiles = 0;
+        $nb1etoiles = 0;
+        $nbTotalNote = 0;
+        foreach($houses as $house){
+            foreach($house->comments as $comment){
+                if($comment->note > 0){
+                    $moyenneNote = $moyenneNote + $comment->note;
+                    $nbTotalNote++;
+                }
+            }
+            if($moyenneNote > 0 && $nbTotalNote > 0){
+                $moyenneNote = $moyenneNote / $nbTotalNote;
+            }
+        }
         return view('admin.listannonces')->with('houses', $houses)
-                                         ->with('user', $user);
+                                         ->with('user', $user)
+                                         ->with('moyenneNote', $moyenneNote);
     }
 
     public function showannonces($id)
     {
         $user = User::find($id);
         $house = house::find($id);
+
+        //Notes de l'annonce
+        $moyenneNote = 0;
+        $nb5etoiles = 0;
+        $nb4etoiles = 0;
+        $nb3etoiles = 0;
+        $nb2etoiles = 0;
+        $nb1etoiles = 0;
+        $nbTotalNote = 0;
+        foreach($house->comments as $comment){
+            if($comment->note > 0){
+                $moyenneNote = $moyenneNote + $comment->note;
+                $nbTotalNote++;
+            }
+            if($comment->note == 5){
+                $nb5etoiles = $nb5etoiles + 1;
+            }
+            if($comment->note == 4){
+                $nb4etoiles = $nb4etoiles + 1;
+            }
+            if($comment->note == 3){
+                $nb3etoiles = $nb3etoiles + 1;
+            }
+            if($comment->note == 2){
+                $nb2etoiles = $nb2etoiles + 1;
+            }
+            if($comment->note == 1){
+                $nb1etoiles = $nb1etoiles + 1;
+            }
+        }
+        if($moyenneNote > 0 && $nbTotalNote > 0){
+            $moyenneNote = $moyenneNote / $nbTotalNote;
+        }
         return view('admin.showannonces')->with('house', $house)
-                                         ->with('user', $user);
+                                         ->with('user', $user)
+                                         ->with('moyenneNote', $moyenneNote)
+                                        ->with('nb5etoiles', $nb5etoiles)
+                                        ->with('nb4etoiles', $nb4etoiles)
+                                        ->with('nb3etoiles', $nb3etoiles)
+                                        ->with('nb2etoiles', $nb2etoiles)
+                                        ->with('nb1etoiles', $nb1etoiles)
+                                        ->with('nbTotalNote', $nbTotalNote);
     }
 
     public function deleteAnnonce($id) {

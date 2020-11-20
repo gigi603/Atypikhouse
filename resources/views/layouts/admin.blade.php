@@ -216,6 +216,12 @@
  <script src="{{ asset('js/jquery.min.js') }}"></script>
  <script src="{{ asset('bootstrap-4.5.3-dist/js/bootstrap.min.js') }}"></script>
  <script src="{{ asset('js/admin.js') }}"></script>
+ <script src="{{ asset('js/jquery.unveil.js') }}"></script>
+  <script>
+      $(function() {
+          $("img").unveil();
+      });
+    </script>
  @yield('script')
 </body>
 </html>

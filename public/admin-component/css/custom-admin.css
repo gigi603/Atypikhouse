@@ -108,6 +108,11 @@
     width: 250px;
 }
 
+.star-size {
+    width: 30px;
+    height: 30px;
+}
+
 #input_comment {
     height: 43px;
 }
