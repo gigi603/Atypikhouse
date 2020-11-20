@@ -32,7 +32,7 @@
                 <h2 class="text-center" style="margin-top:5%;">Parcourez le monde et explorez des endroits inconnus</h2>
             </div>
             <div class="col-md-5">
-                <img data-src="{{ asset('img/voyage_demo.jpg')}}" class="voyage"/>
+                <img data-src="{{ asset('img/voyage_demo.jpg')}}" class="voyage" alt="voyage-atypikhouse"/>
             </div>
         </div>
     </div>
@@ -104,7 +104,7 @@
                 @endif
             </div>
             <div class="col-md-5">
-                <img data-src="{{ asset('img/proprietaire.jpg')}}" class="voyage"/>
+                <img data-src="{{ asset('img/proprietaire.jpg')}}" class="voyage" alt="proprietaire-atypikhouse"/>
             </div>
         </div>
     </div>
