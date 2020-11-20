@@ -2,6 +2,22 @@
 @section('title', 'Détail de l"annonce atypikhouse')
 @section('content')
 <div class="container">
+    @if (@count($errors) > 0)
+        <div class="alert alert-danger">
+            <a href="#" class="close" data-dismiss="alert">&times;</a>
+            <ul>
+                @foreach ($errors->all() as $error)
+                    {{ $error }}
+                @endforeach
+            </ul>
+        </div>
+    @endif
+    @if (Session::has('success'))
+        <div class="alert alert-success">
+            <a href="#" class="close" data-dismiss="alert">&times;</a>
+            {{ Session::get('success') }}
+        </div>
+    @endif
     <h1 class="h1-title" id="hebergements">Détails de l'annonce atypikhouse</h1>
     <div class="panel panel-default">
         <div class="panel-heading text-center">
@@ -137,7 +153,7 @@
                         <div class="panel panel-default" style="margin: 0; border-radius: 0;">                
                             @foreach ($house->comments as $comment)
                                 @if($comment->user_id != "0")
-                                    <div class="panel-body">
+                                    <div class="panel-body" style="border: solid 1px lightgray;">
                                         <div class="col-sm-9">
                                             <p>{{ $comment->comment }}</p>
                                         </div>
@@ -151,7 +167,7 @@
                                 @endif
                                 @if($comment->children->count() > 0)
                                     @foreach($comment->children as $child)
-                                        <div class="panel-body alert-success">
+                                        <div class="panel-body alert-success" style="border: solid 1px #3c763d;">
                                             <div class="col-sm-9">
                                                 <p><b>Un administrateur a répondu à {{$comment->user->prenom}} {{$comment->user->nom}}</b></p>
                                                 <p>{{ $child->comment }}</p>
@@ -187,22 +203,7 @@
                                                 </div>
                                             </form>
                                         </div>
-                                        @if (@count($errors) > 0)
-                                            <div class="alert alert-danger">
-                                                <a href="#" class="close" data-dismiss="alert">&times;</a>
-                                                <ul>
-                                                    @foreach ($errors->all() as $error)
-                                                        {{ $error }}
-                                                    @endforeach
-                                                </ul>
-                                            </div>
-                                        @endif
-                                        @if (Session::has('success'))
-                                            <div class="alert alert-success">
-                                                <a href="#" class="close" data-dismiss="alert">&times;</a>
-                                                {{ Session::get('success') }}
-                                            </div>
-                                        @endif
+                                    
                                     </div>
                                 </div>
                             @endif
