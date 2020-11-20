@@ -256,7 +256,7 @@ class AdminController extends Controller
             return redirect()->back()->with('success', "La catégorie ".$category->category." a bien été supprimé, un message a été envoyé à tous les propriétaires");
         }
     }
-    //Propriétés des catégories
+    //Equipements des catégories
     public function proprietescategory(Request $request, Category $categories, $id)
     {
         $category = category::find($id);
@@ -265,14 +265,14 @@ class AdminController extends Controller
                                        ->with('proprietes', $proprietes);
     }
 
-    //Ajout d'une propriété à une catégorie
+    //Ajout d'un equipement à une catégorie
     public function registerpropriete(ProprieteRequest $request)
     {
         $propriete = new propriete;
         $propriete->propriete = $request->propriete;
         $propriete->category_id = $request->category_id;
         if ($propriete->where('propriete', $propriete->propriete)->where('category_id', '=', $request->category_id)->count() >0) {
-            return redirect()->back()->with('danger', "La propriété existe déjà");
+            return redirect()->back()->with('danger', "L'équipement existe déjà");
         } else {
             $propriete->save();
 
@@ -281,17 +281,17 @@ class AdminController extends Controller
             
             //Message à envoyer aux utilisateurs
             $message = new message;
-            $message->content = "La propriété '".$propriete->propriete."' est désormais disponible sur les annonces ayant comme catégorie '".$propriete->category->category."'";
+            $message->content = "L'equipement '".$propriete->propriete."' est désormais disponible sur les annonces ayant comme catégorie '".$propriete->category->category."'";
             $message->user_id = 0;
             $message->save();
 
             //Envoie la notification à tous les utilisateurs
             \Notification::send($users, new ReplyToNews($message));
-            return redirect()->route('admin.proprietes_category', ['id' => $request->category_id])->with('success', "La propriété '".$propriete->propriete."' a bien été ajoutée, un message a été envoyé aux proprietaires ayant dans leur annonce la catégorie '".$propriete->category->category."'")->with('category_id', $request->category_id);
+            return redirect()->route('admin.proprietes_category', ['id' => $request->category_id])->with('success', "L'equipement '".$propriete->propriete."' a bien été ajoutée, un message a été envoyé aux proprietaires ayant dans leur annonce la catégorie '".$propriete->category->category."'")->with('category_id', $request->category_id);
         }
     }
 
-    // Supprimer la propriété d'une catégorie
+    // Supprimer l'equipement d'une catégorie
     public function deletepropriete(Request $request, $id)
     {
         $propriete = propriete::find($id);
@@ -307,13 +307,13 @@ class AdminController extends Controller
         $propriete->delete();
             
         $message = new message;
-        $message->content = "La propriété '".$propriete->propriete."' a été supprimée des annonces et de la catégorie associées";
+        $message->content = "L'equipement '".$propriete->propriete."' a été supprimée des annonces et de la catégorie associées";
         $message->user_id = 0;
         $message->save();
 
         //Envoie la notification à tous les utilisateurs
         \Notification::send($users, new ReplyToNews($message));
-        return redirect()->back()->with('danger', "Votre propriété ".$propriete->propriete." a bien été supprimée, un message a été envoyé aux propriétaires ayant dans leur annonce la catégorie ".$propriete->category->category);
+        return redirect()->back()->with('danger', "Votre équipement ".$propriete->propriete." a bien été supprimée, un message a été envoyé aux propriétaires ayant dans leur annonce la catégorie ".$propriete->category->category);
     }
 
     public function disableUser($id)

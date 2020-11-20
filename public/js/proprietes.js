@@ -13,7 +13,7 @@ $(document).ready(function(){
                     if(proprietes["proprietes"].length == 0){
                         $( "div" ).remove( ".proprietediv" );
                     } else {
-                        $("#propriete_category").append("<div class='form-group proprietediv'><label for='properties_id' class='col-md-4 control-label'>Propriétés: </label><div class='col-md-6 proprietelist'></label></div></div>");
+                        $("#propriete_category").append("<div class='form-group proprietediv'><label for='properties_id' class='col-md-4 control-label'>Equipements: </label><div class='col-md-6 proprietelist'></label></div></div>");
                         for(var i in proprietes["proprietes"]){     
                             var id = proprietes["proprietes"][i]["id"]        
                             var propriete = proprietes["proprietes"][i]["propriete"];

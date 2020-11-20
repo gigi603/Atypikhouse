@@ -55,7 +55,7 @@
                                 <input type="hidden" name="end_date_annonce" id="end_date_annonce" value="{{$house->end_date}}"/>
                                 <div class="form-group{{ $errors->has('nb_personnes') ? ' has-error' : '' }}">
                                     {!! Form::label('select_nb_personnes', 'Nombre de personnes : ', array('class' => 'formLabel control-label')) !!}
-                                    <select id="select_nb_personnes" name="nb_personnes" required class="form-control">
+                                    <select id="select_nb_personnes" name="nb_personnes" required class="form-control" style="margin-top:3.5%;">
                                         <option id="" value="" autofocus>Nombre de personnes</option>
                                         @for($i=1;$i<= $house->nb_personnes;$i++)
                                         <option value={{$i}} @if (old('nb_personnes') == $i) selected="selected" @endif>{{$i}}</option>
@@ -83,12 +83,13 @@
                             <div class="form-horizontal">
                                 <div class="form-group" style="min-height: 358px;">
                                     <h4 class="price">{{$house->price}}€ / la nuit</h4>
-                                    <p>Type de bien : {{$house->category->category}}</p>
-                                    <p>Disponible du <?php \Date::setLocale('fr'); $startdate = Date::parse($house->start_date)->format('l j F Y'); echo($startdate);?> au
+                                    <p>Type de bien : {{$house->category->category}}</p><br>
+                                    <h4 class="price">Disponibilité</h4>
+                                    <p><?php \Date::setLocale('fr'); $startdate = Date::parse($house->start_date)->format('l j F Y'); echo($startdate);?> au
                                     <?php \Date::setLocale('fr'); $enddate = Date::parse($house->end_date)->format('l j F Y'); echo($enddate);?> </p>
                                     <p>Pour {{$house->nb_personnes}} personne(s) maximum</p>
-                                    
-                                    <p> Adresse: {{$house->adresse}}</p>
+                                    <p> Adresse: {{$house->adresse}}</p><br>
+                                    <h4 class="price">Contact de l'annonceur</h4>
                                     <p> Téléphone de l'annonceur : {{$house->phone}}</p>
                                     <p> Adresse mail de l'annonceur : {{$house->user->email}}</p>
                                     <p>Annulation gratuite !</p><br>
@@ -108,7 +109,7 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <p>{{$house->description}}</p>
+                        <p style="margin-bottom:5%;">{{$house->description}}</p>
                         <h4 class="price note-title">Notes et avis</h4>
                         <div class="col-md-3 text-center">
                             <h4 class="price moyenne-title"><?php echo number_format($moyenneNote,1);?> ({{$nbTotalNote}})</h4>

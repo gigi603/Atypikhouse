@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title', "Créer une propriété")
+@section('title', "Ajouter un équipement")
 @section('content')
 <div id="proprietes">
     <form class="form-horizontal" method="POST" action="{{route('admin.register_propriete')}}" enctype="multipart/form-data">                      

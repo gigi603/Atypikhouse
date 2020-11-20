@@ -50,7 +50,7 @@
                         <tr>
                             <td>{{$category->category}}</td>
                             <td>
-                                <a href="{{ route('admin.proprietes_category', $category->id)}}" class="btn btn-warning"> propriétés</a>
+                                <a href="{{ route('admin.proprietes_category', $category->id)}}" class="btn btn-warning"> équipements</a>
                                 <a href="{{ route('admin.delete_category', $category->id) }}" class="delete btn btn-danger">Supprimer</a>
                             </td>
                         </tr>

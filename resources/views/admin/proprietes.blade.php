@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title', "Propriétés de la catégorie sélectionée")
+@section('title', "Equipements de la catégorie sélectionée")
 @section('content')
 <div class="card mb-3">
     @if ($success = Session::get('success'))
@@ -15,14 +15,14 @@
     <div class="card-header">
         <i class="fas fa-home"></i>
     <h1 style="font-size:20px;">
-        Propriétés de {{$category->category}}:</h1>
+        Equipements de {{$category->category}}:</h1>
     </div>
     <div class="card-body">
         <div class="container-fluid">
             <form class="form-group {{ $errors->has('propriete') ? ' has-error' : '' }}" method="POST" action="{{route('admin.register_propriete')}}" enctype="multipart/form-data">
                 <div class="row">
                     <div class="col-md-3">
-                        <label for="proprietes" class="control-label">Proprieté</label>
+                        <label for="proprietes" class="control-label">Equipements</label>
                     </div>
                     <div class="col-md-5">
                         <input id="proprietes" type="text" class="form-control" name="propriete" autofocus value="{{ old('propriete')}}">
@@ -34,7 +34,7 @@
                         <input type="hidden" class="form-control" name="category_id" required autofocus value="{{$category->id}}">
                     </div>
                     <div class="col-md-4 text-left">
-                        <button class="btn btn-primary btn-color">Ajouter une propriété</button>
+                        <button class="btn btn-primary btn-color">Ajouter un équipement</button>
                     </div>
                 </div>
             </form>
@@ -43,7 +43,7 @@
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
-                        <th>Propriétés de la catégorie</th>
+                        <th>Equipements de la catégorie</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
