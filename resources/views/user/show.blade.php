@@ -122,7 +122,7 @@
                                 @endfor
                             </div>
                         </div>
-                        <div class="col-md-3 col-sm-12 col-xs-12 text-center">
+                        <div class="col-md-3 col-sm-12 col-xs-12 text-center notes">
                             <span> 5 ({{$nb5etoiles}}) </span><br>
                             <span> 4 ({{$nb4etoiles}}) </span><br>
                             <span> 3 ({{$nb3etoiles}}) </span><br>

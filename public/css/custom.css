@@ -705,6 +705,10 @@ input[type=textarea] {
 	padding-left:10.5%;
 }
 
+.notes span {
+	color: black;
+}
+
 .moyenne-title {
 	padding-left: 22%;
 }
