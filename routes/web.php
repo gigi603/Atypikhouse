@@ -143,7 +143,7 @@ Route::prefix('admin')->group(function () {
     Route::get('/disable/user/{id}', 'AdminController@disableUser')->name('admin.disable_user');
     Route::get('/activate/user/{id}', 'AdminController@activateUser')->name('admin.activate_user');
 
-    //Propriétés de la catégorie
+    //Equipements de la catégorie
     Route::get('/proprietes/{id}', 'AdminController@proprietescategory')->name('admin.proprietes_category');
     Route::post('/register/propriete', 'AdminController@registerpropriete')->name('admin.register_propriete');
     Route::get('/delete/propriete/{id}', 'AdminController@deletepropriete')->name('admin.delete_propriete');
