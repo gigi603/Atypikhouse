@@ -469,7 +469,7 @@ class AdminController extends Controller
             $end_date_date_format = Carbon::parse($end_date)->format('Y-m-d');
             $house->end_date = $end_date_date_format;
             $house->description = $request->description;
-            $house->statut = "En attente de validation";
+            $house->statut = $request->statut;
             $house->save();
         }
         $valueproprietes = valuecatpropriete::where('house_id','=', $id)->get();

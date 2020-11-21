@@ -211,7 +211,7 @@ class UsersController extends Controller
             $house->end_date = $end_date_date_format;
 
             $house->description = $request->description;
-            $house->statut = "En attente de validation";
+            $house->statut = $request->statut;
             $house->save();
         }
         $valueproprietes = valuecatpropriete::where('house_id','=', $id)->get();
