@@ -24,7 +24,7 @@
                             <th>Titre</th>
                             <th>Date de début</th>
                             <th>Date de fin</th>
-                            <th>Annonceur</th>
+                            <th>Client</th>
                             <th>Actions</th>
                         </tr>
                     </thead>

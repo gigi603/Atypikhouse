@@ -69,7 +69,13 @@
                                 <td><?php \Date::setLocale('fr'); $startdate = Date::parse($house->start_date)->format('l j F Y'); echo($startdate);?></td>
                                 <td><?php \Date::setLocale('fr'); $enddate = Date::parse($house->end_date)->format('l j F Y'); echo($enddate);?></td>
                                 <td>{{$house->user["prenom"]}} {{$house->user["nom"]}}</td>
-                                <td>{{$house->statut}}</td>
+                                <td>
+                                    @if($house->statut == "Validé")      
+                                        <p style="color:green">{{$house->statut}}</p><br>
+                                    @else 
+                                        <p style="color:red">{{$house->statut}}</p><br>
+                                    @endif
+                                </td>
                                 <td><a href="{{action('AdminController@showannonces', $house->id)}}" class="btn btn-primary btn-tableau">Voir</a><br/>
                                 <a href="{{action('AdminController@disableHouse', $house->id)}}" class="btn btn-danger delete-annonce">Supprimer</a></td>
                             </tr>

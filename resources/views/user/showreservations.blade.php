@@ -22,7 +22,8 @@
                                 <p>{{$valuecatpropriete->propriete->propriete}}</p> 
                             @endforeach
                             <p><i class="fas fa-calendar"></i> Du: <?php \Date::setLocale('fr'); $startdate = Date::parse($reservation->start_date)->format('l j F Y'); echo($startdate);?> </p>
-                                <p><i class="fas fa-calendar"></i> au:  <?php \Date::setLocale('fr'); $enddate = Date::parse($reservation->end_date)->format('l j F Y'); echo($enddate);?></p>
+                            <p><i class="fas fa-calendar"></i> au:  <?php \Date::setLocale('fr'); $enddate = Date::parse($reservation->end_date)->format('l j F Y'); echo($enddate);?></p>
+                            <p class="card-text">Nombre de personnes: {{$reservation->nb_personnes}}</p>
                             <p class="card-text">{{$reservation->house->description}}</p>
                             <p>Annulation gratuite !</p>
                             <p> Adresse: {{$reservation->house->adresse}}</p>

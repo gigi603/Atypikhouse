@@ -32,6 +32,8 @@ use Image;
 use View;
 use GooglePlaces;
 use App\Http\Middleware\XSS;
+use App\Mail\SendAnnonceConfirmation;
+use Illuminate\Support\Facades\Mail;
 
 class HousesController extends Controller
 {
@@ -501,6 +503,9 @@ class HousesController extends Controller
 
         $user = User::find(Auth::user()->id);
         $user->notify(new ReplyToAnnonce($post));
+
+        //envoi du mail de confirmation de la reservation
+        Mail::to(Auth::user()->email)->send(new SendAnnonceConfirmation($house));
 
         $request->session()->forget('houseAdresse');
         $request->session()->forget('houseTelephone');

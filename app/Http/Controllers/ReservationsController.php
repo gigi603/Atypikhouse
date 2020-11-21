@@ -26,6 +26,8 @@ use Input;
 use App\Notifications\ReplyToReservation;
 use Stripe\Error\Card;
 use Cartalyst\Stripe\Stripe;
+use App\Mail\SendReservationConfirmation;
+use Illuminate\Support\Facades\Mail;
 /**
  * Controller qui gère le système de reservation
  */
@@ -149,7 +151,6 @@ class ReservationsController extends Controller
         
 
         if($charge['status'] == 'succeeded') {
-            Session::flash('success', 'Vous avez bien payé');
             $reservation = new Reservation;
             $reservation->start_date = $startdate;
             $reservation->end_date = $enddate;
@@ -163,6 +164,8 @@ class ReservationsController extends Controller
             $reservation->reserved = true;
             $reservation->save();
             
+            //envoi du mail de confirmation de la reservation
+            Mail::to($reservation->user->email)->send(new SendReservationConfirmation($reservation));
 
             //Envoyer une notification à l'admin
             $post = new post;

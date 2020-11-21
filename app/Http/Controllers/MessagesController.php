@@ -12,7 +12,6 @@ class MessagesController extends Controller
 {
     public function messages() {
         $messages = message::where('user_id', "=", Auth::user()->id)
-                           ->orWhere('user_id', '=', 0)
                            ->orderBy('id', 'desc')
                            ->paginate(10);
         $posts = post::where('user_id', '=', Auth::user()->id)->get();

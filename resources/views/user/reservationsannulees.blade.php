@@ -2,6 +2,12 @@
 @section('title', 'Mes réservations annulées atypikhouse')
 @section('content')
 <div class="container-fluid block-container block-size" role="reservations-annulees">
+    @if (Session::has('success'))
+        <div class="alert alert-success">
+            <a href="#" class="close" data-dismiss="alert">&times;</a>
+            {{ Session::get('success') }}
+        </div>
+    @endif
     <h1 class="h1-title" id="hebergements">Mes réservations annulées atypikhouse</h1>
     <div class="row">
         @foreach ($reservations as $reservation)

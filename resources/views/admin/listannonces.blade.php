@@ -14,9 +14,11 @@
                 <thead>
                 <tr>
                     <th>Photo</th>
+                    <th>Type d'annonce</th>
                     <th>Titre</th>
                     <th>Date de début</th>
                     <th>Date de fin</th>
+                    <th>Statut</th>
                     <th> Actions</th>
                 </tr>
                 </thead>
@@ -24,6 +26,7 @@
                 <tbody>
                     <tr>
                         <td style="width:250px"><img data-src="{{ asset('img/houses/'.$house->photo) }}" class="photo-size"/></td>
+                        <td>{{$house->category->category}}</td>
                         <td>
                             <p><b>{{$house->title}}</b></p>
                             <p>Note générale</p>
@@ -58,6 +61,13 @@
                         </td>
                         <td><?php \Date::setLocale('fr'); $startdate = Date::parse($house->start_date)->format('l j F Y'); echo($startdate);?></td>
                         <td><?php \Date::setLocale('fr'); $enddate = Date::parse($house->end_date)->format('l j F Y'); echo($enddate);?></td>
+                        <td>
+                            @if($house->statut == "Validé")      
+                                <p style="color:green">{{$house->statut}}</p><br>
+                            @else 
+                                <p style="color:red">{{$house->statut}}</p><br>
+                            @endif
+                        </td>
                         <td><a href="{{action('AdminController@showannonces', $house->id)}}" class="btn btn-primary">Voir</a></td>
                     </tr>
                 </tbody>

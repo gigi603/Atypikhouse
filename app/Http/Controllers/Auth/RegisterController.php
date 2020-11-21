@@ -162,7 +162,11 @@ class RegisterController extends Controller
                 Mail::to($user->email)->send(new SendNewsletter($newsletter));
             }
         }
-        return redirect(route('login'))->with('status', 'Merci pour votre inscription, vous pouvez dès à présent vous connecter sur le site.');
+
+        //envoi du mail de confirmation d'inscription
+        Mail::to($user->email)->send(new EmailVerification($user));
+
+        return redirect(route('login'))->with('status', 'Merci pour votre inscription, un email de confirmation vous a été envoyé, vous pouvez dès à présent vous connecter sur le site.');
     }
 
     public function sendmail(){

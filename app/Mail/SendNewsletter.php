@@ -32,8 +32,8 @@ class SendNewsletter extends Mailable
     public function build()
     {
         $newsletter = $this->newsletter;
-        // dd('coco', $newsletter->price);
-        return $this->from('gilbert.trinidad1@gmail.com')
+        
+        return $this->from('notre.equipe.atypikhouse@gmail.com')
             ->subject('Nouvelles promotion sur Atypikhouse')
             ->view('email.newsletters.index')
             ->with([

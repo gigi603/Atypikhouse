@@ -219,14 +219,16 @@ class AdminController extends Controller
             
             $category->save();
             
-            //Message à envoyer aux utilisateurs
-            $message = new message;
-            $message->content = "Lorsque vous créez une annonce vous pouvez dorénavent selectionner la catégorie '".$category->category."' parmis les types d'hébergements";
-            $message->user_id = 0;
-            $message->save();
+            foreach($users as $user){
+                //Message à envoyer aux utilisateurs
+                $message = new message;
+                $message->content = "Lorsque vous créez une annonce vous pouvez dorénavent selectionner la catégorie '".$category->category."' parmis les types d'hébergements";
+                $message->user_id = $user->id;
+                $message->save();
 
-            //Envoie la notification à tous les utilisateurs
-            \Notification::send($users, new ReplyToNews($message));
+                //Envoie la notification à tous les utilisateurs
+                \Notification::send($user, new ReplyToNews($message));
+            }
             
             return redirect()->route('admin.categories')->with('success', "La catégorie a bien été ajoutée, un message a été envoyé à tous les propriétaires")->with('categories', $categories);
         }
@@ -244,14 +246,16 @@ class AdminController extends Controller
             $category->statut = 0;
             $category->save();
 
-            //Message à envoyer aux utilisateurs
-            $message = new message;
-            $message->content = "L'administrateur a supprimé la catégorie '".$category->category."', lorsque vous créérez une nouvelle annonce la catégorie '".$category->category."' ne sera plus disponible";
-            $message->user_id = 0;
-            $message->save();
+            foreach($users as $user){
+                //Message à envoyer aux utilisateurs
+                $message = new message;
+                $message->content = "L'administrateur a supprimé la catégorie '".$category->category."', lorsque vous créérez une nouvelle annonce la catégorie '".$category->category."' ne sera plus disponible";
+                $message->user_id = $user->id;
+                $message->save();
 
-            //Envoie la notification à tous les utilisateurs
-            \Notification::send($users, new ReplyToNews($message));
+                //Envoie la notification à tous les utilisateurs
+                \Notification::send($user, new ReplyToNews($message));
+            }
 
             return redirect()->back()->with('success', "La catégorie ".$category->category." a bien été supprimé, un message a été envoyé à tous les propriétaires");
         }
@@ -271,22 +275,29 @@ class AdminController extends Controller
         $propriete = new propriete;
         $propriete->propriete = $request->propriete;
         $propriete->category_id = $request->category_id;
-        if ($propriete->where('propriete', $propriete->propriete)->where('category_id', '=', $request->category_id)->count() >0) {
+        if ($propriete->where('propriete', $propriete->propriete)->where('category_id', '=', $request->category_id)->count() > 0) {
             return redirect()->back()->with('danger', "L'équipement existe déjà");
         } else {
             $propriete->save();
 
             $houses = house::where('category_id', '=', $request->category_id)->get();
+            // $users = DB::table('users')->join('houses', 'houses.user_id', '=', 'users.id')
+            //                            ->join('categories', 'categories.id', '=', 'houses.category_id')
+            //                            ->where('categories.id','=', $request->category_id)
+            //                            ->get();
             $users = user::all();
             
-            //Message à envoyer aux utilisateurs
-            $message = new message;
-            $message->content = "L'equipement '".$propriete->propriete."' est désormais disponible sur les annonces ayant comme catégorie '".$propriete->category->category."'";
-            $message->user_id = 0;
-            $message->save();
+            foreach($users as $user){
+                //Message à envoyer aux utilisateurs qui ont une annonce ayant la catégorie liée
+                $message = new message;
+                $message->content = "L'equipement '".$propriete->propriete."' est désormais disponible sur les annonces ayant comme catégorie '".$propriete->category->category."'";
+                $message->user_id = $user->id;
+                $message->save();
 
-            //Envoie la notification à tous les utilisateurs
-            \Notification::send($users, new ReplyToNews($message));
+                //Envoie la notification à tous les utilisateurs qui ont une annonce ayant la catégorie liée
+                
+                \Notification::send($user, new ReplyToNews($message));
+            }
             return redirect()->route('admin.proprietes_category', ['id' => $request->category_id])->with('success', "L'equipement '".$propriete->propriete."' a bien été ajoutée, un message a été envoyé aux proprietaires ayant dans leur annonce la catégorie '".$propriete->category->category."'")->with('category_id', $request->category_id);
         }
     }
@@ -303,17 +314,24 @@ class AdminController extends Controller
         }
         
         $houses = house::where('category_id', '=', $propriete->category_id)->get();
+        // $users = DB::table('users')->join('houses', 'houses.user_id', '=', 'users.id')
+        //                                ->join('categories', 'categories.id', '=', 'houses.category_id')
+        //                                ->where('categories.id','=', $propriete->category_id)
+        //                                ->get();
         $users = user::all();
-        $propriete->delete();
-            
-        $message = new message;
-        $message->content = "L'equipement '".$propriete->propriete."' a été supprimée des annonces et de la catégorie associées";
-        $message->user_id = 0;
-        $message->save();
 
-        //Envoie la notification à tous les utilisateurs
-        \Notification::send($users, new ReplyToNews($message));
-        return redirect()->back()->with('danger', "Votre équipement ".$propriete->propriete." a bien été supprimée, un message a été envoyé aux propriétaires ayant dans leur annonce la catégorie ".$propriete->category->category);
+        foreach($users as $user){
+            $message = new message;
+            $message->content = "L'equipement '".$propriete->propriete."' a été supprimée des annonces et n'est plus disponible lors de la création d'une annonce avec pour catégorie d'annonce '".$propriete->category->category."'";
+            $message->user_id = $user->id;
+            $message->save();
+
+            //Envoie la notification à tous les utilisateurs
+            \Notification::send($user, new ReplyToNews($message));
+        }
+
+        $propriete->delete();
+        return redirect()->back()->with('success', "Votre équipement ".$propriete->propriete." a bien été supprimée, un message a été envoyé aux propriétaires ayant dans leur annonce la catégorie ".$propriete->category->category);
     }
 
     public function disableUser($id)

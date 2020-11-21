@@ -117,6 +117,14 @@
                                         <p>{{$valuecatpropriete->propriete->propriete}}</p> 
                                     @endif                                 
                                 @endforeach
+                                <br>
+                                <h3 class="price">Statut</h3> 
+                                @if($house->statut == "Validé")      
+                                    <p style="color:green">{{$house->statut}}</p><br>
+                                @else 
+                                    <p style="color:red">{{$house->statut}}</p><br>
+                                @endif
+                                <h3 class="price">Actions</h3>
                                 <a href="{{action('AdminController@editHouse', $house->id)}}" class="btn btn-primary">Modifier</a>
                                 <a href="{{action('AdminController@valideHouse', $house->id)}}" class="btn btn-primary">Valider l'annonce</a>
                                 <a href="{{action('AdminController@refuseHouse', $house->id)}}" class="btn btn-danger">Refuser l'annonce</a>

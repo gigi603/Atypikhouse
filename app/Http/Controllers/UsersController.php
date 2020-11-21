@@ -23,6 +23,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Mail\SendNewsletter;
+use App\Mail\SendReservationAnnulationConfirmation;
 use Illuminate\Support\Facades\Mail;
 use Image;
 use Carbon\Carbon;
@@ -52,7 +53,7 @@ class UsersController extends Controller
                 $user->save();
                 $newsletters = newsletter::all();
                 foreach($newsletters as $newsletter){
-                    Mail::to('notre.equipe.atypikhouse@gmail.com')->send(new SendNewsletter($newsletter));
+                    Mail::to($user->email)->send(new SendNewsletter($newsletter));
                 }
                 return redirect()->back();
             }
@@ -289,7 +290,8 @@ class UsersController extends Controller
     {
         $users = User::where('id', $id)->get();
         $houses = House::where('user_id', $id)->get();
-        $reservation = reservation::find($id);
+        $reservation = reservation::with('house','user','category','proprietes', 'valuecatproprietes')->where('id','=',$id)->get();
+        dd($reservation);
         return view('user.showreservations')->with('houses', $houses)
                                             ->with('users', $users)
                                             ->with('reservation', $reservation);
@@ -319,7 +321,10 @@ class UsersController extends Controller
         $user = User::find(Auth::user()->id);
         $user->notify(new ReplyToReservation($message));
 
-        return redirect()->back()->with('success', "Votre demande a bien été pris en compte, votre réservation a bien été annulée");
+        //envoi du mail d'annulation de la reservation
+        Mail::to($reservation->user->email)->send(new SendReservationAnnulationConfirmation($reservation));
+
+        return redirect()->back()->with('success', "Votre demande a bien été pris en compte, votre réservation a bien été annulée, un email de confirmation vous a été envoyé");
     }
 
     //Vue global des reservations annulées
