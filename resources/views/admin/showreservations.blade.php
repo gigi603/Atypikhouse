@@ -36,6 +36,7 @@
                                         <p> Adresse: {{$reservation->house->adresse}}</p>
                                         <p>Téléphone de l'annonceur : {{$reservation->house->phone}}</p>
                                         <p>Adresse mail de l'annonceur : {{$reservation->user->email}}</p>
+                                        <p>Client ayant réservé : {{$reservation->user->prenom}} {{$reservation->user->nom}}</p>
                                     </div>
                                 </div>
                             </div>

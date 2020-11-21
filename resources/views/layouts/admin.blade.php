@@ -172,7 +172,7 @@
                               <?php $k++;?>
                             @endif
                           @endforeach
-                      {{$k}} nouvelle(s) annonce(s)</div>
+                      {{$k}} nouvelle(s) sur les annonce(s)</div>
                     </div>
                     <a class="card-footer text-white clearfix small z-1" href="#">
                       <span class="float-left">View Details</span>

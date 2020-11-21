@@ -33,6 +33,7 @@ use View;
 use GooglePlaces;
 use App\Http\Middleware\XSS;
 use App\Mail\SendAnnonceConfirmation;
+use App\Mail\SendAnnonceSuppression;
 use Illuminate\Support\Facades\Mail;
 
 class HousesController extends Controller
@@ -481,11 +482,8 @@ class HousesController extends Controller
                 $valuecatProprietesHouse->save();
             }
         }
-        $message = new message;
-        $message->content = "Vous avez bien créé l'annonce ".$house->title.", notre équipe va vérifier le contenu et vous enverra un message, une fois votre annonce validée par notre équipe, elle sera consultable sur le site dans nos hébergements";
-        $message->user_id = $house->user_id;
-        $message->save();
-
+        
+        //Message à envoyer à l'admin
         $post = new post;
         $post->name = Auth::user()->nom.' '.Auth::user()->prenom;
         $post->email = Auth::user()->email;
@@ -496,6 +494,7 @@ class HousesController extends Controller
         $post->user_id = Auth::user()->id;
         $post->save();
 
+        //Notifications à envoyer à l'admin
         $admins = Admin::all();
         foreach ($admins as $admin) {
             $admin->notify(new ReplyToAnnonce($post));
@@ -504,8 +503,14 @@ class HousesController extends Controller
         $user = User::find(Auth::user()->id);
         $user->notify(new ReplyToAnnonce($post));
 
+        //Notification à envoyer à l'utilisateur
+        $message = new message;
+        $message->content = "Vous avez bien créé l'annonce ".$house->title.", notre équipe va vérifier le contenu et vous enverra un message, une fois votre annonce validée par notre équipe, elle sera consultable sur le site dans nos hébergements";
+        $message->user_id = $house->user_id;
+        $message->save();
+
         //envoi du mail de confirmation de la reservation
-        Mail::to(Auth::user()->email)->send(new SendAnnonceConfirmation($house));
+        Mail::to(Auth::user()->email)->send(new SendAnnonceSuppression($house));
 
         $request->session()->forget('houseAdresse');
         $request->session()->forget('houseTelephone');

@@ -11,6 +11,7 @@ use App\Propriete;
 use App\Valuecatpropriete;
 use App\Ville;
 use App\Post;
+use App\Admin;
 use App\Message;
 use App\Newsletter;
 use Illuminate\Http\Request;
@@ -18,12 +19,14 @@ use App\Http\Requests\EditUserRequest;
 use App\Http\Requests\EditHouseRequest;
 use App\Http\Requests\ReservationRequest;
 use App\Notifications\ReplyToReservation;
+use App\Notifications\ReplyToAnnonce;
 use App\Http\Requests\CommentRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Mail\SendNewsletter;
 use App\Mail\SendReservationAnnulationConfirmation;
+use App\Mail\SendAnnonceSuppression;
 use Illuminate\Support\Facades\Mail;
 use Image;
 use Carbon\Carbon;
@@ -243,6 +246,7 @@ class UsersController extends Controller
     {
         $user = User::find(Auth::user()->id);
         $house = house::find($id);
+        $admins = admin::all();
 
         if($house->statut == "En attente de validation"){
             $post = new post;
@@ -255,7 +259,9 @@ class UsersController extends Controller
             $post->user_id = $user->id;
 
             $post->save();
+            Mail::to($house->user->email)->send(new SendAnnonceSuppression($house));
             $house->delete();
+
             return redirect()->back()->with('success', "Votre annonce a bien été supprimée");
         } else {
             $post = new post;
@@ -267,6 +273,11 @@ class UsersController extends Controller
             $post->reservation_id = 0;
             $post->user_id = $user->id;
             $post->save();
+
+            foreach ($admins as $admin) {
+                $admin->notify(new ReplyToAnnonce($post));
+            }
+
             return redirect()->back()->with('success', "Votre demande a bien été pris en compte, étant donné que votre annonce est en ligne, un message sera envoyé à l'administrateur qui supprimera votre annonce. N'oubliez pas vérifier vos notifications");
         }
     }
