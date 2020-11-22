@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.error')
 @section('title', "Oups une erreur est survenue")
 @section('meta_description', "Vous demandez l'accès à une page qui ne figure pas sur notre application")
 @section('content')
