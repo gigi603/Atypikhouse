@@ -1,4 +1,3 @@
-{!! Form::open(['method'=>'GET','url'=>$url,'class'=>'form-horizontal','role'=>'search'])  !!}
         <div class="form-group{{ $errors->has('category_id') ? ' has-error' : '' }}">
                 <label class="label-home" for="select_category_home">Type d'annonces </label>
                 <select id="select_category_home" name="category_id" required class="form-control field-home">
@@ -56,9 +55,7 @@
                         </span>
                 @endif
         </div>
-        {!! Form::submit('Rechercher',array('class'=>'btn btn-principal')) !!}
-                
-{!! Form::close() !!}
+        <button class="btn btn-principal">Rechercher</button>
 @section('script')
         <script src="{{ asset('js/calendarHome.js') }}"></script>
 @endsection

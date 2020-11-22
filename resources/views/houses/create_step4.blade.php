@@ -14,7 +14,7 @@
                         <p>4. Quel est le montant de votre bien ?</p>
                             
                         <div class="form-group{{ $errors->has('price') ? ' has-error' : '' }}">
-                            <label for="name" class="col-md-4 control-label">Prix la nuit</label>
+                            <label for="name" class="col-md-4 control-label">Prix de la nuit par personne</label>
 
                             <div class="col-md-6">
                                 <input id="name" required type="text" class="form-control" name="price" 

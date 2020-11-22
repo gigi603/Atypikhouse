@@ -34,7 +34,7 @@ Route::get('/cgv', 'HomeController@cgv')->name('cgv');
 Route::get('/sendmail', 'Auth\RegisterController@sendmail')->name('user.sendmail');
 
 // admin route for our multi-auth system
-Route::get('/search', 'QueryController@index');
+Route::get('/search', 'HousesController@search');
 
 //Gestion de l'admin
 Route::prefix('admin')->group(function () {

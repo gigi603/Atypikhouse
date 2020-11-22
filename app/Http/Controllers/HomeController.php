@@ -25,7 +25,7 @@ class HomeController extends Controller
 {
     public function index(Request $request)
     {
-        $categories = DB::table('categories')->get();
+        $categories = DB::table('categories')->where('statut', '=', 1)->get();
         return view('home')->with('categories', $categories);
     }
 

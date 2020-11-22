@@ -11,10 +11,10 @@
                     <form class="form-horizontal" method="POST" action="{{route('house.postcreate_step2')}}" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         <p>2. Numéro de téléphone à contacter pour l'annonce: (format de pays acceptés: france, belgique, italie, allemagne et l'espagne)</p>
-                        <div class="form-group{{ $errors->has('phone') ? ' has-error' : '' }}">
+                        <div class="input-group{{ $errors->has('phone') ? ' has-error' : '' }}">
                             <label for="telephone" class="col-md-4 control-label">Téléphone</label>
                             <div class="col-md-6">
-                                <input type="text" required class="form-control" name="phone"id="telephone" placeholder="Saisir un numéro de téléphone sans espaces" value="{{
+                                <input type="tel" required class="form-control" name="phone"id="telephone" placeholder="Saisir un numéro de téléphone sans espaces" value="{{
                                     old('phone') ? : (isset($phone) ? $phone : old('phone'))
                                 }}">
                                 @if ($errors->has('phone'))
@@ -45,5 +45,11 @@
 @section('script')
     <script src="{{ asset('js/jquery.js') }}"></script>
     <script src="{{ asset('js/create_house.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js" integrity="sha512-DNeDhsl+FWnx5B1EQzsayHMyP6Xl/Mg+vcnFPXGNjUZrW28hQaa1+A4qL9M+AiOMmkAhKAWYHh1a+t6qxthzUw==" crossorigin="anonymous"></script>
+    {{-- <script>
+        $("input").intlTelInput({
+            utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/8.4.6/js/utils.js"
+        });
+    </script> --}}
     <!--<script src="{{ asset('js/proprietes.js') }}"></script>-->
 @endsection

@@ -15,6 +15,7 @@ use App\Post;
 use App\Admin;
 use App\Notifications\ReplyToAnnonce;
 use Illuminate\Http\Request;
+use App\Http\Requests\SearchRequest;
 use App\Http\Requests\CreateHouseStep1Request;
 use App\Http\Requests\CreateHouseStep2Request;
 use App\Http\Requests\CreateHouseStep3Request;
@@ -36,6 +37,7 @@ use App\Mail\SendAnnonceConfirmation;
 use App\Mail\SendAnnonceSuppression;
 use Illuminate\Support\Facades\Mail;
 
+
 class HousesController extends Controller
 {
     /**
@@ -46,7 +48,7 @@ class HousesController extends Controller
     public function index(House $house)
     {
         $today = Date::today()->format('Y-m-d');
-        $categories = category::all();
+        $categories = category::where('statut', '=', 1)->get();
         $houses = house::with('valuecatproprietes', 'proprietes', 'category', 'comments')
         ->where('end_date', '>=', $today)
         ->where('statut', 'Validé')
@@ -209,6 +211,83 @@ class HousesController extends Controller
             ->with('moyenneNote', $moyenneNote);
         }
     }
+
+    /**
+     * Affiche les locations en fonction de ce qui est selectionné dans la barre de recherche
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function search(SearchRequest $request)
+    {
+        $categories = DB::table('categories')->where('statut','=', 1)->get();
+        $datas = $request->flashOnly([ 'category_id', 'start_date', 'end_date', 'nb_personnes']);
+        
+        $today = Date::today();
+        $start_date = Date::createFromFormat('!d/m/Y', $request->start_date)->format('Y-m-d');
+        $end_date = Date::createFromFormat('!d/m/Y', $request->end_date)->format('Y-m-d');
+        if($request->category_id == 1){
+            $houses = house::with('valuecatproprietes', 'proprietes', 'category')
+            ->where('statut', 'Validé')
+            ->where('end_date', '>', $today)
+            ->where('end_date', '>=', $end_date)
+            ->orWhere('nb_personnes', '>=', $request->nb_personnes)
+            ->where('disponible', '=', "oui")
+            ->orderBy('id','DESC')
+            ->paginate(6);
+            return view('houses.index')->with('houses', $houses)
+                                    ->with('categories', $categories)
+                                    ->with('datas', $datas);
+        }
+        if($request->category_id > 1){
+            $houses = house::with('valuecatproprietes', 'proprietes', 'category')
+                ->where('statut', 'Validé')
+                ->where('end_date', '>', $today)
+                ->where('end_date', '>=', $end_date)
+                ->where('disponible', '=', "oui")
+                ->where('category_id', '=', $request->category_id)
+                ->orWhere('nb_personnes', '>=', $request->nb_personnes)
+                ->orderBy('category_id', 'ASC')
+                ->orderBy('nb_personnes', 'DESC')
+                ->paginate(6);
+
+            if(count($houses) > 0){
+                return view('houses.index')->with('houses', $houses)
+                ->with('categories', $categories)
+                ->with('datas', $datas)
+                ->with('start_date', $start_date)
+                ->with('end_date', $end_date)
+                ->with('nb_personnes', $request->nb_personnes);
+            } else {
+                $houses = house::with('valuecatproprietes', 'proprietes', 'category')
+                    ->where('statut', 'Validé')
+                    ->where('end_date', '>', $today)
+                    ->where('end_date', '>=', $end_date)
+                    ->orWhere('nb_personnes', '>=', $request->nb_personnes)
+                    ->where('disponible', '=', "oui")
+                    ->orderBy('id','DESC')
+                    ->paginate(6);
+                    return view('houses.index')->with('houses', $houses)
+                                            ->with('categories', $categories)
+                                            ->with('datas', $datas);
+            }
+            
+        }
+        else {
+            $houses = house::with('valuecatproprietes', 'proprietes', 'category')
+            ->where('statut', 'Validé')
+            ->where('end_date', '>', $today)
+            ->where('end_date', '>=', $end_date)
+            ->where('disponible', '=', "oui")
+            ->where('category_id', '=', $request->category_id)
+            ->orWhere('nb_personnes', '>=', $request->nb_personnes)
+            ->orderBy('id','DESC')
+            ->paginate(6);
+            return view('houses.index')->with('houses', $houses)
+                                    ->with('categories', $categories)
+                                    ->with('datas', $datas);
+        }
+    }
+
 
     /**
      * Show the form for creating a new resource.

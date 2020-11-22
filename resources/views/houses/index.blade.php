@@ -67,7 +67,12 @@
                 </div>                 
             </div>
             <div class="text-right mb-3 mt-3">
-                <span>{{ $houses->links() }}</span>
+                <span><?php echo $houses->appends(array("category_id" => old("category_id"),
+                    "start_date" => old('start_date'),
+                    "end_date" => old('end_date'),
+                    "nb_personnes" => old("nb_personnes") ))
+                    ->links(); ?>
+                </span>
             </div>  
         </div>
     </div>
