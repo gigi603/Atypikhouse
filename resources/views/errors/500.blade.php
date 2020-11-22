@@ -13,6 +13,4 @@
         </div>
     </div>
 @endsection
-@section('footer', 'footer_absolute')
-@section('script')
 @endsection
