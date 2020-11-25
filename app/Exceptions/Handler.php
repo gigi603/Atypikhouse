@@ -63,7 +63,7 @@ class Handler extends ExceptionHandler
             return parent::render($request, $exception);
         }
         if($exception){
-            //return response()->view('errors.500', [], 500);
+            return response()->view('errors.500', [], 500);
         }
         return parent::render($request, $exception);
     }
@@ -85,9 +85,6 @@ class Handler extends ExceptionHandler
                 $login = 'login';
                 break;
         }
-        $url = "";
-        $url = session('url', url()->previous());
-        $request->session()->push('url', url()->previous());
         return redirect()->guest(route($login));
     }
 }
