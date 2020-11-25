@@ -600,6 +600,12 @@ nav.navbar.navbar-default {
 	
 }
 
+/* Telephone */
+
+.telephonefield-size {
+	width: 100% !important;
+}
+  
 
 /* Registration */
 

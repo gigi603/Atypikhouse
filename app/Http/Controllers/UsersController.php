@@ -302,7 +302,6 @@ class UsersController extends Controller
         $users = User::where('id', $id)->get();
         $houses = House::where('user_id', $id)->get();
         $reservation = reservation::with('house','user','category','proprietes', 'valuecatproprietes')->where('id','=',$id)->get();
-        dd($reservation);
         return view('user.showreservations')->with('houses', $houses)
                                             ->with('users', $users)
                                             ->with('reservation', $reservation);

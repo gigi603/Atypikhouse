@@ -117,20 +117,11 @@ class LoginController extends Controller
      * @return \Illuminate\Http\Response
      */
     protected function sendLoginResponse(Request $request)
-    {
-        $url = $request->session()->get('url');
-        
-        
+    {        
         $request->session()->regenerate();
         $this->clearLoginAttempts($request);
-        
-        if($url == null){
             return $this->authenticated($request, $this->guard()->user())
-                ?: redirect('/');
-        } else {
-            return $this->authenticated($request, $this->guard()->user())
-                ?: redirect($url[0]);
-        }
+                ?: redirect()->intended($this->redirectPath());
     }
 
     /**
