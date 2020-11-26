@@ -25,6 +25,7 @@ class Handler extends ExceptionHandler
         \Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException::class,
         \Illuminate\Session\TokenMismatchException::class,
         \Illuminate\Validation\ValidationException::class,
+        \Cartalyst\Stripe\Exception\CardErrorException::class
     ];
 
     /**
@@ -61,6 +62,10 @@ class Handler extends ExceptionHandler
         }
         if($exception instanceof \Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException){
             return parent::render($request, $exception);
+        }
+        
+        if($exception instanceof \Cartalyst\Stripe\Exception\CardErrorException){
+            return redirect()->back();
         }
         if($exception){
            // return response()->view('errors.500', [], 500);

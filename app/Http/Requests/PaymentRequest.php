@@ -24,6 +24,7 @@ class PaymentRequest extends FormRequest
     public function rules()
     {
         return [
+            'cardnumber' => 'required',
             'agree' => 'accepted'
         ];
     }
@@ -36,6 +37,7 @@ class PaymentRequest extends FormRequest
     public function messages()
     {
         return [
+            'cardnumber.required' => "Veuillez saisir comme numero de carte 4242 4242 4242 4242",
             'agree.accepted' => 'Vous devez accepter les conditions générales de vente'
         ];
     }
