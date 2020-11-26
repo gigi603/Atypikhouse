@@ -301,10 +301,10 @@ class UsersController extends Controller
     {
         $users = User::where('id', $id)->get();
         $houses = House::where('user_id', $id)->get();
-        $reservation = reservation::with('house','user','category','proprietes', 'valuecatproprietes')->where('id','=',$id)->get();
+        $reservations = reservation::with('house','user','category','proprietes', 'valuecatproprietes')->where('id','=',$id)->get();
         return view('user.showreservations')->with('houses', $houses)
                                             ->with('users', $users)
-                                            ->with('reservation', $reservation);
+                                            ->with('reservations', $reservations);
     }
 
     //Annuler une reservation
