@@ -1,8 +1,4 @@
-$(document).ready(function(){
-    $("input[name='propriete[]']").each(function () {
-        console.log('this', $(this));
-        $(this).prop('checked', localStorage.getItem(this.id) === 'true');
-    });  
+$(document).ready(function(){ 
     $("input[name='propriete[]']").each(function () {
         localStorage.setItem(this.id, $(this).prop('checked'));
     })
@@ -29,7 +25,7 @@ $(document).ready(function(){
 
                     $("input[name='propriete[]']").each(function () {
                         console.log('this', $(this));
-                        $(this).prop('checked', localStorage.getItem(this.id) === 'true');
+                        console.log($(this).prop('checked', localStorage.getItem(this.id) === 'true'));
                     });      
                 }
                 },error: function (data){

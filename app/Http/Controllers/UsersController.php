@@ -222,7 +222,7 @@ class UsersController extends Controller
         $proprietes_category = propriete::where('category_id', '=', $request->category_id)->get();
         
         $valueproprietesdelete = valuecatpropriete::where('house_id','=', $id)->delete();
-        
+
         if($request->nb_personne > 15 || $request->nb_personne < 0){
             $request->nb_personne = "";
         }
@@ -327,7 +327,7 @@ class UsersController extends Controller
 
         //Message à envoyer à l'utilisateur
         $message = new message;
-        $message->content = "Vous avez annulé une réservation, pour la consulter veuillez aller dans 'Mes reservations annulées'";
+        $message->content = "Vous avez annulé une réservation, pour la consulter veuillez aller dans 'mon espace' > 'Mes reservations annulées'";
         $message->user_id = Auth::user()->id;
         $message->save();
 

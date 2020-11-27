@@ -187,7 +187,7 @@ class ReservationsController extends Controller
 
             //Message à envoyer à l'utilisateur
             $message = new message;
-            $message->content = "Vous avez effectué une réservation, pour la consulter veuillez aller dans 'Mes reservations en cours'";
+            $message->content = "Vous avez effectué une réservation, pour la consulter veuillez aller dans 'Mon espace' > 'Mes reservations en cours'";
             $message->user_id = $user_id;
             $message->save();
 

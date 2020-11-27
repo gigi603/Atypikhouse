@@ -1,7 +1,6 @@
 @extends('layouts.app')
 @section('title', 'Mes notifications')
 @section('content')
-@section('content')
 <div class="container-fluid block-container block-size" id="hebergements" role="notifications">
     <h1 class="h1-title">Mes notifications</h1>
     <div class="panel panel-default notifications-panel">
@@ -29,4 +28,9 @@
         </div>
     </div>
 </div>
+@endsection
+@section('script')
+    <script>
+        $('span.badge.badge-pill.badge-success').remove();
+    </script>
 @endsection
