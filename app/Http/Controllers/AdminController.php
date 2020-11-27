@@ -608,7 +608,6 @@ class AdminController extends Controller
                                                     ['start_date', '<', $today],
                                                     ['end_date', '<=', $today]
                                                 ])->paginate(10);
-                                                dd($historiques);
         return view('admin.allhistoriques')->with('historiques', $historiques);
     }
 
