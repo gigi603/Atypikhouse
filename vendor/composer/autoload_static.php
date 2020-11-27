@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit786c548c8152f99c80aa2a3f459b9d5f
+class ComposerStaticInit42cb480f8c94721b63b682d370e9ee28
 {
     public static $files = array (
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
@@ -572,7 +572,6 @@ class ComposerStaticInit786c548c8152f99c80aa2a3f459b9d5f
         'App\\Http\\Controllers\\HousesController' => __DIR__ . '/../..' . '/app/Http/Controllers/HousesController.php',
         'App\\Http\\Controllers\\MessagesController' => __DIR__ . '/../..' . '/app/Http/Controllers/MessagesController.php',
         'App\\Http\\Controllers\\PostsController' => __DIR__ . '/../..' . '/app/Http/Controllers/PostsController.php',
-        'App\\Http\\Controllers\\QueryController' => __DIR__ . '/../..' . '/app/Http/Controllers/QueryController.php',
         'App\\Http\\Controllers\\ReservationsController' => __DIR__ . '/../..' . '/app/Http/Controllers/ReservationsController.php',
         'App\\Http\\Controllers\\UsersController' => __DIR__ . '/../..' . '/app/Http/Controllers/UsersController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
@@ -602,11 +601,16 @@ class ComposerStaticInit786c548c8152f99c80aa2a3f459b9d5f
         'App\\Http\\Requests\\SearchRequest' => __DIR__ . '/../..' . '/app/Http/Requests/SearchRequest.php',
         'App\\Jobs\\SendVerificationEmail' => __DIR__ . '/../..' . '/app/Jobs/SendVerificationEmail.php',
         'App\\Mail\\EmailVerification' => __DIR__ . '/../..' . '/app/Mail/EmailVerification.php',
+        'App\\Mail\\SendAnnonceConfirmation' => __DIR__ . '/../..' . '/app/Mail/SendAnnonceConfirmation.php',
+        'App\\Mail\\SendAnnonceSuppression' => __DIR__ . '/../..' . '/app/Mail/SendAnnonceSuppression.php',
         'App\\Mail\\SendNewsletter' => __DIR__ . '/../..' . '/app/Mail/SendNewsletter.php',
+        'App\\Mail\\SendReservationAnnulationConfirmation' => __DIR__ . '/../..' . '/app/Mail/SendReservationAnnulationConfirmation.php',
+        'App\\Mail\\SendReservationConfirmation' => __DIR__ . '/../..' . '/app/Mail/SendReservationConfirmation.php',
         'App\\Message' => __DIR__ . '/../..' . '/app/Message.php',
         'App\\Newsletter' => __DIR__ . '/../..' . '/app/Newsletter.php',
         'App\\Notifications\\ReplyToAnnonce' => __DIR__ . '/../..' . '/app/Notifications/ReplyToAnnonce.php',
         'App\\Notifications\\ReplyToMessage' => __DIR__ . '/../..' . '/app/Notifications/ReplyToMessage.php',
+        'App\\Notifications\\ReplyToNews' => __DIR__ . '/../..' . '/app/Notifications/ReplyToNews.php',
         'App\\Notifications\\ReplyToReservation' => __DIR__ . '/../..' . '/app/Notifications/ReplyToReservation.php',
         'App\\Notifications\\ReplyToUser' => __DIR__ . '/../..' . '/app/Notifications/ReplyToUser.php',
         'App\\Pays' => __DIR__ . '/../..' . '/app/Pays.php',
@@ -5100,10 +5104,10 @@ class ComposerStaticInit786c548c8152f99c80aa2a3f459b9d5f
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit786c548c8152f99c80aa2a3f459b9d5f::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit786c548c8152f99c80aa2a3f459b9d5f::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInit786c548c8152f99c80aa2a3f459b9d5f::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInit786c548c8152f99c80aa2a3f459b9d5f::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit42cb480f8c94721b63b682d370e9ee28::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit42cb480f8c94721b63b682d370e9ee28::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit42cb480f8c94721b63b682d370e9ee28::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInit42cb480f8c94721b63b682d370e9ee28::$classMap;
 
         }, null, ClassLoader::class);
     }
