@@ -274,6 +274,7 @@ class AdminController extends Controller
     {
         $propriete = new propriete;
         $propriete->propriete = $request->propriete;
+        $propriete->statut = 1;
         $propriete->category_id = $request->category_id;
 
         //Ne crée pas l'équipement si elle existe déjà

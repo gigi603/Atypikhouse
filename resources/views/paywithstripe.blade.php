@@ -26,15 +26,15 @@
                             <!-- A Stripe Element will be inserted here. -->
                             </div>
 
-                            <!-- Used to display form errors. -->
-                            <div class="form-group{{ $errors->any('cardnumber') ? ' has-error' : '' }}">
-                                <div id="card-errors" role="alert"></div>
-                                @if ($errors->any('cardnumber'))
-                                    <span class="help-block">
-                                        <strong>Veuillez saisir comme numero de carte 4242 4242 4242 4242</strong>
+                            @if($message = Session::get('error'))
+                                <div class="form-group has-error">
+                                    <span class="help-block has-error">
+                                        <strong>{{ $message }}</strong>
                                     </span>
-                                @endif
-                            </div>
+                                </div>
+                            @endif
+                            <!-- Used to display form errors. -->
+                            <div id="card-errors" role="alert"></div>
                         </div>
                            
                             <li><a href="{{ route('cgv') }}" target="_blank" class="link-color">Voir les conditions générales de ventes</a></li>

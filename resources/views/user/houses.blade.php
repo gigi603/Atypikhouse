@@ -22,7 +22,7 @@
                         <div class="card-body">
                             <h2 class="card-title title-houses"><a href="{{route('user.showhebergements', $house['id']) }}"> {{$house->title}} </a></h2>
                         </div>
-                        <p class="price">{{$house->price}}€ par nuit<br> pour {{$house->nb_personnes}} personne(s)</p>
+                        <p class="price">{{$house->price}}€ la nuit par personne<br></p>
                         <p>Type de bien : {{$house->category->category}}</p>
                         <p class="title-houses"> Adresse: {{$house->adresse}}</p>
                         <p><i class="fas fa-calendar"></i> Du: <?php \Date::setLocale('fr'); $startdate = Date::parse($house->start_date)->format('l j F Y'); echo($startdate);?> </p>
