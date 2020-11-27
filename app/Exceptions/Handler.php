@@ -63,12 +63,12 @@ class Handler extends ExceptionHandler
         if($exception instanceof \Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException){
             return parent::render($request, $exception);
         }
-        
         if($exception instanceof \Cartalyst\Stripe\Exception\CardErrorException){
             return redirect()->back();
         }
         if($exception){
            // return response()->view('errors.500', [], 500);
+	}
         return parent::render($request, $exception);
     }
 
@@ -77,7 +77,6 @@ class Handler extends ExceptionHandler
         if ($request->expectsJson()) {
             return response()->json(['error' => 'Unauthenticated.'], 401);
         }
- 
         $guard = array_get($exception->guards(),0);
 
         //using switch statement to switch between the guards
