@@ -77,12 +77,15 @@
                                         }
                                     }?>
                                     <?php $i = 0; ?>
-                                    <span class="badge badge-pill badge-success">
+                                    
                                     @foreach (Auth::user()->unreadNotifications as $notification)
                                         <?php $i++;?>
                                     @endforeach
-                                    <?php echo $i;?>
-                                    </span>
+                                    @if($i != 0)
+                                        <span class="badge badge-pill badge-success">
+                                            <?php echo $i;?>
+                                        </span>
+                                    @endif
                                     {{ Auth::user()->prenom }} <span class="caret"></span>
                                 </a>
                                 <ul class="dropdown-menu">
