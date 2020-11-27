@@ -137,6 +137,27 @@ class HousesTableSeeder extends Seeder
                 'statut' => 'Validé',
                 'disponible' => 'oui'
             ],
+            [
+                'title' => "Village d'Igloos du Semnoz",
+                'user_id' => 1,
+                'category_id' => 4,
+                'adresse' => 'Crêt de Chatillon Leschaux 74000 Annecy, France',
+                'description' => "Expérience 4 saisons au cœur du Parc Naturel régional des Bauges, face au Mont-Blanc.
+
+                L'hiver, pour changer un peu du ski et vivre une expérience au plus près de Dame Nature, nous avons rendez-vous au Semnoz à 1700m d'altitude dans un village d'igloos. A côté des traditionnels igloos de neige sont installés des alti-dômes pour du bivouac toute saison.
+                
+                Ainsi les plus frileux ont aussi droit à leur nuit en pleine nature, même au cœur de l'hiver ! Mais pour eux, ce sera sous un alti-dôme, un igloo de bois et de toile au toit panoramique, où le confort est assuré par un poêle à bois. Un intérieur cosy, chaleureux, une structure 100% recyclable et autonome en énergie, on ne pouvait rêver mieux.
+                On rejoint dômes et igloos de l'Eco-Bivouac Village d'Igloos en raquettes à la lueur des flambeaux, marchant dans les traces du guide qui nous ouvre la voie. Sur place, on fait connaissance avec ses voisins d'un soir autour du bar en neige et sous un alti-dôme géant (49 m2, autonome en énergie, sans apport d’électricité ni d’eau) on partage les bons plats de terroir d'un restaurateur voisin et une soirée tout à aussi unique. Vient enfin le moment tant attendu de prendre possession de son véritable igloo ou de son alti-dôme pour la nuit !",
+                'start_date' => '2020-02-10',
+                'end_date' => '2020-12-30',
+                'nb_personnes' => 2,
+                'phone' => '+33 6 99 88 74 74',
+                'price' => 150.00,
+                'photo' => 'igloo_demo.jpg',
+                'statut' => 'Validé',
+                'disponible' => 'oui'
+            ],
+            
             
         ];
         DB::table('houses')->insert($houses);
