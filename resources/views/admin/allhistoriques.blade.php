@@ -31,6 +31,7 @@
                     @foreach ($historiques as $historique)  
                         <tbody>
                             <tr>
+<p>{{$historique}}</p>
                                 <td style="width:250px"><img src="{{ asset('img/houses/'.$historique->house->photo) }}" class="photo-size"/></td>
                                 <td>{{$historique->house->title}}</td>
                                 <td><?php \Date::setLocale('fr'); $startdate = Date::parse($historique->start_date)->format('l j F Y'); echo($startdate);?></td>
