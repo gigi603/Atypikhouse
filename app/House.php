@@ -16,10 +16,6 @@ class House extends Model
         return $this->belongsTo('App\User');
     }
 
-    public function ville() {
-        return $this->belongsTo('App\Ville');
-    }
-
     public function category() {
         return $this->belongsTo('App\Category');
     }

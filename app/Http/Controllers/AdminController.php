@@ -729,7 +729,8 @@ class AdminController extends Controller
     }
 
     public function deleteAnnonce($id) {
-        $house = house::find($id);
+        $house = house::with('reservations', 'comments')->where('id', '=', $id);
+        dd($house);
         foreach($house->valuecatproprietes as $valuecatpropriete){
             $valuecatpropriete->delete();
         }
