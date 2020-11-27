@@ -275,27 +275,23 @@ class AdminController extends Controller
         $propriete = new propriete;
         $propriete->propriete = $request->propriete;
         $propriete->category_id = $request->category_id;
+
+        //Ne crée pas l'équipement si elle existe déjà
         if ($propriete->where('propriete', $propriete->propriete)->where('category_id', '=', $request->category_id)->count() > 0) {
             return redirect()->back()->with('danger', "L'équipement existe déjà");
         } else {
+            //Crée un nouvel équipement
             $propriete->save();
 
-            $houses = house::where('category_id', '=', $request->category_id)->get();
-            // $users = DB::table('users')->join('houses', 'houses.user_id', '=', 'users.id')
-            //                            ->join('categories', 'categories.id', '=', 'houses.category_id')
-            //                            ->where('categories.id','=', $request->category_id)
-            //                            ->get();
+            //Message à envoyer aux utilisateurs qui ont une annonce ayant la catégorie liée
             $users = user::all();
-            
-            foreach($users as $user){
-                //Message à envoyer aux utilisateurs qui ont une annonce ayant la catégorie liée
+            foreach($users as $user){  
                 $message = new message;
                 $message->content = "L'equipement '".$propriete->propriete."' est désormais disponible sur les annonces ayant comme catégorie '".$propriete->category->category."'";
                 $message->user_id = $user->id;
                 $message->save();
 
                 //Envoie la notification à tous les utilisateurs qui ont une annonce ayant la catégorie liée
-                
                 \Notification::send($user, new ReplyToNews($message));
             }
             return redirect()->route('admin.proprietes_category', ['id' => $request->category_id])->with('success', "L'equipement '".$propriete->propriete."' a bien été ajoutée, un message a été envoyé aux proprietaires ayant dans leur annonce la catégorie '".$propriete->category->category."'")->with('category_id', $request->category_id);
@@ -306,20 +302,13 @@ class AdminController extends Controller
     public function deletepropriete(Request $request, $id)
     {
         $propriete = propriete::find($id);
-        $values_propriete = valuecatpropriete::with('propriete','category')->where('category_id', '=', $propriete->category_id)
-                                                                ->where('propriete_id', '=', $propriete->id)
-                                                                ->get();
-        foreach($values_propriete as $values){
-            $values->delete();
-        }
         
-        $houses = house::where('category_id', '=', $propriete->category_id)->get();
-        // $users = DB::table('users')->join('houses', 'houses.user_id', '=', 'users.id')
-        //                                ->join('categories', 'categories.id', '=', 'houses.category_id')
-        //                                ->where('categories.id','=', $propriete->category_id)
-        //                                ->get();
+        //Suppression de l'equipement en changeant le statut
+        $propriete->statut = 0;
+        $propriete->save();
+        
+        //Notif de la suppression de l'équipement lié à la catégorie
         $users = user::all();
-
         foreach($users as $user){
             $message = new message;
             $message->content = "L'equipement '".$propriete->propriete."' a été supprimée des annonces et n'est plus disponible lors de la création d'une annonce avec pour catégorie d'annonce '".$propriete->category->category."'";
@@ -330,7 +319,7 @@ class AdminController extends Controller
             \Notification::send($user, new ReplyToNews($message));
         }
 
-        $propriete->delete();
+        
         return redirect()->back()->with('success', "Votre équipement ".$propriete->propriete." a bien été supprimée, un message a été envoyé aux propriétaires ayant dans leur annonce la catégorie ".$propriete->category->category);
     }
 
@@ -729,12 +718,13 @@ class AdminController extends Controller
     }
 
     public function deleteAnnonce($id) {
-        $house = house::with('reservations', 'comments')->where('id', '=', $id);
-        dd($house);
-        foreach($house->valuecatproprietes as $valuecatpropriete){
-            $valuecatpropriete->delete();
-        }
-        $house->delete();
+        $house = house::find($id);
+        
+        //Supprime l'annonce en changeant le statut
+        $house->disponible = "non";
+        $house->save();
+
+        //Envoie une notif à l'utilisateur de l'annonce
         $message = new message;
         $message->content = "L'administrateur a supprimé votre annonce ".$house->title;
         $message->user_id = $house->user_id;

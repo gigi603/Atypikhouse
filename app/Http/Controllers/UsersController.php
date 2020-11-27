@@ -222,7 +222,7 @@ class UsersController extends Controller
         $proprietes_category = propriete::where('category_id', '=', $request->category_id)->get();
         
         $valueproprietesdelete = valuecatpropriete::where('house_id','=', $id)->delete();
-        var_dump($request->propriete);
+        
         if($request->nb_personne > 15 || $request->nb_personne < 0){
             $request->nb_personne = "";
         }
@@ -249,6 +249,10 @@ class UsersController extends Controller
         $admins = admin::all();
 
         if($house->statut == "En attente de validation"){
+
+            $house->disponible = "non";
+            $house->save();
+
             $post = new post;
             $post->name = $user->nom.' '.$user->prenom;
             $post->email = $user->email;
@@ -260,7 +264,7 @@ class UsersController extends Controller
 
             $post->save();
             Mail::to($house->user->email)->send(new SendAnnonceSuppression($house));
-            $house->delete();
+            
 
             return redirect()->back()->with('success', "Votre annonce a bien été supprimée");
         } else {
