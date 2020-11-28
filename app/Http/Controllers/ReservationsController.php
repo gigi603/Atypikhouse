@@ -168,9 +168,12 @@ class ReservationsController extends Controller
             $reservation->save();
 
             $houseProprietes = valuecatpropriete::where('house_id', '=', $house_id)->get();
-
             foreach($houseProprietes as $housePropriete){
-                $housePropriete->reservation_id = $reservation->id;
+                $valueProprietesReservations = new Valuecatpropriete;
+                $valueProprietesReservations->category_id = $category_id;
+                $valueProprietesReservations->house_id = $house_id;
+                $valueProprietesReservations->propriete_id = $housePropriete->propriete_id;
+                $valueProprietesReservations->reservation_id = $reservation->id;
                 $housePropriete->save();
             }
             
