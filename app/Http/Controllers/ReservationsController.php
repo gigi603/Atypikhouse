@@ -8,6 +8,8 @@ use App\Post;
 use App\User;
 use App\Admin;
 use App\Message;
+use App\Propriete;
+use App\Valuecatpropriete;
 
 use App\Http\Requests;
 use Illuminate\Http\Request;
@@ -66,6 +68,7 @@ class ReservationsController extends Controller
         $reservation->total = $total;
         $reservation->days = $days;
         $reservation->reserved = true;
+
 
         /*Créer une session pour chaque données de la reservation afin de les récupérer au moment
         du paiement */
@@ -163,6 +166,13 @@ class ReservationsController extends Controller
             $reservation->days= $days;
             $reservation->reserved = true;
             $reservation->save();
+
+            $houseProprietes = valuecatpropriete::where('house_id', '=', $house_id)->get();
+
+            foreach($houseProprietes as $housePropriete){
+                $housePropriete->reservation_id = $reservation->id;
+                $housePropriete->save();
+            }
             
             //envoi du mail de confirmation de la reservation
             Mail::to($reservation->user->email)->send(new SendReservationConfirmation($reservation));

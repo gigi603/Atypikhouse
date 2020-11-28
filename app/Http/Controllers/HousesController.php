@@ -557,6 +557,7 @@ class HousesController extends Controller
                 $valuecatProprietesHouse->category_id = $house->category_id;
                 $valuecatProprietesHouse->propriete_id = intval($proprietes);
                 $valuecatProprietesHouse->house_id = $house->id;
+                $valuecatProprietesHouse->reservation_id = 0;
                 
                 $valuecatProprietesHouse->save();
             }

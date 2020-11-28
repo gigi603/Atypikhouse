@@ -27,7 +27,7 @@ class Reservation extends Model
     }
     
     public function valuecatproprietes() {
-        return $this->hasMany('App\Valuecatpropriete', 'house_id');
+        return $this->hasMany('App\Valuecatpropriete', 'reservation_id');
     }
 
  

@@ -264,7 +264,7 @@ class AdminController extends Controller
     public function proprietescategory(Request $request, Category $categories, $id)
     {
         $category = category::find($id);
-        $proprietes = propriete::where('category_id', $id)->paginate(10);
+        $proprietes = propriete::where('category_id', $id)->where('statut', '=', 1)->paginate(10);
         return view('admin.proprietes')->with('category', $category)
                                        ->with('proprietes', $proprietes);
     }
@@ -551,7 +551,9 @@ class AdminController extends Controller
 
     public function allreservations()
     {
-        $reservations = Reservation::where('end_date', '>=', Carbon::now())->where('reserved', '=', 1)->orderBy('id', 'desc')->paginate(10);
+
+        $reservations = Reservation::where('end_date', '>=', Carbon::today())->where('reserved', '=', 1)->orderBy('id', 'desc')->paginate(10);
+        //dd($reservations);
         return view('admin.allreservations')->with('reservations', $reservations);
     }
 
@@ -596,7 +598,7 @@ class AdminController extends Controller
         $today = Date::today()->format('Y-m-d');
         $historiques = Reservation::with('house')->where([
                                                     ['start_date', '<', $today],
-                                                    ['end_date', '<=', $today]
+                                                    ['end_date', '<', $today]
                                                 ])->paginate(10);
         return view('admin.allhistoriques')->with('historiques', $historiques);
     }

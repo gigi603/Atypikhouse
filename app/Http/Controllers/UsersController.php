@@ -214,7 +214,6 @@ class UsersController extends Controller
             $house->end_date = $end_date_date_format;
 
             $house->description = $request->description;
-            $house->statut = $request->statut;
             $house->save();
         }
         $valueproprietes = valuecatpropriete::where('house_id','=', $id)->get();
@@ -228,11 +227,11 @@ class UsersController extends Controller
         }
         if($request->propriete != NULL){
             foreach($request->propriete as $proprietes) {
-                var_dump($proprietes);       
                 $valuecatProprietesHouse = new valuecatPropriete;
                 $valuecatProprietesHouse->category_id = $request->category_id;
                 $valuecatProprietesHouse->house_id = $house->id;
                 $valuecatProprietesHouse->propriete_id = $proprietes;
+                $valuecatProprietesHouse->reservation_id = 0;
                 $valuecatProprietesHouse->save();
             }
         }

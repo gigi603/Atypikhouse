@@ -59,7 +59,7 @@ class GenerateSitemap extends Command
         $reservations = Reservation::all();
         $annonces = House::all();
         $users = user::all();
-        $today = Carbon::now()->format('Y-m-d');
+        $today = Carbon::today()->format('Y-m-d');
         
         foreach ($routeCollection as $value) {
             $uri = $value->uri();
@@ -80,7 +80,7 @@ class GenerateSitemap extends Command
                     $sitemap->add(Url::create(config('app.url') . str_replace($id, $annonce->id, $uri))->setPriority(1.0));
                 }
             } elseif($isShowable && strpos($uri, 'showreservations/') !== false){
-                $today = Carbon::now()->format('Y-m-d');
+                $today = Carbon::today()->format('Y-m-d');
 
                 $reservations = reservation::with('house')->where('start_date', '>=', $today)
                 ->where('end_date', '>=', $today)
