@@ -19,9 +19,16 @@
                             </h3>
                             <h3 class="price">Total payé: {{$historique->total}}€ pour {{$historique->nb_personnes}} personnes</h3>
                             <p>Type de bien : {{$historique->house->category->category}}</p>
-                            @foreach($historique->house->valuecatproprietes as $valuecatpropriete)
-                                <p>{{$valuecatpropriete->propriete->propriete}}</p>                               
-                            @endforeach
+                            @if(@count($historique->valuecatproprietes) > 0 && isset($historique->valuecatproprietes))
+                                <label>Equipements:</label><br>
+                                @foreach($historique->valuecatproprietes as $valuecatpropriete)
+                                    @if($valuecatpropriete->reservation_id == $historique->id)
+                                        <p>{{$valuecatpropriete->propriete->propriete}}</p> 
+                                    @endif
+                                @endforeach
+                            @else
+                                <span>Il n y a pas d'équipements sur cette annonce</span>
+                            @endif
                             <p><i class="fas fa-calendar"></i> Du: <?php \Date::setLocale('fr'); $startdate = Date::parse($historique->start_date)->format('l j F Y'); echo($startdate);?> </p>
                             <p><i class="fas fa-calendar"></i> au:  <?php \Date::setLocale('fr'); $enddate = Date::parse($historique->end_date)->format('l j F Y'); echo($enddate);?></p>
                             <p class="card-text">{{$historique->house->description}}</p>

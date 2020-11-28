@@ -167,14 +167,14 @@ class ReservationsController extends Controller
             $reservation->reserved = true;
             $reservation->save();
 
-            $houseProprietes = valuecatpropriete::where('house_id', '=', $house_id)->get();
+            $houseProprietes = valuecatpropriete::where('house_id', '=', $house_id)->where('reservation_id', '=', 0)->get();
             foreach($houseProprietes as $housePropriete){
                 $valueProprietesReservations = new Valuecatpropriete;
                 $valueProprietesReservations->category_id = $category_id;
                 $valueProprietesReservations->house_id = $house_id;
                 $valueProprietesReservations->propriete_id = $housePropriete->propriete_id;
                 $valueProprietesReservations->reservation_id = $reservation->id;
-                $housePropriete->save();
+                $valueProprietesReservations->save();
             }
             
             //envoi du mail de confirmation de la reservation

@@ -32,11 +32,18 @@
                             <h3 class="title card-title text-center">
                                 <a href="#">{{$house->title}}</a>
                             </h3>
-                            <h3 class="price">{{$house->price}}€ / nuit</h3>
+                            <h3 class="price">{{$house->price}}€ la nuit par personne</h3>
                             <p>Type de bien : {{$house->category->category}}</p>
-                            @foreach($house->valuecatproprietes as $valuecatpropriete)
-                                <span>{{$valuecatpropriete->propriete->propriete}} </span>
-                            @endforeach
+                            @if(@count($house->valuecatproprietes) > 0 && isset($house->valuecatproprietes))
+                                <label>Equipements:</label><br>
+                                @foreach($house->valuecatproprietes as $valuecatpropriete)
+                                    @if($valuecatpropriete->reservation_id == 0)
+                                        <span>{{$valuecatpropriete->propriete->propriete}} </span>
+                                    @endif
+                                @endforeach
+                            @else
+                                <span>Il n y a pas d'équipements sur cette annonce</span>
+                            @endif
                             <p class="card-text">{{$house->description}}</p>
                             <p>Annulation gratuite !</p>
                             <p>Location :  {{$house->adresse}}</p>

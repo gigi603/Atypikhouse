@@ -98,12 +98,12 @@
                                 {{$house->title}}
                             </h2>
                             <div class="block-description">
-                                <h3 class="price">{{$house->price}}€ / nuit</h3>
+                                <h3 class="price">{{$house->price}}€ la nuit par personne</h3>
                                 <p>Type de bien : {{$house->category->category}}</p>
                                 
                                 <p class="card-text">{{$house->description}}</p>
                                 <p>Annulation gratuite !</p>
-                                <p>Location :  {{$house->adresse}}</p><br>
+                                <p>Adresse :  {{$house->adresse}}</p><br>
                                 <h3 class="price">Disponibilité</h3>
                                 <p><i class="fas fa-calendar"></i> Début: <?php \Date::setLocale('fr'); $startdate = Date::parse($house->start_date)->format('l j F Y'); echo($startdate);?> </p>
                                 <p><i class="fas fa-calendar"></i> Fin:  <?php \Date::setLocale('fr'); $enddate = Date::parse($house->end_date)->format('l j F Y'); echo($enddate);?></p>
@@ -111,12 +111,17 @@
                                 <h3 class="price">Contact de l'annonceur</h3>       
                                 <p>Téléphone de l'annonceur : {{$house->phone}}</p>
                                 <p>Adresse mail de l'annonceur : {{$house->user->email}}</p><br><br>
-                                <h3 class="price">Equipements:</h3>
-                                @foreach($house->valuecatproprietes as $valuecatpropriete)
-                                    @if(@count($valuecatpropriete) != 0)
-                                        <p>{{$valuecatpropriete->propriete->propriete}}</p> 
-                                    @endif                                 
-                                @endforeach
+                                @if(@count($house->valuecatproprietes) > 0 && isset($house->valuecatproprietes))
+                                    <h3 class="price">Equipements:</h3><br>
+                                    @foreach($house->valuecatproprietes as $valuecatpropriete)
+                                        @if($valuecatpropriete->reservation_id == 0)
+                                            <span>{{$valuecatpropriete->propriete->propriete}} </span>
+                                        @endif                             
+                                    @endforeach
+                                @else
+                                    <p>Il n y a pas d'équipements sur cette annonce</p> 
+                                @endif 
+                                <br>
                                 <br>
                                 <h3 class="price">Statut</h3> 
                                 @if($house->statut == "Validé")      

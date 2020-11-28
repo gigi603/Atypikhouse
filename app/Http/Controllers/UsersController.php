@@ -215,12 +215,9 @@ class UsersController extends Controller
 
             $house->description = $request->description;
             $house->save();
-        }
-        $valueproprietes = valuecatpropriete::where('house_id','=', $id)->get();
-            
-        $proprietes_category = propriete::where('category_id', '=', $request->category_id)->get();
+        }            
         
-        $valueproprietesdelete = valuecatpropriete::where('house_id','=', $id)->delete();
+        $valueproprietesdelete = valuecatpropriete::where('house_id','=', $id)->where('reservation_id', '=', 0)->delete();
 
         if($request->nb_personne > 15 || $request->nb_personne < 0){
             $request->nb_personne = "";

@@ -98,7 +98,7 @@
                             <h3 class="text-center panel-heading">{{$house->title}}</h3>
                             <div class="form-horizontal">
                                 <div class="form-group" style="min-height: 358px;">
-                                    <h4 class="price">{{$house->price}}€ / la nuit</h4>
+                                    <h4 class="price">{{$house->price}}€ la nuit par personne</h4>
                                     <p>Type de bien : {{$house->category->category}}</p><br>
                                     <h4 class="price">Disponibilité</h4>
                                     <p><?php \Date::setLocale('fr'); $startdate = Date::parse($house->start_date)->format('l j F Y'); echo($startdate);?> au
@@ -109,10 +109,13 @@
                                     <p> Téléphone de l'annonceur : {{$house->phone}}</p>
                                     <p> Adresse mail de l'annonceur : {{$house->user->email}}</p>
                                     <p>Annulation gratuite !</p><br>
-                                    <label>Equipements:</label><br>
+                                   
                                     @if(@count($house->valuecatproprietes) > 0 && isset($house->valuecatproprietes))
+                                        <label>Equipements:</label><br>
                                         @foreach($house->valuecatproprietes as $valuecatpropriete)
-                                            <span>{{$valuecatpropriete->propriete->propriete}} </span>
+                                            @if($valuecatpropriete->reservation_id == 0)
+                                                <span>{{$valuecatpropriete->propriete->propriete}} </span>
+                                            @endif
                                         @endforeach
                                     @else
                                         <span>Il n y a pas d'équipements sur cette annonce</span>

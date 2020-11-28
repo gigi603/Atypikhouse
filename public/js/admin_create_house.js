@@ -14,7 +14,7 @@ $(document).ready(function(){
                 for (j in data.valArray){
                     idArr.push(data.valArray[j].propriete_id);
                 }                
-
+                $( ".proprietes" ).append(`<label for="name" class="col-md-12 control-label">Equipements</label>`);
                 for (i in data.proprietes) {
                     if (idArr.indexOf(data.proprietes[i].id) !== -1) {
                         $( ".proprietes" ).append(`
@@ -60,7 +60,7 @@ $(document).ready(function(){
                 for (j in data.valArray){
                     idArr.push(data.valArray[j].propriete_id);
                 }                
-
+                $( ".proprietes" ).append(`<label for="name" class="col-md-12 control-label">Equipements</label>`);
                 for (i in data.proprietes) {
                     if (idArr.indexOf(data.proprietes[i].id) !== -1) {
                         $( ".proprietes" ).append(`

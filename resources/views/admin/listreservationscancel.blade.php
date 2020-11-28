@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title', 'Reservations')
+@section('title', 'Reservations annulées')
 @section('content')
     <div class="card mb-3">
         @if (Session::has('success'))
@@ -9,10 +9,10 @@
             </div>
         @endif
         <div class="card-header">
-        <h1 style="font-size:20px;">
-            <i class="fas fa-table"></i>
-            Liste des réservations annulées
-        </h1>
+            <h1 style="font-size:20px;">
+                <i class="fas fa-table"></i>
+                Liste des réservations annulées
+            </h1>
         </div>
         <div class="card-body">
             <div class="table-responsive">

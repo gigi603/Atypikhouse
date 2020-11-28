@@ -19,11 +19,16 @@
                                 </h3>
                                 <h3 class="price">Total payé: {{$reservation->total}}€ pour {{$reservation->nb_personnes}} personnes</h3>
                                 <p>Type de bien : {{$reservation->house->category->category}}</p>
-                                @foreach($reservation->valuecatproprietes as $valuecatpropriete)
-                                    @if($valuecatpropriete->reservation_id == $reservation->id)
-                                        <p>{{$valuecatpropriete->propriete->propriete}}</p> 
-                                    @endif
-                                @endforeach
+                                @if(@count($reservation->valuecatproprietes) > 0 && isset($reservation->valuecatproprietes))
+                                    <label>Equipements:</label><br>
+                                    @foreach($reservation->valuecatproprietes as $valuecatpropriete)
+                                        @if($valuecatpropriete->reservation_id == $reservation->id)
+                                            <p>{{$valuecatpropriete->propriete->propriete}}</p> 
+                                        @endif
+                                    @endforeach
+                                @else
+                                    <span>Il n y a pas d'équipements sur cette annonce</span>
+                                @endif
                                 <p><i class="fas fa-calendar"></i> Du: <?php \Date::setLocale('fr'); $startdate = Date::parse($reservation->start_date)->format('l j F Y'); echo($startdate);?> </p>
                                 <p><i class="fas fa-calendar"></i> au:  <?php \Date::setLocale('fr'); $enddate = Date::parse($reservation->end_date)->format('l j F Y'); echo($enddate);?></p>
                                 <p class="card-text">Nombre de personnes: {{$reservation->nb_personnes}}</p>

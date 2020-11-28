@@ -396,6 +396,7 @@ class AdminController extends Controller
         $proprietes = propriete::where('category_id', $category)->get();
         $valuecatProprietesHouse = valuecatpropriete::where('category_id', $category) 
         ->where('house_id', $id)
+        ->where('reservation_id', '=', 0)
         ->get();
 
         $valArray = array();
@@ -462,15 +463,15 @@ class AdminController extends Controller
             $house->statut = $request->statut;
             $house->save();
         }
-        $valueproprietes = valuecatpropriete::where('house_id','=', $id)->get();
+        $valueproprietesdelete = valuecatpropriete::where('house_id','=', $id)->where('reservation_id', '=', 0)->delete();
         $proprietes_category = propriete::where('category_id', '=', $request->category_id)->get();
-        $valueproprietesdelete = valuecatpropriete::where('house_id','=', $id)->delete();
         if(count($request->propriete) > 0){
             foreach($request->propriete as $proprietes) {
                 $valuecatProprietesHouse = new valuecatPropriete;
                 $valuecatProprietesHouse->category_id = $request->category_id;
                 $valuecatProprietesHouse->house_id = $house->id;
                 $valuecatProprietesHouse->propriete_id = $proprietes;
+                $valuecatProprietesHouse->reservation_id = 0;
                 $valuecatProprietesHouse->save();
             }   
         }
@@ -535,7 +536,13 @@ class AdminController extends Controller
         $house = house::find($id);
         $house->disponible = "non";
         $house->save();
-        return redirect()->back()->with("success", "L'annonce du propriétaire a bien été retiré");
+
+        $message = new message;
+        $message->content = "L'administrateur a supprimé votre annonce '".$house->title."'";
+        $message->user_id = $house->user_id;
+        $message->save();
+
+        return redirect()->back()->with("success", "L'annonce du propriétaire a bien été retiré un message a été envoyé à l'annonceur");
 
     }
 
@@ -722,7 +729,7 @@ class AdminController extends Controller
 
     public function deleteAnnonce($id) {
         $house = house::find($id);
-        
+        $user = user::find(Auth::user()->id);
         //Supprime l'annonce en changeant le statut
         $house->disponible = "non";
         $house->save();
@@ -733,6 +740,10 @@ class AdminController extends Controller
         $message->user_id = $house->user_id;
         $message->admin_id = Auth::user()->id;
         $message->save();
+
+        //Envoie la notification à l'annonceur
+        \Notification::send($user, new ReplyToNews($message));
+
         return redirect()->back()->with('success', "L'annonce a bien été supprimée, un message a été envoyé au propriétaire de l'annonce");
     }
 

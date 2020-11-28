@@ -288,25 +288,6 @@ class HousesController extends Controller
         }
     }
 
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @param  \App\Category  $categories
-     * @param  \App\Ville  $villes
-     * @return \Illuminate\Http\Response
-     */
-    public function create(Category $categories, Ville $villes)
-    {
-        $categories = category::all();
-        $villes = ville::all();
-
-        return view('houses.create', [
-            'villes'=> $villes,
-            'categories' => $categories,
-        ]);
-    }
-
     public function create_step1(Request $request) { 
         $houseAdresse = $request->session()->get('houseAdresse');
         if($houseAdresse == NULL){
@@ -439,11 +420,6 @@ class HousesController extends Controller
             $categorySelected = $request->category_id;
             return redirect()->back()->with('danger', 'Veuillez selectionner une categorie valide');
         }
-        // if($request->category_id > $lastCategory->id){
-        //     $request->category_id = "";
-        //     $houseCategory = null;
-        //     return redirect()->back();
-        // }
         
         $houseNbPersonnes = session('houseNbPersonnes', $request->nb_personnes);
         $request->session()->push('houseNbPersonnes', $request->nb_personnes);
@@ -533,9 +509,9 @@ class HousesController extends Controller
         $newFormat = Carbon::parse($date)->format('Y-m-d');
         $date2 = Carbon::createFromFormat('d/m/Y', last($houseEndDate));
         $newFormat2 = Carbon::parse($date2)->format('Y-m-d');
-        //$end_date = Carbon::createFromFormat('Y-m-d', $newFormat2);
         $house->start_date = $newFormat;
         $house->end_date = $newFormat2;
+
         $house->description = last($houseDescription);
         $house->price = last($housePrix);
         $house->statut = "En attente de validation";
@@ -618,6 +594,7 @@ class HousesController extends Controller
         $proprietes = propriete::where('category_id', $category)->get();
         $valuecatProprietesHouse = valuecatpropriete::where('category_id', $category) 
         ->where('house_id', $id)
+        ->where('reservation_id','=', 0)
         ->get();
 
         $valArray = array();
@@ -628,7 +605,6 @@ class HousesController extends Controller
                 }
             }
         }
-        //var_dump($valArray);
         return response()->json(["proprietes" => $proprietes,
                                  "house" => $house,
                                  "valArray" => $valArray]); 
@@ -644,48 +620,6 @@ class HousesController extends Controller
     {
         $house = house::find($house->id);
         return view('houses.show', compact('house', 'id'))->with('house', $house);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\House  $house
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(House $house, Category $categories, Ville $villes)
-    {
-        $house = house::find($house->id);
-        $categories = category::all();
-        $villes = ville::all();
-        return view('houses.edit', compact('house', 'id'))->with('categories', $categories)->with('villes', $villes);
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\House  $house
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, House $house)
-    {
-        $house = house::find($house->id);
-        $house->title = $request->get('title');
-        $house->category_id = $request->get('category_id');
-        $house->ville_id = $request->get('ville_id');
-        $house->adresse = $request->get('adresse');
-        $house->price = $request->get('price');
-        $house->photo = $request->get('photo');
-        $house->description = $request->get('description');
-        
-        $picture = $request->file('photo');
-        $filename  = time() . '.' . $picture->getClientOriginalExtension();
-        $path = public_path('img/houses/' . $filename);
-        Image::make($picture->getRealPath())->resize(350, 200)->save($path);
-        $house->photo = $filename;
-
-        $house->save();
-        return redirect('/houses/index');
     }
 
     /**

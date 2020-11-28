@@ -8,12 +8,14 @@ $(document).ready(function(){
             dataType: "json",
             data: "",
             success: function(data) {
+                console.log(data);
                 var idArr = [];
                 for (j in data.valArray){
                     idArr.push(data.valArray[j].propriete_id);
                 }                
                 for (i in data.proprietes) {
                     console.log(data.proprietes[i]);
+                    console.log('idArr', idArr);
                     if (idArr.indexOf(data.proprietes[i].id) !== -1) {
                         $( ".proprietes" ).append(`
                         <div class="form-group">
@@ -89,14 +91,3 @@ $(document).ready(function(){
         })  
     });
 });
-
-// $(document).on("click", "input[name='propriete[]']", function(){
-//     $("input[name='propriete[]']").each(function () {
-//         if( $(this).is(':checked') ){
-//             $(this).val("true");
-//         } else {
-//             $(this).val("false");
-//         }
-//     });
-// });
-/*<input type="hidden" name="propriete_id[]" value="${data.proprietes[i].id}"/>*/
