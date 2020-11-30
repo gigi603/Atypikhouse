@@ -151,6 +151,7 @@
         <script src="{{ asset('js/jquery.min.js') }}"></script>
         <script src="{{ asset('js/jquery-ui.min.js') }}"></script>
         <script src="{{ asset('js/jquery.unveil.js') }}"></script>
+        <script src="{{ asset('js/user.js') }}"></script>
         <script>
             $(function() {
                 $("img").unveil();

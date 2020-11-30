@@ -103,17 +103,28 @@ Route::prefix('admin')->group(function () {
     Route::get('/messages_annonce', 'AdminController@listpostsannonce')->name('admin.listpostsannonce');
     Route::get('/showmessages_annonce/{id}', 'AdminController@showpostsannonce')->name('admin.showmessages_annonce');
 
+    //Liste des notifications lors d'une modification d'annonce
+    Route::get('/messages_annonce_modified', 'AdminController@listpostsannoncemodified')->name('admin.listpostsannonce_modified');
+    Route::get('/showmessages_annonce_modified/{id}', 'AdminController@showpostsannoncemodified')->name('admin.showmessageannonces_modified');
+
+    //Liste des notifications lors d'une suppression d'annonce
+    Route::get('/messages_annonce_deleted', 'AdminController@listpostsannoncedeleted')->name('admin.listpostsannonce_deleted');
+    Route::get('/showannonce_deleted/{id}', 'AdminController@showannoncedeleted')->name('admin.showannonce_deleted');
+    
+
     //Liste des notifications lors d'une nouvelle annonce
     Route::get('/messages_reservation', 'AdminController@listpostsreservation')->name('admin.listpostsreservation');
-    Route::get('/showmessages_reservation/{id}', 'AdminController@showpostsreservation')->name('admin.showmessages_reservation');
+    Route::get('/showreservation/{id}', 'AdminController@showreservation')->name('admin.showreservation');
+
+    //Liste des notifications lors d'une annulation d'une reservation
+    Route::get('/messages_reservation_annulee', 'AdminController@listpostsreservationannulee')->name('admin.listpostsreservationannulee');
+    Route::get('/show_reservation_annulee/{id}', 'AdminController@showreservationannulee')->name('admin.showreservation_annulee');
+
+    
     
     //Liste des messages de l'admin à l'utilisateur
     Route::get('/user_messages/{id}', 'AdminController@messages')->name('admin.user_messages');
 
-    // Mettre les notifications comme lues
-    // Route::get('markAsRead', function(){
-    //     auth()->user()->unreadNotifications->markAsRead();
-    // });
     //Message de l'admin à l'utilisateur
     Route::post('/addMessage/{id}', 'AdminController@addMessage')->name('admin.addMessage');
 
@@ -129,10 +140,11 @@ Route::prefix('admin')->group(function () {
 
     //Gestion des hébergement
     Route::get('/house/editHouse/{id}', 'AdminController@editHouse')->name('admin.editHouse');
+    Route::get('/house/editHouseRead/{id}', 'AdminController@editHouseRead')->name('admin.editHouseRead');
     Route::post('/house/updateHouse/{id}', 'AdminController@updateHouse')->name('admin.updateHouse');
     Route::get('/house/valideHouse/{id}', 'AdminController@valideHouse')->name('admin.valideHouse');
     Route::get('/house/refuseHouse/{id}', 'AdminController@refuseHouse')->name('admin.refuseHouse');
-    Route::get('/houses/deleteHouse/{id}', 'AdminController@disableHouse')->name('admin.disableHouse');
+    Route::get('/houses/deleteHouse/{id}', 'AdminController@deleteHouse')->name('admin.deleteHouse');
     
     //Liste des catégories
     Route::get('/categories', 'AdminController@listcategories')->name('admin.categories');

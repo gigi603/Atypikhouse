@@ -19,13 +19,17 @@ use App\Http\Requests\EditUserRequest;
 use App\Http\Requests\EditHouseRequest;
 use App\Http\Requests\ReservationRequest;
 use App\Notifications\ReplyToReservation;
+use App\Notifications\ReplyToReservationAnnulation;
 use App\Notifications\ReplyToAnnonce;
+use App\Notifications\ReplyToAnnonceModification;
+use App\Notifications\ReplyToAnnonceSuppression;
 use App\Http\Requests\CommentRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Mail\SendNewsletter;
 use App\Mail\SendReservationAnnulationConfirmation;
+use App\Mail\SendAnnonceModification;
 use App\Mail\SendAnnonceSuppression;
 use Illuminate\Support\Facades\Mail;
 use Image;
@@ -222,7 +226,8 @@ class UsersController extends Controller
         if($request->nb_personne > 15 || $request->nb_personne < 0){
             $request->nb_personne = "";
         }
-        if($request->propriete != NULL){
+        $proprieteshouse  = [];
+        if($request->propriete != NULL){ 
             foreach($request->propriete as $proprietes) {
                 $valuecatProprietesHouse = new valuecatPropriete;
                 $valuecatProprietesHouse->category_id = $request->category_id;
@@ -230,8 +235,33 @@ class UsersController extends Controller
                 $valuecatProprietesHouse->propriete_id = $proprietes;
                 $valuecatProprietesHouse->reservation_id = 0;
                 $valuecatProprietesHouse->save();
+                array_push($proprieteshouse, $valuecatProprietesHouse);
             }
         }
+        $users = user::where('id', '=', $house->user_id)->get();
+        foreach($users as $user){
+
+            //Envoyer une notification à l'admin
+            $post = new post;
+            $post->name = $user->nom.' '.$user->prenom;
+            $post->email = $user->email;
+            $post->content = "L'annonceur ".$user->prenom." ".$user->nom." vient de mettre à jour son annonce '".$house->title."' 
+                              vous pouvez consulter son annonce et voir ce qu'il a modifié comme informations.
+                              Ces informations prendront effet pour les prochaines réservations, les réservations déjà en cours elles ne verront pas de changement";
+            $post->type = "modify_annonce";
+            $post->house_id = $house->id;
+            $post->reservation_id = 0;
+            $post->user_id = $user->id;
+            $post->save();
+        }
+        
+        $admins = Admin::all();
+        foreach ($admins as $admin) {
+            $admin->notify(new ReplyToAnnonceModification($post));
+        }
+        //Envoie un mail de confirmation de la modification
+        Mail::to($house->user->email)->send(new SendAnnonceModification($house, $proprieteshouse));
+
         $request->session()->forget('houseCategoryEdit');
         return redirect()->back()->with('categorySelected', $categorySelected)
                                  ->with('success', "L'hébergement de l'utilisateur a bien été modifié");
@@ -245,24 +275,29 @@ class UsersController extends Controller
         $admins = admin::all();
 
         if($house->statut == "En attente de validation"){
-
             $house->disponible = "non";
             $house->save();
 
+            //Créer la notification à envoyer aux admins
             $post = new post;
             $post->name = $user->nom.' '.$user->prenom;
             $post->email = $user->email;
             $post->content = "L'annonce ".$house->title." de ".$user->nom.' '.$user->prenom." a été supprimée";
-            $post->type = "annonce";
+            $post->type = "delete_annonce";
             $post->house_id = $house->id;
             $post->reservation_id = 0;
             $post->user_id = $user->id;
-
             $post->save();
+
+            //Envoie la notif aux admins
+            $admins = Admin::all();
+            foreach ($admins as $admin) {
+                $admin->notify(new ReplyToAnnonceSuppression($post));
+            }
+            
             Mail::to($house->user->email)->send(new SendAnnonceSuppression($house));
             
-
-            return redirect()->back()->with('success', "Votre annonce a bien été supprimée");
+            return redirect()->back()->with('success', "Votre annonce a bien été supprimée, un mail de confirmation a vous a été envoyé");
         } else {
             $post = new post;
             $post->name = $user->nom.' '.$user->prenom;
@@ -329,10 +364,26 @@ class UsersController extends Controller
 
         //Notification envoyé à l'utilisateur
         $user = User::find(Auth::user()->id);
-        $user->notify(new ReplyToReservation($message));
+        $user->notify(new ReplyToReservationAnnulation($message));
 
-        //envoi du mail d'annulation de la reservation
+        //envoi du mail d'annulation de la reservation au client
         Mail::to($reservation->user->email)->send(new SendReservationAnnulationConfirmation($reservation));
+
+        //Envoyer une notification à l'admin
+        $post = new post;
+        $post->name = $user->nom.' '.$user->prenom;
+        $post->email = $user->email;
+        $post->content = "L'annonceur ".$user->prenom." ".$user->nom." vient d'annuler sa reservation '".$reservation->house->title."'";
+        $post->type = "canceled_reservation";
+        $post->house_id = $reservation->house->id;
+        $post->reservation_id = $reservation->id;
+        $post->user_id = $user->id;
+        $post->save();
+        
+        $admins = Admin::all();
+        foreach ($admins as $admin) {
+            $admin->notify(new ReplyToReservationAnnulation($post));
+        }
 
         return redirect()->back()->with('success', "Votre demande a bien été pris en compte, votre réservation a bien été annulée, un email de confirmation vous a été envoyé");
     }

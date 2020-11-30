@@ -3,12 +3,13 @@
 namespace App\Mail;
 
 use App\House;
+use App\Valuecatpropriete;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class SendAnnonceSuppression extends Mailable
+class SendAnnonceModification extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -19,9 +20,10 @@ class SendAnnonceSuppression extends Mailable
      */
     protected $house;
 
-    public function __construct(House $house)
+    public function __construct(House $house, $proprieteshouse)
     {
         $this->house = $house;
+        $this->proprieteshouse = $proprieteshouse;
     }
 
     /**
@@ -32,10 +34,11 @@ class SendAnnonceSuppression extends Mailable
     public function build()
     {
         $house = $this->house;
+        $proprieteshouse = $this->proprieteshouse;
 
         return $this->from('notre.equipe.atypikhouse@gmail.com')
-            ->subject('Confirmation de la suppression de votre annonce')
-            ->view('email.annonceSuppressionConfirmation')
+            ->subject('Confirmation de la modification de votre annonce')
+            ->view('email.annonceModificationConfirmation')
             ->with([
                 'houseUserPrenom' => $house->user->prenom,
                 'houseTitle' => $house->title,
@@ -46,6 +49,7 @@ class SendAnnonceSuppression extends Mailable
                 'houseEndDate' => $house->end_date,
                 'houseNbPersonnes' => $house->nb_personnes,
                 'houseStatus' => $house->statut,
+                'housePropriete' => $proprieteshouse
             ]);
     }
 }

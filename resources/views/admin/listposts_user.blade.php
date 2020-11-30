@@ -34,7 +34,7 @@
                             <tr>
                                 <td>{{$post->name}}</td>
                                 <td>{{$post->email}}</td>
-                                <td><a href="{{route('admin.showmessages_user', $post->id)}}" class="btn btn-primary">Voir</a></td>
+                                <td><a href="{{route('admin.showmessages_user', $post->id)}}" class="btn btn-primary detail-new-user">Voir</a></td>
                             </tr>
                         </tbody>
                     @else
@@ -42,7 +42,7 @@
                             <tr>
                                 <td>{{$post->name}}</td>
                                 <td>{{$post->email}}</td>
-                                <td><a href="{{route('admin.showmessages_user', $post->id)}}" class="btn btn-primary">Voir</a></td>
+                                <td><a href="{{route('admin.showmessages_user', $post->id)}}" class="btn btn-primary detail-new-user">Voir</a></td>
                             </tr>
                         </tbody>
                     @endif

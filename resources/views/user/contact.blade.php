@@ -30,7 +30,7 @@
                                     </span>
                                 @endif
                             </div>
-                            <div class="form-check{{ $errors->has('agree') ? ' has-error' : '' }}">
+                            <div class="form-group{{ $errors->has('agree') ? ' has-error' : '' }}">
                                 <label class="form-check-label label-home" for="accept-give-infos">
                                 <input type="checkbox" id="accept-give-infos" class="form-check-input" name="agree" value="true" > En soumettant ce formulaire, j'accepte que les informations saisies soient exploitées dans le cadre professionnel</label>
                                 @if ($errors->has('agree'))
@@ -38,8 +38,8 @@
                                         <strong>{{ $errors->first('agree') }}</strong>
                                     </span>
                                 @endif
+                                <input type="submit" class="btn btn-success btn-color" value="Envoyer"/>
                             </div>
-                            <input type="submit" class="btn btn-success btn-color" value="Envoyer"/>
                         </form>
                     </div>
                 </div>

@@ -1,4 +1,13 @@
+.badge-pill {
+    padding-right: .7em !important;
+    padding-left: 0.6em !important;
+    border-radius: 10rem !important;
+    margin-right: 2%;
+}
 
+.bg-black {
+    background-color: #000 !important;
+}
 .dropdown-item {
     color: #16181b;
     text-decoration: none;

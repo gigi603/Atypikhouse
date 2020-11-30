@@ -57,3 +57,17 @@
     </div>
 </div>
 @endsection
+@section('script')
+    <script type="text/javascript">
+        alert('coco');
+        // var i = parseInt(<?php echo $i ?>);
+        // console.log(i);
+        // i = i - 1;
+        // alert('gogo');
+        // alert(i);
+        // if(i == 0){
+        //     alert("0");
+        //     $('span.badge-pill.badge-danger.badge-new-message').remove();
+        // }
+    </script>
+@endsection

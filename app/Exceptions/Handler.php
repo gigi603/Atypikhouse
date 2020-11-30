@@ -61,6 +61,7 @@ class Handler extends ExceptionHandler
             return parent::render($request, $exception);
         }
         if($exception instanceof \Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException){
+            return response()->view('home');
             return parent::render($request, $exception);
         }
         if($exception instanceof \Cartalyst\Stripe\Exception\CardErrorException){

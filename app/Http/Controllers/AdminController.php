@@ -29,6 +29,9 @@ use Illuminate\Notifications\ChannelManager;
 use App\Notifications\ReplyToMessage;
 use App\Notifications\ReplyToAnnonce;
 use App\Notifications\ReplyToNews;
+use App\Mail\SendAnnonceSuppression;
+use App\Mail\SendAnnonceSuppressionFromAdmin;
+use Illuminate\Support\Facades\Mail;
 
 
 class AdminController extends Controller
@@ -97,6 +100,7 @@ class AdminController extends Controller
                 $userUnreadNotification->markAsRead();
             }
         }
+        
         return view('admin.showposts')->with('post', $post);
     }
 
@@ -163,6 +167,114 @@ class AdminController extends Controller
         return view('admin.showposts_annonce')->with('post', $post)->with('house', $house);
     }
 
+    //Notifications des nouvelles annonces (Ex: 3 nouvelles annonces)
+    public function listpostsannoncemodified(Post $posts)
+    {
+        $posts = post::where('type', 'modify_annonce')->orderBy('id', 'desc')->paginate(10);
+        $userUnreadNotifications = auth()->user()->unreadNotifications;
+
+        foreach($userUnreadNotifications as $userUnreadNotification) {
+            $data = $userUnreadNotification->data;
+            foreach($posts as $post){
+                if($post->id == $data["post_id"]){
+                    $post["unread"] = true;
+                }
+            }
+        }
+        return view('admin.listposts_annonce_modified')->with('posts', $posts);
+    }
+
+    //Vue de détails de la notifications des nouvelles annonces créées
+    public function showpostsannoncemodified($id)
+    {
+        $post = post::find($id);
+        $house = house::find($post->house_id);
+        $userUnreadNotifications = auth()->user()->unreadNotifications;
+        foreach($userUnreadNotifications as $userUnreadNotification) {
+            $data = $userUnreadNotification->data;
+            if($post->id == $data["post_id"]){
+                $userUnreadNotification->markAsRead();
+            }
+        }
+        return view('admin.showposts_annonce_modified')->with('post', $post)->with('house', $house);
+    }
+
+    //Suppressions des nouvelles annonces (Ex: 3 nouvelles annonces)
+    public function listpostsannoncedeleted(Post $posts)
+    {
+        $posts = post::where('type', 'delete_annonce')->orderBy('id', 'desc')->paginate(10);
+        $userUnreadNotifications = auth()->user()->unreadNotifications;
+
+        foreach($userUnreadNotifications as $userUnreadNotification) {
+            $data = $userUnreadNotification->data;
+            foreach($posts as $post){
+                if($post->id == $data["post_id"]){
+                    $post["unread"] = true;
+                }
+            }
+        }
+        return view('admin.listposts_annonce_deleted')->with('posts', $posts);
+    }
+
+    //Vue de détails de la notifications des nouvelles annonces créées
+    public function showannoncedeleted($id)
+    {
+        $post = post::find($id);
+        $house = house::find($post->house_id);
+        $user = user::find($house->user_id);
+        $userUnreadNotifications = auth()->user()->unreadNotifications;
+        foreach($userUnreadNotifications as $userUnreadNotification) {
+            $data = $userUnreadNotification->data;
+            if($post->id == $data["post_id"]){
+                $userUnreadNotification->markAsRead();
+            }
+        }
+
+        //Notes de l'annonce
+        $moyenneNote = 0;
+        $nb5etoiles = 0;
+        $nb4etoiles = 0;
+        $nb3etoiles = 0;
+        $nb2etoiles = 0;
+        $nb1etoiles = 0;
+        $nbTotalNote = 0;
+        foreach($house->comments as $comment){
+            if($comment->note > 0){
+                $moyenneNote = $moyenneNote + $comment->note;
+                $nbTotalNote++;
+            }
+            if($comment->note == 5){
+                $nb5etoiles = $nb5etoiles + 1;
+            }
+            if($comment->note == 4){
+                $nb4etoiles = $nb4etoiles + 1;
+            }
+            if($comment->note == 3){
+                $nb3etoiles = $nb3etoiles + 1;
+            }
+            if($comment->note == 2){
+                $nb2etoiles = $nb2etoiles + 1;
+            }
+            if($comment->note == 1){
+                $nb1etoiles = $nb1etoiles + 1;
+            }
+        }
+        if($moyenneNote > 0 && $nbTotalNote > 0){
+            $moyenneNote = $moyenneNote / $nbTotalNote;
+        }
+
+        return view('admin.showannonce_deleted')->with('post', $post)
+                                                ->with('house', $house)
+                                                ->with('user', $user)
+                                                ->with('moyenneNote', $moyenneNote)
+                                                ->with('nb5etoiles', $nb5etoiles)
+                                                ->with('nb4etoiles', $nb4etoiles)
+                                                ->with('nb3etoiles', $nb3etoiles)
+                                                ->with('nb2etoiles', $nb2etoiles)
+                                                ->with('nb1etoiles', $nb1etoiles)
+                                                ->with('nbTotalNote', $nbTotalNote);
+    }
+
     //Notifications des nouvelles reservations (Ex: 3 nouvelles reservations)
     public function listpostsreservation(Post $posts)
     {
@@ -181,7 +293,7 @@ class AdminController extends Controller
     }
 
     //Vue de détails de la notification des nouvelles reservations des clients
-    public function showpostsreservation($id)
+    public function showreservation($id)
     {
         $post = post::find($id);
         $reservation = reservation::find($post->reservation_id);
@@ -192,7 +304,39 @@ class AdminController extends Controller
                 $userUnreadNotification->markAsRead();
             }
         }
-        return view('admin.showposts_reservation')->with('post', $post)->with('reservation', $reservation);
+        return view('admin.showreservation')->with('post', $post)->with('reservation', $reservation);
+    }
+
+    //Notifications des nouvelles reservations (Ex: 3 nouvelles reservations)
+    public function listpostsreservationannulee(Post $posts)
+    {
+        $posts = post::where('type', 'canceled_reservation')->orderBy('id', 'desc')->paginate(10);
+        $userUnreadNotifications = auth()->user()->unreadNotifications;
+
+        foreach($userUnreadNotifications as $userUnreadNotification) {
+            $data = $userUnreadNotification->data;
+            foreach($posts as $post){
+                if($post->id == $data["post_id"]){
+                    $post["unread"] = true;
+                }
+            }
+        }
+        return view('admin.listposts_reservation_annulee')->with('posts', $posts);
+    }
+
+    //Vue de détails de la notification des nouvelles reservations des clients
+    public function showreservationannulee($id)
+    {
+        $post = post::find($id);
+        $reservation = reservation::find($post->reservation_id);
+        $userUnreadNotifications = auth()->user()->unreadNotifications;
+        foreach($userUnreadNotifications as $userUnreadNotification) {
+            $data = $userUnreadNotification->data;
+            if($post->id == $data["post_id"]){
+                $userUnreadNotification->markAsRead();
+            }
+        }
+        return view('admin.showreservation_annulee')->with('post', $post)->with('reservation', $reservation);
     }
 
     //Liste des categories
@@ -361,6 +505,25 @@ class AdminController extends Controller
                                 ->with('proprietes', $proprietes);
     }
 
+    public function editHouseRead($id)
+    { 
+        $categories = category::all();
+        $house = house::find($id);
+
+        if($house->category_id == null){
+            $categorySelected = "";
+        } else {
+            $categorySelected = $house->category_id;
+        }
+        
+        $proprietes = propriete::where('category_id', $house->category->id)->get();
+        
+        return view('admin.editHouseRead')->with('house', $house)
+                                ->with('categories', $categories)
+                                ->with('categorySelected', $categorySelected)
+                                ->with('proprietes', $proprietes);
+    }
+
     public function valideHouse($id) {
         $house = house::find($id);
         $house->statut = "Validé";
@@ -371,7 +534,7 @@ class AdminController extends Controller
         $message->user_id = $house->user_id;
         $message->save();
         $user = User::find(Auth::user()->id);
-        $user->notify(new ReplyToAnnonce($message));
+        $user->notify(new ReplyToNews($message));
 
         return redirect()->back()->with('success-valide', "Vous avez bien validé cette annonce");
     }
@@ -385,7 +548,7 @@ class AdminController extends Controller
         $message->user_id = $house->user_id;
         $message->save();
         $user = User::find(Auth::user()->id);
-        $user->notify(new ReplyToAnnonce($message));
+        $user->notify(new ReplyToNews($message));
         return redirect()->back()->with('success-valide', "Vous avez bien refusé cette annonce");
 
     }
@@ -416,6 +579,7 @@ class AdminController extends Controller
     public function updateHouse(EditHouseAdminRequest $request,Category $category, Ville $ville, House $house, $id)
     {
         $house = house::find($id);
+        $user = User::find(Auth::user()->id);
 
         $categories = category::where('statut','=', 1)->get();
         $houseCategoryEditAdmin = $request->session()->get('houseCategoryEditAdmin');
@@ -460,7 +624,6 @@ class AdminController extends Controller
             $end_date_date_format = Carbon::parse($end_date)->format('Y-m-d');
             $house->end_date = $end_date_date_format;
             $house->description = $request->description;
-            $house->statut = $request->statut;
             $house->save();
         }
         $valueproprietesdelete = valuecatpropriete::where('house_id','=', $id)->where('reservation_id', '=', 0)->delete();
@@ -475,7 +638,6 @@ class AdminController extends Controller
                 $valuecatProprietesHouse->save();
             }   
         }
-
         if($house->statut != $request->statut){
             if($request->statut == "En attente de validation"){
                 $house->statut = $request->statut;
@@ -484,21 +646,34 @@ class AdminController extends Controller
                 $message->content = "L'administrateur a mise en attente votre annonce ".$house->title.", il vous enverra un autre message concernant les modifications que vous devez effectuer afin qu'il valide par la suite votre annonce";
                 $message->user_id = $house->user_id;
                 $message->save();
-                $user = User::find(Auth::user()->id);
-                $user->notify(new ReplyToAnnonce($message));
+
+                $user->notify(new ReplyToNews($message));
                 $request->session()->forget('houseCategoryEditAdmin');
                 return redirect()->back()->with('categorySelected', $categorySelected)->with('success', "L'hébergement du propriétaire a bien été modifié, vous avez mise en attente l'annonce, un message a été envoyé au propriétaire de cette annonce");
-            } else {
+            } 
+            if($request->statut == "Validé") {
                 $house->statut = $request->statut;
                 $house->save();
                 $message = new message;
                 $message->content = "L'administrateur a validé votre annonce ".$house->title;
                 $message->user_id = $house->user_id;
                 $message->save();
-                $user = User::find(Auth::user()->id);
-                $user->notify(new ReplyToAnnonce($message));
+                
+                $user->notify(new ReplyToNews($message));
                 $request->session()->forget('houseCategoryEditAdmin');
-                return redirect()->back()->with('categorySelected', $categorySelected)->with('success', "L'hébergement du propriétaire a bien été modifié, vous avez validé l'annonce, un message a été envoyé au propriétaire de cette annonce");
+                return redirect()->back()->with('categorySelected', $categorySelected)->with('success', "L'hébergement du propriétaire a bien été modifié, un message a été envoyé au propriétaire de cette annonce");
+            }
+            if($request->statut == "Refusé") {
+                $house->statut = $request->statut;
+                $house->save();
+                $message = new message;
+                $message->content = "L'administrateur a refusé votre annonce ".$house->title;
+                $message->user_id = $house->user_id;
+                $message->save();
+                
+                $user->notify(new ReplyToNews($message));
+                $request->session()->forget('houseCategoryEditAdmin');
+                return redirect()->back()->with('categorySelected', $categorySelected)->with('success', "L'hébergement du propriétaire a bien été modifié, un message a été envoyé au propriétaire de cette annonce");
             }
         }
     
@@ -510,8 +685,8 @@ class AdminController extends Controller
             $message->content = "L'administrateur a modifié des informations sur votre annonce ".$house->title;
             $message->user_id = $house->user_id;
             $message->save();
-            $user = User::find(Auth::user()->id);
-            $user->notify(new ReplyToAnnonce($message));
+            
+            $user->notify(new ReplyToNews($message));
             $request->session()->forget('houseCategoryEditAdmin');
             return redirect()->back()->with('categorySelected', $categorySelected)->with('success', "L'hébergement de l'utilisateur a bien été modifié, un message a été envoyé au propriétaire de cette annonce");
         } else {
@@ -529,21 +704,6 @@ class AdminController extends Controller
             $request->session()->forget('houseCategoryEditAdmin');
             return redirect()->back()->with('categorySelected', $categorySelected)->with('success', "L'hébergement du propriétaire a bien été modifié, un message a été envoyé au propriétaire de cette annonce");
         } 
-    }
-
-    public function disableHouse($id)
-    { 
-        $house = house::find($id);
-        $house->disponible = "non";
-        $house->save();
-
-        $message = new message;
-        $message->content = "L'administrateur a supprimé votre annonce '".$house->title."'";
-        $message->user_id = $house->user_id;
-        $message->save();
-
-        return redirect()->back()->with("success", "L'annonce du propriétaire a bien été retiré un message a été envoyé à l'annonceur");
-
     }
 
     /**
@@ -727,9 +887,9 @@ class AdminController extends Controller
                                         ->with('nbTotalNote', $nbTotalNote);
     }
 
-    public function deleteAnnonce($id) {
+    public function deleteHouse($id) {
         $house = house::find($id);
-        $user = user::find(Auth::user()->id);
+        $users = User::where('id', '=', $house->user_id)->get();
         //Supprime l'annonce en changeant le statut
         $house->disponible = "non";
         $house->save();
@@ -738,13 +898,16 @@ class AdminController extends Controller
         $message = new message;
         $message->content = "L'administrateur a supprimé votre annonce ".$house->title;
         $message->user_id = $house->user_id;
-        $message->admin_id = Auth::user()->id;
         $message->save();
 
-        //Envoie la notification à l'annonceur
-        \Notification::send($user, new ReplyToNews($message));
+        foreach($users as $user){
+            //Envoie la notification à l'annonceur
+            $user->notify(new ReplyToNews($message));
+        }
+        //Envoie un mail de confirmation de la suppression de l'annonce
+        Mail::to($house->user->email)->send(new SendAnnonceSuppressionFromAdmin($house));
 
-        return redirect()->back()->with('success', "L'annonce a bien été supprimée, un message a été envoyé au propriétaire de l'annonce");
+        return redirect()->back()->with('success-valide', "L'annonce a été supprimée, une notification a été envoyé sur le compte atypikhouse du propriétaire de l'annonce ainsi qu'un mail");
     }
 
     public function listcomments(Comment $comments, $id)

@@ -8,6 +8,12 @@
                 {{ Session::get('success') }}
             </div>
         @endif
+        @if (Session::has('success-valide'))
+            <div class="alert alert-success">
+                <a href="#" class="close" data-dismiss="alert">&times;</a>
+                {{ Session::get('success-valide') }}
+            </div>
+        @endif
         <div class="card-header">
         <h1 style="font-size:20px;">
             <i class="fas fa-table"></i>
@@ -77,7 +83,7 @@
                                     @endif
                                 </td>
                                 <td><a href="{{action('AdminController@showannonces', $house->id)}}" class="btn btn-primary btn-tableau">Voir</a><br/>
-                                <a href="{{action('AdminController@disableHouse', $house->id)}}" class="btn btn-danger delete-annonce">Supprimer</a></td>
+                                <a href="{{action('AdminController@deleteHouse', $house->id)}}" class="btn btn-danger delete-annonce">Supprimer</a></td>
                             </tr>
                         </tbody>
                     @endforeach

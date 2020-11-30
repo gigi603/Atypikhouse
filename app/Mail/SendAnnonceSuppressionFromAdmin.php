@@ -8,7 +8,7 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class SendAnnonceSuppression extends Mailable
+class SendAnnonceSuppressionFromAdmin extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -34,8 +34,8 @@ class SendAnnonceSuppression extends Mailable
         $house = $this->house;
 
         return $this->from('notre.equipe.atypikhouse@gmail.com')
-            ->subject('Confirmation de la suppression de votre annonce')
-            ->view('email.annonceSuppressionConfirmation')
+            ->subject('Atypikhouse :  Notre équipe a supprimé votre annonce')
+            ->view('email.annonceSuppressionFromAdmin')
             ->with([
                 'houseUserPrenom' => $house->user->prenom,
                 'houseTitle' => $house->title,

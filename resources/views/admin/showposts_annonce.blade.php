@@ -18,7 +18,7 @@
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
                 <div class="panel panel-default">
-                    <div class="panel-heading"><h1 style="font-size:20px;">Message</h1></div>
+                    <div class="panel-heading"><h1 style="font-size:20px;">Notification</h1></div>
                     
                     <div class="panel-body card-message">
                         <p>Nom / Prénom: {{$post->name}}</p>
@@ -27,8 +27,8 @@
                     </div>
                 </div>
                 <div class="panel panel-default" style="margin: 0; border-radius: 0;">
-                    <div class="panel-body">
-                        <a href="{{route('admin.showannonces', $house->id)}}">Voir l'annonce </a>
+                    <div class="panel-body text-center">
+                        <a href="{{route('admin.showannonces', $house->id)}}" class="btn btn-primary">Voir l'annonce </a>
                     </div>
             </div>
         </div>

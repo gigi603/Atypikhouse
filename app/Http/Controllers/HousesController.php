@@ -566,7 +566,7 @@ class HousesController extends Controller
         $message->save();
 
         //envoi du mail de confirmation de la reservation
-        Mail::to(Auth::user()->email)->send(new SendAnnonceSuppression($house));
+        Mail::to(Auth::user()->email)->send(new SendAnnonceConfirmation($house));
 
         $request->session()->forget('houseAdresse');
         $request->session()->forget('houseTelephone');
@@ -622,19 +622,6 @@ class HousesController extends Controller
         return view('houses.show', compact('house', 'id'))->with('house', $house);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\House  $house
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(House $house)
-    {
-        $house = house::find($house->id);
-        $house->delete();
-        return redirect('houses/index');
-        
-    }
 
     public function mylocations($id) {
         $houseProfil = DB::table('users')

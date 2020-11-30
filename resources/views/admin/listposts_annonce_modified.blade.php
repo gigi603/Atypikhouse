@@ -15,13 +15,16 @@
         <div class="card-header">
         <h1 style="font-size:20px;">
             <i class="fas fa-table"></i>
-            Réservations</h1></div>
+            Annonces modifiées par les clients
+        </h1>
+    </div>
         <div class="card-body">
             <div class="table-responsive">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                 <tr>
-                    <th>Réservations</th>
+                    <th>Nom / Prénom</th>
+                    <th>Email</th>
                     <th> Actions</th>
                 </tr>
                 </thead>
@@ -30,14 +33,16 @@
                         <tbody style="background-color:#dff0d8">
                             <tr>
                                 <td>{{$post->name}}</td>
-                                <td><a href="{{route('admin.showreservation', $post->id)}}" class="btn btn-primary">Voir la notification</a></td>
+                                <td>{{$post->email}}</td>
+                                <td><a href="{{route('admin.showmessageannonces_modified', $post->id)}}" class="btn btn-primary">Voir</a></td>
                             </tr>
                         </tbody>
                     @else
                         <tbody>
                             <tr>
                                 <td>{{$post->name}}</td>
-                                <td><a href="{{route('admin.showreservation', $post->id)}}" class="btn btn-primary">Voir la notification</a></td>
+                                <td>{{$post->email}}</td>
+                                <td><a href="{{route('admin.showmessageannonces_modified', $post->id)}}" class="btn btn-primary">Voir</a></td>
                             </tr>
                         </tbody>
                     @endif

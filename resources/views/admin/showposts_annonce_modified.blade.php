@@ -18,7 +18,7 @@
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
                 <div class="panel panel-default">
-                    <div class="panel-heading"><h1 style="font-size:20px;">Message</h1></div>
+                    <div class="panel-heading"><h1 style="font-size:20px;">Notification</h1></div>
                     
                     <div class="panel-body card-message">
                         <p>Nom / Prénom: {{$post->name}}</p>
@@ -27,28 +27,11 @@
                     </div>
                 </div>
                 <div class="panel panel-default" style="margin: 0; border-radius: 0;">
-                    <div class="panel-body">
-                        <div class="form-group{{ $errors->has('content') ? ' has-error' : '' }}">
-                            <form action="{{ route('admin.addMessage', $post->user_id) }}" method="POST" style="display: flex;">
-                                
-                                {{ csrf_field() }}
-                                <input type="text" name="content" placeholder="Saisir un message" class="form-control" id="input_comment" style="border-radius: 0;">
-                                <input type="submit" value="Envoyer" class="btn btn-primary btn-color" style="border-radius: 0;">
-                            </form>
-                            @if ($errors->has('content'))
-                                <span class="help-block">
-                                    <strong>{{ $errors->first('content') }}</strong>
-                                </span>
-                            @endif
-                        </div>
+                    <div class="panel-body text-center">
+                        <a href="{{route('admin.editHouseRead', $house->id)}}" class="btn btn-primary">Voir les modifications de l'annonce </a>
                     </div>
-                </div>
             </div>
         </div>
     </div>
 </div>
-@endsection
-@section('script')
-    <script>
-    </script>
 @endsection

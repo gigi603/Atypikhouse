@@ -159,7 +159,8 @@
                                 <select id="select_category" type="text" name="statut" class="form-control">
                                     <option id="" value="{{$house->statut}}" selected="selected" required autofocus>{{$house->statut}}</option> 
                                     <option value="En attente de validation">En attente de validation</option>
-                                    <option value="Validé">Validé</option>                       
+                                    <option value="Validé">Validé</option>
+                                    <option value="Refusé">Refusé</option>                          
                                 </select>
                             </div>
                         </div>
