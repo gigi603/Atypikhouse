@@ -120,7 +120,6 @@
     <script src="{{ asset('js/calendarCreateAnnonce.js') }}"></script>
     <script type="text/javascript">
         var proprietesChecked = <?php echo json_encode($housePropriete); ?>;
-        console.log(proprietesChecked);
     </script>
     <script src="{{ asset('js/create_house.js') }}"></script>
     
