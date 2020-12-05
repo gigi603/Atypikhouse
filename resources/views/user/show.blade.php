@@ -34,63 +34,64 @@
             <div class="row">
                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                     <div class="calendar panel panel-default">
-                        <h3 class="text-center panel-heading">Réserver vos dates : </h3>
-                        <form class="form-horizontal" method="POST" action="{{url('reservations')}}" enctype="multipart/form-data">
-                            {{ csrf_field() }}
-                            <div class="form-group col-sm-12 col-xs-12">
-                                <input type="hidden" name="house_id" value="{{ $house->id }}">
-                                <div class="form-group{{ $errors->has('start_date') ? ' has-error' : '' }}">
-                                    {!! Form::label('from', 'Départ : ', array('class' => 'formLabel control-label')) !!}
-                                    {!! Form::text('start_date', Form::old('from'), array( 
-                                        'class' => 'form-control',
-                                        'required' => true,
-                                        'id' => 'from',
-                                    )) !!}
-                                    @if ($errors->has('start_date'))
-                                        <span class="help-block">
-                                            <strong>{{ $errors->first('start_date') }}</strong>
-                                        </span>
-                                    @endif
-                                </div>
-                                <div class="form-group{{ $errors->has('end_date') ? ' has-error' : '' }}">
-                                    {!! Form::label('to', 'Arrivée : ', array('class' => 'formLabel control-label')) !!} 
-                                    {!! Form::text('end_date', Form::old('to'), array( 
-                                        'class' => 'form-control',
-                                        'required' => true,
-                                        'id' => 'to',
-                                        'style' => 'overflow: visible'
-                                    )) !!}
-                                    @if ($errors->has('end_date'))
-                                        <span class="help-block">
-                                            <strong>{{ $errors->first('end_date') }}</strong>
-                                        </span>
-                                    @endif
-                                </div>
-                                 
-                                <input type="hidden" name="start_date_annonce" id="start_date_annonce" value="{{$house->start_date}}"/>
-                                <input type="hidden" name="end_date_annonce" id="end_date_annonce" value="{{$house->end_date}}"/>
-                                <div class="form-group{{ $errors->has('nb_personnes') ? ' has-error' : '' }}">
-                                    {!! Form::label('select_nb_personnes', 'Nombre de personnes : ', array('class' => 'formLabel control-label')) !!}
-                                    <select id="select_nb_personnes" name="nb_personnes" required class="form-control" style="margin-top:3.5%;">
-                                        <option id="" value="" autofocus>Nombre de personnes</option>
-                                        @for($i=1;$i<= $house->nb_personnes;$i++)
-                                        <option value={{$i}} @if (old('nb_personnes') == $i) selected="selected" @endif>{{$i}}</option>
-                                        @endfor 
-                                    </select>
-                                    @if ($errors->has('nb_personnes'))
-                                        <span class="help-block">
-                                            <strong>{{ $errors->first('nb_personnes') }}</strong>
-                                        </span>
-                                    @endif
+                        @if(Auth::check())
+                            <h3 class="text-center panel-heading">Réserver vos dates : </h3>
+                            <form class="form-horizontal" method="POST" action="{{url('reservations')}}" enctype="multipart/form-data">
+                                {{ csrf_field() }}
+                                <div class="form-group col-sm-12 col-xs-12">
+                                    <input type="hidden" name="house_id" value="{{ $house->id }}">
+                                    <div class="form-group{{ $errors->has('start_date') ? ' has-error' : '' }}">
+                                        <label for="from" class="formLabel control-label">Départ : </label>
+                                        <input type="text" class="form-control" required id="from" name="start_date" value="{{old('start_date')}}"/>
+                                        @if ($errors->has('start_date'))
+                                            <span class="help-block">
+                                                <strong>{{ $errors->first('start_date') }}</strong>
+                                            </span>
+                                        @endif
+                                    </div>
+                                    <div class="form-group{{ $errors->has('end_date') ? ' has-error' : '' }}">
+                                        <label for="to" class="formLabel control-label">Arrivée : </label>
+                                        <input type="text" class="form-control" required id="to" name="end_date" value="{{old('end_date')}}"/>
+                                        @if ($errors->has('end_date'))
+                                            <span class="help-block">
+                                                <strong>{{ $errors->first('end_date') }}</strong>
+                                            </span>
+                                        @endif
+                                    </div>
                                     
-                                </div>
-                                <input type="hidden" name="house_id" value="{{$house->id}}"/>
-                                <input type="hidden" name="category_id" value="{{$house->category_id}}"/>
+                                    <input type="hidden" name="start_date_annonce" id="start_date_annonce" value="{{$house->start_date}}"/>
+                                    <input type="hidden" name="end_date_annonce" id="end_date_annonce" value="{{$house->end_date}}"/>
 
-                                </div>
-                                {!! Form::submit('Réserver', array('class' => 'btn btn-success btn_reserve')) !!}
-                                
-                            </form>   
+                                    <div class="form-group{{ $errors->has('nb_personnes') ? ' has-error' : '' }}">
+                                        <label for="select_nb_personnes" for="from" class="formLabel control-label">Nombre de personnes : </label>
+                                        <select id="select_nb_personnes" name="nb_personnes" required class="form-control" style="margin-top:3.5%;">
+                                            <option id="" value="" autofocus>Nombre de personnes</option>
+                                            @for($i=1;$i<= $house->nb_personnes;$i++)
+                                            <option value={{$i}} @if (old('nb_personnes') == $i) selected="selected" @endif>{{$i}}</option>
+                                            @endfor 
+                                        </select>
+                                        @if ($errors->has('nb_personnes'))
+                                            <span class="help-block">
+                                                <strong>{{ $errors->first('nb_personnes') }}</strong>
+                                            </span>
+                                        @endif
+                                        
+                                    </div>
+                                    <input type="hidden" name="house_id" value="{{$house->id}}"/>
+                                    <input type="hidden" name="category_id" value="{{$house->category_id}}"/>
+
+                                    </div>
+                                    {!! Form::submit('Réserver', array('class' => 'btn btn-success btn_reserve')) !!}
+                                    
+                                </form>
+                            @else
+                                <h3 class="text-center panel-heading">Connectez-vous </h3>
+                                    <div class="form-group col-sm-12 col-xs-12">
+                                        <p><b>Afin de pouvoir effectuer des réservations sur cette annonce, vous devez vous connecter</b></p>
+                                    </div>
+                                    <a href="{{route('login')}}" class="btn btn-success btn_reserve text-center">Me connecter </a>
+                                </form>
+                            @endif   
                         </div>
                     </div> 
                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
