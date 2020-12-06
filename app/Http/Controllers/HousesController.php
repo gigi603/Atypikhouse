@@ -245,9 +245,7 @@ class HousesController extends Controller
                 ->where('end_date', '>=', $end_date)
                 ->where('disponible', '=', "oui")
                 ->where('category_id', '=', $request->category_id)
-                ->orWhere('nb_personnes', '>=', $request->nb_personnes)
-                ->orderBy('category_id', 'ASC')
-                ->orderBy('nb_personnes', 'DESC')
+                ->where('nb_personnes', '>=', $request->nb_personnes)
                 ->paginate(6);
 
             if(count($houses) > 0){
@@ -262,7 +260,7 @@ class HousesController extends Controller
                     ->where('statut', 'Validé')
                     ->where('end_date', '>', $today)
                     ->where('end_date', '>=', $end_date)
-                    ->orWhere('nb_personnes', '>=', $request->nb_personnes)
+                    ->where('nb_personnes', '>=', $request->nb_personnes)
                     ->where('disponible', '=', "oui")
                     ->orderBy('id','DESC')
                     ->paginate(6);
