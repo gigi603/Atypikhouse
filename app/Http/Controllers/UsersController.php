@@ -274,7 +274,7 @@ class UsersController extends Controller
         $house = house::find($id);
         $admins = admin::all();
 
-        if($house->statut == "En attente de validation"){
+        if($house->statut == "En attente de validation" || $house->statut == "Refusé"){
             $house->disponible = "non";
             $house->save();
 
