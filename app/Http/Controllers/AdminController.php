@@ -216,7 +216,7 @@ class AdminController extends Controller
         return view('admin.listpostsdemandeannonce_to_delete')->with('posts', $posts);
     }
 
-    public function showpostsdemandeannoncetodelete()
+    public function showdemandeannoncetodelete()
     {
         $posts = post::where('type', 'demande_delete_annonce')->orderBy('id', 'desc')->paginate(10);
         $userUnreadNotifications = auth()->user()->unreadNotifications;
@@ -229,7 +229,7 @@ class AdminController extends Controller
                 }
             }
         }
-        return view('admin.showpostsdemandeannonce_to_delete')->with('posts', $posts);
+        return view('admin.showpostdemandeannonce_to_delete')->with('posts', $posts);
     }
 
     //Suppressions des nouvelles annonces (Ex: 3 nouvelles annonces)
