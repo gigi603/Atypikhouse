@@ -104,8 +104,8 @@ class RegisterController extends Controller
         $input = $request->all();
 
         $validator = $this->validate($request, [
-            'nom' => 'required|min:2|max:30|regex:/^[\pL\s\-\']+$/u',
-            'prenom' => 'required|min:2|max:30|regex:/^[\pL\s\-\']+$/u',
+            'nom' => 'required|min:2|max:100|regex:/^[\pL\s\-\']+$/u',
+            'prenom' => 'required|min:2|max:100|regex:/^[\pL\s\-\']+$/u',
             'email' => 'required|unique:users|max:30|email',
             'email_confirmation' => 'required|same:email|max:30',
             'password' => 'required|min:8|max:30',
