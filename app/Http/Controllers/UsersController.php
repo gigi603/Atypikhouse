@@ -305,7 +305,7 @@ class UsersController extends Controller
             $post->name = $user->nom.' '.$user->prenom;
             $post->email = $user->email;
             $post->content = "L'utilisateur ".$user->nom.' '.$user->prenom." veut supprimer l'annonce ".$house->title;
-            $post->type = "annonce";
+            $post->type = "demande_delete_annonce";
             $post->house_id = $house->id;
             $post->reservation_id = 0;
             $post->user_id = $user->id;

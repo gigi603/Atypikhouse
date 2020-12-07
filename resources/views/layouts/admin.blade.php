@@ -242,7 +242,7 @@
               </div>
               <div class="row">
                 <div class="col-xl-3 col-sm-6 mb-3">
-                  <a href="{{route('admin.listpostsannonce_modified')}}" class="admin-messages">
+                  <a href="{{route('admin.listpostsdemandeannonce_to_delete')}}" class="admin-messages">
                   <div class="card text-white bg-black o-hidden h-100">
                     <div class="card-body">
                       <div class="card-body-icon">

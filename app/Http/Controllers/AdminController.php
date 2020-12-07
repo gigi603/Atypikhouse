@@ -28,6 +28,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Notifications\ChannelManager;
 use App\Notifications\ReplyToMessage;
 use App\Notifications\ReplyToAnnonce;
+use App\Notifications\ReplyToAnnonceDemandeSuppression;
 use App\Notifications\ReplyToNews;
 use App\Mail\SendAnnonceSuppression;
 use App\Mail\SendAnnonceSuppressionFromAdmin;
@@ -197,6 +198,38 @@ class AdminController extends Controller
             }
         }
         return view('admin.showposts_annonce_modified')->with('post', $post)->with('house', $house);
+    }
+
+    public function listpostsdemandeannoncetodelete()
+    {
+        $posts = post::where('type', 'demande_delete_annonce')->orderBy('id', 'desc')->paginate(10);
+        $userUnreadNotifications = auth()->user()->unreadNotifications;
+
+        foreach($userUnreadNotifications as $userUnreadNotification) {
+            $data = $userUnreadNotification->data;
+            foreach($posts as $post){
+                if($post->id == $data["post_id"]){
+                    $post["unread"] = true;
+                }
+            }
+        }
+        return view('admin.listpostsdemandeannonce_to_delete')->with('posts', $posts);
+    }
+
+    public function showpostsdemandeannoncetodelete()
+    {
+        $posts = post::where('type', 'demande_delete_annonce')->orderBy('id', 'desc')->paginate(10);
+        $userUnreadNotifications = auth()->user()->unreadNotifications;
+
+        foreach($userUnreadNotifications as $userUnreadNotification) {
+            $data = $userUnreadNotification->data;
+            foreach($posts as $post){
+                if($post->id == $data["post_id"]){
+                    $post["unread"] = true;
+                }
+            }
+        }
+        return view('admin.showpostsdemandeannonce_to_delete')->with('posts', $posts);
     }
 
     //Suppressions des nouvelles annonces (Ex: 3 nouvelles annonces)
@@ -886,6 +919,7 @@ class AdminController extends Controller
                                         ->with('nb1etoiles', $nb1etoiles)
                                         ->with('nbTotalNote', $nbTotalNote);
     }
+    
 
     public function deleteHouse($id) {
         $house = house::find($id);

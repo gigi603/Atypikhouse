@@ -110,6 +110,10 @@ Route::prefix('admin')->group(function () {
     //Liste des notifications lors d'une suppression d'annonce
     Route::get('/messages_annonce_deleted', 'AdminController@listpostsannoncedeleted')->name('admin.listpostsannonce_deleted');
     Route::get('/showannonce_deleted/{id}', 'AdminController@showannoncedeleted')->name('admin.showannonce_deleted');
+
+    //Liste des notifications lors d'une demande de suppression d'annonce
+    Route::get('/messages_demande_annonce_to_delete', 'AdminController@listpostsdemandeannoncetodelete')->name('admin.listpostsdemandeannonce_to_delete');
+    Route::get('/showdemandeannoncetodelete/{id}', 'AdminController@showdemandeannoncetodelete')->name('admin.showdemandeannonce_to_delete');
     
 
     //Liste des notifications lors d'une nouvelle annonce
