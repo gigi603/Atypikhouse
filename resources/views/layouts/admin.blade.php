@@ -193,9 +193,9 @@
                           @endif
                         @endforeach
                         @if($k != 0)
-                          <span class="badge-pill badge-danger">{{$k}}</span> <span>nouvelle(s) annonce(s) clients</span>
+                          <span class="badge-pill badge-danger">{{$k}}</span> <span>nouvelle(s) annonce(s) clients / ou demande(s) de suppression d'annonce</span>
                         @else
-                          {{$k}} nouvelle(s) annonce(s) clients
+                          {{$k}} nouvelle(s) annonce(s) clients / demande de suppression d'annonce
                         @endif
                       </div>
                     </div>
