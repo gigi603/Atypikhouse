@@ -216,7 +216,7 @@ class AdminController extends Controller
         return view('admin.listpostsdemandeannonce_to_delete')->with('posts', $posts);
     }
 
-    public function showdemandeannoncetodelete()
+    public function showdemandeannoncetodelete($id)
     {
         $post = post::find($id);
         $house = house::find($post->house_id);
