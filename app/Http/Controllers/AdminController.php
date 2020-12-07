@@ -202,7 +202,8 @@ class AdminController extends Controller
 
     public function listpostsdemandeannoncetodelete()
     {
-        $posts = post::where('type', 'demande_delete_annonce')->orderBy('id', 'desc')->paginate(10);
+        $posts = post::where('type','=', 'demande_delete_annonce')->orderBy('id', 'desc')->paginate(10);
+        dd($posts);
         $userUnreadNotifications = auth()->user()->unreadNotifications;
 
         foreach($userUnreadNotifications as $userUnreadNotification) {
