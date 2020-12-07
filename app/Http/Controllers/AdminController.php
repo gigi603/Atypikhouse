@@ -218,17 +218,62 @@ class AdminController extends Controller
 
     public function showdemandeannoncetodelete()
     {
-        $posts = post::where('type', 'demande_delete_annonce')->orderBy('id', 'desc')->paginate(10);
+        $post = post::find($id);
+        $house = house::find($post->house_id);
         $userUnreadNotifications = auth()->user()->unreadNotifications;
 
+        $user = user::find($house->user_id);
+        $userUnreadNotifications = auth()->user()->unreadNotifications;
         foreach($userUnreadNotifications as $userUnreadNotification) {
             $data = $userUnreadNotification->data;
-            foreach($posts as $post){
-                if($post->id == $data["post_id"]){
-                    $post["unread"] = true;
-                }
+            if($post->id == $data["post_id"]){
+                $userUnreadNotification->markAsRead();
             }
         }
+
+        //Notes de l'annonce
+        $moyenneNote = 0;
+        $nb5etoiles = 0;
+        $nb4etoiles = 0;
+        $nb3etoiles = 0;
+        $nb2etoiles = 0;
+        $nb1etoiles = 0;
+        $nbTotalNote = 0;
+        foreach($house->comments as $comment){
+            if($comment->note > 0){
+                $moyenneNote = $moyenneNote + $comment->note;
+                $nbTotalNote++;
+            }
+            if($comment->note == 5){
+                $nb5etoiles = $nb5etoiles + 1;
+            }
+            if($comment->note == 4){
+                $nb4etoiles = $nb4etoiles + 1;
+            }
+            if($comment->note == 3){
+                $nb3etoiles = $nb3etoiles + 1;
+            }
+            if($comment->note == 2){
+                $nb2etoiles = $nb2etoiles + 1;
+            }
+            if($comment->note == 1){
+                $nb1etoiles = $nb1etoiles + 1;
+            }
+        }
+        if($moyenneNote > 0 && $nbTotalNote > 0){
+            $moyenneNote = $moyenneNote / $nbTotalNote;
+        }
+
+        return view('admin.showpostdemandeannonce_to_delete')->with('post', $post)
+                                                ->with('house', $house)
+                                                ->with('user', $user)
+                                                ->with('moyenneNote', $moyenneNote)
+                                                ->with('nb5etoiles', $nb5etoiles)
+                                                ->with('nb4etoiles', $nb4etoiles)
+                                                ->with('nb3etoiles', $nb3etoiles)
+                                                ->with('nb2etoiles', $nb2etoiles)
+                                                ->with('nb1etoiles', $nb1etoiles)
+                                                ->with('nbTotalNote', $nbTotalNote);
         return view('admin.showpostdemandeannonce_to_delete')->with('posts', $posts);
     }
 
