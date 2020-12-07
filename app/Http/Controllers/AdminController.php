@@ -274,7 +274,6 @@ class AdminController extends Controller
                                                 ->with('nb2etoiles', $nb2etoiles)
                                                 ->with('nb1etoiles', $nb1etoiles)
                                                 ->with('nbTotalNote', $nbTotalNote);
-        return view('admin.showpostdemandeannonce_to_delete')->with('posts', $posts);
     }
 
     //Suppressions des nouvelles annonces (Ex: 3 nouvelles annonces)
