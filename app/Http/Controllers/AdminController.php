@@ -547,7 +547,7 @@ class AdminController extends Controller
         $message->content = "L'administrateur a refusé l'annonce ".$house->title." veuillez nous contacter via le formulaire de contact";
         $message->user_id = $house->user_id;
         $message->save();
-        $user = User::find(Auth::user()->id);
+        $user = User::find($house->user_id);
         $user->notify(new ReplyToNews($message));
         return redirect()->back()->with('success-valide', "Vous avez bien refusé cette annonce");
 
