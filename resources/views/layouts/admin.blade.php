@@ -193,9 +193,9 @@
                           @endif
                         @endforeach
                         @if($k != 0)
-                          <span class="badge-pill badge-danger">{{$k}}</span> <span>nouvelle(s) annonce(s) clients / ou demande(s) de suppression d'annonce</span>
+                          <span class="badge-pill badge-danger">{{$k}}</span> <span>nouvelle(s) annonce(s) clients</span>
                         @else
-                          {{$k}} nouvelle(s) annonce(s) clients / demande de suppression d'annonce
+                          {{$k}} nouvelle(s) annonce(s) clients
                         @endif
                       </div>
                     </div>
@@ -241,6 +241,39 @@
                 </div>
               </div>
               <div class="row">
+                <div class="col-xl-3 col-sm-6 mb-3">
+                  <a href="{{route('admin.listpostsannonce_modified')}}" class="admin-messages">
+                  <div class="card text-white bg-black o-hidden h-100">
+                    <div class="card-body">
+                      <div class="card-body-icon">
+                        <i class="fas fa-fw fa-comments"></i>
+                      </div>
+                      <div class="mr-5">
+                        <?php $a = 0;?>
+                        @foreach (auth()->user()->unreadNotifications as $notification)
+                          @if($notification->type == 'App\Notifications\ReplyToAnnonceDemandeSuppression' && $notification->read_at == null)
+                            <?php $a++; ?>
+                          @endif
+                          @if($notification->read_at != null)
+                            <?php $a = 0; ?>
+                          @endif 
+                        @endforeach
+                        @if($a != 0)
+                          <span class="badge-pill badge-danger">{{$a}}</span> <span> demande(s) de suppressions d'annonce(s) par le client</span>
+                        @else
+                          {{$a}} demande de suppression d'annonces par le client
+                        @endif
+                      </div>
+                    </div>
+                    <a class="card-footer text-white clearfix small z-1" href="#">
+                      <span class="float-left">View Details</span>
+                      <span class="float-right">
+                        <i class="fas fa-angle-right"></i>
+                      </span>
+                    </a>
+                  </div>
+                </a>
+                </div>
                 <div class="col-xl-3 col-sm-6 mb-3">
                   <a href="{{route('admin.listpostsannonce_modified')}}" class="admin-messages">
                   <div class="card text-white bg-black o-hidden h-100">

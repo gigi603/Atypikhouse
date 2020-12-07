@@ -23,6 +23,7 @@ use App\Notifications\ReplyToReservationAnnulation;
 use App\Notifications\ReplyToAnnonce;
 use App\Notifications\ReplyToAnnonceModification;
 use App\Notifications\ReplyToAnnonceSuppression;
+use App\Notifications\ReplyToAnnonceDemandeSuppression;
 use App\Http\Requests\CommentRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -31,6 +32,7 @@ use App\Mail\SendNewsletter;
 use App\Mail\SendReservationAnnulationConfirmation;
 use App\Mail\SendAnnonceModification;
 use App\Mail\SendAnnonceSuppression;
+use App\Mail\SendAnnonceDemandeSuppression;
 use Illuminate\Support\Facades\Mail;
 use Image;
 use Carbon\Carbon;
@@ -310,8 +312,10 @@ class UsersController extends Controller
             $post->save();
 
             foreach ($admins as $admin) {
-                $admin->notify(new ReplyToAnnonce($post));
+                $admin->notify(new ReplyToAnnonceDemandeSuppression($post));
             }
+
+            Mail::to($house->user->email)->send(new SendAnnonceDemandeSuppression($house));
 
             return redirect()->back()->with('success', "Votre demande a bien été pris en compte, étant donné que votre annonce est en ligne, un message sera envoyé à l'administrateur qui supprimera votre annonce. N'oubliez pas vérifier vos notifications");
         }
