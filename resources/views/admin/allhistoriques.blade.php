@@ -32,7 +32,7 @@
                         <tbody>
                             <tr>
                                 <td style="width:250px"><img src="{{ asset('img/houses/'.$historique->house->photo) }}" class="photo-size"/></td>
-                                <td>{{$historique->house->title}}</td>
+                                <td>{{$historique->title}}</td>
                                 <td><?php \Date::setLocale('fr'); $startdate = Date::parse($historique->start_date)->format('l j F Y'); echo($startdate);?></td>
                                 <td><?php \Date::setLocale('fr'); $enddate = Date::parse($historique->end_date)->format('l j F Y'); echo($enddate);?></td>
                                 <td>{{$historique->user->prenom}} {{$historique->user->nom}}</td>

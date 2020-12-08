@@ -31,7 +31,7 @@
                         <tbody>
                             <tr>
                                 <td style="width:250px"><img src="{{ asset('img/houses/'.$reservation->house->photo) }}" class="photo-size"/></td>
-                                <td>{{$reservation->house->title}}</td>
+                                <td>{{$reservation->title}}</td>
                                 <td><?php \Date::setLocale('fr'); $startdate = Date::parse($reservation->start_date)->format('l j F Y'); echo($startdate);?></td>
                                 <td><?php \Date::setLocale('fr'); $enddate = Date::parse($reservation->end_date)->format('l j F Y'); echo($enddate);?></td>
                                 <td>{{$reservation->user->prenom}} {{$reservation->user->nom}}</td>

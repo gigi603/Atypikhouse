@@ -13,10 +13,10 @@
         @foreach ($reservations as $reservation)
             <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">         
                 <div class="card-houses h-100">       
-                    <a href="{{action('UsersController@showreservationsannulees', $reservation['id'])}}"><img class="img-houses-list" data-src="{{ asset('img/houses/'.$reservation->house->photo) }}" alt="Hébergement insolite - {{$reservation->house->title}}"></a>
+                    <a href="{{action('UsersController@showreservationsannulees', $reservation['id'])}}"><img class="img-houses-list" data-src="{{ asset('img/houses/'.$reservation->house->photo) }}" alt="Hébergement insolite - {{$reservation->title}}"></a>
                     <div class="card-block">
                         <div class="card-body">
-                            <h2 class="card-title title-houses"><a href="{{route('user.showreservationsannulees', $reservation['id']) }}"> {{$reservation->house->title}} </a></h2>
+                            <h2 class="card-title title-houses"><a href="{{route('user.showreservationsannulees', $reservation['id']) }}"> {{$reservation->title}} </a></h2>
                         </div>
                         <p class="price">Total payé: {{$reservation->total}}€ <br> pour {{$reservation->nb_personnes}} personne(s)</p>
                         <div class="card-infos">

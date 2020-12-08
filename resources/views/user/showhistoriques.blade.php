@@ -6,7 +6,7 @@
     <h1 class="h1-title" id="hebergements">Détails de la réservation passée atypikhouse</h1>
     <div class="panel panel-default">
         <div class="panel-heading text-center">
-            <h2>{{$historique->house->title}}</h2>
+            <h2>{{$historique->title}}</h2>
         </div>
         <div class="panel-body">
             <div class="row">
