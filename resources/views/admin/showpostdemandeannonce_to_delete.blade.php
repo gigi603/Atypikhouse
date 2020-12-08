@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title', "Détails de l'annonce supprimée atypikhouse")
+@section('title', "Détails de l'annonce atypikhouse à supprimer")
 @section('content')
 <div class="admin-user-profil">
     <div class="container list-category" role="details-annonce">

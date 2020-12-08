@@ -3,9 +3,9 @@
 @section('content')
 <div class="admin-user-profil">
     <div class="container list-category" role="details-annonce">
-        <h1 class="h1-title" style="font-size:30px;text-align:center;">Détails de l'annonce atypikhouse</h1>
+        <h1 class="h1-title" style="font-size:30px;text-align:center;">Détails de l'annonce atypikhouse supprimée</h1>
         <div class="panel panel-default">
-            <div class="panel-heading text-center">Détails de l'annonce atypikhouse</div>
+            <div class="panel-heading text-center">Détails de l'annonce atypikhouse supprimée</div>
             <div class="panel-body">
                 <div class="row">
                     <div class="col-lg-12 col-md-12">
@@ -41,12 +41,6 @@
                                     @endif 
                                     <br>
                                     <br>
-                                    <h3 class="price">Statut</h3> 
-                                    @if($house->statut == "Validé")      
-                                        <p style="color:green">{{$house->statut}}</p><br>
-                                    @else 
-                                        <p style="color:red">{{$house->statut}}</p><br>
-                                    @endif
                                 </div>
                             </div>
                         </div>
