@@ -68,7 +68,7 @@ class Handler extends ExceptionHandler
             return redirect()->back()->with('error', "Veuillez saisir 4242 4242 4242 4242");
         }
         if($exception){
-           //return response()->view('errors.500', [], 500);
+           return response()->view('errors.500', [], 500);
 	    }
         return parent::render($request, $exception);
     }
