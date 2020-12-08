@@ -112,7 +112,7 @@ class RegisterController extends Controller
             'password' => 'required|min:8|max:30',
             'password_confirmation' => 'required|same:password|max:30',
             'conditions' => 'accepted',
-            'date_birth' => 'required|date_format:d/m/Y|before:'.Carbon::today()->subYears(18),
+            'date_birth' => 'required|date_format:d/m/Y|before:'.Carbon::now()->subYears(18),
             'newsletter' => 'boolean',
             'g-recaptcha-response'=>'required|captcha'
         ]);
@@ -125,7 +125,7 @@ class RegisterController extends Controller
         $user->prenom = $data["prenom"];
 
         $dateBirth = Carbon::createFromFormat('d/m/Y', $data["date_birth"]);
-        $data["date_birth"] = Carbon::parse($dateBirth)->format('Y-d-m');
+        $data["date_birth"] = Carbon::parse($dateBirth)->format('Y-m-d');
         $user->date_birth = $data["date_birth"];
         $user->email_token = str_random(25);
         $user->newsletter = $request->input('newsletter') ? 1 : 0;
