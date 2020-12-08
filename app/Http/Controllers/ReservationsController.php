@@ -65,6 +65,8 @@ class ReservationsController extends Controller
         $reservation->user_id = Auth::user()->id;
         $reservation->house_id = $house_id;
         $reservation->category_id = $house->category_id;
+        $reservation->title = $house->title;
+        $reservation->description = $house->description;
         $reservation->total = $total;
         $reservation->days = $days;
         $reservation->reserved = true;
@@ -104,6 +106,12 @@ class ReservationsController extends Controller
         $reservationReserved = session('reservationReserved', $reservation->reserved);
         $request->session()->push('reservationReserved', $reservation->reserved);
 
+        $reservationTitle = session('reservationTitle', $house->title);
+        $request->session()->push('reservationTitle', $house->title);
+
+        $reservationDescription = session('reservationDescription', $house->description);
+        $request->session()->push('reservationDescription', $house->description);
+
         /* Redirige vers la page de récapitulatif de reservation avec les données */
         
         return view('reservations.recapitulatif_reservation')->with('reservation', $reservation)
@@ -137,6 +145,8 @@ class ReservationsController extends Controller
         $user_id = last($request->session()->get('reservationUserId'));
         $house_id = last($request->session()->get('reservationHouseId'));
         $category_id = last($request->session()->get('reservationCategoryId'));
+        $reservationTitle = last($request->session()->get('reservationTitle'));
+        $reservationDescription = last($request->session()->get('reservationDescription'));
         $stripe_payment = $total * 100;
         
         // Token is created using Checkout or Elements!
@@ -164,6 +174,8 @@ class ReservationsController extends Controller
             $reservation->price= $prix;
             $reservation->total= $total;
             $reservation->days= $days;
+            $reservation->title= $reservationTitle;
+            $reservation->description= $reservationDescription;
             $reservation->reserved = true;
             $reservation->save();
 

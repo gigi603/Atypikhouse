@@ -21,6 +21,8 @@ class CreateReservationsTable extends Migration
             $table->integer('price');
             $table->integer('total');
             $table->integer('days');
+            $table->varchar('title');
+            $table->longText('description');
             $table->boolean('reserved');
             $table->date('start_date');
             $table->date('end_date');
