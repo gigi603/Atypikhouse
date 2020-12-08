@@ -82,8 +82,8 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         var_dump('$data["date_birth"]', $data["date_birth"]);
-        $data['date_birth'] = Carbon::parse($data['date_birth'])->format('Y-m-d');
-        var_dump('$data["date_birth"]', $data["date_birth"]);
+        $dateBirth = Carbon::createFromFormat('d/m/Y', $data["date_birth"]);
+        $data['date_birth'] = Carbon::parse($dateBirth)->format('Y-m-d');
         return User::create([
             'nom' => $data['nom'],
             'prenom' => $data['prenom'],
@@ -124,9 +124,9 @@ class RegisterController extends Controller
         $user->email_token = $data['email_token'];
         $user->nom = $data["nom"];
         $user->prenom = $data["prenom"];
-        
-        $data["date_birth"] = Carbon::parse($request->date_birth)->format('Y-d-m');
-        dd($data["date_birth"]);
+
+        $dateBirth = Carbon::createFromFormat('d/m/Y', $data["date_birth"]);
+        $data["date_birth"] = Carbon::parse($dateBirth)->format('Y-d-m');
         $user->date_birth = $data["date_birth"];
         $user->email_token = str_random(25);
         $user->newsletter = $request->input('newsletter') ? 1 : 0;
