@@ -261,7 +261,7 @@
                         @if($a != 0)
                           <span class="badge-pill badge-danger">{{$a}}</span> <span> demande(s) de suppressions d'annonce(s) par le client</span>
                         @else
-                          {{$a}} demande de suppression d'annonces par le client
+                          {{$a}} nouvelle(s) demande(s) de suppression d'annonces par le client
                         @endif
                       </div>
                     </div>
@@ -294,7 +294,7 @@
                         @if($a != 0)
                           <span class="badge-pill badge-danger">{{$a}}</span> <span> nouvelles annonces modifiées par client</span>
                         @else
-                          {{$a}} annonces modifiées par clients
+                          {{$a}} nouvelle(s) annonce(s) modifiée(s) par clients
                         @endif
                       </div>
                     </div>
@@ -327,7 +327,7 @@
                         @if($b != 0)
                           <span class="badge-pill badge-danger">{{$b}}</span> <span> annonces supprimées par client</span>
                         @else
-                          {{$b}} annonces supprimées par clients
+                          {{$b}} nouvelle(s) annonce(s) supprimées par clients
                         @endif
                     </div>
                   </div>
@@ -361,7 +361,7 @@
                         @if($c != 0)
                           <span class="badge-pill badge-danger">{{$c}}</span> <span> reservation(s) annulées par clients</span>
                         @else
-                          {{$c}} reservation(s) annulées par clients
+                          {{$c}} nouvelle(s) reservation(s) annulée(s) par clients
                         @endif
                     </div>
                   </div>

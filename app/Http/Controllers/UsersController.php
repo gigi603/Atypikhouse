@@ -317,7 +317,7 @@ class UsersController extends Controller
 
             Mail::to($house->user->email)->send(new SendAnnonceDemandeSuppression($house));
 
-            return redirect()->back()->with('success', "Votre demande a bien été pris en compte, étant donné que votre annonce est en ligne, un message sera envoyé à l'administrateur qui supprimera votre annonce. N'oubliez pas vérifier vos notifications");
+            return redirect()->back()->with('success', "Votre demande a bien été pris en compte, étant donné que votre annonce est en ligne, un message sera envoyé à l'administrateur qui supprimera votre annonce. N'oubliez pas de vérifier vos notifications");
         }
     }
 
