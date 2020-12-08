@@ -123,9 +123,6 @@ class RegisterController extends Controller
         $user->email_token = $data['email_token'];
         $user->nom = $data["nom"];
         $user->prenom = $data["prenom"];
-
-        $dateBirth = Carbon::createFromFormat('d/m/Y', $data["date_birth"]);
-        $data["date_birth"] = Carbon::parse($dateBirth)->format('Y-m-d');
         $user->date_birth = $data["date_birth"];
         $user->email_token = str_random(25);
         $user->newsletter = $request->input('newsletter') ? 1 : 0;
