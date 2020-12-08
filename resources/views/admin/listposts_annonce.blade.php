@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title', "Messages des clients")
+@section('title', "Liste des annonces")
 @section('content')
     @if ($success = Session::get('success'))
         <div class="alert alert-success">
@@ -15,7 +15,7 @@
         <div class="card-header">
         <h1 style="font-size:20px;">
             <i class="fas fa-table"></i>
-            Annonces</h1></div>
+            Liste des annonces</h1></div>
         <div class="card-body">
             <div class="table-responsive">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">

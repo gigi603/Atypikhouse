@@ -15,7 +15,7 @@
         <div class="card-header">
         <h1 style="font-size:20px;">
             <i class="fas fa-table"></i>
-            Réservations</h1></div>
+            Liste des réservations en cours</h1></div>
         <div class="card-body">
             <div class="table-responsive">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">

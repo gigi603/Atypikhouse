@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title', "Annonces supprimée atypikhouse")
+@section('title', "Annonces supprimées atypikhouse")
 @section('content')
     @if ($success = Session::get('success'))
         <div class="alert alert-success">

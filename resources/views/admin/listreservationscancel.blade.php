@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title', 'Reservations annulées')
+@section('title', 'Reservations annulées atypikhouse')
 @section('content')
     <div class="card mb-3">
         @if (Session::has('success'))

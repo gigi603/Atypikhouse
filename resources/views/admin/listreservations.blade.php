@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title', 'Reservations')
+@section('title', 'Reservations en cours atypikhouse')
 @section('content')
     <div class="card mb-3">
         @if (Session::has('success'))
@@ -11,7 +11,7 @@
         <div class="card-header">
         <h1 style="font-size:20px;">
             <i class="fas fa-table"></i>
-            Liste des réservations
+            Liste des réservations en cours
         </h1>
         </div>
         <div class="card-body">
