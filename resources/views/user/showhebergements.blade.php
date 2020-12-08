@@ -42,7 +42,7 @@
                                     @endif
                                 @endforeach
                             @else
-                                <span>Il n y a pas d'équipements sur cette annonce</span>
+                                <span>Il n'y a pas d'équipements sur cette annonce</span>
                             @endif
                             <p class="card-text">{{$house->description}}</p>
                             <p>Annulation gratuite !</p>

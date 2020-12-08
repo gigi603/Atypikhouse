@@ -27,7 +27,7 @@
                                         @endif
                                     @endforeach
                                 @else
-                                    <span>Il n y a pas d'équipements sur cette annonce</span>
+                                    <span>Il n'y a pas d'équipements sur cette annonce</span>
                                 @endif
                                 <p><i class="fas fa-calendar"></i> Du: <?php \Date::setLocale('fr'); $startdate = Date::parse($reservation->start_date)->format('l j F Y'); echo($startdate);?> </p>
                                 <p><i class="fas fa-calendar"></i> au:  <?php \Date::setLocale('fr'); $enddate = Date::parse($reservation->end_date)->format('l j F Y'); echo($enddate);?></p>

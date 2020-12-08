@@ -35,7 +35,7 @@
                                                 <p>{{$valuecatpropriete->propriete->propriete}}</p> 
                                             @endforeach
                                         @else 
-                                            <p>Il n y a pas d'équipements sur cette reservation</p>
+                                            <p>Il n'y a pas d'équipements sur cette reservation</p>
                                         @endif
                                     </div>
                                 </div>

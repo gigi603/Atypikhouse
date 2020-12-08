@@ -37,7 +37,7 @@
                                             @endif                             
                                         @endforeach
                                     @else
-                                        <p>Il n y a pas d'équipements sur cette annonce</p> 
+                                        <p>Il n'y a pas d'équipements sur cette annonce</p> 
                                     @endif 
                                     <br>
                                     <br>
