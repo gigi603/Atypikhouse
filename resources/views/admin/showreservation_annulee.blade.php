@@ -18,14 +18,14 @@
                                 <img class="img-responsive img_house" src="{{ asset('img/houses/'.$reservation->house->photo) }}">
                                 <div class="card-center">
                                     <h4 class="title card-title text-center">
-                                        {{$reservation->house->title}}
+                                        {{$reservation->title}}
                                     </h4>
                                     <div class="block-description">
                                         <h3 class="price">Total payé: {{$reservation->total}}€ pour {{$reservation->nb_personnes}} personnes</h3>
                                         <p>Type de bien : {{$reservation->house->category->category}}</p>
                                         <p><i class="fas fa-calendar"></i> Du: <?php \Date::setLocale('fr'); $startdate = Date::parse($reservation->start_date)->format('l j F Y'); echo($startdate);?> </p>
                                             <p><i class="fas fa-calendar"></i> au:  <?php \Date::setLocale('fr'); $enddate = Date::parse($reservation->end_date)->format('l j F Y'); echo($enddate);?></p>
-                                        <p class="card-text">{{$reservation->house->description}}</p>
+                                        <p class="card-text">{{$reservation->description}}</p>
                                         <p> Adresse: {{$reservation->house->adresse}}</p>
                                         <p>Téléphone de l'annonceur : {{$reservation->house->phone}}</p>
                                         <p>Adresse mail de l'annonceur : {{$reservation->user->email}}</p>

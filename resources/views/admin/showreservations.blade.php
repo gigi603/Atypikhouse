@@ -18,13 +18,13 @@
                                 <img class="img-responsive img_house" src="{{ asset('img/houses/'.$reservation->house->photo) }}">
                                 <div class="card-center">
                                     <h4 class="title card-title text-center">
-                                        {{$reservation->house->title}}
+                                        {{$reservation->title}}
                                     </h4>
                                     <div class="block-description">
                                         <h3 class="price">Total payé: {{$reservation->total}}€ pour {{$reservation->nb_personnes}} personnes</h3>
                                         <p>Type de bien : {{$reservation->house->category->category}}</p>
 
-                                        <p class="card-text">{{$reservation->house->description}}</p>
+                                        <p class="card-text">{{$reservation->description}}</p>
                                         <p>Annulation gratuite !</p>
                                         <p> Adresse: {{$reservation->house->adresse}}</p><br>
                                         <h3 class="price">Disponibilité</h3>

@@ -14,7 +14,7 @@
                         <img class="img-responsive img_house" src="{{ asset('img/houses/'.$reservation->house->photo) }}" alt="Hébergement insolite - {{$reservation->house->title}}"></a>
                         <div class="card-center">
                             <h3 class="title card-title text-center">
-                                <a href="#">{{$reservation->house->title}}</a>
+                                <a href="#">{{$reservation->title}}</a>
                             </h3>
                             <h3 class="price">Total payé: {{$reservation->total}}€ pour {{$reservation->nb_personnes}} personnes</h3>
                             <p>Type de bien : {{$reservation->house->category->category}}</p>
@@ -30,7 +30,7 @@
                                 @endif
                             <p><i class="fas fa-calendar"></i> Du: <?php \Date::setLocale('fr'); $startdate = Date::parse($reservation->start_date)->format('l j F Y'); echo($startdate);?> </p>
                                 <p><i class="fas fa-calendar"></i> au:  <?php \Date::setLocale('fr'); $enddate = Date::parse($reservation->end_date)->format('l j F Y'); echo($enddate);?></p>
-                            <p class="card-text">{{$reservation->house->description}}</p>
+                            <p class="card-text">{{$reservation->description}}</p>
                             <p>Annulation gratuite !</p>
                             <p> Adresse: {{$reservation->house->adresse}}</p>
                             <p>Téléphone de l'annonceur : {{$reservation->house->phone}}</p>

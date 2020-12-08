@@ -6,7 +6,7 @@
     @foreach($reservations as $reservation)
         <div class="panel panel-default">
             <div class="panel-heading text-center">
-                <h2>{{$reservation->house->title}}</h2>
+                <h2>{{$reservation->title}}</h2>
             </div>
             <div class="panel-body">
                 <div class="row">
@@ -32,7 +32,7 @@
                                 <p><i class="fas fa-calendar"></i> Du: <?php \Date::setLocale('fr'); $startdate = Date::parse($reservation->start_date)->format('l j F Y'); echo($startdate);?> </p>
                                 <p><i class="fas fa-calendar"></i> au:  <?php \Date::setLocale('fr'); $enddate = Date::parse($reservation->end_date)->format('l j F Y'); echo($enddate);?></p>
                                 <p class="card-text">Nombre de personnes: {{$reservation->nb_personnes}}</p>
-                                <p class="card-text">{{$reservation->house->description}}</p>
+                                <p class="card-text">{{$reservation->description}}</p>
                                 <p>Annulation gratuite !</p>
                                 <p> Adresse: {{$reservation->house->adresse}}</p>
                                 <p>Téléphone de l'annonceur : {{$reservation->house->phone}}</p>
