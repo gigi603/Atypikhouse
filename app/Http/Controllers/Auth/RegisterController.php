@@ -81,7 +81,6 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        var_dump('$data["date_birth"]', $data["date_birth"]);
         $dateBirth = Carbon::createFromFormat('d/m/Y', $data["date_birth"]);
         $data['date_birth'] = Carbon::parse($dateBirth)->format('Y-m-d');
         return User::create([
