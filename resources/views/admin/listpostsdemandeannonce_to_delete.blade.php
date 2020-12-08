@@ -15,7 +15,7 @@
         <div class="card-header">
         <h1 style="font-size:20px;">
             <i class="fas fa-table"></i>
-            Demande d'annonces à supprimer par les clients
+            Demande d'annonces en ligne (Validé) à supprimer
         </h1>
     </div>
         <div class="card-body">
