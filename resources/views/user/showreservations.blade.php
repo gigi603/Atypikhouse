@@ -2,6 +2,12 @@
 @section('title', "Détails de la réservation atypikhouse")
 @section('content')
 <div class="container">
+    @if (Session::has('success'))
+        <div class="alert alert-success">
+            <a href="#" class="close" data-dismiss="alert">&times;</a>
+            {{ Session::get('success') }}
+        </div>
+    @endif
     <h1 class="h1-title" id="hebergements">Détails de la réservation atypikhouse</h1>
     @foreach($reservations as $reservation)
         <div class="panel panel-default">
