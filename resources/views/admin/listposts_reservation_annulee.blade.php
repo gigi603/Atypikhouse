@@ -37,7 +37,7 @@
                         <tbody>
                             <tr>
                                 <td>{{$post->name}}</td>
-                                <td><a href="{{route('admin.showreservation_annulee', $post->id)}}" class="btn btn-primary">Voir la notification</a></td>
+                                <td><a href="{{route('admin.showreservation_annulee', $post->id)}}" class="btn btn-primary">Voir</a></td>
                             </tr>
                         </tbody>
                     @endif

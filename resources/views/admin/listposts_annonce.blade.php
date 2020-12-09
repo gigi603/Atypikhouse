@@ -30,14 +30,14 @@
                         <tbody style="background-color:#dff0d8">
                             <tr>
                                 <td>{{$post->name}}</td>
-                                <td><a href="{{route('admin.showmessages_annonce', $post->id)}}" class="btn btn-primary">Voir la notification</a></td>
+                                <td><a href="{{route('admin.showmessages_annonce', $post->id)}}" class="btn btn-primary">Voir</a></td>
                             </tr>
                         </tbody>
                     @else
                         <tbody>
                             <tr>
                                 <td>{{$post->name}}</td>
-                                <td><a href="{{route('admin.showmessages_annonce', $post->id)}}" class="btn btn-primary">Voir la notification</a></td>
+                                <td><a href="{{route('admin.showmessages_annonce', $post->id)}}" class="btn btn-primary">Voir</a></td>
                             </tr>
                         </tbody>
                     @endif
