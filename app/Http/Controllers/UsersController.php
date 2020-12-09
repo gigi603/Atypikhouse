@@ -85,9 +85,11 @@ class UsersController extends Controller
         if(count($userUnreadNotifications) > 0){
             foreach($userUnreadNotifications as $userUnreadNotification) {            
                 $data = $userUnreadNotification->data;
-                foreach($posts as $post){
-                    if($post->id == $data["post_id"]){
-                        $userUnreadNotification->markAsRead();
+                if(isset($data["post_id"])){
+                    foreach($posts as $post){
+                        if($post->id == $data["post_id"]){
+                            $userUnreadNotification->markAsRead();
+                        }
                     }
                 }
             }
@@ -353,9 +355,11 @@ class UsersController extends Controller
         if(count($userUnreadNotifications) > 0){
             foreach($userUnreadNotifications as $userUnreadNotification) {
                 $data = $userUnreadNotification->data;
-                foreach($posts as $post){
-                    if($post->id == $data["post_id"]){
-                        $userUnreadNotification->markAsRead();
+                if(isset($data["post_id"])){
+                    foreach($posts as $post){
+                        if($post->id == $data["post_id"]){
+                            $userUnreadNotification->markAsRead();
+                        }
                     }
                 }
             }
@@ -432,9 +436,11 @@ class UsersController extends Controller
 
         foreach($userUnreadNotifications as $userUnreadNotification) {
             $data = $userUnreadNotification->data;
-            foreach($posts as $post){
-                if($post->id == $data["post_id"]){
-                    $userUnreadNotification->markAsRead();
+            if(isset($data["post_id"])){
+                foreach($posts as $post){
+                    if($post->id == $data["post_id"]){
+                        $userUnreadNotification->markAsRead();
+                    }
                 }
             }
         }
