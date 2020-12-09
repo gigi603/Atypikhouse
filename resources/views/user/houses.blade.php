@@ -49,3 +49,8 @@
     </div>
 </div>
 @endsection
+@section('script')
+    <script>
+        $('span.badge.badge-pill.badge-success').remove();
+    </script>
+@endsection

@@ -59,6 +59,7 @@
                                     $posts = App\Post::orderBy('id', 'desc')->get();
                                     $messages = App\Message::orderBy('id', 'desc')->get();
                                     $userUnreadNotifications = Auth::user()->unreadNotifications;
+                                    
                                     foreach($userUnreadNotifications as $userUnreadNotification) {
                                         $data = $userUnreadNotification->data;
                                         foreach($posts as $post){
@@ -76,14 +77,42 @@
                                             }
                                         }
                                     }?>
-                                    <?php $i = 0; ?>
+                                    <?php 
+                                        $i = 0;
+                                        $a = 0;
+                                        $b = 0;
+                                        $c = 0;
+                                    ?>
                                     
                                     @foreach (Auth::user()->unreadNotifications as $notification)
-                                        <?php $i++;?>
+                                        @if($notification->type == "App\Notifications\ReplyToNewAnnonce" && $notification->read_at == null)
+                                            <?php $a++; ?>
+                                        @elseif($notification->type == "App\Notifications\ReplyToNewReservation" && $notification->read_at == null)
+                                            <?php $b++; ?>
+                                        @elseif($notification->type == "App\Notifications\ReplyToNewReservationAnnulee" && $notification->read_at == null)
+                                            <?php $c++; ?>
+                                        @else
+                                            <?php $i++;?>
+                                        @endif
                                     @endforeach
                                     @if($i != 0)
                                         <span class="badge badge-pill badge-success">
                                             <?php echo $i;?>
+                                        </span>
+                                    @endif
+                                    @if($a != 0)
+                                        <span class="badge badge-pill badge-success">
+                                            <?php echo $a;?>
+                                        </span>
+                                    @endif
+                                    @if($b != 0)
+                                        <span class="badge badge-pill badge-success">
+                                            <?php echo $b;?>
+                                        </span>
+                                    @endif
+                                    @if($c != 0)
+                                        <span class="badge badge-pill badge-success">
+                                            <?php echo $c;?>
                                         </span>
                                     @endif
                                     Mon espace <span class="caret"></span>
@@ -92,10 +121,10 @@
                                     <li><a href="{{url('/profile')}}">Mon profil</a></li>
 
                                     <li><a href="{{route('user.messages')}}" id="mynotif">@if($i == 0) Mes notifications @else <span class="badge badge-pill badge-success"><?php echo $i; ?> </span>Mes notifications @endif</a></li>
-                                    <li><a href="{{route('user.houses')}}">Mes annonces</a></li>
-                                    <li><a href="{{route('user.reservations')}}">Mes réservations en cours</a></li>
-                                    <li><a href="{{route('user.historiques')}}">Mes réservations passées</a></li>
-                                    <li><a href="{{route('user.reservationsannulees')}}">Mes réservations annulées</a></li>
+                                    <li><a href="{{route('user.houses')}}">@if($a == 0) Mes annonces @else <span class="badge badge-pill badge-success"><?php echo $a; ?> </span>Mes annonces @endif</a></li>
+                                    <li><a href="{{route('user.reservations')}}">@if($b == 0) Mes réservations en cours @else <span class="badge badge-pill badge-success"><?php echo $b; ?> </span>Mes réservations en cours @endif</a></li>
+                                    <li><a href="{{route('user.historiques')}}"> Mes réservations passées </a></li>
+                                    <li><a href="{{route('user.reservationsannulees')}}">@if($c == 0) Mes réservations annulées @else <span class="badge badge-pill badge-success"><?php echo $c; ?></span> Mes réservations annulées @endif</a></li>
                                     <li><a href="{{ url('/house/create_step1') }}">Ajouter une annonce</a></li>
                                     <li>
                                         <a href="{{ route('logout') }}"

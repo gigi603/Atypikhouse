@@ -14,6 +14,7 @@ use App\Message;
 use App\Post;
 use App\Admin;
 use App\Notifications\ReplyToAnnonce;
+use App\Notifications\ReplyToNewAnnonce;
 use Illuminate\Http\Request;
 use App\Http\Requests\SearchRequest;
 use App\Http\Requests\CreateHouseStep1Request;
@@ -555,13 +556,7 @@ class HousesController extends Controller
         }
 
         $user = User::find(Auth::user()->id);
-        $user->notify(new ReplyToAnnonce($post));
-
-        //Notification à envoyer à l'utilisateur
-        $message = new message;
-        $message->content = "Vous avez bien créé l'annonce ".$house->title.", notre équipe va vérifier le contenu et vous enverra un message, une fois votre annonce validée par notre équipe, elle sera consultable sur le site dans nos hébergements";
-        $message->user_id = $house->user_id;
-        $message->save();
+        $user->notify(new ReplyToNewAnnonce($post));
 
         //envoi du mail de confirmation de la reservation
         Mail::to(Auth::user()->email)->send(new SendAnnonceConfirmation($house));

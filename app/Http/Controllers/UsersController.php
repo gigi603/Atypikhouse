@@ -20,6 +20,7 @@ use App\Http\Requests\EditHouseRequest;
 use App\Http\Requests\ReservationRequest;
 use App\Notifications\ReplyToReservation;
 use App\Notifications\ReplyToReservationAnnulation;
+use App\Notifications\ReplyToNewReservationAnnulee;
 use App\Notifications\ReplyToAnnonce;
 use App\Notifications\ReplyToAnnonceModification;
 use App\Notifications\ReplyToAnnonceSuppression;
@@ -75,8 +76,21 @@ class UsersController extends Controller
     {
         $user = $request->user();
         $houses = house::with('valuecatproprietes', 'proprietes', 'category', 'user')->where('user_id', '=', Auth::user()->id)
-        ->where('disponible', '=', 'oui')->orderBy('id', 'desc')->paginate(12);
-        
+        ->where('disponible', '=', 'oui')
+        ->orderBy('id', 'desc')
+        ->paginate(12);
+
+        $posts = post::where('type', 'annonce')->orderBy('id', 'desc')->paginate(10);
+        $userUnreadNotifications = auth()->user()->unreadNotifications;
+
+        foreach($userUnreadNotifications as $userUnreadNotification) {            
+            $data = $userUnreadNotification->data;
+            foreach($posts as $post){
+                if($post->id == $data["post_id"]){
+                    $userUnreadNotification->markAsRead();
+                }
+            }
+        }
         return view('user.houses', compact('houses'));
     }
     
@@ -331,6 +345,18 @@ class UsersController extends Controller
         ->where('reserved', '=', 1)
         ->orderBy('id', 'desc')
         ->paginate(12);
+
+        $posts = post::where('type', 'reservation')->orderBy('id', 'desc')->paginate(10);
+        $userUnreadNotifications = auth()->user()->unreadNotifications;
+
+        foreach($userUnreadNotifications as $userUnreadNotification) {
+            $data = $userUnreadNotification->data;
+            foreach($posts as $post){
+                if($post->id == $data["post_id"]){
+                    $userUnreadNotification->markAsRead();
+                }
+            }
+        }
         
         return view('user.reservations', compact('reservations'));
     }
@@ -360,15 +386,8 @@ class UsersController extends Controller
         $reservation->reserved = 0;
         $reservation->save();
 
-        //Message à envoyer à l'utilisateur
-        $message = new message;
-        $message->content = "Vous avez annulé une réservation, pour la consulter veuillez aller dans 'mon espace' > 'Mes reservations annulées'";
-        $message->user_id = Auth::user()->id;
-        $message->save();
-
-        //Notification envoyé à l'utilisateur
         $user = User::find(Auth::user()->id);
-        $user->notify(new ReplyToReservationAnnulation($message));
+        
 
         //envoi du mail d'annulation de la reservation au client
         Mail::to($reservation->user->email)->send(new SendReservationAnnulationConfirmation($reservation));
@@ -384,12 +403,16 @@ class UsersController extends Controller
         $post->user_id = $user->id;
         $post->save();
         
+        //envoie la notification à l'utilisateur
+        $user->notify(new ReplyToNewReservationAnnulee($post));
+
+
         $admins = Admin::all();
         foreach ($admins as $admin) {
             $admin->notify(new ReplyToReservationAnnulation($post));
         }
 
-        return redirect()->back()->with('success', "Votre demande a bien été pris en compte, votre réservation a bien été annulée, un email de confirmation vous a été envoyé");
+        return view('reservations.confirmation_annulation')->with("reservation", $reservation);
     }
 
     //Vue global des reservations annulées
@@ -400,6 +423,18 @@ class UsersController extends Controller
         ->where('user_id', '=', Auth::user()->id)
         ->orderBy('id', 'desc')
         ->paginate(12);
+
+        $posts = post::where('type', 'canceled_reservation')->orderBy('id', 'desc')->paginate(10);
+        $userUnreadNotifications = auth()->user()->unreadNotifications;
+
+        foreach($userUnreadNotifications as $userUnreadNotification) {
+            $data = $userUnreadNotification->data;
+            foreach($posts as $post){
+                if($post->id == $data["post_id"]){
+                    $userUnreadNotification->markAsRead();
+                }
+            }
+        }
         
         return view('user.reservationsannulees', compact('reservations'));
     }

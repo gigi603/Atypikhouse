@@ -26,6 +26,7 @@ use Redirect;
 use Input;
 
 use App\Notifications\ReplyToReservation;
+use App\Notifications\ReplyToNewReservation;
 use Stripe\Error\Card;
 use Cartalyst\Stripe\Stripe;
 use App\Mail\SendReservationConfirmation;
@@ -210,15 +211,9 @@ class ReservationsController extends Controller
                 $admin->notify(new ReplyToReservation($post));
             }
 
-            //Message à envoyer à l'utilisateur
-            $message = new message;
-            $message->content = "Vous avez effectué une réservation, pour la consulter veuillez aller dans 'Mon espace' > 'Mes reservations en cours'";
-            $message->user_id = $user_id;
-            $message->save();
-
             //Notification envoyé à l'utilisateur
             $user = User::find(Auth::user()->id);
-            $user->notify(new ReplyToReservation($post));
+            $user->notify(new ReplyToNewReservation($post));
 
             $request->session()->forget('reservationPrice');
             $request->session()->forget('reservationStartDate');

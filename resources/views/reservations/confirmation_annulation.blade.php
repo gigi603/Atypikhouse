@@ -11,16 +11,16 @@
             </div>
         @endif
         <div class="panel panel-default">
-            <div class="panel-heading text-center"><h1 style="font-size:30px;">Confirmation de votre paiement</h1></div>
+            <div class="panel-heading text-center"><h1 style="font-size:30px;">Confirmation de votre annulation</h1></div>
             <div class="panel-body">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card h-100 text-center">
-                            <p class="card-text">Vous avez bien payer pour le <?php \Date::setLocale('fr'); $startdate = Date::parse($reservation->start_date)->format('l j F Y'); echo($startdate);?> au <?php \Date::setLocale('fr'); $enddate = Date::parse($reservation->end_date)->format('l j F Y'); echo($enddate);?></p>
-                            <p class="card-text">Vous pouvez consulter votre réservation en allant dans la rubrique "mon espace > mes réservations en cours" ou cliquez directement sur le bouton en dessous, un email de confirmation vous a été envoyé</p>
+                            <p class="card-text">Vous avez bien annuler pour le <?php \Date::setLocale('fr'); $startdate = Date::parse($reservation->start_date)->format('l j F Y'); echo($startdate);?> au <?php \Date::setLocale('fr'); $enddate = Date::parse($reservation->end_date)->format('l j F Y'); echo($enddate);?></p>
+                            <p class="card-text">Vous pouvez consulter votre annulation en allant dans la rubrique "mon espace > mes réservations annulées" ou cliquez directement sur le bouton en dessous, un email de confirmation vous a été envoyé</p>
                             <p class="card-text">Notre équipe vous remercie</p>
                             <div>
-                                <a class="btn btn-success btn_reserve" href="{{ route('user.reservations') }}">Consulter mes réservations en cours</a>
+                                <a class="btn btn-success btn_reserve" href="{{ route('user.reservationsannulees') }}">Consulter mes réservations annulées</a>
                             </div> 
                         </div>
                     </div>   
