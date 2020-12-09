@@ -189,7 +189,8 @@
                                                 {{ csrf_field() }}
                                                 <input type="hidden" name="house_id" value="{{ $house->id }}">
                                                 <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
-                                                <input type="hidden" name="admin_id" value="0"> 
+                                                <input type="hidden" name="admin_id" value="0">
+                                                <input type="hidden" name="reservation_id" value="0">  
                                                 <input type="hidden" name="parent_id" value=""> 
                                                 <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12">
                                                     <label for="input_comment" class="label-home">Saisir votre avis</label>

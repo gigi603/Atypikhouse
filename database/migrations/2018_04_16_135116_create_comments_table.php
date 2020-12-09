@@ -20,6 +20,7 @@ class CreateCommentsTable extends Migration
             $table->integer('user_id');
             $table->integer('admin_id');
             $table->integer('house_id');
+            $table->integer('reservation_id');
             $table->integer('parent_id')->unsigned()->nullable();
             $table->timestamps();
         });

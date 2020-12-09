@@ -22,6 +22,10 @@ class Reservation extends Model
         return $this->belongsTo('App\User');
     }
 
+    public function comments() {
+        return $this->hasMany('App\Comment', 'reservation_id');
+    }
+
     public function proprietes() {
         return $this->hasMany('App\Propriete', 'category_id');
     }

@@ -14,6 +14,10 @@ class Comment extends Model
         return $this->belongsTo('App\House');
     }
 
+    public function reservation() {
+        return $this->belongsTo('App\Reservation');
+    }
+
     public function children()
     {
            return $this->hasMany('App\Comment', 'parent_id', 'id')->orderBy('id', 'DESC');
