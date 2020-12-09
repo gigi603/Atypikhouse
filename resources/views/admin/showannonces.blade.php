@@ -130,10 +130,16 @@
                                     <p style="color:red">{{$house->statut}}</p><br>
                                 @endif
                                 <h3 class="price">Actions</h3>
-                                <a href="{{action('AdminController@editHouse', $house->id)}}" class="btn btn-primary">Modifier</a>
-                                <a href="{{action('AdminController@valideHouse', $house->id)}}" class="btn btn-primary">Valider l'annonce</a>
-                                <a href="{{action('AdminController@refuseHouse', $house->id)}}" class="btn btn-danger">Refuser l'annonce</a>
-                                <a href="{{action('AdminController@deleteHouse', $house->id)}}" class="btn btn-danger delete-annonce">Supprimer l'annonce</a>
+                                @if($house->disponible == "oui")
+                                    <a href="{{action('AdminController@editHouse', $house->id)}}" class="btn btn-primary">Modifier</a>
+                                @endif
+                                @if($house->disponible == "oui" && $house->statut != "Validé")
+                                    <a href="{{action('AdminController@valideHouse', $house->id)}}" class="btn btn-primary">Valider l'annonce</a>
+                                @endif
+                                @if($house->disponible == "oui" && $house->statut == "Validé")
+                                    <a href="{{action('AdminController@refuseHouse', $house->id)}}" class="btn btn-danger">Refuser l'annonce</a>
+                                    <a href="{{action('AdminController@deleteHouse', $house->id)}}" class="btn btn-danger delete-annonce">Supprimer l'annonce</a>
+                                @endif
                             </div>
                         </div>
                     </div>

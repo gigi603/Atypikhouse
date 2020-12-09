@@ -82,12 +82,13 @@ class UsersController extends Controller
 
         $posts = post::where('type', 'annonce')->orderBy('id', 'desc')->paginate(10);
         $userUnreadNotifications = auth()->user()->unreadNotifications;
-
-        foreach($userUnreadNotifications as $userUnreadNotification) {            
-            $data = $userUnreadNotification->data;
-            foreach($posts as $post){
-                if($post->id == $data["post_id"]){
-                    $userUnreadNotification->markAsRead();
+        if(count($userUnreadNotifications) > 0){
+            foreach($userUnreadNotifications as $userUnreadNotification) {            
+                $data = $userUnreadNotification->data;
+                foreach($posts as $post){
+                    if($post->id == $data["post_id"]){
+                        $userUnreadNotification->markAsRead();
+                    }
                 }
             }
         }
@@ -349,11 +350,13 @@ class UsersController extends Controller
         $posts = post::where('type', 'reservation')->orderBy('id', 'desc')->paginate(10);
         $userUnreadNotifications = auth()->user()->unreadNotifications;
 
-        foreach($userUnreadNotifications as $userUnreadNotification) {
-            $data = $userUnreadNotification->data;
-            foreach($posts as $post){
-                if($post->id == $data["post_id"]){
-                    $userUnreadNotification->markAsRead();
+        if(count($userUnreadNotifications) > 0){
+            foreach($userUnreadNotifications as $userUnreadNotification) {
+                $data = $userUnreadNotification->data;
+                foreach($posts as $post){
+                    if($post->id == $data["post_id"]){
+                        $userUnreadNotification->markAsRead();
+                    }
                 }
             }
         }

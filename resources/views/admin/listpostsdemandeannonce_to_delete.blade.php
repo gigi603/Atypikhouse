@@ -34,7 +34,9 @@
                             <tr>
                                 <td>{{$post->name}}</td>
                                 <td>{{$post->email}}</td>
-                                <td><a href="{{route('admin.showdemandeannonce_to_delete', $post->id)}}" class="btn btn-primary">Voir</a></td>
+                                <td>
+                                    <a href="{{route('admin.showdemandeannonce_to_delete', $post->id)}}" class="btn btn-primary">Voir</a>
+                                </td>
                             </tr>
                         </tbody>
                     @else
@@ -42,7 +44,9 @@
                             <tr>
                                 <td>{{$post->name}}</td>
                                 <td>{{$post->email}}</td>
-                                <td><a href="{{route('admin.showdemandeannonce_to_delete', $post->id)}}" class="btn btn-primary">Voir</a></td>
+                                <td>
+                                    <a href="{{route('admin.showdemandeannonce_to_delete', $post->id)}}" class="btn btn-primary">Voir</a>
+                                </td>
                             </tr>
                         </tbody>
                     @endif

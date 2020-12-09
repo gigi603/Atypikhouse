@@ -985,7 +985,7 @@ class AdminController extends Controller
         //Envoie un mail de confirmation de la suppression de l'annonce
         Mail::to($house->user->email)->send(new SendAnnonceSuppressionFromAdmin($house));
 
-        return redirect()->back()->with('success-valide', "L'annonce a été supprimée, une notification a été envoyé sur le compte atypikhouse du propriétaire de l'annonce ainsi qu'un mail");
+        return redirect()->back()->with('success', "L'annonce a été supprimée, une notification a été envoyé sur le compte atypikhouse du propriétaire de l'annonce ainsi qu'un mail");
     }
 
     public function listcomments(Comment $comments, $id)

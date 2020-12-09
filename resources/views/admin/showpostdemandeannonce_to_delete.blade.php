@@ -2,6 +2,16 @@
 @section('title', "Détails de l'annonce atypikhouse à supprimer")
 @section('content')
 <div class="admin-user-profil">
+    @if ($success = Session::get('success'))
+        <div class="alert alert-success">
+            {{ $success }}
+        </div>
+    @endif
+    @if ($danger = Session::get('danger'))
+        <div class="alert alert-danger">
+            {{ $danger }}
+        </div>
+    @endif
     <div class="container list-category" role="details-annonce">
         <h1 class="h1-title" style="font-size:30px;text-align:center;">Détails de l'annonce atypikhouse à supprimer</h1>
         <div class="panel panel-default">
@@ -46,6 +56,10 @@
                                         <p style="color:green">{{$house->statut}}</p><br>
                                     @else 
                                         <p style="color:red">{{$house->statut}}</p><br>
+                                    @endif
+                                    @if($house->disponible == "oui") 
+                                        <h3 class="price">Actions</h3>
+                                        <a href="{{action('AdminController@deleteHouse', $house->id)}}" class="btn btn-danger delete-annonce text-center">Supprimer</a>
                                     @endif
                                 </div>
                             </div>
