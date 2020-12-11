@@ -336,7 +336,7 @@ class UsersController extends Controller
         $house = house::find($id);
         $admins = admin::all();
 
-        if($house->statut == "En attente de validation" || $house->statut == "Refusé"){
+        //if($house->statut == "En attente de validation" || $house->statut == "Refusé"){
             $house->disponible = "non";
             $house->save();
 
@@ -360,25 +360,25 @@ class UsersController extends Controller
             Mail::to($house->user->email)->send(new SendAnnonceSuppression($house));
             
             return redirect()->back()->with('success', "Votre annonce a bien été supprimée, un mail de confirmation a vous a été envoyé");
-        } else {
-            $post = new post;
-            $post->name = $user->nom.' '.$user->prenom;
-            $post->email = $user->email;
-            $post->content = "L'utilisateur ".$user->nom.' '.$user->prenom." veut supprimer l'annonce ".$house->title;
-            $post->type = "demande_delete_annonce";
-            $post->house_id = $house->id;
-            $post->reservation_id = 0;
-            $post->user_id = $user->id;
-            $post->save();
+        // } else {
+        //     $post = new post;
+        //     $post->name = $user->nom.' '.$user->prenom;
+        //     $post->email = $user->email;
+        //     $post->content = "L'utilisateur ".$user->nom.' '.$user->prenom." veut supprimer l'annonce ".$house->title;
+        //     $post->type = "demande_delete_annonce";
+        //     $post->house_id = $house->id;
+        //     $post->reservation_id = 0;
+        //     $post->user_id = $user->id;
+        //     $post->save();
 
-            foreach ($admins as $admin) {
-                $admin->notify(new ReplyToAnnonceDemandeSuppression($post));
-            }
+        //     foreach ($admins as $admin) {
+        //         $admin->notify(new ReplyToAnnonceDemandeSuppression($post));
+        //     }
 
-            Mail::to($house->user->email)->send(new SendAnnonceDemandeSuppression($house));
+        //     Mail::to($house->user->email)->send(new SendAnnonceDemandeSuppression($house));
 
-            return redirect()->back()->with('success', "Votre demande a bien été pris en compte, étant donné que votre annonce est en ligne, un message sera envoyé à l'administrateur qui supprimera votre annonce. N'oubliez pas de vérifier vos notifications");
-        }
+        //     return redirect()->back()->with('success', "Votre demande a bien été pris en compte, étant donné que votre annonce est en ligne, un message sera envoyé à l'administrateur qui supprimera votre annonce. N'oubliez pas de vérifier vos notifications");
+        //}
     }
 
     //Vue global des reservations
