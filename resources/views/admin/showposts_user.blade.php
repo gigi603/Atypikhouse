@@ -32,6 +32,7 @@
                             <form action="{{ route('admin.addMessage', $post->user_id) }}" method="POST" style="display: flex;">
                                 
                                 {{ csrf_field() }}
+                                <label>Vous voulez envoyer un message à cet utilisateur?</label>
                                 <input type="text" name="content" placeholder="Saisir un message" class="form-control" id="input_comment" style="border-radius: 0;">
                                 <input type="submit" value="Envoyer" class="btn btn-primary btn-color" style="border-radius: 0;">
                             </form>
