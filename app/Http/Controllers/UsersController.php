@@ -412,11 +412,11 @@ class UsersController extends Controller
     //Vue de détails des reservations
     public function showreservations($id)
     {
-        $users = User::where('id', $id)->get();
-        $house = House::where('user_id', $id)->get();
-        $reservations = reservation::with('house','user','category','proprietes', 'valuecatproprietes', 'comments')->where('id','=',$id)->get();
-        $client_reserved = reservation::where('house_id', $houses->id)->where('user_id', Auth::user()->id)->get();
-        //Notes de l'annonce
+        $user = User::where('id', Auth::user()->id)->get();
+        $reservation = reservation::with('house', 'comments')->find($id);
+        $client_reserved = reservation::where('user_id', Auth::user()->id)->get();
+        $comments = comment::where('house_id', '=', $reservation->house->id)->get();
+
         $moyenneNote = 0;
         $nb5etoiles = 0;
         $nb4etoiles = 0;
@@ -424,7 +424,7 @@ class UsersController extends Controller
         $nb2etoiles = 0;
         $nb1etoiles = 0;
         $nbTotalNote = 0;
-        foreach($reservations->comments as $comment){
+        foreach($comments as $comment){
             if($comment->note > 0){
                 $moyenneNote = $moyenneNote + $comment->note;
                 $nbTotalNote++;
@@ -448,9 +448,9 @@ class UsersController extends Controller
         if($moyenneNote > 0 && $nbTotalNote > 0){
             $moyenneNote = $moyenneNote / $nbTotalNote;
         }
-        return view('user.showreservations')->with('house', $house)
-                                            ->with('users', $users)
-                                            ->with('reservations', $reservations)
+        
+        return view('user.showreservations')->with('user', $user)
+                                            ->with('reservation', $reservation)
                                             ->with('client_reserved', $client_reserved)
                                             ->with('moyenneNote', $moyenneNote)
                                             ->with('nb5etoiles', $nb5etoiles)
@@ -458,7 +458,8 @@ class UsersController extends Controller
                                             ->with('nb3etoiles', $nb3etoiles)
                                             ->with('nb2etoiles', $nb2etoiles)
                                             ->with('nb1etoiles', $nb1etoiles)
-                                            ->with('nbTotalNote', $nbTotalNote);
+                                            ->with('nbTotalNote', $nbTotalNote)
+                                            ->with('comments', $comments);
     }
 
     //Annuler une reservation
@@ -533,12 +534,51 @@ class UsersController extends Controller
     //Vue de détails des réservations annulées
     public function showreservationsannulees($id)
     {
-        $users = User::where('id', $id)->get();
-        $houses = House::where('user_id', $id)->get();
-        $reservation = reservation::find($id);
-        return view('user.showreservationsannulees')->with('houses', $houses)
-                                                    ->with('users', $users)
-                                                    ->with('reservation', $reservation);
+        $user = User::where('id', Auth::user()->id)->get();
+        $reservation = reservation::with('house', 'comments')->find($id);
+        $comments = comment::where('house_id', '=', $reservation->house->id)->get();
+
+        $moyenneNote = 0;
+        $nb5etoiles = 0;
+        $nb4etoiles = 0;
+        $nb3etoiles = 0;
+        $nb2etoiles = 0;
+        $nb1etoiles = 0;
+        $nbTotalNote = 0;
+        foreach($comments as $comment){
+            if($comment->note > 0){
+                $moyenneNote = $moyenneNote + $comment->note;
+                $nbTotalNote++;
+            }
+            if($comment->note == 5){
+                $nb5etoiles = $nb5etoiles + 1;
+            }
+            if($comment->note == 4){
+                $nb4etoiles = $nb4etoiles + 1;
+            }
+            if($comment->note == 3){
+                $nb3etoiles = $nb3etoiles + 1;
+            }
+            if($comment->note == 2){
+                $nb2etoiles = $nb2etoiles + 1;
+            }
+            if($comment->note == 1){
+                $nb1etoiles = $nb1etoiles + 1;
+            }
+        }
+        if($moyenneNote > 0 && $nbTotalNote > 0){
+            $moyenneNote = $moyenneNote / $nbTotalNote;
+        }
+        return view('user.showreservationsannulees')->with('user', $user)
+                                                    ->with('reservation', $reservation)
+                                                    ->with('moyenneNote', $moyenneNote)
+                                                    ->with('nb5etoiles', $nb5etoiles)
+                                                    ->with('nb4etoiles', $nb4etoiles)
+                                                    ->with('nb3etoiles', $nb3etoiles)
+                                                    ->with('nb2etoiles', $nb2etoiles)
+                                                    ->with('nb1etoiles', $nb1etoiles)
+                                                    ->with('nbTotalNote', $nbTotalNote)
+                                                    ->with('comments', $comments);
     }
 
     //Vue global des reservations passées
@@ -555,12 +595,58 @@ class UsersController extends Controller
     //Vue de détails des reservations passées
     public function showhistoriques($id)
     {
-        $users = User::where('id', $id)->get();
-        $houses = House::where('user_id', $id)->get();
-        $historique = reservation::find($id);
-        return view('user.showhistoriques')->with('houses', $houses)
-                                              ->with('users', $users)
-                                              ->with('historique', $historique);
+        $user = User::where('id', Auth::user()->id)->get();
+        $historique = reservation::with('house', 'comments')->find($id);
+        //dd($historique);
+        $client_reserved = reservation::where('user_id', Auth::user()->id)->get();
+        $comments = comment::where('house_id', '=', $historique->house->id)->get();
+        $commentUser = comment::where('user_id', '=', Auth::user()->id)
+                                ->where('house_id', '=', $historique->house->id)
+                                ->get();
+
+        $moyenneNote = 0;
+        $nb5etoiles = 0;
+        $nb4etoiles = 0;
+        $nb3etoiles = 0;
+        $nb2etoiles = 0;
+        $nb1etoiles = 0;
+        $nbTotalNote = 0;
+        foreach($comments as $comment){
+            if($comment->note > 0){
+                $moyenneNote = $moyenneNote + $comment->note;
+                $nbTotalNote++;
+            }
+            if($comment->note == 5){
+                $nb5etoiles = $nb5etoiles + 1;
+            }
+            if($comment->note == 4){
+                $nb4etoiles = $nb4etoiles + 1;
+            }
+            if($comment->note == 3){
+                $nb3etoiles = $nb3etoiles + 1;
+            }
+            if($comment->note == 2){
+                $nb2etoiles = $nb2etoiles + 1;
+            }
+            if($comment->note == 1){
+                $nb1etoiles = $nb1etoiles + 1;
+            }
+        }
+        if($moyenneNote > 0 && $nbTotalNote > 0){
+            $moyenneNote = $moyenneNote / $nbTotalNote;
+        }
+        return view('user.showhistoriques')->with('user', $user)
+                                            ->with('historique', $historique)
+                                            ->with('client_reserved', $client_reserved)
+                                            ->with('moyenneNote', $moyenneNote)
+                                            ->with('nb5etoiles', $nb5etoiles)
+                                            ->with('nb4etoiles', $nb4etoiles)
+                                            ->with('nb3etoiles', $nb3etoiles)
+                                            ->with('nb2etoiles', $nb2etoiles)
+                                            ->with('nb1etoiles', $nb1etoiles)
+                                            ->with('nbTotalNote', $nbTotalNote)
+                                            ->with('comments', $comments)
+                                            ->with('commentUser', $commentUser);
     }
 
     

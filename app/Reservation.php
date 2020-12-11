@@ -23,7 +23,7 @@ class Reservation extends Model
     }
 
     public function comments() {
-        return $this->hasMany('App\Comment', 'reservation_id');
+        return $this->hasMany('App\Comment')->orderBy('id', 'DESC');
     }
 
     public function proprietes() {

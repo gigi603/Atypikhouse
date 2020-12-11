@@ -1014,6 +1014,7 @@ class AdminController extends Controller
         $comment->user_id = "0";
         $comment->admin_id = "1";
         $comment->house_id = $request->house_id;
+        $comment->reservation_id = 0;
         $comment->parent_id = $request->parent_id;
         $comment->save();
 
