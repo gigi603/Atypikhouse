@@ -241,39 +241,6 @@
                 </div>
               </div>
               <div class="row">
-                {{-- <div class="col-xl-3 col-sm-6 mb-3">
-                  <a href="{{route('admin.listpostsdemandeannonce_to_delete')}}" class="admin-messages">
-                  <div class="card text-white bg-black o-hidden h-100">
-                    <div class="card-body">
-                      <div class="card-body-icon">
-                        <i class="fas fa-fw fa-comments"></i>
-                      </div>
-                      <div class="mr-5">
-                        <?php $a = 0;?>
-                        @foreach (auth()->user()->unreadNotifications as $notification)
-                          @if($notification->type == 'App\Notifications\ReplyToAnnonceDemandeSuppression' && $notification->read_at == null)
-                            <?php $a++; ?>
-                          @endif
-                          @if($notification->read_at != null)
-                            <?php $a = 0; ?>
-                          @endif 
-                        @endforeach
-                        @if($a != 0)
-                          <span class="badge-pill badge-danger">{{$a}}</span> <span> demande(s) de suppressions d'annonce(s) par le client</span>
-                        @else
-                          {{$a}} nouvelle(s) demande(s) de suppression d'annonces par le client
-                        @endif
-                      </div>
-                    </div>
-                    <a class="card-footer text-white clearfix small z-1" href="#">
-                      <span class="float-left">View Details</span>
-                      <span class="float-right">
-                        <i class="fas fa-angle-right"></i>
-                      </span>
-                    </a>
-                  </div>
-                </a>
-                </div> --}}
                 <div class="col-xl-3 col-sm-6 mb-3">
                   <a href="{{route('admin.listpostsannonce_modified')}}" class="admin-messages">
                   <div class="card text-white bg-black o-hidden h-100">
