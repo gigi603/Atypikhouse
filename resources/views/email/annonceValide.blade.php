@@ -5,6 +5,6 @@
     <?php \Date::setLocale('fr'); $enddate = Date::parse($houseEndDate)->format('l j F Y'); echo($enddate);?><br>
      à l'adresse {{$houseAdresse}}
 <p>pour maximum<b>{{$houseNbPersonnes}}</b> personne(s), prix de la nuit par personne(s) : <b>{{$housePrice}} euros </b>
-<p>Votre annonce a dorénavent en ligne et visible à tous les visiteurs de notre site.</p>
+<p>Votre annonce est dorénavent en ligne et visible à tous les visiteurs de notre site.</p>
 
 <p>Notre équipe Atypikhouse vous remercie</p>
