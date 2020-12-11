@@ -32,6 +32,9 @@ use App\Notifications\ReplyToAnnonceDemandeSuppression;
 use App\Notifications\ReplyToNews;
 use App\Mail\SendAnnonceSuppression;
 use App\Mail\SendAnnonceSuppressionFromAdmin;
+use App\Mail\SendValideHouse;
+use App\Mail\SendRefuseHouse;
+
 use Illuminate\Support\Facades\Mail;
 
 
@@ -607,11 +610,14 @@ class AdminController extends Controller
         $house->save();
 
         $message = new message;
-        $message->content = "L'administrateur a validé l'annonce ".$house->title;
+        $message->content = "L'administrateur a validé l'annonce ".$house->title."votre annonce est dorénavent en ligne et visible par tous les visiteurs de notre site";
         $message->user_id = $house->user_id;
         $message->save();
         $user = User::find($house->user_id);
         $user->notify(new ReplyToNews($message));
+
+        Mail::to($house->user->email)->send(new SendValideHouse($house));
+
 
         return redirect()->back()->with('success-valide', "Vous avez bien validé cette annonce");
     }
@@ -621,11 +627,13 @@ class AdminController extends Controller
         $house->statut = "Refusé";
         $house->save();
         $message = new message;
-        $message->content = "L'administrateur a refusé l'annonce ".$house->title." veuillez nous contacter via le formulaire de contact";
+        $message->content = "L'administrateur a refusé l'annonce ".$house->title." nous reviendrons vers afin de vous communiquer les détails de ce refus";
         $message->user_id = $house->user_id;
         $message->save();
         $user = User::find($house->user_id);
         $user->notify(new ReplyToNews($message));
+        Mail::to($house->user->email)->send(new SendRefuseHouse($house));
+
         return redirect()->back()->with('success-valide', "Vous avez bien refusé cette annonce");
 
     }
