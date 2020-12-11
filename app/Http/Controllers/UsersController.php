@@ -102,9 +102,6 @@ class UsersController extends Controller
     {
         //Données de l'annonce
         $house = house::with('comments')->find($id);
-        $commentUser = comment::where('user_id', '=', Auth::user()->id)
-                                ->where('house_id', '=', $house->id)
-                                ->get();
 
         //Notes de l'annonce
         $moyenneNote = 0;
@@ -140,7 +137,9 @@ class UsersController extends Controller
         }
         if(Auth::check()){
             $client_reserved = reservation::where('user_id', Auth::user()->id)->get();
-
+            $commentUser = comment::where('user_id', '=', Auth::user()->id)
+                                ->where('house_id', '=', $house->id)
+                                ->get();
             return view('user.show')->with('house', $house)
                                     ->with('client_reserved', $client_reserved)
                                     ->with('moyenneNote', $moyenneNote)
@@ -159,8 +158,7 @@ class UsersController extends Controller
                                     ->with('nb3etoiles', $nb3etoiles)
                                     ->with('nb2etoiles', $nb2etoiles)
                                     ->with('nb1etoiles', $nb1etoiles)
-                                    ->with('nbTotalNote', $nbTotalNote)
-                                    ->with('commentUser', $commentUser);
+                                    ->with('nbTotalNote', $nbTotalNote);
     }
 
     //Vue de détail de l'annonce interface de l'annonceur
