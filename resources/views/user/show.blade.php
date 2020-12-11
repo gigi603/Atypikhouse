@@ -182,7 +182,7 @@
                             @endforeach
                         
                             @if (Auth::check())
-                                @if($client_reserved->count() > 0)
+                                @if(count($client_reserved) > 0 && count($commentUser) == 0)
                                     <div class="panel panel-default" style="margin: 0; border-radius: 0;">
                                         <div class="panel-body">
                                             <form action="{{ url('/comments') }}" method="POST" style="display: flex;">
@@ -208,11 +208,10 @@
                                                 </div>
                                             </form>
                                         </div>
-                                    
                                     </div>
-                                </div>
+                                @endif
                             @endif
-                        @endif
+                        </div>
                     </div>
                 </div>
             </div>

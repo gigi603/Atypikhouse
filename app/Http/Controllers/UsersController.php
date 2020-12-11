@@ -101,8 +101,11 @@ class UsersController extends Controller
     public function showHouse($id)
     {
         //Données de l'annonce
-        $reservation = reservation::all();
-        $house = house::find($id);
+        $house = house::with('comments')->find($id);
+        $client_reserved = reservation::where('user_id', Auth::user()->id)->get();
+        $commentUser = comment::where('user_id', '=', Auth::user()->id)
+                                ->where('house_id', '=', $house->id)
+                                ->get();
 
         //Notes de l'annonce
         $moyenneNote = 0;
@@ -135,14 +138,8 @@ class UsersController extends Controller
         }
         if($moyenneNote > 0 && $nbTotalNote > 0){
             $moyenneNote = $moyenneNote / $nbTotalNote;
-        }
-        if (Auth::check()) {
-            $locataire = comment::where('user_id', Auth::user()->id)->get();
-            $client_reserved = reservation::where('house_id', $id)->where('user_id', Auth::user()->id)->get();
-            
-            return view('user.show')->with('reservation', $reservation)
-                                    ->with('house', $house)
-                                    ->with('locataire', $locataire)
+        }   
+            return view('user.show')->with('house', $house)
                                     ->with('client_reserved', $client_reserved)
                                     ->with('moyenneNote', $moyenneNote)
                                     ->with('nb5etoiles', $nb5etoiles)
@@ -150,25 +147,19 @@ class UsersController extends Controller
                                     ->with('nb3etoiles', $nb3etoiles)
                                     ->with('nb2etoiles', $nb2etoiles)
                                     ->with('nb1etoiles', $nb1etoiles)
-                                    ->with('nbTotalNote', $nbTotalNote);
-        } else {
-            return view('user.show')->with('reservation', $reservation)
-                                    ->with('house', $house)
-                                    ->with('moyenneNote', $moyenneNote)
-                                    ->with('nb5etoiles', $nb5etoiles)
-                                    ->with('nb4etoiles', $nb4etoiles)
-                                    ->with('nb3etoiles', $nb3etoiles)
-                                    ->with('nb2etoiles', $nb2etoiles)
-                                    ->with('nb1etoiles', $nb1etoiles)
-                                    ->with('nbTotalNote', $nbTotalNote);
-        }
+                                    ->with('nbTotalNote', $nbTotalNote)
+                                    ->with('commentUser', $commentUser);
     }
 
     //Vue de détail de l'annonce interface de l'annonceur
     public function showhebergements($id)
     {
-        $house = House::find($id);
-        $client_reserved = reservation::where('house_id', $id)->where('user_id', Auth::user()->id)->get();
+        //Données de l'annonce
+        $house = house::with('comments')->find($id);
+        $client_reserved = reservation::where('user_id', Auth::user()->id)->get();
+        $commentUser = comment::where('user_id', '=', Auth::user()->id)
+                                ->where('house_id', '=', $house->id)
+                                ->get();
         //Notes de l'annonce
         $moyenneNote = 0;
         $nb5etoiles = 0;
@@ -210,7 +201,8 @@ class UsersController extends Controller
         ->with('nb3etoiles', $nb3etoiles)
         ->with('nb2etoiles', $nb2etoiles)
         ->with('nb1etoiles', $nb1etoiles)
-        ->with('nbTotalNote', $nbTotalNote);
+        ->with('nbTotalNote', $nbTotalNote)
+        ->with('commentUser', $commentUser);
                                               
     }
         
