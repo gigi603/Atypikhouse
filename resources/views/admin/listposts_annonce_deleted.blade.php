@@ -15,7 +15,7 @@
         <div class="card-header">
         <h1 style="font-size:20px;">
             <i class="fas fa-table"></i>
-            Annonces (En cours de validation ou refusé) suprimées par les clients
+            Annonces suprimées par les clients
         </h1>
     </div>
         <div class="card-body">
