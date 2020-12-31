@@ -13,7 +13,6 @@
           <thead>
             <tr>
               <th>Nom / Prénom</th>
-              <th> Compte</th>
               <th>Profil</th>
               <th>Annonces</th>
               <th>Réservations</th>
