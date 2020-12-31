@@ -101,7 +101,7 @@
               <!-- Breadcrumbs-->
               <ol class="breadcrumb">
                 <li class="breadcrumb-item">
-                  <a href="#">Accueil</a>
+                  <a href="{{ route('admin.listusers') }}">Accueil</a>
                 </li>
                 <li class="breadcrumb-item active">@yield('title')</li>
               </ol>
