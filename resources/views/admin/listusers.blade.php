@@ -20,6 +20,7 @@
               <th>Réservations annulées</th>
               <th>Notifications</th>
               <th>Compte activé</th>
+              <th>Actions</th>
             </tr>
           </thead>
           @foreach($users as $user)
