@@ -19,8 +19,10 @@
                     <div class="card h-100 text-center">
                     <form action="{{route('addmoney.stripe')}}" method="post" id="payment-form">
                         <div class="form-row" style="padding-bottom:30px;">
+                            <h3 class="price">Prix: {{$price}} € x {{$days}} jours pour {{$nb_personnes}} personne(s)</h3>
+                            <h3 class="price">Total à payer : {{$total}} €</h3><br><br>
                             <label for="card-element">
-                            Carte de crédit
+                                Carte de crédit
                             </label>
                             <div id="card-element">
                             <!-- A Stripe Element will be inserted here. -->

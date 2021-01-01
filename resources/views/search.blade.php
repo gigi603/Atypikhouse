@@ -1,7 +1,6 @@
         <div class="form-group{{ $errors->has('category_id') ? ' has-error' : '' }}">
                 <label class="label-home" for="select_category_home">Type d'annonces </label>
                 <select id="select_category_home" name="category_id" required class="form-control field-home">
-                        <option id="" value="">Type d'annonce</option>
                         @foreach($categories as $category)
                                 <option value="{{ $category->id }}" @if(old('category_id') == $category->id) selected="selected" @endif>{{$category->category}}</option>
                         @endforeach
@@ -15,8 +14,8 @@
         <div class="form-group{{ $errors->has('start_date') ? ' has-error' : '' }}{{ $errors->has('end_date') ? ' has-error' : '' }}">
                 <label class="label-home" for="fromHome">Date de départ / </label>
                <label class="label-home" for="toHome">Date de retour</label><br>
-                <input type="text" class="form-control date-field-home" required id="fromHome" placeholder="Date de départ" name="start_date" value="{{ old('start_date') }}" />
-                <input type="text" class="form-control date-field-home" required id="toHome" placeholder="Date de retour" name="end_date" value="{{ old('end_date') }}" />
+                <input type="text" class="form-control date-field-home" required id="fromHome" placeholder="Date de départ" name="start_date" value="{{old('start_date') ? old('start_date') : Carbon\Carbon::today()->format('d/m/Y')}}" />
+                <input type="text" class="form-control date-field-home" required id="toHome" placeholder="Date de retour" name="end_date" value="{{old('end_date') ? old('end_date') : Carbon\Carbon::today()->addWeek()->format('d/m/Y') }}" />
                 @if ($errors->has('start_date'))
                         <span class="help-block">
                                 <strong>{{ $errors->first('start_date') }}</strong>
@@ -33,7 +32,7 @@
                 <select id="nb_personnes_id" name="nb_personnes" required class="form-control field-home">
                         <option id="" value="">Nombre de personnes</option>
                         <option value="1" @if(old('nb_personnes') == "1") selected="selected" @endif>1</option>
-                        <option value="2" @if(old('nb_personnes') == "2") selected="selected" @endif>2</option>
+                        <option value="2" @if(old('nb_personnes') == "2") selected="selected" @else selected="selected" @endif>2</option>
                         <option value="3" @if(old('nb_personnes') == "3") selected="selected" @endif>3</option>
                         <option value="4" @if(old('nb_personnes') == "4") selected="selected" @endif>4</option>
                         <option value="5" @if(old('nb_personnes') == "5") selected="selected" @endif>5</option>

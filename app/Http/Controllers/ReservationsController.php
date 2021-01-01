@@ -128,7 +128,14 @@ class ReservationsController extends Controller
      */
     public function payWithStripe()
     {
-        return view('paywithstripe');
+        return view('paywithstripe')->with([
+            'price' => $_GET['price'],
+            'start' => $_GET['start'],
+            'end' => $_GET['end'],
+            'nb_personnes' => $_GET['nb_personnes'],
+            'days' => $_GET['days'],
+            'total' => $_GET['total'],
+        ]);
     }
 
     /**
