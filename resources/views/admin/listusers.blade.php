@@ -15,10 +15,10 @@
               <th>Nom / Prénom</th>
               <th>Profil</th>
               <th>Annonces</th>
-              <th>Réservations</th>
+              <th>Réservations en cours</th>
               <th>Réservations passées</th>
               <th>Réservations annulées</th>
-              <th>Notifications</th>
+              <th>Messages</th>
               <th>Compte activé</th>
               <th>Actions</th>
             </tr>
@@ -32,7 +32,7 @@
                     <td><a href="{{action('AdminController@listreservations', $user['id'])}}" class="btn btn-info">Réservations</a></td>
                     <td><a href="{{action('AdminController@listhistoriques', $user['id'])}}" class="btn btn-info">Réservations passées</a></td>
                     <td><a href="{{action('AdminController@listreservationscancel', $user['id'])}}" class="btn btn-info">Réservations annulées</a></td>
-                    <td><a href="{{action('AdminController@messages', $user['id'])}}" class="btn btn-info">Notifications</a></td>
+                    <td><a href="{{action('AdminController@messages', $user['id'])}}" class="btn btn-info">Messages</a></td>
                     <td>{{$user->statut}}</td>
                     @if($user->statut ==  1)
                         <td><a href="{{ route('admin.disable_user', $user->id) }}" class="delete-user btn btn-danger">Désactiver</a></td>
