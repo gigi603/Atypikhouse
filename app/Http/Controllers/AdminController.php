@@ -1076,9 +1076,9 @@ class AdminController extends Controller
     }
 
     public function messages($id) {
-        $messages = message::where('user_id','=', $id)->orderBy('id', 'desc')->paginate(10);
+        $posts = post::where('user_id','=', $id)->orderBy('id', 'desc')->paginate(10);
         $user = user::find($id);
-        return view('admin.user_messages')->with('messages', $messages)->with('user', $user);
+        return view('admin.user_messages')->with('posts', $posts)->with('user', $user);
     }
 
     public function addMessage(MessageRequest $request, $id) {

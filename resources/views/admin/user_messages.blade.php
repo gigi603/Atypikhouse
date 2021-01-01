@@ -4,15 +4,15 @@
 <div class="admin-user-profil"> 
 <div class="container list-category">
     <div class="panel panel-default">
-        <div class="panel-heading"><h1 style="font-size:20px;">Messages envoyés à l'utilisateur</h1></div>
+        <div class="panel-heading"><h1 style="font-size:20px;">Messages envoyés par l'utilisateur</h1></div>
         <div class="panel-body">
             <div class="row">
                 <div class="col-md-12">
-                    @foreach ($messages as $message)
+                    @foreach ($posts as $post)
                         <div class="panel panel-default" style="margin: 0; border-radius: 0;">
                             <div class="panel-body">
                                 <div class="col-sm-9">
-                                    {{ $message->content }}
+                                    {{ $post->content }}
                                 </div>
                             </div>
                         </div>
@@ -20,7 +20,7 @@
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-md-12">
-                                <span>{{ $messages->links() }}</span>
+                                <span>{{ $posts->links() }}</span>
                             </div>
                         </div>
                     </div>  
@@ -58,16 +58,4 @@
 </div>
 @endsection
 @section('script')
-    <script type="text/javascript">
-        alert('coco');
-        // var i = parseInt(<?php echo $i ?>);
-        // console.log(i);
-        // i = i - 1;
-        // alert('gogo');
-        // alert(i);
-        // if(i == 0){
-        //     alert("0");
-        //     $('span.badge-pill.badge-danger.badge-new-message').remove();
-        // }
-    </script>
 @endsection
