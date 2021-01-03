@@ -42,7 +42,7 @@
                                     <input type="hidden" name="house_id" value="{{ $house->id }}">
                                     <div class="form-group{{ $errors->has('start_date') ? ' has-error' : '' }}">
                                         <label for="from" class="formLabel control-label">Départ : </label>
-                                        <input type="text" class="form-control" required id="from" name="start_date" value="{{old('start_date')}}"/>
+                                        <input type="text" class="form-control" required id="from" name="start_date" value="{{old('start_date') ? old('start_date') : Carbon\Carbon::today()->format('d/m/Y')}}"/>
                                         @if ($errors->has('start_date'))
                                             <span class="help-block">
                                                 <strong>{{ $errors->first('start_date') }}</strong>
@@ -51,7 +51,7 @@
                                     </div>
                                     <div class="form-group{{ $errors->has('end_date') ? ' has-error' : '' }}">
                                         <label for="to" class="formLabel control-label">Arrivée : </label>
-                                        <input type="text" class="form-control" required id="to" name="end_date" value="{{old('end_date')}}"/>
+                                        <input type="text" class="form-control" required id="to" name="end_date" value="{{old('end_date') ? old('end_date') : Carbon\Carbon::today()->addWeek()->format('d/m/Y') }}"/>
                                         @if ($errors->has('end_date'))
                                             <span class="help-block">
                                                 <strong>{{ $errors->first('end_date') }}</strong>
@@ -67,7 +67,7 @@
                                         <select id="select_nb_personnes" name="nb_personnes" required class="form-control" style="margin-top:3.5%;">
                                             <option id="" value="" autofocus>Nombre de personnes</option>
                                             @for($i=1;$i<= $house->nb_personnes;$i++)
-                                            <option value={{$i}} @if (old('nb_personnes') == $i) selected="selected" @endif>{{$i}}</option>
+                                            <option value={{$i}} @if (old('nb_personnes') == $i) selected="selected" @elseif($i == 2) selected="selected" @else  @endif>{{$i}}</option>
                                             @endfor 
                                         </select>
                                         @if ($errors->has('nb_personnes'))

@@ -538,7 +538,6 @@ class UsersController extends Controller
     {
         $user = User::where('id', Auth::user()->id)->get();
         $reservation = reservation::with('house', 'comments')->find($id);
-        dd($reservation);
         $comments = comment::where('house_id', '=', $reservation->house->id)->get();
 
         $moyenneNote = 0;

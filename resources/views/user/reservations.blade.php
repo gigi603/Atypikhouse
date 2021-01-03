@@ -24,16 +24,13 @@
                             <p class="title-houses"> Adresse: {{$reservation->house->adresse}}</p>
                             <p><i class="fas fa-calendar"></i> Du: <?php \Date::setLocale('fr'); $startdate = Date::parse($reservation->start_date)->format('l j F Y'); echo($startdate);?> </p>
                             <p><i class="fas fa-calendar"></i> au:  <?php \Date::setLocale('fr'); $enddate = Date::parse($reservation->end_date)->format('l j F Y'); echo($enddate);?></p>
+                            <a href="{{action('UsersController@showreservations', $reservation['id'])}}" class="btn btn-primary btn-color">Voir la réservation</a>
                             @if($reservation->reserved == 1)
-                                <p>Statut: <span style="color:green;">Réservé</span></p>
                                 <div class="text-center">
                                     <a href="{{route('user.cancelreservation', $reservation['id']) }}" class="btn btn-danger delete-reservation">Annuler ma réservation</a>
                                 </div>
-                            @else
-                                <p>Statut: <span style="color:red;">Annulée</span></p>
                             @endif
-                            </div>
-                        
+                        </div>
                     </div>
                 </div>
             @endif  

@@ -36,9 +36,8 @@
                             <p><i class="fas fa-calendar"></i> Du: <?php \Date::setLocale('fr'); $startdate = Date::parse($reservation->start_date)->format('l j F Y'); echo($startdate);?> </p>
                             <p><i class="fas fa-calendar"></i> au:  <?php \Date::setLocale('fr'); $enddate = Date::parse($reservation->end_date)->format('l j F Y'); echo($enddate);?></p>
                             <p class="card-text"><?php echo(substr($reservation->house->description, 0, 40));?></p>
-                            <p>Statut: <span style="color:red;">Annulée</span></p>
                             <div class="text-center">
-                                <a href="{{route('user.showreservationsannulees', $reservation['id']) }}" class="btn btn-primary btn-color">Voir</a>
+                                <a href="{{route('user.showreservationsannulees', $reservation['id']) }}" class="btn btn-primary btn-color">Voir la reservation annulée</a>
                             </div>
                         </div>
                     </div>

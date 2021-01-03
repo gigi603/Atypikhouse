@@ -28,10 +28,9 @@
                             <p class="title-houses"> Adresse: {{$historique->house->adresse}}</p> 
                             <p><i class="fas fa-calendar"></i> Du: <?php \Date::setLocale('fr'); $startdate = Date::parse($historique->start_date)->format('l j F Y'); echo($startdate);?> </p>
                             <p><i class="fas fa-calendar"></i> au:  <?php \Date::setLocale('fr'); $enddate = Date::parse($historique->end_date)->format('l j F Y'); echo($enddate);?></p>
-                            @if($historique->reserved == 1)
-                                <p>Statut: <span style="color:green;">Réservé</span></p>
-                            @else
-                                <p>Statut: <span style="color:red;">Annulée</span></p>
+                            <a href="{{route('user.showhistoriques', $historique->id) }}" class="btn btn-primary btn-color">Voir la reservation passée</a>
+                            @if($historique->reserved != 1)
+                                <p>Cette reservation passée a été : <span style="color:red;">Annulée</span></p>
                             @endif
                         </div>
                     </div> 

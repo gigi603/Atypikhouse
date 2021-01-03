@@ -54,6 +54,7 @@
                                                     
                                                 </div>
                                             @endif
+                                            <a href="{{action('UsersController@showHouse', $house->id)}}" class="btn btn-principal">Effectuer une réservation</a>
                                         </div>
                                     </div>
                                 </div>
