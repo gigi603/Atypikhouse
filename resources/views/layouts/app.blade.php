@@ -181,8 +181,8 @@
         <script src="{{ asset('js/jquery-ui.min.js') }}"></script>
         <script src="{{ asset('js/jquery.unveil.js') }}"></script>
         <script src="{{ asset('js/user.js') }}"></script>
+        <script src="{{ asset('js/cookieconsent.min.js') }}"></script>
         <script src="{{ asset('js/cookie.js') }}"></script>
-        <script src="{{ asset('js/cookieconsent.js') }}"></script>
         <script>
             $(function() {
                 $("img").unveil();
