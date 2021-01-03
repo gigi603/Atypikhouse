@@ -68,7 +68,7 @@ class HousesController extends Controller
         $houses = house::with('valuecatproprietes', 'proprietes', 'category')
         ->where('end_date', '>=', $today)
         ->where('statut', 'Validé')
-        ->where('category_id', 3)
+        ->where('category_id', 2)
         ->where('disponible', 'oui')
         ->orderBy('id', 'desc')
         ->paginate(14);
@@ -124,7 +124,7 @@ class HousesController extends Controller
         $houses = house::with('valuecatproprietes', 'proprietes', 'category')
         ->where('end_date', '>=', $today)
         ->where('statut', 'Validé')
-        ->where('category_id', 4)
+        ->where('category_id', 3)
         ->where('disponible', 'oui')
         ->orderBy('id', 'desc')
         ->paginate(14);
@@ -178,7 +178,7 @@ class HousesController extends Controller
         $houses = house::with('valuecatproprietes', 'proprietes', 'category')
         ->where('end_date', '>=', $today)
         ->where('statut', 'Validé')
-        ->where('category_id', 5)
+        ->where('category_id', 4)
         ->where('disponible', 'oui')
         ->orderBy('id', 'desc')
         ->paginate(14);
