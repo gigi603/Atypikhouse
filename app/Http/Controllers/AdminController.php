@@ -714,7 +714,8 @@ class AdminController extends Controller
         }
         $valueproprietesdelete = valuecatpropriete::where('house_id','=', $id)->where('reservation_id', '=', 0)->delete();
         $proprietes_category = propriete::where('category_id', '=', $request->category_id)->get();
-        if(count($request->propriete) > 0){
+        if($request->propriete != NULL){ 
+        //if(count($request->propriete) > 0){
             foreach($request->propriete as $proprietes) {
                 $valuecatProprietesHouse = new valuecatPropriete;
                 $valuecatProprietesHouse->category_id = $request->category_id;
