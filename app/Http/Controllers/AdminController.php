@@ -532,6 +532,7 @@ class AdminController extends Controller
         $propriete->statut = 0;
         $propriete->save();
         
+        
         //Notif de la suppression de l'équipement lié à la catégorie
         $users = user::all();
         foreach($users as $user){
