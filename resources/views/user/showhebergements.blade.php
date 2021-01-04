@@ -54,10 +54,10 @@
                                     @foreach($house->valuecatproprietes as $valuecatpropriete)
                                         @if($valuecatpropriete->reservation_id == 0 && $valuecatpropriete->propriete->statut == 1)
                                             <span>{{$valuecatpropriete->propriete->propriete}} </span>
-                                        @else
-                                            <span>Il n'y a pas d'équipements sur cette annonce</span>
                                         @endif
                                     @endforeach
+                                @else
+                                    <span>Il n'y a pas d'équipements sur cette annonce</span>
                                 @endif
                                 <br>
                                 <a href="{{route('user.editHouse', $house['id']) }}" class="btn btn-primary btn-color text-center">Modifier</a>

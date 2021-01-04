@@ -114,12 +114,12 @@
                                     @if(@count($house->valuecatproprietes) > 0 && isset($house->valuecatproprietes))
                                         <label>Equipements:</label><br>
                                         @foreach($house->valuecatproprietes as $valuecatpropriete)
-                                            @if($valuecatpropriete->reservation_id == 0 && $valuecatpropriete->propriete->statut == 1)
+                                            @if($valuecatpropriete->reservation_id == 0 && $valuecatpropriete->active == 1)
                                                 <span>{{$valuecatpropriete->propriete->propriete}} </span>
-                                            @else
-                                                <span>Il n'y a pas d'équipements sur cette annonce</span>
                                             @endif
                                         @endforeach
+                                    @else
+                                        <span>Il n'y a pas d'équipements sur cette annonce</span>
                                     @endif
                                     
                                 </div>
