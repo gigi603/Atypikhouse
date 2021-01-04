@@ -72,7 +72,7 @@ class GenerateSitemap extends Command
                 $sitemap->add(Url::create(config('app.url'))->setPriority(1.0));
             } elseif($isShowable && strpos($uri, 'user/showHouse/') !== false){
                 foreach($annonces as $annonce){
-                    $sitemap->add(Url::create(config('app.url') . str_replace($id, $house->id, $uri))->setPriority(1.0));
+                    $sitemap->add(Url::create(config('app.url') . str_replace($id, $annonce->id, $uri))->setPriority(1.0));
                 }
             } elseif($isShowable && strpos($uri, 'user/showhebergement/') !== false){
                 
