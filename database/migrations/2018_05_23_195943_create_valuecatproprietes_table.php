@@ -19,6 +19,7 @@ class CreateValuecatproprietesTable extends Migration
             $table->integer('propriete_id');
             $table->integer('house_id');
             $table->integer('reservation_id')->default(0);
+            $table->integer('active')->default(1);
             $table->timestamps();
         });
     }
