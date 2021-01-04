@@ -114,7 +114,7 @@
                                 @if(@count($house->valuecatproprietes) > 0 && isset($house->valuecatproprietes))
                                     <h3 class="price">Equipements:</h3><br>
                                     @foreach($house->valuecatproprietes as $valuecatpropriete)
-                                        @if($valuecatpropriete->reservation_id == 0)
+                                        @if($valuecatpropriete->reservation_id == 0 && && $valuecatpropriete->active == 1)
                                             <span>{{$valuecatpropriete->propriete->propriete}} </span>
                                         @endif                             
                                     @endforeach

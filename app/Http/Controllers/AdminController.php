@@ -721,6 +721,7 @@ class AdminController extends Controller
                 $valuecatProprietesHouse->house_id = $house->id;
                 $valuecatProprietesHouse->propriete_id = $proprietes;
                 $valuecatProprietesHouse->reservation_id = 0;
+                $valuecatProprietesHouse->active = 1;
                 $valuecatProprietesHouse->save();
             }   
         }
