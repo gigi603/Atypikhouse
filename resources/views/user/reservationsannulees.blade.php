@@ -8,7 +8,7 @@
             {{ Session::get('success') }}
         </div>
     @endif
-    <h1 class="h1-title" id="hebergements">Mes réservations annulées atypikhouse</h1>
+    <h1 class="title" id="hebergements">Mes réservations annulées atypikhouse</h1>
     <div class="row">
         @foreach ($reservations as $reservation)
             <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">         

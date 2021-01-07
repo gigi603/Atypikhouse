@@ -18,7 +18,7 @@
             {{ Session::get('success') }}
         </div>
     @endif
-    <h1 class="h1-title" id="hebergements">Détails de l'annonce atypikhouse</h1>
+    <h1 class="title" id="hebergements">Détails de l'annonce atypikhouse</h1>
     <div class="panel panel-default">
         <div class="panel-heading text-center">
             <h2>{{$house->title}}</h2>

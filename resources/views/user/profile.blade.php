@@ -3,7 +3,7 @@
 @section('footer', 'footer_absolute')
 @section('content')
 <div class="container margin-top block-size" role="mon profil">
-    <h1 class="h1-title">Mon profil</h1>
+    <h1 class="title">Mon profil</h1>
     <div class="row">
         <div class="container">
             <div class="block">

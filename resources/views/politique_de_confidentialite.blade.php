@@ -3,7 +3,7 @@
 @section('meta_description', 'Vous avez accès à nos politique de confidentialité afin de savoir quels sont vos droits et quels sont les notre concernant vos données')
 @section('content')
     <div class="container margin-top block-size" role="politique de confidentialite de atypikhouse">
-        <h1 class="h1-title">Politique de confidentialite</h1>
+        <h1 class="title">Politique de confidentialite</h1>
         <div class="row">
             <div class="container">
                 <div class="block">

@@ -3,7 +3,7 @@
 @section('meta_description', "Nous vous mettons à disposition une faq ayant pour but de répondre à vos questions, si la faq ne répond pas à vos attentes, vous pouvez nous contacter via notre formulaire de contact")
 @section('content')
     <div class="container margin-top block-size" role="faq de atypikhouse">
-        <h1 class="h1-title">FAQ </h1>
+        <h1 class="title">FAQ </h1>
         <div class="row">
             <div class="container">
                 <div class="block">

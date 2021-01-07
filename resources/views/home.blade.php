@@ -2,7 +2,201 @@
 @section('title', "Atypikhouse offre les meilleurs espaces atypiques en europe")
 @section('meta_description', "Atypikhouse contient des espaces atypiques un peu partout en europe notamment en france à grenoble, seine et marne, vous pouvez réserver à tout moment et profitez de nos promotions pouvant aller jusqu'à 60% de réduction à ne pas manquer")
 @section('styles')
-    <link href="{{asset("/fontawesome/css/all.min.css") }}" rel="stylesheet">
+    <style>
+        @font-face {
+            font-family: 'Comfortaa';
+            src: url('/fonts/Comfortaa/static/Comfortaa-Bold.ttf') format('truetype');
+        }
+        .banner {
+            background: url("/img/home.jpg") no-repeat bottom scroll;
+            background-size: cover;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            display: table;
+            width: 100%;
+            max-width: 100%;
+        }
+        .intro-body {
+            display: table-cell;
+            vertical-align: middle;
+            text-align: center;
+        }
+        .title-intro {
+            color: #000;
+            font-size: 30px;
+        }
+        .label-home {
+            color: black;
+            line-height: 1.4;
+            letter-spacing: 1px;
+            margin: 0;
+        }
+        .form-horizontal .form-group {
+            margin: 0;
+            padding: 10px;
+        }
+        .cadre {
+            background-color: #FFF;
+            padding: 20px 0;
+            border-radius: 4px !important;
+        }
+        .cadre-home {
+            background-color: #FFF;
+            padding: 20px 0;
+            border-radius: 4px !important;
+            margin: 18.6vh 0;
+        }
+        .reservation-search {
+            display:block;
+        }
+        .field-home {
+            width: 200px;
+            height: 50px;
+            border-radius: 5px;
+            font-size: 15px;
+            margin-bottom: 20px !important;
+        }
+        .date-field-home {
+            width: 50% !important;
+            height: 50px;
+            border-radius: 5px;
+            margin-bottom: 20px !important;
+        }
+
+        .btn-principal-black{
+            background-color: #000;
+            color: #FFF;
+            border-color: #000;
+            padding: 12px 24px;
+            font-size: 18px;
+            border-radius: 30px;
+            text-align: center;
+            margin: 15vh 5vh 0 5vh;
+        }
+        .btn-principal-black:hover {
+            background-color: #FFF;
+            color: #000;
+            border-color: #000;
+        }
+        .btn-principal {
+            background-color: #3f4b30;
+            color: #FFFBFC;
+            border-color: #3f4b30;
+            padding: 12px 24px;
+            font-size: 18px;
+            border-radius: 30px;
+            margin-top: 5vh;
+            transition: transform .2s;
+        }
+        .btn-principal:hover {
+            background-color: #3f4b30;
+            color: #FFFBFC;
+            border-color: #3f4b30;
+            transform: scale(1.1);
+        }
+        .annonces-block {
+            margin-top: 120px;
+            min-height: 500px !important;
+        }
+        .hebergement-title {
+            text-align: center;
+            margin: 60px;
+            color: #FFF;
+            font-family: 'Comfortaa', cursive;
+        }
+
+        .title-houses {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .background-houses {
+            background-color: #3f4b30;
+        }
+        .card-houses {
+            position: relative;
+            background-color: #fff;
+            transition: transform .2s;
+            margin-bottom: 40px;
+            width:100%;
+        }
+
+        .card-houses:hover {
+            transform: scale(1.1);
+        }
+
+        .card-block-home {
+            padding: 15px 15px;
+            background-color: #000;
+        }
+
+        .card-title-home a{
+            color: #FFF;
+        }
+        .card-block {
+            padding: 15px 15px;
+            background-color: #FFF;
+        }
+        .card-body {
+            display: flex;
+            justify-content: flex-start;
+            padding: 0;
+            color: #000;
+        }
+        .img-houses-list {
+            display: block;
+            width: 100%;
+            height: 250px;
+            background-color: gray;
+        }
+        #block_home_2 {
+            position: relative;
+            background-color: white;
+            color: #3f4b30;
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: space-around;
+            padding: 5vh 0;
+        }
+        .block_home_2_child {
+            width: 350px;
+            text-align: center;
+            margin: 0 20px;
+            padding: 20px;
+        }
+        .block_home_2_child i,
+        .block_home_2_child h3,
+        .block_home_2_child p {
+            margin: 15px 0;
+            color: #3f4b30;
+        }
+        .nature_yours {
+            background-color: #FFF;
+            color: #000;
+            font-family: 'Open Sans', sans-serif;
+            font-family: 'Comfortaa', cursive;
+            font-size: 60px;
+            padding-top: 5%;
+        }
+        #hebergement-title{
+            font-family: 'Comfortaa', cursive;
+        }
+        .voyage {
+            border-radius: 20px;
+            width:100%;
+        }
+        .avantage-title {
+            font-family: 'Comfortaa', cursive;
+        }
+        .become_hote {
+            background-color: #FFF;
+            color: #000;
+            font-family: 'Comfortaa', cursive;
+            font-size: 60px;
+            padding: 13% 0 5% 0;  
+        }
+    </style>
 @endsection
 @section('content')
     <div class="container-fluid banner">

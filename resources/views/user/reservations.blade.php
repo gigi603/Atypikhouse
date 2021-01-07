@@ -8,7 +8,7 @@
             {{ Session::get('success') }}
         </div>
     @endif
-    <h1 class="h1-title" id="hebergements">Mes réservations atypikhouse</h1>
+    <h1 class="title" id="hebergements">Mes réservations atypikhouse</h1>
     <div class="row">
         @foreach ($reservations as $reservation)
             @if($reservation->house->statut == "Validé")

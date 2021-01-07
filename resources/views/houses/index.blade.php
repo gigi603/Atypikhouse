@@ -3,7 +3,7 @@
 @section('meta_description', "Atypikhouse contient des espaces atypiques un peu partout en europe notamment en france à grenoble, seine et marne")
 @section('content')
 <div class="container-fluid block-container" role="annonces">
-    <h1 class="h1-title" id="hebergements">Nos hébergements atypikhouse</h1>
+    <h1 class="title" id="hebergements">Nos hébergements atypikhouse</h1>
     <div class="text-center">
         <div class="container-fluid">
             <div class="row">
@@ -11,7 +11,7 @@
                     <form class="form-horizontal" method="get" action="{{url('search')}}" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         <div class="col-lg-3 col-md-3 col-sm-12 cadre">
-                            <h2 class="h2-title">Atypikhouse offre les meilleurs hébergements atypiques en Europe !</h2>
+                            <h2 class="title">Atypikhouse offre les meilleurs hébergements atypiques en Europe !</h2>
                             <div class="form-group reservation-search">
                                 @include('search',['url'=>'search','link'=>'search'])
                             </div>

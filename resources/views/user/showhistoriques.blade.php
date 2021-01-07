@@ -3,7 +3,7 @@
 @section('content')
 <div class="admin-user-profil">   
 <div class="container">
-    <h1 class="h1-title" id="hebergements">Détails de la réservation passée atypikhouse</h1>
+    <h1 class="title" id="hebergements">Détails de la réservation passée atypikhouse</h1>
     <div class="panel panel-default">
         <div class="panel-heading text-center">
             <h2>{{$historique->title}}</h2>

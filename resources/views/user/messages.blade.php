@@ -2,7 +2,7 @@
 @section('title', 'Mes notifications')
 @section('content')
 <div class="container-fluid block-container block-size" id="hebergements" role="notifications">
-    <h1 class="h1-title">Mes notifications</h1>
+    <h1 class="title">Mes notifications</h1>
     <div class="panel panel-default notifications-panel">
         <div class="panel-heading">Liste de mes notifications</div>
         <div class="panel-body">

@@ -3,7 +3,7 @@
 @section('meta_description', "Vous avez accès à une description concernant l'histoire de notre entreprise et de notre équipe, où nous expliquons tout simplement qui nous sommes")
 @section('content')
     <div class="container margin-top block-size" role="A propos de atypikhouse">
-        <h1 class="h1-title">A propos</h1>
+        <h1 class="title">A propos</h1>
         <div class="row">
             <div class="container">
                 <div class="block">

@@ -3,7 +3,7 @@
 @section('meta_description', "Voici nos mentions légales que nous vous mettons à disposition")
 @section('content')
     <div class="container margin-top block-size" role="mentions légales de atypikhouse">
-        <h1 class="h1-title">Mentions Légales</h1>
+        <h1 class="title">Mentions Légales</h1>
         <div class="row">
             <div class="container">
                 <div class="block">

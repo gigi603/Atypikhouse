@@ -85,7 +85,7 @@
 </div>
 
 <div class="container list-category" role="details-annonce">
-    <h1 class="h1-title" style="font-size:30px;text-align:center;">Détails de l'annonce atypikhouse</h1>
+    <h1 class="title" style="font-size:30px;text-align:center;">Détails de l'annonce atypikhouse</h1>
     <div class="panel panel-default">
         <div class="panel-heading text-center">Détails de l'annonce atypikhouse</div>
         <div class="panel-body">

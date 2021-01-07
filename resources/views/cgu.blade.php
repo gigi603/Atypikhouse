@@ -3,7 +3,7 @@
 @section('meta_description', "Nous vous mettons à disposition nos conditions générale d'utilisation")
 @section('content')
     <div class="container margin-top block-size" role="condition générale d'utilisation du site atypikhouse">
-        <h1 class="h1-title">Conditions Générale d'utilisation</h1>
+        <h1 class="title">Conditions Générale d'utilisation</h1>
         <div class="row">
             <div class="container">
                 <div class="block">

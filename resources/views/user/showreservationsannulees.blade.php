@@ -2,7 +2,7 @@
 @section('title', "Détails de la réservation annulée atypikhouse")
 @section('content')
 <div class="container">
-    <h1 class="h1-title" id="hebergements">Détails de la réservation annulée atypikhouse</h1>
+    <h1 class="title" id="hebergements">Détails de la réservation annulée atypikhouse</h1>
     <div class="panel panel-default">
         <div class="panel-heading text-center">
             <h2>{{$reservation->title}}</h2>
