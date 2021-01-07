@@ -529,8 +529,9 @@ class AdminController extends Controller
         $propriete = propriete::find($id);
         
         //Suppression de l'equipement en changeant le statut
-        $propriete->statut = 0;
-        $propriete->save();
+        $valuecatProprietesHouse = valuecatpropriete::where('propriete_id', $id)->get();
+        $valuecatProprietesHouse->active = 0;
+        $valuecatProprietesHouse->save();
         
         
         //Notif de la suppression de l'équipement lié à la catégorie
