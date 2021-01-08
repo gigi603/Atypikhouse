@@ -31,7 +31,7 @@
                                 @endif
                             </div>
                             <div class="form-group{{ $errors->has('agree') ? ' has-error' : '' }}">
-                                <label class="form-check-label label-home" for="accept-give-infos">
+                                <label class="form-check-label label-custom" for="accept-give-infos">
                                 <input type="checkbox" id="accept-give-infos" class="form-check-input" name="agree" value="true" > En soumettant ce formulaire, j'accepte que les informations saisies soient exploitées dans le cadre professionnel</label>
                                 @if ($errors->has('agree'))
                                     <span class="help-block">

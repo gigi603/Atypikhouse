@@ -1,5 +1,4 @@
 @section('styles')
-<link href="{{asset("/fontawesome/css/all.min.css") }}" rel="stylesheet">
 <style>
     @font-face {
         font-family: 'Comfortaa';
@@ -14,7 +13,7 @@
         color: #000;
         font-size: 30px;
     }
-    .label-home {
+    .label-custom {
         color: black;
         line-height: 1.4;
         letter-spacing: 1px;
@@ -51,9 +50,8 @@
         border-radius: 5px;
         margin-bottom: 20px !important;
     }
-
-    .block-container {
-	margin-bottom: 20vh;
+    #hebergements {
+        margin-bottom: 20vh;
     }
     .btn-principal {
         background-color: #3f4b30;
@@ -179,7 +177,7 @@
 </style>
 @endsection
         <div class="form-group{{ $errors->has('category_id') ? ' has-error' : '' }}">
-                <label class="label-home" for="select_category_home">Type d'annonces </label>
+                <label class="label-custom" for="select_category_home">Type d'annonces </label>
                 <select id="select_category_home" name="category_id" required class="form-control field-home">
                         @foreach($categories as $category)
                                 <option value="{{ $category->id }}" @if(old('category_id') == $category->id) selected="selected" @endif>{{$category->category}}</option>
@@ -192,8 +190,8 @@
                 @endif
         </div>
         <div class="form-group{{ $errors->has('start_date') ? ' has-error' : '' }}{{ $errors->has('end_date') ? ' has-error' : '' }}">
-                <label class="label-home" for="fromHome">Date de départ / </label>
-               <label class="label-home" for="toHome">Date de retour</label><br>
+                <label class="label-custom" for="fromHome">Date de départ / </label>
+               <label class="label-custom" for="toHome">Date de retour</label><br>
                 <input type="text" class="form-control date-field-home" required id="fromHome" placeholder="Date de départ" name="start_date" value="{{old('start_date') ? old('start_date') : Carbon\Carbon::today()->format('d/m/Y')}}" />
                 <input type="text" class="form-control date-field-home" required id="toHome" placeholder="Date de retour" name="end_date" value="{{old('end_date') ? old('end_date') : Carbon\Carbon::today()->addWeek()->format('d/m/Y') }}" />
                 @if ($errors->has('start_date'))
@@ -208,7 +206,7 @@
                 @endif
         </div>
         <div class="form-group{{ $errors->has('nb_personnes') ? ' has-error' : '' }}">
-                <label class="label-home" for="nb_personnes_id">Nombre de personnes</label>
+                <label class="label-custom" for="nb_personnes_id">Nombre de personnes</label>
                 <select id="nb_personnes_id" name="nb_personnes" required class="form-control field-home">
                         <option id="" value="">Nombre de personnes</option>
                         <option value="1" @if(old('nb_personnes') == "1") selected="selected" @endif>1</option>

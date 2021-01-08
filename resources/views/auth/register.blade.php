@@ -1,5 +1,51 @@
 @extends('layouts.app')
 @section('title', 'Inscrivez-vous afin de réserver des espaces atypiques')
+@section('styles')
+    <style>
+        .margin-top {
+            margin-top: 10vh;
+        }
+        .block-size {
+            min-height: 68vh !important;
+        }
+        .link-color {
+            color: #3f4b30;
+        }
+        .link-color:hover {
+            color: #3f4b30;
+        }
+        .link-color:active {
+            color: #3f4b30;
+        }
+        .btn-color {
+            background-color: #3f4b30;
+            border-color: #3f4b30;
+            color:#FFFBFC;
+        }
+
+        .btn-color:hover {
+            background-color: #3f4b30;
+            border-color: #3f4b30;
+            color:#FFFBFC;
+        }
+        p {
+            color: black;
+            line-height: 1.4;
+            letter-spacing: 1px;
+            margin: 0;
+        }
+        .form-horizontal .form-group {
+            margin: 0;
+            padding: 10px;
+        }
+        .label-custom {
+            color: black;
+            line-height: 1.4;
+            letter-spacing: 1px;
+            margin: 0;
+        }
+    </style>
+@endsection
 @section('content')
 <div class="container margin-top block-size">
     <div class="row">
@@ -137,8 +183,7 @@
                             <p>Nous vous enverrons des promotions commerciales, des offres spéciales, des idées de voyage et des informations réglementaires par e-mail à condition de cocher la case autorisant notre équipe à vous envoyer des newsletters</p>
                         </div>
                         <div class="form-group form-check">
-                            
-                            <label class="form-check-label label-home" for="accept-newsletter"> <input type="checkbox" id="accept-newsletter" class="form-check-input" name="newsletter" value="1" {{ old('newsletter') ? 'checked="checked"' : '' }}> Je souhaite recevoir de messages promotionnels d'Atypikhouse. Je peux également activer/désactiver cette option à tout momentdans les paramètres de mon compte ou via le lien contenu dans ce message.</p>
+                            <label class="form-check-label label-custom" for="accept-newsletter"> <input type="checkbox" id="accept-newsletter" class="form-check-input" name="newsletter" value="1" {{ old('newsletter') ? 'checked="checked"' : '' }}> Je souhaite recevoir de messages promotionnels d'Atypikhouse. Je peux également activer/désactiver cette option à tout momentdans les paramètres de mon compte ou via le lien contenu dans ce message.</p>
                         </div>
                     </form>
                 </div>

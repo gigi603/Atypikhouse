@@ -194,7 +194,7 @@
                                                     <input type="hidden" name="reservation_id" value="0">  
                                                     <input type="hidden" name="parent_id" value=""> 
                                                     <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12">
-                                                        <label for="input_comment" class="label-home">Saisir votre avis</label>
+                                                        <label for="input_comment" class="label-custom">Saisir votre avis</label>
                                                         <input type="text" name="comment" placeholder="Saisir un commentaire" class="form-control" id="input_comment" style="border-radius: 0;">
                                                     </div>
                                                     <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 rating">

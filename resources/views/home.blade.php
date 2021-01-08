@@ -26,7 +26,7 @@
             color: #000;
             font-size: 30px;
         }
-        .label-home {
+        .label-custom {
             color: black;
             line-height: 1.4;
             letter-spacing: 1px;

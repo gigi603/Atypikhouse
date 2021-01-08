@@ -1,6 +1,35 @@
 @extends('layouts.app')
 @section('title', 'Connectez-vous afin de pouvoir reserver des espaces atypiques')
 @section('metadescription', 'Connectez-vous afin de pouvoir reserver des espaces atypiques ou de pouvoir poster vos annonces')
+@section('styles')
+    <style>
+        .margin-top {
+            margin-top: 10vh;
+        }
+        .block-size {
+            min-height: 68vh !important;
+        }
+        .link-color {
+            color: #3f4b30;
+        }
+        .link-color:hover {
+            color: #3f4b30;
+        }
+        .link-color:active {
+            color: #3f4b30;
+        }
+        .btn-color {
+            background-color: #3f4b30;
+            border-color: #3f4b30;
+            color:#FFFBFC;
+        }
+        .btn-color:hover {
+            background-color: #3f4b30;
+            border-color: #3f4b30;
+            color:#FFFBFC;
+        }
+    </style>
+@endsection
 @section('footer', 'footer_absolute')
 @section('content')
     <div class="container margin-top block-size">
