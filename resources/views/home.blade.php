@@ -18,6 +18,12 @@
             width: 100%;
             max-width: 100%;
         }
+        .cadre-home {
+            background-color: #FFF;
+            padding: 20px 0;
+            border-radius: 4px !important;
+            margin: 18.6vh 0;
+        }
         .intro-body {
             display: table-cell;
             vertical-align: middle;
@@ -42,12 +48,6 @@
             padding: 20px 0;
             border-radius: 4px !important;
         }
-        .cadre-home {
-            background-color: #FFF;
-            padding: 20px 0;
-            border-radius: 4px !important;
-            margin: 18.6vh 0;
-        }
         .reservation-search {
             display:block;
         }
@@ -67,7 +67,7 @@
 
         .btn-principal-black{
             background-color: #000;
-            color: #FFF;
+            color: #FFF !important;
             border-color: #000;
             padding: 12px 24px;
             font-size: 18px;
@@ -77,12 +77,12 @@
         }
         .btn-principal-black:hover {
             background-color: #FFF;
-            color: #000;
+            color: #000 !important;
             border-color: #000;
         }
         .btn-principal {
             background-color: #3f4b30;
-            color: #FFFBFC;
+            color: #FFFBFC !important;
             border-color: #3f4b30;
             padding: 12px 24px;
             font-size: 18px;
@@ -95,10 +95,6 @@
             color: #FFFBFC;
             border-color: #3f4b30;
             transform: scale(1.1);
-        }
-        .annonces-block {
-            margin-top: 120px;
-            min-height: 500px !important;
         }
         .hebergement-title {
             text-align: center;
@@ -115,25 +111,11 @@
             transition: transform .2s;
             margin-bottom: 40px;
             width:100%;
+            text-align: center;
         }
-
         .card-block-home {
             padding: 15px 15px;
             background-color: #000;
-        }
-
-        .card-title-home a{
-            color: #FFF;
-        }
-        .card-block {
-            padding: 15px 15px;
-            background-color: #FFF;
-        }
-        .card-body {
-            display: flex;
-            justify-content: flex-start;
-            padding: 0;
-            color: #000;
         }
         .img-houses-list {
             display: block;
@@ -177,7 +159,7 @@
             border-radius: 20px;
             width:100%;
         }
-        .avantage-title {
+        .avantage-font {
             font-family: 'Comfortaa', cursive;
         }
         .become_hote {
@@ -220,21 +202,18 @@
             </div>
         </div>
     </div>
-    <div id="block_home_2" role="avantages">
-        <div id="tranquilite" class="block_home_2_child">
-            <i class="fas fa-procedures fa-5x"></i>
-            <h2 class="avantage-title">Tranquilité</h2>
-            <p class="avantage-title">Rester au calme pendant votre séjour dans nos habitats insolite. Nos cabanes et yourtes sauront combler vos désirs les plus variés</p>
+    <div id="block_home_2" role="avantages" class="avantage-font">
+        <div class="block_home_2_child">
+            <h2>Tranquilité</h2>
+            <p>Rester au calme pendant votre séjour dans nos habitats insolite. Nos cabanes et yourtes sauront combler vos désirs les plus variés</p>
         </div>
-        <div id="depaysement" class="block_home_2_child">
-            <i class="fab fa-angellist fa-5x"></i>
-            <h2 class="avantage-title">Dépaysement</h2>
-            <p class="avantage-title">Sortez de la routine quotidienne et venez vivre des expérience unique dans des décors à couper le souffle</p>
+        <div class="block_home_2_child">
+            <h2>Dépaysement</h2>
+            <p>Sortez de la routine quotidienne et venez vivre des expérience unique dans des décors à couper le souffle</p>
         </div>
-        <div id="money" class="block_home_2_child">
-            <i class="far fa-money-bill-alt fa-5x"></i>
-            <h2 class="avantage-title">Economie</h2>
-            <p class="avantage-title">Profitez de promotions toute l'année sur de nombreuses locations atypique tels que les cabanes, les cocons pour amoureux et bien d'autres. </p>
+        <div class="block_home_2_child">
+            <h2>Economie</h2>
+            <p>Profitez de promotions toute l'année sur de nombreuses locations atypique tels que les cabanes, les cocons pour amoureux et bien d'autres. </p>
         </div>
     </div>
     
@@ -245,9 +224,7 @@
                 <div class="card-houses">       
                     <a href="{{ route('cabanes') }}" aria-label="Cabanes Atypikhouse"><img class="img-houses-list" data-src="{{ asset('img/maison_foret.jpg') }}" alt="Hébergement insolite - maison_foret"></a>
                     <div class="card-block-home">
-                        <div class="card-body">
-                            <h3 class="card-title-home"><a href="{{ route('cabanes') }}"> Des cabanes </a></h3>
-                        </div>
+                        <a href="{{ route('cabanes') }}" class="btn btn-principal"> Voir nos cabanes </a>
                     </div>
                 </div>
             </div>
@@ -255,9 +232,7 @@
                 <div class="card-houses text-center">       
                     <a href="{{ route('igloos') }}" aria-label="Igloos Atypikhouse"><img class="img-houses-list" data-src="{{ asset('img/igloo_demo.jpg') }}" alt="Hébergement insolite - igloo"></a>
                     <div class="card-block-home">
-                        <div class="card-body">
-                            <h3 class="card-title-home"><a href="{{ route('igloos') }}"> Des igloos </a></h3>
-                        </div>
+                        <a href="{{ route('igloos') }}" class="btn btn-principal"> Voir nos igloos </a>
                     </div>
                 </div>
             </div>
@@ -265,9 +240,7 @@
                 <div class="card-houses text-center">       
                     <a href="{{ route('yourtes') }}" aria-label="Yourtes Atypikhouse"><img class="img-houses-list" data-src="{{ asset('img/yourte_demo.jpg') }}" alt="Hébergement insolite - yourte"></a>
                     <div class="card-block-home">
-                        <div class="card-body">
-                            <h3 class="card-title-home"><a href="{{ route('yourtes') }}"> Des yourtes </a></h3>
-                        </div>
+                        <a href="{{ route('yourtes') }}" class="btn btn-principal"> Voir nos yourtes </a>
                     </div>
                 </div>
             </div>

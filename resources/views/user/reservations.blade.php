@@ -42,6 +42,7 @@
 </div>
 @endsection
 @section('script')
+    <script src="{{ asset('js/user.js') }}"></script>
     <script>
         $('span.badge.badge-pill.badge-success').remove();
     </script>

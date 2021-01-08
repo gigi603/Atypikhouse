@@ -44,13 +44,9 @@
             .navbar-brand {
                 padding: 0 !important;
             }
-
-            .navbar-default .navbar-nav>li>a, .navbar-default .navbar-text {
-                color: #3f4b30 !important;
-            }
-            .navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-texta {
+            .navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-text, a {
             /* text-decoration: underline; */
-            color: #3f4b30;
+            color: #3f4b30 !important;
             }
             #logo img {
                 height: 60px;
@@ -80,10 +76,7 @@
                 width: 100%;
                 clear: both;
             }
-            footer li {
-                list-style: none;
-            }
-            footer li a{
+            footer li, a{
                 list-style: none;
                 text-decoration: none;
                 color: #000;
@@ -93,20 +86,9 @@
             }
             footer li a:hover{
                 list-style: none;
-                text-decoration: none;
+                text-decoration: underline;
                 color: #000;
             }
-    
-            /* Réseaux sociaux */
-            #reseaux div {
-                display: inline-block;
-            }
-            #reseaux div li a {
-                color:#3f4b30;
-                margin: 5px;
-            }
-
-             /* cookies */
             .cc-animate.cc-revoke.cc-bottom {
                 background-color: #3f4b30;
                 color: #fff;
@@ -125,21 +107,14 @@
         <script src="{{ asset('js/jquery.min.js') }}"></script>
         <script src="{{ asset('js/jquery-ui.min.js') }}"></script>
         <script src="{{ asset('js/jquery.unveil.js') }}"></script>
-        <script src="{{ asset('js/user.js') }}"></script>
         <script src="{{ asset('js/cookieconsent.min.js') }}"></script>
         <script src="{{ asset('js/cookie.js') }}"></script>
         <script>
             $(function() {
                 $("img").unveil();
             });
-            $('#hote_link').click(function() {
-                $('html, body').animate({
-                    scrollTop: $("#become_hote").offset().top
-                }, 1000);
-            });
         </script>
         @yield('script')
-
     </body>
 </html>
 
