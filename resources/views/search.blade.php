@@ -72,7 +72,8 @@
         background-color: #fff;
         transition: transform .2s;
         margin-bottom: 40px;
-        width:100%;
+        width:390px;
+        align-items: center !important;
     }
     .card-block {
 	padding: 15px 15px;

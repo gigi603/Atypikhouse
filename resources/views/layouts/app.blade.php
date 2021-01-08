@@ -45,8 +45,8 @@
                 padding: 0 !important;
             }
             .navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-text, a {
-            /* text-decoration: underline; */
-            color: #3f4b30 !important;
+                text-decoration: underline;
+                color: #3f4b30 !important;
             }
             #logo img {
                 height: 60px;
