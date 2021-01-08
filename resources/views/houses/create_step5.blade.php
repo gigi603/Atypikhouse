@@ -1,5 +1,25 @@
 @extends('layouts.app')
 @section('title', 'Etape 5')
+@section('styles')
+    <style>
+        .margin-top {
+            margin-top: 10vh;
+        }
+        .block-size {
+            min-height: 68vh !important;
+        }
+        .btn-color {
+            background-color: #3f4b30;
+            border-color: #3f4b30;
+            color:#FFFBFC;
+        }
+        .btn-color:hover {
+            background-color: #3f4b30;
+            border-color: #3f4b30;
+            color:#FFFBFC;
+        }
+    </style>
+@endsection
 @section('content')
 <div class="container margin-top block-size">
     <div class="row">

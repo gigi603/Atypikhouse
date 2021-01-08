@@ -1,4 +1,4 @@
-<footer class="footer" role="footer">
+<footer id="footer" class="footer" role="footer">
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-offset-2 col-md-3">

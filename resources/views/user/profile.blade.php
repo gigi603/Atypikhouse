@@ -6,9 +6,17 @@
             padding: 10px;
             margin: 10vh;
         }
-        .footer_absolute {
-	position: absolute;
-}
+
+        .btn-color {
+            background-color: #3f4b30;
+            border-color: #3f4b30;
+            color:#FFFBFC;
+        }
+        .btn-color:hover {
+            background-color: #3f4b30;
+            border-color: #3f4b30;
+            color:#FFFBFC;
+        }
     </style>
 @endsection
 @section('content')
@@ -47,4 +55,9 @@
         </div>
     </div>
 </div>
+@endsection
+@section('script')
+    <script>
+        document.getElementById("footer").className = "footer_absolute"; 
+    </script>
 @endsection

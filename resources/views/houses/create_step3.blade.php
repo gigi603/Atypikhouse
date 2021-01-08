@@ -1,5 +1,23 @@
 @extends('layouts.app')
 @section('title', 'Etape 3')
+@section('styles')
+    <link href="{{ asset('css/jquery-ui.min.css') }}" rel="stylesheet">
+    <style>
+        .margin-top {
+            margin-top: 10vh;
+        }
+        .btn-color {
+            background-color: #3f4b30;
+            border-color: #3f4b30;
+            color:#FFFBFC;
+        }
+        .btn-color:hover {
+            background-color: #3f4b30;
+            border-color: #3f4b30;
+            color:#FFFBFC;
+        }
+    </style>
+@endsection
 @section('content')
 <div class="container margin-top">
     <div class="row">
