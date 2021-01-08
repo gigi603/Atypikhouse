@@ -14,7 +14,7 @@
             padding: 10px;
         }
         .btn_reserve {
-            color: #FFFBFC;
+            color: #FFFBFC !important;
             background-color: #3f4b30;
             border-color: #3f4b30;
             border: none;
