@@ -218,7 +218,7 @@
     </div>
     
     <div class="container-fluid background-houses" role="annonces">
-        <h2 class="hebergement-title">Nos hebergements atypikhouse sont à votre disposition</h3>
+        <h2 class="hebergement-title">Nos hebergements atypikhouse sont à votre disposition</h2>
         <div class="row">
             <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">         
                 <div class="card-houses">       
@@ -252,8 +252,8 @@
     <div class="container-fluid become_hote" id="become_hote">
         <div class="row">
             <div class="col-md-6">
-                <h3 class="text-center" style="font-size:50px;margin-top:10vh;">Partagez votre logement sur Atypikhouse</h2>
-                <h3 class="text-center" style="margin-top: 5%;">Rejoignez une communauté dynamique d'hôtes, créez des expériences mémorables pour les voyageurs et gagnez de l'argent pour vivre vos passions.</p>
+                <h3 class="text-center" style="font-size:50px;margin-top:10vh;">Partagez votre logement sur Atypikhouse</h3>
+                <h3 class="text-center" style="margin-top: 5%;">Rejoignez une communauté dynamique d'hôtes, créez des expériences mémorables pour les voyageurs et gagnez de l'argent pour vivre vos passions.</h3>
                 @if(Auth::check())
                     <a href="{{ route('house.create_step1') }}" class="btn btn-principal">Commencer</a>
                 @else
