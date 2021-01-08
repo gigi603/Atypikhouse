@@ -27,6 +27,10 @@
                 position:relative;
                 min-height:100vh;
             }
+
+            h1, h2, h3, h4, p, span {
+                color: #000 !important;
+            }
             .navbar {
                 border-bottom: none;
                 background-color: #FFF;
