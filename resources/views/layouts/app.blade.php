@@ -29,7 +29,7 @@
             }
 
             h1, h2, h3, h4, p, span {
-                color: #000 !important;
+                color: #000;
             }
             .navbar {
                 border-bottom: none;

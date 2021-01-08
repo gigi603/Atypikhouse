@@ -126,7 +126,7 @@
         #block_home_2 {
             position: relative;
             background-color: white;
-            color: #3f4b30;
+            color: #3f4b30 !important;
             display: flex;
             flex-flow: row wrap;
             justify-content: space-around;
@@ -139,10 +139,10 @@
             padding: 20px;
         }
         .block_home_2_child i,
-        .block_home_2_child h3,
+        .block_home_2_child h2,
         .block_home_2_child p {
             margin: 15px 0;
-            color: #3f4b30;
+            color: #3f4b30 !important;
         }
         .nature_yours {
             background-color: #FFF;

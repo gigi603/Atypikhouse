@@ -30,7 +30,6 @@
         }
     </style>
 @endsection
-@section('footer', 'footer_absolute')
 @section('content')
     <div class="container margin-top block-size">
         <div class="row">
