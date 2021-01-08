@@ -1,5 +1,19 @@
 @extends('layouts.app')
 @section('title', 'Mes notifications')
+@section('styles')
+    <link href="{{ asset('css/block.css') }}" rel="stylesheet">
+    <style>
+        .notifications-panel {
+            min-height: 500px !important;
+        }
+        .margin-top {
+            margin-top: 10vh;
+        }
+        .block-size {
+            min-height: 68vh !important;
+        }
+    </style>
+@endsection
 @section('content')
 <div class="container-fluid block-container block-size" id="hebergements" role="notifications">
     <h1 class="title">Mes notifications</h1>

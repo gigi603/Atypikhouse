@@ -1,6 +1,16 @@
 @extends('layouts.app')
 @section('title', 'Utilisateur')
-@section('footer', 'footer_absolute')
+@section('styles')
+    <style>
+        .block {
+            padding: 10px;
+            margin: 10vh;
+        }
+        .footer_absolute {
+	position: absolute;
+}
+    </style>
+@endsection
 @section('content')
 <div class="container margin-top block-size" role="mon profil">
     <h1 class="title">Mon profil</h1>
@@ -14,11 +24,8 @@
                         <div class="col-sm-6 col-md-8">
                             <form class="form-horizontal" method="POST" action="{{action('UsersController@edit', Auth::user()->id)}}" enctype="multipart/form-data">                      
                                 {{ csrf_field() }}
-                                <p>
-                                {{Auth::user()->prenom}} {{Auth::user()->nom}}</p>
-                                <p>
-                                    <i class="glyphicon glyphicon-envelope"></i>{{Auth::user()->email}}
-                                </p>
+                                <p>{{Auth::user()->prenom}} {{Auth::user()->nom}}</p>
+                                <p>{{Auth::user()->email}}</p>
                                 <br>
                                 <p>
                                 <div class="form-check{{ $errors->has('newsletter') ? ' has-error' : '' }}">
