@@ -55,7 +55,7 @@
     }
     .btn-principal {
         background-color: #3f4b30;
-        color: #FFFBFC;
+        color: #FFFBFC !important;
         border-color: #3f4b30;
         padding: 12px 24px;
         font-size: 18px;
@@ -64,9 +64,6 @@
         transition: transform .2s;
     }
     .btn-principal:hover {
-        background-color: #3f4b30;
-        color: #FFFBFC;
-        border-color: #3f4b30;
         transform: scale(1.1);
     }
 

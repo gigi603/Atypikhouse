@@ -110,7 +110,7 @@
             background-color: #fff;
             transition: transform .2s;
             margin-bottom: 40px;
-            width:100%;
+            width: 390px;
             text-align: center;
         }
         .card-block-home {
@@ -167,7 +167,7 @@
             color: #000;
             font-family: 'Comfortaa', cursive;
             font-size: 60px;
-            padding: 13% 0 5% 0;  
+            padding: 10% 0 5% 0;  
         }
     </style>
 @endsection
