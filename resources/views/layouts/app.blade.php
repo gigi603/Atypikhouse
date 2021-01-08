@@ -27,7 +27,6 @@
                 position:relative;
                 min-height:100vh;
             }
-
             .navbar {
                 border-bottom: none;
                 background-color: #FFF;
@@ -35,12 +34,10 @@
                 padding: 20px 0 !important;
                 margin: 0 !important;
             }
-
             .navbar-default .navbar-brand {
                 color: #3f4b30;
                 margin: 0 !important;
             }
-
             .navbar-brand {
                 padding: 0 !important;
             }
@@ -68,14 +65,6 @@
                 clear: both;
                 border: solid 1px #ededeb
             }
-            .footer-absolute {
-                background-color: #ededeb;
-                padding: 20px;
-                position:absolute !important;
-                bottom: 0;
-                width: 100%;
-                clear: both;
-            }
             footer li, a{
                 list-style: none;
                 text-decoration: none;
@@ -85,9 +74,7 @@
                 position: absolute;
             }
             footer li a:hover{
-                list-style: none;
                 text-decoration: underline;
-                color: #000;
             }
             .cc-animate.cc-revoke.cc-bottom {
                 background-color: #3f4b30;
