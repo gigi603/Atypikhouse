@@ -91,7 +91,10 @@
             }
             .cc-animate.cc-revoke.cc-bottom {
                 background-color: #3f4b30;
-                color: #fff;
+                color: #fff !important;
+            }
+            .cc-btn.cc-allow {
+                color: #fff !important;
             }
         </style>
         @yield('styles')
@@ -103,12 +106,12 @@
             @include('footer')
         </div>
         <!-- Scripts -->
-        <script src="{{ asset('js/app.js') }}" async></script>
+        <script src="{{ asset('js/app.js') }}"></script>
         <script src="{{ asset('js/jquery.min.js') }}"></script>
-        <script src="{{ asset('js/jquery-ui.min.js') }}"></script>
-        <script src="{{ asset('js/jquery.unveil.js') }}"></script>
-        <script src="{{ asset('js/cookieconsent.min.js') }}"></script>
-        <script src="{{ asset('js/cookie.js') }}"></script>
+        <script src="{{ asset('js/jquery.unveil.js') }}" defer></script>
+        <script src="{{ asset('js/jquery-ui.min.js') }}"defer></script>
+        <script src="{{ asset('js/cookie.js') }}" defer></script>
+        <script src="{{ asset('js/cookieconsent.min.js') }}" defer></script>
         <script>
             $(function() {
                 $("img").unveil();
