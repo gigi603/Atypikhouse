@@ -8,7 +8,7 @@
             <div class="panel-body">
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="card h-100 text-center">
+                        <div class="card text-center">
                             <p class="card-text">Vous êtes sur le point de réserver pour le <?php \Date::setLocale('fr'); $startdate = Date::parse($reservation->start_date)->format('l j F Y'); echo($startdate);?> au <?php \Date::setLocale('fr'); $enddate = Date::parse($reservation->end_date)->format('l j F Y'); echo($enddate);?></p>
                             <p class="card-text"> à l'adresse: {{$house->adresse}}</p>
                             <p class="card-text">Voici le récapitulatif de l'hebergement que vous avez choisi : </p>

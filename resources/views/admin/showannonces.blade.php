@@ -91,7 +91,7 @@
         <div class="panel-body">
             <div class="row">
                 <div class="col-lg-12 col-md-12">
-                    <div class="card-show h-100">
+                    <div class="card-show text-center">
                         <img class="img-responsive img_house" src="{{ asset('img/houses/'.$house->photo) }}" alt="Hébergement atypiques - {{$house->title}}">
                         <div class="card-center">
                             <h2 class="title card-title text-center">

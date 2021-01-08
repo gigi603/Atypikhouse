@@ -52,20 +52,8 @@
         margin-bottom: 20px !important;
     }
 
-    .btn-principal-black{
-        background-color: #000;
-        color: #FFF;
-        border-color: #000;
-        padding: 12px 24px;
-        font-size: 18px;
-        border-radius: 30px;
-        text-align: center;
-        margin: 15vh 5vh 0 5vh;
-    }
-    .btn-principal-black:hover {
-        background-color: #FFF;
-        color: #000;
-        border-color: #000;
+    .block-container {
+	margin-bottom: 20vh;
     }
     .btn-principal {
         background-color: #3f4b30;
@@ -83,25 +71,7 @@
         border-color: #3f4b30;
         transform: scale(1.1);
     }
-    .annonces-block {
-        margin-top: 120px;
-        min-height: 500px !important;
-    }
-    .hebergement-title {
-        text-align: center;
-        margin: 60px;
-        color: #FFF;
-        font-family: 'Comfortaa', cursive;
-    }
 
-    .title-houses {
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
-    .background-houses {
-        background-color: #3f4b30;
-    }
     .card-houses {
         position: relative;
         background-color: #fff;
@@ -109,88 +79,28 @@
         margin-bottom: 40px;
         width:100%;
     }
-
-    .card-houses:hover {
-        transform: scale(1.1);
-    }
-
-    .card-block-home {
-        padding: 15px 15px;
-        background-color: #000;
-    }
-
-    .card-title-home a{
-        color: #FFF;
-    }
     .card-block {
-        padding: 15px 15px;
-        background-color: #FFF;
+	padding: 15px 15px;
+	background-color: #FFF;
     }
-    .card-body {
-        display: flex;
-        justify-content: flex-start;
-        padding: 0;
+
+    .card-title a{
         color: #000;
     }
+
+    .title-houses {
+	white-space: nowrap;
+	overflow: hidden;
+        text-overflow: ellipsis;
+        color: #000;
+    }
+
     .img-houses-list {
-        display: block;
-        width: 100%;
-        height: 250px;
-        background-color: gray;
-    }
-    #block_home_2 {
-        position: relative;
-        background-color: white;
-        color: #3f4b30;
-        display: flex;
-        flex-flow: row wrap;
-        justify-content: space-around;
-        padding: 5vh 0;
-    }
-    .block_home_2_child {
-        width: 350px;
-        text-align: center;
-        margin: 0 20px;
-        padding: 20px;
-    }
-
-    .block_home_2_child i,
-    .block_home_2_child h3,
-    .block_home_2_child p {
-        margin: 15px 0;
-        color: #3f4b30;
-    }
-
-    .nature_yours {
-        background-color: #FFF;
-        color: #000;
-        font-family: 'Open Sans', sans-serif;
-        font-family: 'Comfortaa', cursive;
-        font-size: 60px;
-        padding-top: 5%;
-    }
-
-    #hebergement-title{
-        font-family: 'Comfortaa', cursive;
-    }
-
-    .voyage {
-        border-radius: 20px;
-        width:100%;
-    }
-
-    .avantage-title {
-        font-family: 'Comfortaa', cursive;
-    }
-
-    .become_hote {
-        background-color: #FFF;
-        color: #000;
-        font-family: 'Comfortaa', cursive;
-        font-size: 60px;
-        padding: 13% 0 5% 0;
-        
-    }
+	display: block;
+	width: 100%;
+	height: 250px;
+	background-color: gray;
+}
 </style>
 @endsection
         <div class="form-group{{ $errors->has('category_id') ? ' has-error' : '' }}">

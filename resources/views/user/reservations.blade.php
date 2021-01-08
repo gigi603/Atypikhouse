@@ -13,7 +13,7 @@
         @foreach ($reservations as $reservation)
             @if($reservation->house->statut == "Validé")
                 <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">         
-                    <div class="card-houses h-100">       
+                    <div class="card-houses text-center">       
                         <a href="{{action('UsersController@showreservations', $reservation['id'])}}"><img class="img-houses-list" data-src="{{ asset('img/houses/'.$reservation->house->photo) }}" alt="Hébergement insolite - {{$reservation->title}}"></a>
                         <div class="card-block">
                             <div class="card-body">

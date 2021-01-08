@@ -16,7 +16,7 @@
         @endif
         @foreach ($houses as $house)
             <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">         
-                <div class="card-houses h-100">       
+                <div class="card-houses text-center">       
                     <a href="{{action('UsersController@showhebergements', $house['id'])}}"><img class="img-houses-list" data-src="{{ asset('img/houses/'.$house->photo) }}" alt="Hébergement insolite - {{$house->title}}"></a>
                     <div class="card-block">
                         <div class="card-body">

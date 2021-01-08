@@ -15,7 +15,7 @@
             <div class="panel-body">
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="card h-100 text-center">
+                        <div class="card text-center">
                             <p class="card-text">Vous avez bien annuler pour le <?php \Date::setLocale('fr'); $startdate = Date::parse($reservation->start_date)->format('l j F Y'); echo($startdate);?> au <?php \Date::setLocale('fr'); $enddate = Date::parse($reservation->end_date)->format('l j F Y'); echo($enddate);?></p>
                             <p class="card-text">Vous pouvez consulter votre annulation en allant dans la rubrique "mon espace > mes réservations annulées" ou cliquez directement sur le bouton en dessous, un email de confirmation vous a été envoyé</p>
                             <p class="card-text">Notre équipe vous remercie</p>

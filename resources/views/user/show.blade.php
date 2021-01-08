@@ -26,7 +26,7 @@
         <div class="panel-body">
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12">
-                    <div class="card h-100">
+                    <div class="card text-center">
                         <img class="img-house-detail" src="{{ asset('img/houses/'.$house->photo) }}" alt="Hébergement insolite - {{$house->title}}"/>
                     </div>
                 </div>
