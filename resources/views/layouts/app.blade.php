@@ -13,7 +13,6 @@
 
         <!-- Styles -->
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-        <link href="{{ asset('css/jquery-ui.min.css') }}" rel="stylesheet">
         <link href="{{ asset('css/cookieconsent.min.css') }}" rel="stylesheet">
         <style>
             html, body {
@@ -80,12 +79,6 @@
                 bottom: 0;
                 width: 100%;
                 clear: both;
-            }
-    
-            .img-cgv {
-                display: block;
-                margin: 0 auto;
-                width: 800px;
             }
             footer li {
                 list-style: none;

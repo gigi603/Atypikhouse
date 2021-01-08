@@ -1,6 +1,15 @@
 @extends('layouts.app')
 @section('title', 'Conditions générales de vente')
 @section('meta_description', "Nous vous mettons à disposition nos conditions générales de vente")
+@section('styles')
+    <style>
+        .img-cgv {
+            display: block;
+            margin: 0 auto;
+            width: 800px;
+        }
+    </style>
+@endsection
 @section('content')
     <div class="container margin-top block-size" role="conditions générales de vente du site atypikhouse">
         <h1 class="title" >Conditions Générales de vente</h1>
