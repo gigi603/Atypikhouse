@@ -99,7 +99,7 @@
         .hebergement-title {
             text-align: center;
             margin: 60px;
-            color: #FFF;
+            color: #FFF !important;
             font-family: 'Comfortaa', cursive;
         }
         .background-houses {
