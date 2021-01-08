@@ -16,7 +16,7 @@
         <div class="panel-body">
             <div class="row">
                 <div class="col-md-12">
-                    <div class="card h-100 text-center">
+                    <div class="card text-center">
                     <form action="{{route('addmoney.stripe')}}" method="post" id="payment-form">
                         <div class="form-row" style="padding-bottom:30px;">
                             <h3 class="price">Prix: {{$price}} € x {{$days}} jours pour {{$nb_personnes}} personne(s)</h3>
