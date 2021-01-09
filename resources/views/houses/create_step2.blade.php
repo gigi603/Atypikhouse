@@ -62,7 +62,6 @@
     </div>
 </div>
 @endsection
-@section('footer', 'footer_absolute')
 @section('script')
     <script src="{{ asset('js/jquery.js') }}"></script>
 @endsection

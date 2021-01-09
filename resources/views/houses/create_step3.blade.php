@@ -140,7 +140,6 @@
         var proprietesChecked = <?php echo json_encode($housePropriete); ?>;
     </script>
     <script src="{{ asset('js/create_house.js') }}"></script>
-    
 @endsection
 
 
