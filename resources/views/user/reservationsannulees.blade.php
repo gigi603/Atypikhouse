@@ -1,5 +1,48 @@
 @extends('layouts.app')
 @section('title', 'Mes réservations annulées atypikhouse')
+@section('styles')
+    <style>
+        .form-horizontal .form-group {
+            margin: 0;
+            padding: 10px;
+        }
+        .card-houses {
+            position: relative;
+            background-color: #fff;
+            transition: transform .2s;
+            margin-bottom: 40px;
+            width: 350px;
+        }
+        .img-houses-list {
+            display: block;
+            width: 100%;
+            height: 250px;
+            background-color: gray;
+        }
+        .card-block {
+            padding: 15px 15px;
+            background-color: #FFF;
+        }
+        .card-title a{
+            color: #000 !important;
+        }
+        .title-houses {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .btn-color {
+            background-color: #3f4b30;
+            border-color: #3f4b30;
+            color:#FFFBFC !important;
+        }
+        .btn-color:hover {
+            background-color: #3f4b30;
+            border-color: #3f4b30;
+            color:#FFFBFC !important;
+        }
+    </style>
+@endsection
 @section('content')
 <div class="container-fluid block-container block-size" role="reservations-annulees">
     @if (Session::has('success'))
@@ -10,7 +53,9 @@
     @endif
     <h1 class="title" id="hebergements">Mes réservations annulées atypikhouse</h1>
     <div class="row">
+        <?php $nb_reservations = 0; ?>
         @foreach ($reservations as $reservation)
+        <?php $nb_reservations = $nb_reservations + 1; ?>
             <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">         
                 <div class="card-houses text-center">       
                     <a href="{{action('UsersController@showreservationsannulees', $reservation['id'])}}"><img class="img-houses-list" data-src="{{ asset('img/houses/'.$reservation->house->photo) }}" alt="Hébergement insolite - {{$reservation->title}}"></a>
@@ -53,5 +98,17 @@
 @section('script')
     <script>
         $('span.badge.badge-pill.badge-success').remove();
+    </script>
+    <script src="{{ asset('js/user.js') }}"></script>
+    <script>
+        $('span.badge.badge-pill.badge-success').remove();
+    </script>
+    <script>
+        var nb_reservations = <?php echo json_encode($nb_reservations); ?>;
+        if(nb_reservations >= 5){
+            document.getElementById('footer').className = 'footer';
+        } else {
+            document.getElementById('footer').className = 'footer_absolute'; 
+        } 
     </script>
 @endsection

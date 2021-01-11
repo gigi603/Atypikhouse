@@ -72,7 +72,7 @@
         background-color: #fff;
         transition: transform .2s;
         margin-bottom: 40px;
-        width:390px;
+        width:380px;
         align-items: center !important;
     }
     .card-block {

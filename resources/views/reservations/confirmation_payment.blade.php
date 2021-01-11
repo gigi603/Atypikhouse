@@ -1,7 +1,34 @@
 @extends('layouts.app')
 @section('title', 'Confirmation paiement sur atypikhouse')
+@section('styles')
+    <style>
+        .btn_reserve {
+            color: #FFFBFC;
+            background-color: #3f4b30;
+            border-color: #3f4b30;
+            border: none;
+            margin: 0 20px 30px 20px;
+            padding: 10px 25px;
+            font-size: 16px;
+        }
+        .btn_reserve:hover {
+            color: #FFFBFC;
+            background-color: #3f4b30;
+            border-color: #3f4b30;
+            border: none;
+            margin: 0 20px 30px 20px;
+            padding: 10px 25px;
+            font-size: 16px;
+        }
+        .margin-top {
+            margin-top: 10vh;
+        }
+        .block-size {
+            min-height: 68vh !important;
+        }
+    </style>
+@endsection
 @section('link')
-@section('footer', 'footer_absolute')
 @section('content')
     <div class="container margin-top block-size">
         @if (Session::has('error-stripe'))
@@ -35,4 +62,7 @@
     <script src="https://momentjs.com/downloads/moment-with-locales.js"></script>
     <script src="{{ asset('js/calendar.js') }}"></script>
     <!-- <script src="{{ asset('js/date_french.js') }}"></script> -->
+    <script>
+        document.getElementById('footer').className = 'footer_absolute';
+    </script>
 @endsection

@@ -110,7 +110,7 @@
             background-color: #fff;
             transition: transform .2s;
             margin-bottom: 40px;
-            width: 390px;
+            width: 350px;
             text-align: center;
         }
         .card-block-home {

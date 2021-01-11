@@ -1,5 +1,77 @@
 @extends('layouts.app')
 @section('title', "Détails de la reservation passée atypikhouse")
+@section('styles')
+    <style>
+        .star-size {
+            width: 30px;
+            height: 30px;
+        }
+
+        .rating span {
+            vertical-align: top;
+        }
+
+        .rating-comment:hover {
+            float: left;
+            width: 250px;
+            color:#3f4b30;
+        }
+
+        /* :not(:checked) is a filter, so that browsers that don’t support :checked don’t 
+            follow these rules. Every browser that supports :checked also supports :not(), so
+            it doesn’t make the test unnecessarily selective */
+        .rating:not(:checked) > input {
+            position:absolute;
+            visibility:hidden;
+        }
+
+        .rating:not(:checked) > label {
+            float:right;
+            width:1em;
+            padding:0;
+            overflow:hidden;
+            white-space:nowrap;
+            cursor:pointer;
+            font-size:150%;
+            color: lightgray;
+            /*background-color: #3f4b30;*/
+        }
+
+        .rating:not(:checked) > label:before {
+            content: '★';
+            width:5px;
+            height:5px;
+        }
+
+        .rating > input:checked ~ label {
+            color: #3f4b30;
+            background-color: #FFF;
+            
+        }
+
+        .rating:not(:checked) > label:hover,
+        .rating:not(:checked) > label:hover ~ label {
+            color: #3f4b30;
+            background-color: #FFF;
+            
+        }
+
+        .rating > input:checked + label:hover,
+        .rating > input:checked + label:hover ~ label,
+        .rating > input:checked ~ label:hover,
+        .rating > input:checked ~ label:hover ~ label,
+        .rating > label:hover ~ input:checked ~ label {
+            color: #3f4b30;
+            
+        }
+
+        .rating > label:active {
+            position:relative;
+            top:2px;
+            left:2px;
+        }
+    </style>
+@endsection
 @section('content')
 <div class="admin-user-profil">   
 <div class="container">

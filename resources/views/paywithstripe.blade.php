@@ -2,11 +2,33 @@
 @section('title', 'Paiement par stripe')
 @section('styles')
     <link href="{{ asset('css/stripe.css') }}" rel="stylesheet">
+    <style>
+        .btn_reserve {
+            color: #FFFBFC;
+            background-color: #3f4b30;
+            border-color: #3f4b30;
+            border: none;
+            margin: 0 20px 30px 20px;
+            padding: 10px 25px;
+            font-size: 16px;
+        }
+        .btn_reserve:hover {
+            color: #FFFBFC;
+            background-color: #3f4b30;
+            border-color: #3f4b30;
+            border: none;
+            margin: 0 20px 30px 20px;
+            padding: 10px 25px;
+            font-size: 16px;
+        }
+        .margin-top {
+            margin-top: 10vh;
+        }
+        .block-size {
+            min-height: 68vh !important;
+        }
+    </style>
 @endsection
-
-@section('footer', 'footer_absolute')
-
- 
 @section('content')
 <div class="container margin-top block-size">
     <div class="panel panel-default marginTop">
@@ -59,5 +81,8 @@
 </div>
 <script src="https://js.stripe.com/v3/"></script>
 <script src="{{ asset('js/stripe.js') }}"></script>
+<script>
+    document.getElementById('footer').className = 'footer_absolute';
+</script>
 @endsection
 

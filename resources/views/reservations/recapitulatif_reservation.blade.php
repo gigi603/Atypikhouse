@@ -1,5 +1,30 @@
 @extends('layouts.app')
 @section('title', 'Recapitulatif réservation')
+@section('styles')
+    <style>
+        .btn_reserve {
+            color: #FFFBFC;
+            background-color: #3f4b30;
+            border-color: #3f4b30;
+            border: none;
+            margin: 0 20px 30px 20px;
+            padding: 10px 25px;
+            font-size: 16px;
+        }
+        .btn_reserve:hover {
+            color: #FFFBFC;
+            background-color: #3f4b30;
+            border-color: #3f4b30;
+            border: none;
+            margin: 0 20px 30px 20px;
+            padding: 10px 25px;
+            font-size: 16px;
+        }
+        .margin-top {
+            margin-top: 10vh;
+        }
+    </style>
+@endsection
 @section('link')
 @section('content')
 <div class="container margin-top">

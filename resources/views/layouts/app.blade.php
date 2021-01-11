@@ -31,6 +31,9 @@
             h1, h2, h3, h4, p, span {
                 color: #000;
             }
+            .btn {
+                color: #FFF !important;
+            }
             .navbar {
                 border-bottom: none;
                 background-color: #FFF;
