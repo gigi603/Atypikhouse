@@ -193,9 +193,11 @@
     </div>    
     <div class="container-fluid nature_yours">
         <div class="row">
-            <div class="col-md-6">
-                <h2 class="text-center" style="font-size:50px;margin-top:10vh;">La nature vous appartient</h2>
-                <h2 class="text-center" style="margin-top:5%;">Parcourez le monde et explorez des endroits inconnus</h2>
+            <div class="col-md-6 text-center">
+                <h2 style="font-size:50px;margin-top:10vh;">La nature vous appartient</h2>
+                <h2 style="margin-top:5%;">Parcourez le monde et explorez des endroits inconnus</h2>
+                <a href="{{ route('houses') }}" class="btn btn-principal" style="margin:0 auto;">Réservez maintenant !</a>
+
             </div>
             <div class="col-md-5">
                 <img data-src="{{ asset('img/voyage_demo.jpg')}}" class="voyage" alt="voyage-atypikhouse"/>
