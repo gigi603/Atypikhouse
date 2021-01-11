@@ -16,8 +16,10 @@
                                 @include('search',['url'=>'search','link'=>'search'])
                             </div>
                         </div>
+                        <?php $nb_houses = 0; ?>
                         @forelse($houses as $house)
                             @if($house->statut == "Validé")
+                                <?php $nb_houses = $nb_houses + 1;?>
                                 <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
                                     <div class="card-houses text-center">       
                                         <a href="{{action('UsersController@showHouse', $house['id'])}}"><img class="img-houses-list" data-src="{{ asset('img/houses/'.$house->photo) }}" alt="Hébergement insolite - {{$house->title}}"></a>
@@ -83,4 +85,13 @@
     <script src="{{ asset('js/jquery.js') }}"></script>
     <script src="{{ asset('js/jquery-ui.min.js') }}"></script>
     <script src="{{ asset('js/calendar.js') }}"></script>
+    <script>
+        var nb_houses = <?php echo json_encode($nb_houses); ?>;
+        console.log(nb_houses);
+        if(nb_houses >= 4){
+            document.getElementById("footer").className = "footer";
+        } else {
+            document.getElementById("footer").className = "footer_absolute"; 
+        }
+    </script>
 @endsection
