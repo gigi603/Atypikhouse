@@ -64,21 +64,24 @@
             border-radius: 5px;
             margin-bottom: 20px !important;
         }
-
-        .btn-principal-black{
-            background-color: #000;
-            color: #FFF !important;
-            border-color: #000;
+        .btn-principal-white {
+            background-color: #FFF;
+            color: #000 !important;
             padding: 12px 24px;
             font-size: 18px;
             border-radius: 30px;
             text-align: center;
-            margin: 15vh 5vh 0 5vh;
+            border-color: #FFF;
         }
-        .btn-principal-black:hover {
-            background-color: #FFF;
+
+        .btn-principal-white:hover {
+            background-color: #DCDCDC;
             color: #000 !important;
-            border-color: #000;
+            padding: 12px 24px;
+            font-size: 18px;
+            border-radius: 30px;
+            text-align: center;
+            border-color: #DCDCDC;
         }
         .btn-principal {
             background-color: #3f4b30;
@@ -109,13 +112,59 @@
             position: relative;
             background-color: #fff;
             transition: transform .2s;
+            margin: 0 auto;
             margin-bottom: 40px;
             width: 350px;
-            text-align: center;
         }
         .card-block-home {
             padding: 15px 15px;
             background-color: #000;
+        }
+
+        
+        @media screen and (max-width: 765px) {
+            .vertical-center {
+                position: relative;
+                text-align: center;
+                margin-bottom: 40px;
+            }
+            .col-md-3 {
+                width: 100%;
+            }
+        }
+
+        @media screen and (min-width: 765px) and (max-width: 1200px) {
+            .vertical-center {
+                position: relative;
+                margin-top: 150px;
+                margin-bottom: 8%;
+                text-align: center;
+            }
+            .col-md-3 {
+                width: 50%;
+            }
+        }
+
+        @media screen and (min-width: 1200px) and (max-width: 1480px){
+            .vertical-center {
+                position: relative;
+                text-align: center;
+                margin: 0 auto;
+                margin-bottom: 40px;
+                width: 100% !important;
+            }
+            .col-lg-3 {
+                width: 33%;
+            }
+        }
+
+        @media screen and (min-width: 1480px) {
+            .vertical-center {
+                position: relative;
+                margin-top: 150px;
+                /*margin-bottom: 8%;*/
+                text-align: center;
+            }
         }
         .img-houses-list {
             display: block;
@@ -222,32 +271,32 @@
     <div class="container-fluid background-houses" role="annonces">
         <h2 class="hebergement-title">Nos hebergements atypikhouse sont à votre disposition</h2>
         <div class="row">
-            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">         
+            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 text-center">         
                 <div class="card-houses">       
                     <a href="{{ route('cabanes') }}" aria-label="Cabanes Atypikhouse"><img class="img-houses-list" data-src="{{ asset('img/maison_foret.jpg') }}" alt="Hébergement insolite - maison_foret"></a>
                     <div class="card-block-home">
-                        <a href="{{ route('cabanes') }}" class="btn btn-principal"> Voir nos cabanes </a>
+                        <a href="{{ route('cabanes') }}" class="btn btn-principal-white"> Voir nos cabanes </a>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">         
-                <div class="card-houses text-center">       
+            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 text-center">         
+                <div class="card-houses">       
                     <a href="{{ route('igloos') }}" aria-label="Igloos Atypikhouse"><img class="img-houses-list" data-src="{{ asset('img/igloo_demo.jpg') }}" alt="Hébergement insolite - igloo"></a>
                     <div class="card-block-home">
-                        <a href="{{ route('igloos') }}" class="btn btn-principal"> Voir nos igloos </a>
+                        <a href="{{ route('igloos') }}" class="btn btn-principal-white"> Voir nos igloos </a>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">         
-                <div class="card-houses text-center">       
+            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 text-center">         
+                <div class="card-houses">       
                     <a href="{{ route('yourtes') }}" aria-label="Yourtes Atypikhouse"><img class="img-houses-list" data-src="{{ asset('img/yourte_demo.jpg') }}" alt="Hébergement insolite - yourte"></a>
                     <div class="card-block-home">
-                        <a href="{{ route('yourtes') }}" class="btn btn-principal"> Voir nos yourtes </a>
+                        <a href="{{ route('yourtes') }}" class="btn btn-principal-white"> Voir nos yourtes </a>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12"> 
-                <a href="{{ route('houses') }}" class="btn btn-principal-black">Voir nos hebergements</a>
+            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 vertical-center"> 
+                <a href="{{ route('houses') }}" class="btn btn-principal-white">Voir nos hebergements</a>
             </div>
         </div>
     </div>
