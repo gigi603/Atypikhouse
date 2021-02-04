@@ -54,6 +54,10 @@
 
                         <br>– de modifier vos préférences de réception de nos communications<br>
                         <br>– de vous désabonner de toutes les communications marketing et commerciales jusqu’à nouvelle soumission de votre consentement sur le site internet.<br>
+                        
+                        <b>3.3 Suppression de votre compte</b><br>
+                        Vous pouvez à tout moment supprimer votre compte en cliquant sur "mon espace" > "Mon profil" > et sur le bouton "Supprimer mon compte". 
+                        <br>-Vous pourrez toujours vous connecter, mais vous ne pourrez plus effectuer de réservations ou créer des annonces
                     </p>
                 </div>
             </div>

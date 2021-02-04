@@ -50,6 +50,17 @@ class UsersController extends Controller
         return view('user.profile', compact('userData'))->with('data', Auth::user());
     }
 
+    public function delete_user_account($id)
+    {
+        $user = user::find($id);
+        $user->statut = 0;
+        $user->save();
+        
+        Session::flash('success', 'Votre compte a bien été désactivé, vous pourrez toujours vous connecter
+         mais vous ne pourrez plus effectuer de réservations ni créer des annonces');
+        return redirect()->back();
+    }
+
     // Modifie le profil (activation de la newsletter ou non) Envoie par mail si oui
     public function edit(EditUserRequest $request, $id) {
         $user = User::find($id);

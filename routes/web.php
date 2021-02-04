@@ -178,6 +178,7 @@ Route::prefix('admin')->group(function () {
 
 Route::middleware(['auth'])->group( function () {
     Route::get('/profile', 'UsersController@profile');
+    Route::get('/delete/user/{id}', 'UsersController@delete_user_account')->name('user.deleteAccount');
     Route::get('/messages', 'MessagesController@messages')->name('user.messages');
 
     //Create a house, publish an offer

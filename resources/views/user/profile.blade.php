@@ -23,6 +23,13 @@
 <div class="container margin-top block-size" role="mon profil">
     <h1 class="title">Mon profil</h1>
     <div class="row">
+        @if (\Session::has('success'))
+            <div class="alert alert-success">
+                <ul>
+                    <p>{!! \Session::get('success') !!}</p>
+                </ul>
+            </div>
+        @endif
         <div class="container">
             <div class="block">
                 <div class="well well-sm">
@@ -92,6 +99,11 @@
                             </form>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col-md-12 text-center" style="margin-top:50px;margin-bottom:50px;">
+                            <a href="{{route('user.deleteAccount', Auth::user()->id)}}" class="delete delete-user btn btn-danger" >Supprimer mon compte</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -99,6 +111,7 @@
 </div>
 @endsection
 @section('script')
+    <script src="{{ asset('js/user.js') }}"></script>
     <script>
         document.getElementById("footer").className = "footer_absolute"; 
     </script>
