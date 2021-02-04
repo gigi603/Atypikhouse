@@ -54,6 +54,11 @@ class UsersController extends Controller
     public function edit(EditUserRequest $request, $id) {
         $user = User::find($id);
         try {
+            $user->update ([
+                'nom' => $request->nom,
+                'prenom' => $request->prenom,
+                'email' => $request->email,
+            ]);
             if($request->newsletter != 1) {
                 $user->newsletter = 0;
                 $user->save();
