@@ -34,7 +34,7 @@
                         <div class="form-group{{ $errors->any('phone') ? ' has-error' : '' }}">
                             <label for="telephone" class="col-md-4 control-label">Téléphone</label>
                             <div class="col-md-6">
-                                <input type="text" required class="form-control telephonefield-size" name="phone"id="telephone" value="{{
+                                <input type="text" required class="form-control telephonefield-size" name="phone" placeholder="Saisir votre numéro de téléphone" id="telephone" value="{{
                                     old('phone') ? : (isset($phone) ? $phone : old('phone'))
                                 }}">
                                 @if ($errors->any('phone'))

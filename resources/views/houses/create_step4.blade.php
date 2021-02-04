@@ -37,7 +37,7 @@
                             <label for="name" class="col-md-4 control-label">Prix de la nuit par personne</label>
 
                             <div class="col-md-6">
-                                <input id="name" required type="text" class="form-control" name="price" 
+                                <input id="name" required type="text" class="form-control" name="price" placeholder="Saisir le prix d'une nuit par personnes"
                                 value="{{ !empty(old('price')) || old('price') == '0' ? old('price') : $price }}">
                                 @if ($errors->has('price'))
                                     <span class="help-block">

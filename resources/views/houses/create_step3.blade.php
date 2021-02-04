@@ -32,7 +32,7 @@
                             <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
                                 <label class="col-md-4 control-label" for="title">Titre de votre bien</label>
                                 <div class="col-md-6">
-                                    <input id="title" required type="text" class="form-control" name="title" maxlength="40" value="{{
+                                    <input id="title" required type="text" class="form-control" placeholder="Saisir le titre de votre bien" name="title" maxlength="40" value="{{
                                         old('title') ? : (isset($title) ? $title : old('title'))
                                     }}">
                                     @if ($errors->has('title'))
@@ -82,7 +82,7 @@
                             <div class="form-group{{ $errors->has('start_date') ? ' has-error' : '' }}">
                                 <label for="from" class="col-md-4 control-label">Date de début</label>
                                 <div class="col-md-6">
-                                    <input type="text" required class="form-control" id="from" placeholder="Date de début" name="start_date" value="{{
+                                    <input type="text" required class="form-control" id="from" placeholder="Saisir la date de début" name="start_date" value="{{
                                         old('start_date') ? : (isset($start_date) ? $start_date : old('start_date'))
                                     }}" />
                                     @if ($errors->has('start_date'))
@@ -95,7 +95,7 @@
                             <div class="form-group{{ $errors->has('end_date') ? ' has-error' : '' }}">
                                 <label for="to" class="col-md-4 control-label">Date de fin</label>
                                 <div class="col-md-6">
-                                    <input type="text" required class="form-control" id="to" placeholder="Date de fin" name="end_date" value="{{
+                                    <input type="text" required class="form-control" id="to" placeholder="Saisir la date de fin" name="end_date" value="{{
                                         old('end_date') ? : (isset($end_date) ? $end_date : old('end_date'))
                                     }}" />
                                     @if ($errors->has('end_date'))
@@ -109,7 +109,7 @@
                                 <label for="description" class="col-md-4 control-label">Description</label>
 
                                 <div class="col-md-6">
-                                    <textarea class="form-control" name="description" rows="5" id="description" placeholder="Ne pas saisir plus de 500 caractères">{{
+                                    <textarea class="form-control" name="description" rows="5" id="description" placeholder="Saisir une description ne dépassant pas 500 caractères">{{
                                         old('description') ? : (isset($description) ? $description : old('description'))
                                     }}</textarea>
                                     @if ($errors->has('description'))

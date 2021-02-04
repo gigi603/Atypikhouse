@@ -54,7 +54,7 @@
                                 <label for="email" class="col-md-4 control-label">Email</label>
 
                                 <div class="col-md-6">
-                                    <input id="email" type="email" required class="form-control" name="email" value="{{ old('email') }}" autofocus>
+                                    <input id="email" type="email" required class="form-control" name="email" value="{{ old('email') }}" placeholder="Saisir votre email">
 
                                     @if ($errors->has('email'))
                                         <span class="help-block">
@@ -68,7 +68,7 @@
                                 <label for="password" class="col-md-4 control-label">Mot de passe</label>
 
                                 <div class="col-md-6">
-                                    <input id="password" required type="password" class="form-control" name="password">
+                                    <input id="password" required type="password" class="form-control" name="password" placeholder="Saisir votre mot de passe">
 
                                     @if ($errors->has('password'))
                                         <span class="help-block">
