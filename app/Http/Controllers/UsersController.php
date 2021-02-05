@@ -55,10 +55,9 @@ class UsersController extends Controller
         $user = user::find($id);
         $user->statut = 0;
         $user->save();
-        
-        Session::flash('success', 'Votre compte a bien été désactivé, vous pourrez toujours vous connecter
-         mais vous ne pourrez plus effectuer de réservations ni créer des annonces');
-        return redirect()->back();
+
+        Session::flash('status', 'Votre compte a bien été supprimé');
+        return redirect('/logout');
     }
 
     // Modifie le profil (activation de la newsletter ou non) Envoie par mail si oui

@@ -47,17 +47,13 @@
                     </p>
 
                     <p>
-                        <b>3.2. Modification de vos abonnements</b><br>
-                        Vous pouvez aussi modifier librement vos abonnements à nos communications en cliquant sur « Modifier mes préférences » en bas de chacune de nos communications envoyées par e-mail.<br>
+                        <b>3.2. Modification de vos newsletters</b><br>
+                        Vous pouvez aussi modifier librement vos abonnements à nos communications en cliquant sur "mon espace" > "mon profil" > cocher ou décocher "Recevoir les newsletters", si vous avez coché vous recevrez nos communications envoyées par e-mail.<br>
 
-                        <br>Pour vous désabonner de toutes les communications d’atypikhouse, vous devez cliquer sur le lien de désabonnement qui se situe en bas de nos e-mails. Vous pourrez ensuite choisir :<br>
-
-                        <br>– de modifier vos préférences de réception de nos communications<br>
-                        <br>– de vous désabonner de toutes les communications marketing et commerciales jusqu’à nouvelle soumission de votre consentement sur le site internet.<br>
+                        <br>Pour vous désabonner de toutes les communications d’atypikhouse, vous devez décocher la case "Recevoir les newsletters" sur "mon espace" > "mon profil"<br>
                         
                         <b>3.3 Suppression de votre compte</b><br>
-                        Vous pouvez à tout moment supprimer votre compte en cliquant sur "mon espace" > "Mon profil" > et sur le bouton "Supprimer mon compte". 
-                        <br>-Vous pourrez toujours vous connecter, mais vous ne pourrez plus effectuer de réservations ou créer des annonces
+                        – Vous pouvez à tout moment supprimer votre compte en cliquant sur "mon espace" > "Mon profil" > et sur le bouton "Supprimer mon compte".
                     </p>
                 </div>
             </div>
