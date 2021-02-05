@@ -55,9 +55,15 @@ class UsersController extends Controller
         $user = user::find($id);
         $user->statut = 0;
         $user->save();
+        
+        $this->guard()->logout();
 
-        Session::flash('status', 'Votre compte a bien été supprimé');
-        return redirect('/logout');
+        return redirect(config('app.url').'/login')->with('status', 'Votre compte a bien été supprimé');
+    }
+
+    protected function guard()
+    {
+        return Auth::guard();
     }
 
     // Modifie le profil (activation de la newsletter ou non) Envoie par mail si oui

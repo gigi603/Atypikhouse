@@ -179,7 +179,7 @@ class LoginController extends Controller
 
         $request->session()->invalidate();
 
-        return redirect(config('app.url'));
+        return redirect(config('app.url').'/login');
     }
 
     /**

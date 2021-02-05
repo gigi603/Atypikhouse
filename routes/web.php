@@ -180,7 +180,7 @@ Route::middleware(['auth'])->group( function () {
     Route::get('/profile', 'UsersController@profile');
     Route::get('/delete/user/{id}', 'UsersController@delete_user_account')->name('user.deleteAccount');
     Route::get('/messages', 'MessagesController@messages')->name('user.messages');
-
+    Route::get('/logout', 'Auth\LoginController@logout')->name('user.logout');
     //Create a house, publish an offer
     Route::get('/house/create_step1', 'HousesController@create_step1')->name('house.create_step1');
     Route::post('/house/postcreate_step1', 'HousesController@postcreate_step1')->name('house.postcreate_step1');
