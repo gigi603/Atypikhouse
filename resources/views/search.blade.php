@@ -1,4 +1,5 @@
 @section('styles')
+<link href="{{ asset('css/jquery-ui.min.css') }}" rel="stylesheet">
 <style>
     @font-face {
         font-family: 'Comfortaa';
@@ -71,6 +72,7 @@
         position: relative;
         background-color: #fff;
         transition: transform .2s;
+        margin: 0 auto;
         margin-bottom: 40px;
         width:380px;
         align-items: center !important;
@@ -172,6 +174,33 @@
         top:2px;
         left:2px;
     }
+
+    @media screen and (max-width: 765px) {
+        #hebergements {
+            margin-bottom: 5vh;
+        }
+        .cadre {
+            background-color: #FFF;
+            margin-bottom: 40px;
+            padding: 20px 0;
+            border-radius: 4px !important;
+        }
+            .col-md-3 {
+                width: 100%;
+            }
+        }
+
+        @media screen and (min-width: 765px) and (max-width: 1200px) {
+            .col-md-3 {
+                width: 50%;
+            }
+        }
+
+        @media screen and (min-width: 1200px) and (max-width: 1620px){
+            .col-lg-3 {
+                width: 33%;
+            }
+        }
 </style>
 @endsection
 <div class="form-group{{ $errors->has('category_id') ? ' has-error' : '' }}">
