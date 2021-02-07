@@ -75,12 +75,10 @@
                                 @break   
                                 @endif      
                             @endforeach      
-                            <p><?php echo(substr($reservation->house->description, 0, 40));?></p>   
                             <p>Annulation gratuite !</p>
-                            <p> Adresse: {{$reservation->house->adresse}}</p>
                             <p><i class="fas fa-calendar"></i> Du: <?php \Date::setLocale('fr'); $startdate = Date::parse($reservation->start_date)->format('l j F Y'); echo($startdate);?> </p>
                             <p><i class="fas fa-calendar"></i> au:  <?php \Date::setLocale('fr'); $enddate = Date::parse($reservation->end_date)->format('l j F Y'); echo($enddate);?></p>
-                            <p class="card-text"><?php echo(substr($reservation->house->description, 0, 40));?></p>
+                            <p class="card-text"><?php echo(substr($reservation->house->description, 0, 30));?></p>
                             <div class="text-center">
                                 <a href="{{route('user.showreservationsannulees', $reservation['id']) }}" class="btn btn-primary btn-color">Voir la reservation annulée</a>
                             </div>
@@ -105,7 +103,7 @@
     </script>
     <script>
         var nb_reservations = <?php echo json_encode($nb_reservations); ?>;
-        if(nb_reservations >= 5){
+        if(nb_reservations >= 4){
             document.getElementById('footer').className = 'footer';
         } else {
             document.getElementById('footer').className = 'footer_absolute'; 

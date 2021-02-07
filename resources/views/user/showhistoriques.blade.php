@@ -84,7 +84,7 @@
             <div class="row">
                 <div class="col-lg-12 col-md-12">
                     <div class="card-show text-center">
-                        <img class="img-responsive img_house" src="{{ asset('img/houses/'.$historique->house->photo) }}" alt="Hébergement insolite - {{$historique->house->title}}"></a>
+                        <img class="img_house" src="{{ asset('img/houses/'.$historique->house->photo) }}" alt="Hébergement insolite - {{$historique->house->title}}"></a>
                         <div class="card-center">
                             <h3 class="title card-title text-center">
                                 <a href="#">{{$historique->title}}</a>
