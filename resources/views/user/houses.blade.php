@@ -47,6 +47,33 @@
             border-color: #3f4b30;
             color:#FFFBFC !important;
         }
+
+        @media screen and (max-width: 765px) {
+            .card-houses {
+                position: relative;
+                background-color: #fff;
+                transition: transform .2s;
+                margin: 0 auto;
+                margin-bottom: 40px;
+                width:380px;
+                align-items: center !important;
+            }
+            .col-md-3 {
+                width: 100%;
+            }
+        }
+
+        @media screen and (min-width: 765px) and (max-width: 1200px) {
+            .col-md-3 {
+                width: 50%;
+            }
+        }
+
+        @media screen and (min-width: 1200px) and (max-width: 1620px){
+            .col-lg-3 {
+                width: 33%;
+            }
+        }
     </style>
 @endsection
 @section('content')
@@ -66,7 +93,7 @@
         <?php $nb_houses = 0; ?>
         @foreach ($houses as $house)
             <?php $nb_houses = $nb_houses + 1; ?>
-            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">         
+            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 text-center">         
                 <div class="card-houses text-center">       
                     <a href="{{action('UsersController@showhebergements', $house['id'])}}">
                         <img class="img-houses-list" data-src="{{ asset('img/houses/'.$house->photo) }}" alt="Hébergement insolite - {{$house->title}}">
