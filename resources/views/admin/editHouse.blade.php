@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-default">
-                <div class="panel-heading"><h1 style="font-size:20px;">Modifier</h1></div>
+                <div class="panel-heading"><h1 style="font-size:20px;">Modifier les informations de l'annonce</h1></div>
                 <div class="panel-body">
                     @if ($success = Session::get('success'))
                         <div class="alert alert-success">

@@ -10,7 +10,6 @@
         @endif
         <div class="card-header">
             <h1 style="font-size:20px;">
-                <i class="fas fa-table"></i>
                 Liste des réservations annulées
             </h1>
         </div>

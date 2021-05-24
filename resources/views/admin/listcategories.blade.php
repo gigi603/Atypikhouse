@@ -13,9 +13,7 @@
         </div>
     @endif
     <div class="card-header">
-        <i class="fas fa-home"></i>
-    <h1 style="font-size:20px;">
-        Liste des catégories d'annonces</h1>
+        <h1 style="font-size:20px;">Liste des catégories d'annonces</h1>
     </div>
     <div class="card-body">
         <div class="text-center">
