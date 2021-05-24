@@ -66,11 +66,11 @@ class GenerateSitemap extends Command
             } 
             if(strpos($uri, 'user/showHouse/') !== false){
                 foreach($annonces as $annonce){
-                    $sitemap->add(Url::create(config('app.url') . str_replace($id, $annonce->id, $uri))->setPriority(1.0));
+                    $sitemap->add(Url::create(config('app.url') .'/'. str_replace($id, $annonce->id, $uri))->setPriority(1.0));
                 }
             }
             if($uri == "cgu" || $uri == "cgv" || $uri == "apropos" || $uri == "politique_de_confidentialite" || $uri == "mentions_legales" 
-            || $uri == "faq"){
+            || $uri == "faq" || $uri == "houses"){
                 $sitemap->add(Url::create(config('app.url').'/'. $uri)->setPriority(0.5));
             }
         }

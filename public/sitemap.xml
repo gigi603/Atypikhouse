@@ -4,7 +4,7 @@
         <loc>http://127.0.0.1:8000</loc>
     
     
-        <lastmod>2021-02-04T17:26:16+01:00</lastmod>
+        <lastmod>2021-05-24T17:22:48+02:00</lastmod>
     
         <changefreq>daily</changefreq>
     
@@ -14,7 +14,7 @@
         <loc>http://127.0.0.1:8000/apropos</loc>
     
     
-        <lastmod>2021-02-04T17:26:16+01:00</lastmod>
+        <lastmod>2021-05-24T17:22:48+02:00</lastmod>
     
         <changefreq>daily</changefreq>
     
@@ -24,7 +24,7 @@
         <loc>http://127.0.0.1:8000/cgu</loc>
     
     
-        <lastmod>2021-02-04T17:26:16+01:00</lastmod>
+        <lastmod>2021-05-24T17:22:48+02:00</lastmod>
     
         <changefreq>daily</changefreq>
     
@@ -34,7 +34,7 @@
         <loc>http://127.0.0.1:8000/cgv</loc>
     
     
-        <lastmod>2021-02-04T17:26:16+01:00</lastmod>
+        <lastmod>2021-05-24T17:22:48+02:00</lastmod>
     
         <changefreq>daily</changefreq>
     
@@ -44,7 +44,17 @@
         <loc>http://127.0.0.1:8000/faq</loc>
     
     
-        <lastmod>2021-02-04T17:26:16+01:00</lastmod>
+        <lastmod>2021-05-24T17:22:48+02:00</lastmod>
+    
+        <changefreq>daily</changefreq>
+    
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>http://127.0.0.1:8000/houses</loc>
+    
+    
+        <lastmod>2021-05-24T17:22:48+02:00</lastmod>
     
         <changefreq>daily</changefreq>
     
@@ -54,7 +64,7 @@
         <loc>http://127.0.0.1:8000/mentions_legales</loc>
     
     
-        <lastmod>2021-02-04T17:26:16+01:00</lastmod>
+        <lastmod>2021-05-24T17:22:48+02:00</lastmod>
     
         <changefreq>daily</changefreq>
     
@@ -64,47 +74,47 @@
         <loc>http://127.0.0.1:8000/politique_de_confidentialite</loc>
     
     
-        <lastmod>2021-02-04T17:26:16+01:00</lastmod>
+        <lastmod>2021-05-24T17:22:48+02:00</lastmod>
     
         <changefreq>daily</changefreq>
     
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>http://127.0.0.1:8000user/showHouse/1</loc>
+        <loc>http://127.0.0.1:8000/user/showHouse/1</loc>
     
     
-        <lastmod>2021-02-04T17:26:16+01:00</lastmod>
-    
-        <changefreq>daily</changefreq>
-    
-        <priority>1</priority>
-    </url>
-    <url>
-        <loc>http://127.0.0.1:8000user/showHouse/2</loc>
-    
-    
-        <lastmod>2021-02-04T17:26:16+01:00</lastmod>
+        <lastmod>2021-05-24T17:22:48+02:00</lastmod>
     
         <changefreq>daily</changefreq>
     
         <priority>1</priority>
     </url>
     <url>
-        <loc>http://127.0.0.1:8000user/showHouse/3</loc>
+        <loc>http://127.0.0.1:8000/user/showHouse/2</loc>
     
     
-        <lastmod>2021-02-04T17:26:16+01:00</lastmod>
+        <lastmod>2021-05-24T17:22:48+02:00</lastmod>
     
         <changefreq>daily</changefreq>
     
         <priority>1</priority>
     </url>
     <url>
-        <loc>http://127.0.0.1:8000user/showHouse/4</loc>
+        <loc>http://127.0.0.1:8000/user/showHouse/3</loc>
     
     
-        <lastmod>2021-02-04T17:26:16+01:00</lastmod>
+        <lastmod>2021-05-24T17:22:48+02:00</lastmod>
+    
+        <changefreq>daily</changefreq>
+    
+        <priority>1</priority>
+    </url>
+    <url>
+        <loc>http://127.0.0.1:8000/user/showHouse/4</loc>
+    
+    
+        <lastmod>2021-05-24T17:22:48+02:00</lastmod>
     
         <changefreq>daily</changefreq>
     
