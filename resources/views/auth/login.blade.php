@@ -80,7 +80,7 @@
 
                             <div class="form-group">
                                 <div class="col-md-8 col-md-offset-4">
-                                    <button type="submit" class="btn btn-primary btn-color">
+                                    <button type="submit" class="btn btn-primary btn-color" aria-label="connexion">
                                         Connexion
                                     </button>
                                     <a href="{{route('password.request')}}" class="link-color">Mot de passe oubli&eacute; ?</a><br>

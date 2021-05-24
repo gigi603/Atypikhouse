@@ -273,30 +273,30 @@
         <div class="row">
             <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 text-center">         
                 <div class="card-houses">       
-                    <a href="{{ route('cabanes') }}" aria-label="Cabanes Atypikhouse"><img class="img-houses-list" data-src="{{ asset('img/maison_foret.jpg') }}" alt="Hébergement insolite - maison_foret"></a>
+                    <img class="img-houses-list" data-src="{{ asset('img/maison_foret.jpg') }}" alt="Hébergement insolite - maison_foret">
                     <div class="card-block-home">
-                        <a href="{{ route('cabanes') }}" class="btn btn-principal-white"> Voir nos cabanes </a>
+                        <a href="{{ route('cabanes') }}" class="btn btn-principal-white" aria-label="Accéder aux cabanes Atypikhouse"> Voir nos cabanes </a>
                     </div>
                 </div>
             </div>
             <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 text-center">         
                 <div class="card-houses">       
-                    <a href="{{ route('igloos') }}" aria-label="Igloos Atypikhouse"><img class="img-houses-list" data-src="{{ asset('img/igloo_demo.jpg') }}" alt="Hébergement insolite - igloo"></a>
+                    <img class="img-houses-list" data-src="{{ asset('img/igloo_demo.jpg') }}" alt="Hébergement insolite - igloo">
                     <div class="card-block-home">
-                        <a href="{{ route('igloos') }}" class="btn btn-principal-white"> Voir nos igloos </a>
+                        <a href="{{ route('igloos') }}" class="btn btn-principal-white" aria-label="Accéder aux igloos Atypikhouse"> Voir nos igloos </a>
                     </div>
                 </div>
             </div>
             <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 text-center">         
                 <div class="card-houses">       
-                    <a href="{{ route('yourtes') }}" aria-label="Yourtes Atypikhouse"><img class="img-houses-list" data-src="{{ asset('img/yourte_demo.jpg') }}" alt="Hébergement insolite - yourte"></a>
+                    <img class="img-houses-list" data-src="{{ asset('img/yourte_demo.jpg') }}" alt="Hébergement insolite - yourte">
                     <div class="card-block-home">
-                        <a href="{{ route('yourtes') }}" class="btn btn-principal-white"> Voir nos yourtes </a>
+                        <a href="{{ route('yourtes') }}" class="btn btn-principal-white" aria-label="Accéder aux yourtes Atypikhouse"> Voir nos yourtes </a>
                     </div>
                 </div>
             </div>
             <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 vertical-center"> 
-                <a href="{{ route('houses') }}" class="btn btn-principal-white">Voir nos hebergements</a>
+                <a href="{{ route('houses') }}" class="btn btn-principal-white" aria-label="Voir nos hebergements atypikhouse">Voir nos hebergements atypikhouse</a>
             </div>
         </div>
     </div>

@@ -167,6 +167,7 @@ return [
         Anhskohbo\NoCaptcha\NoCaptchaServiceProvider::class,
         DaveJamesMiller\Breadcrumbs\ServiceProvider::class,
         Jenssegers\Date\DateServiceProvider::class,
+        Bepsvpt\SecureHeaders\SecureHeadersServiceProvider::class,
 
         /*
          * Package Service Providers...

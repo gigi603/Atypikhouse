@@ -173,7 +173,7 @@
                         </div>
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary btn-color">
+                                <button type="submit" class="btn btn-primary btn-color" aria-label="m'inscrire">
                                     M'inscrire
                                 </button>
                                 <a href="{{route('login')}}" class="link-color">Vous avez un compte ?</a>
@@ -183,7 +183,8 @@
                             <p>Nous vous enverrons des promotions commerciales, des offres spéciales, des idées de voyage et des informations réglementaires par e-mail à condition de cocher la case autorisant notre équipe à vous envoyer des newsletters</p>
                         </div>
                         <div class="form-group form-check">
-                            <label class="form-check-label label-custom" for="accept-newsletter"> <input type="checkbox" id="accept-newsletter" class="form-check-input" name="newsletter" value="1" {{ old('newsletter') ? 'checked="checked"' : '' }}> Je souhaite recevoir de messages promotionnels d'Atypikhouse. Je peux également activer/désactiver cette option à tout momentdans les paramètres de mon compte ou via le lien contenu dans ce message.</p>
+                            <label class="form-check-label label-custom" for="accept-newsletter"> 
+                                <input type="checkbox" id="accept-newsletter" class="form-check-input" name="newsletter" value="1" {{ old('newsletter') ? 'checked="checked"' : '' }}> Je souhaite recevoir de messages promotionnels d'Atypikhouse. Je peux également activer/désactiver cette option à tout momentdans les paramètres de mon compte ou via le lien contenu dans ce message.</p>
                         </div>
                     </form>
                 </div>

@@ -259,7 +259,7 @@
         </span>
     @endif
 </div>
-<button class="btn btn-principal">Rechercher</button>
+<button type="submit" class="btn btn-principal" aria-label="Rechercher un hebergement atypikhouse" >Rechercher</button>
 
 @section('script')
         <script src="{{ asset('js/calendarHome.js') }}"></script>
