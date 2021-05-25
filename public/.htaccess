@@ -28,6 +28,5 @@
     Header set X-Content-Type-Options nosniff
     <FilesMatch "\.(js|jpeg|png|css)$">
        Header always set X-Content-Type-Options nosniff
-       Header add Content-Security-Policy "default-src 'self';"
     </FilesMatch>
 </IfModule>
