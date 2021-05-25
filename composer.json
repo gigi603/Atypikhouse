@@ -26,8 +26,7 @@
         "skagarwal/google-places-api": "^1.4",
         "spatie/laravel-sitemap": "2.4.0",
         "stripe/stripe-php": "^6.28",
-        "tymon/jwt-auth": "^0.5.12",
-        "spatie/laravel-csp": "^2.6"
+        "tymon/jwt-auth": "^0.5.12"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
