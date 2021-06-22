@@ -306,9 +306,9 @@
                 <h3 class="text-center" style="font-size:50px;margin-top:10vh;">Partagez votre logement sur Atypikhouse</h3>
                 <h3 class="text-center" style="margin-top: 5%;">Rejoignez une communauté dynamique d'hôtes, créez des expériences mémorables pour les voyageurs et gagnez de l'argent pour vivre vos passions.</h3>
                     @if(Auth::check())
-                        <a href="{{ route('house.create_step1') }}" class="btn btn-principal" style="margin:0 auto;">Commencer</a>
+                        <a href="{{ route('house.create_step1') }}" class="btn btn-principal" style="margin:0 auto;">Devenir hôte</a>
                     @else
-                        <a href="{{ route('register') }}" class="btn btn-principal" style="margin:0 auto;">Commencer</a>
+                        <a href="{{ route('register') }}" class="btn btn-principal" style="margin:0 auto;">Devenir hôte</a>
                     @endif
             </div>
             <div class="col-md-5">
