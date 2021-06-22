@@ -30,24 +30,24 @@ class HomeController extends Controller
     }
 
     public function apropos() {
-        return view('apropos');
+        return view('footer.apropos');
     }
     public function mentions_legales() {
-        return view('mentions_legales');
+        return view('footer.mentions_legales');
     }
     public function politique_de_confidentialite() {
-        return view('politique_de_confidentialite');
+        return view('footer.politique_de_confidentialite');
     }
     public function cgu() {
-        return view('cgu');
+        return view('footer.cgu');
     }
     public function cgv() {
-        return view('cgv');
+        return view('footer.cgv');
     }
     public function rgpd() {
-        return view('rgpd');
+        return view('footer.rgpd');
     }
     public function faq() {
-        return view('faq');
+        return view('footer.faq');
     }
 }

@@ -7,7 +7,7 @@
         <div class="row">
             <div class="container">
                 <div class="block">
-                    Désolé mais une erreur est survenue, nous travaillons et faisons tout notre possible pour régler ce problème dans les plus bref délais.
+                    Désolé mais une erreur est survenue.
                 </div>
             </div>
         </div>
