@@ -40,13 +40,15 @@ html, body {
 }
 
 .block-size {
-	min-height: 68vh !important;
+	min-height: 80vh !important;
 }
 
 .block {
 	padding: 10px;
 	margin: 10vh;
+	min-height: 80vh;
 }
+
 
 .block h1, .block h2, .block h3 {
 	text-align: center;
@@ -617,21 +619,21 @@ nav.navbar.navbar-default {
 footer {
 	background-color: #ededeb;
 	padding: 20px;
-	position:relative;
+	position: absolute;
 	bottom: 0;
 	width: 100%;
 	clear: both;
 	border: solid 1px #ededeb
 }
 
-.footer-absolute {
+/* .footer-absolute {
 	background-color: #ededeb;
 	padding: 20px;
 	position:absolute !important;
 	bottom: 0;
 	width: 100%;
 	clear: both;
-}
+} */
 
 .img-cgv {
 	display: block;
