@@ -84,9 +84,10 @@
             border-color: #DCDCDC;
         }
         .btn-principal {
-            background-color: #3f4b30;
+            background-color: #008802;
+            /*background-color: #3f4b30;*/
             color: #FFFBFC !important;
-            border-color: #3f4b30;
+            border-color: #008802;
             padding: 12px 24px;
             font-size: 18px;
             border-radius: 30px;
@@ -94,9 +95,9 @@
             transition: transform .2s;
         }
         .btn-principal:hover {
-            background-color: #3f4b30;
+            background-color: #007A02;
             color: #FFFBFC;
-            border-color: #3f4b30;
+            border-color: #007A02;
             transform: scale(1.1);
         }
         .hebergement-title {
