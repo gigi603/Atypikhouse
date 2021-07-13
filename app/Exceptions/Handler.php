@@ -3,7 +3,11 @@
 namespace App\Exceptions;
 
 use Exception;
+use Auth;
+use Session;
+use Illuminate\Http\Request;
 use Illuminate\Auth\AuthenticationException;
+use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
 class Handler extends ExceptionHandler
@@ -18,9 +22,10 @@ class Handler extends ExceptionHandler
         \Illuminate\Auth\Access\AuthorizationException::class,
         \Symfony\Component\HttpKernel\Exception\HttpException::class,
         \Illuminate\Database\Eloquent\ModelNotFoundException::class,
+        \Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException::class,
         \Illuminate\Session\TokenMismatchException::class,
         \Illuminate\Validation\ValidationException::class,
-        \Illuminate\Database\Eloquent\ModelNotFoundException::class
+        \Cartalyst\Stripe\Exception\CardErrorException::class
     ];
 
     /**
@@ -33,18 +38,6 @@ class Handler extends ExceptionHandler
      */
     public function report(Exception $exception)
     {
-        // ini_set('display_errors', 1);
-        // ini_set('display_startup_errors', 1);
-        // error_reporting(E_ALL);
-        // $status = $exception->getStatusCode();
-        // dd($status);
-        // if($status == 404){
-        //     return view("errors.404");
-        // } else if($status >= 500){
-        //     return view("errors.500");
-        // } else {
-        //     parent::report($exception);
-        // }
         parent::report($exception);
     }
 
@@ -57,40 +50,36 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
-        if ($exception instanceof ModelNotFoundException) {
-            return parent::render($request, new NotFoundHttpException);
+        if($exception instanceof \Illuminate\Validation\ValidationException){
+            return redirect()->back();
         }
-
-        if ( ! config('app.debug') && ! $this->isHttpException($exception)) {
-            return response(null, 500)->view('errors.500');
+        if(method_exists($exception, "getStatusCode" ) && $exception->getStatusCode() == 404){
+            return response()->view('errors.404', [], 404);
         }
+        if($exception instanceof \Illuminate\Auth\AuthenticationException){
+            $this->unauthenticated($request, $exception);
+            return parent::render($request, $exception);
+        }
+        if($exception instanceof \Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException){
+            return response()->view('home');
+            return parent::render($request, $exception);
+        }
+        if($exception instanceof \Cartalyst\Stripe\Exception\CardErrorException){
+            return redirect()->back()->with('error', "Veuillez saisir 4242 4242 4242 4242");
+        }
+        if($exception){
+           //return response()->view('errors.500', [], 500);
+	    }
         return parent::render($request, $exception);
     }
-
-    /**
-     * Convert an authentication exception into an unauthenticated response.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Illuminate\Auth\AuthenticationException  $exception
-     * @return \Illuminate\Http\Response
-     */
-    // protected function unauthenticated($request, AuthenticationException $exception)
-    // {
-    //     if ($request->expectsJson()) {
-    //         return response()->json(['error' => 'Unauthenticated.'], 401);
-    //     }
-
-    //     return redirect()->guest(route('login'));
-    // }
 
     protected function unauthenticated($request, AuthenticationException $exception)
     {
         if ($request->expectsJson()) {
             return response()->json(['error' => 'Unauthenticated.'], 401);
         }
- 
         $guard = array_get($exception->guards(),0);
- 
+
         //using switch statement to switch between the guards
         switch ($guard) {
             case 'admin':

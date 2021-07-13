@@ -17,7 +17,7 @@ class MessagesTableSeeder extends Seeder
                 'user_id' => 1
             ],
             [
-                'content' => 'L\'administrateur a rajouté une nouvelle propriété à votre annonce',
+                'content' => 'L\'administrateur a rajouté une nouvel equipement à votre annonce',
                 'user_id' => 2
             ]
         ];

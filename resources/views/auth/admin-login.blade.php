@@ -5,6 +5,11 @@
     <div class="card card-login mx-auto mt-5">
         <div class="card-header"><h1 style="font-size:30px;">Administrateurs, connectez-vous</h1></div>
         <div class="card-body">
+            @if (Session::has('errorLogin'))
+                <div class="alert alert-info">
+                    {{ Session::get('errorLogin') }}
+                </div>
+            @endif
             <form method="POST" action="{{ route('admin.login.submit') }}">
                 {{ csrf_field() }}
 
@@ -12,9 +17,9 @@
                     <div class="form-label-group">
                         <input id="inputEmail" type="email" class="form-control" name="email" required="required" autofocus="autofocus">
                         <label for="inputEmail">Email</label>
-                        @if(Session::has('errorAdminLogin'))
+                        @if(Session::has('errorEmail'))
                             <span class="help-block">
-                                <span>{{ Session::get('errorAdminLogin') }}</span>
+                                <span>{{ Session::get('errorEmail') }}</span>
                             </span>
                         @endif
                     </div>

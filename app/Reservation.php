@@ -22,12 +22,16 @@ class Reservation extends Model
         return $this->belongsTo('App\User');
     }
 
+    public function comments() {
+        return $this->hasMany('App\Comment')->orderBy('id', 'DESC');
+    }
+
     public function proprietes() {
         return $this->hasMany('App\Propriete', 'category_id');
     }
     
     public function valuecatproprietes() {
-        return $this->hasMany('App\Valuecatpropriete', 'house_id');
+        return $this->hasMany('App\Valuecatpropriete', 'reservation_id');
     }
 
  

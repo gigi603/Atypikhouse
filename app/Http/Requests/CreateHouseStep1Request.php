@@ -25,7 +25,7 @@ class CreateHouseStep1Request extends FormRequest
     public function rules()
     {
         return [
-            'adresse' => 'required|regex:/^[0-9\pL\s\-\'\,]+$/u|max:80',
+            'adresse' => 'required|regex:/^[0-9\pL\s\-\'\,]+$/u|min:2|max:100',
         ];
     }
 
@@ -39,6 +39,7 @@ class CreateHouseStep1Request extends FormRequest
         return [
             'adresse.required' => 'Veuillez saisir une adresse valide',
             'adresse.regex' => "Votre adresse n'est pas valide",
+            "adresse.min" => "Votre adresse n'est pas valide elle doit contenir minimum 2 caractères",
             'adresse.max' => "Votre adresse n'est pas valide, elle est anormalement trop longue"
         ];
     }

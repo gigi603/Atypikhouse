@@ -12,7 +12,7 @@ return [
     | any other location as required by the application or its packages.
     */
 
-    'name' => env('APP_NAME', 'Atypikhouse'),
+    'name' => env('APP_NAME', env('APP_NAME')),
 
     /*
     |--------------------------------------------------------------------------
@@ -167,6 +167,7 @@ return [
         Anhskohbo\NoCaptcha\NoCaptchaServiceProvider::class,
         DaveJamesMiller\Breadcrumbs\ServiceProvider::class,
         Jenssegers\Date\DateServiceProvider::class,
+        Bepsvpt\SecureHeaders\SecureHeadersServiceProvider::class,
 
         /*
          * Package Service Providers...

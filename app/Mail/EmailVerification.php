@@ -2,6 +2,7 @@
 
 namespace App\Mail;
 
+use App\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
@@ -31,9 +32,13 @@ class EmailVerification extends Mailable
      */
     public function build()
     {
-        return $this->view('email.email')->with([
-            'email_token' => $this->user->email_token,
-            'user_prenom' => $this->user->prenom,
-        ]);
+        $user = $this->user;
+
+        return $this->from('notre.equipe.atypikhouse@gmail.com')
+            ->subject('Confirmation de votre inscription sur notre site Atypikhouse')
+            ->view('email.confirmation')
+            ->with([
+                'userPrenom' => $user->prenom,
+            ]);
     }
 }

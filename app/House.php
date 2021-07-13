@@ -16,16 +16,17 @@ class House extends Model
         return $this->belongsTo('App\User');
     }
 
-    public function ville() {
-        return $this->belongsTo('App\Ville');
-    }
-
     public function category() {
         return $this->belongsTo('App\Category');
     }
     
     public function comments() {
-        return $this->hasMany('App\Comment');
+        return $this->hasMany('App\Comment')->orderBy('id', 'DESC');
+    }
+
+    public function children()
+    {
+           return $this->hasMany('App\Comment', 'parent_id')->orderBy('id', 'DESC');
     }
 
     public function reservations() {

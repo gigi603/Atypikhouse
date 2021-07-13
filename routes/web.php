@@ -13,6 +13,9 @@
 
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/houses', 'HousesController@index')->name('houses');
+Route::get('/cabanes', 'HousesController@cabanes')->name('cabanes');
+Route::get('/igloos', 'HousesController@igloos')->name('igloos');
+Route::get('/yourtes', 'HousesController@yourtes')->name('yourtes');
 Route::get('/register', 'RegistersController@create');
 Route::post('/register', 'RegistersController@register');
 Route::get('/users/confirmation{email_token}', 'Auth\RegisterController@confirmation');
@@ -31,7 +34,7 @@ Route::get('/cgv', 'HomeController@cgv')->name('cgv');
 Route::get('/sendmail', 'Auth\RegisterController@sendmail')->name('user.sendmail');
 
 // admin route for our multi-auth system
-Route::get('/search', 'QueryController@index');
+Route::get('/search', 'HousesController@search');
 
 //Gestion de l'admin
 Route::prefix('admin')->group(function () {
@@ -56,10 +59,12 @@ Route::prefix('admin')->group(function () {
 
     //Commentaires de l'utilisateur
     Route::get('/listcomments/{id}', 'AdminController@listcomments')->name('admin.listcomments');
-    Route::get('/comments/deleteComment/{id}', 'AdminController@deleteComment')->name('admin.deleteComment');
     
     //Commentaire admin
     Route::post('/addComment', 'AdminController@addComment')->name('admin.addComment');
+    Route::post('/comments/modifyComment', 'AdminController@modifyComment')->name('admin.modifyComment');
+    Route::get('/comments/deleteComment/{id}', 'AdminController@deleteComment')->name('admin.deleteComment');
+    Route::get('/comments/deleteCommentParent/{id}', 'AdminController@deleteCommentParent')->name('admin.deleteCommentParent');
 
     //Liste des réservations de l'utilisateur
     Route::get('/listreservations/{id}', 'AdminController@listreservations')->name('admin.listreservations');
@@ -98,17 +103,32 @@ Route::prefix('admin')->group(function () {
     Route::get('/messages_annonce', 'AdminController@listpostsannonce')->name('admin.listpostsannonce');
     Route::get('/showmessages_annonce/{id}', 'AdminController@showpostsannonce')->name('admin.showmessages_annonce');
 
+    //Liste des notifications lors d'une modification d'annonce
+    Route::get('/messages_annonce_modified', 'AdminController@listpostsannoncemodified')->name('admin.listpostsannonce_modified');
+    Route::get('/showmessages_annonce_modified/{id}', 'AdminController@showpostsannoncemodified')->name('admin.showmessageannonces_modified');
+
+    //Liste des notifications lors d'une suppression d'annonce
+    Route::get('/messages_annonce_deleted', 'AdminController@listpostsannoncedeleted')->name('admin.listpostsannonce_deleted');
+    Route::get('/showannonce_deleted/{id}', 'AdminController@showannoncedeleted')->name('admin.showannonce_deleted');
+
+    //Liste des notifications lors d'une demande de suppression d'annonce
+    Route::get('/messages_demande_annonce_to_delete', 'AdminController@listpostsdemandeannoncetodelete')->name('admin.listpostsdemandeannonce_to_delete');
+    Route::get('/showdemandeannoncetodelete/{id}', 'AdminController@showdemandeannoncetodelete')->name('admin.showdemandeannonce_to_delete');
+    
+
     //Liste des notifications lors d'une nouvelle annonce
     Route::get('/messages_reservation', 'AdminController@listpostsreservation')->name('admin.listpostsreservation');
-    Route::get('/showmessages_reservation/{id}', 'AdminController@showpostsreservation')->name('admin.showmessages_reservation');
+    Route::get('/showreservation/{id}', 'AdminController@showreservation')->name('admin.showreservation');
+
+    //Liste des notifications lors d'une annulation d'une reservation
+    Route::get('/messages_reservation_annulee', 'AdminController@listpostsreservationannulee')->name('admin.listpostsreservationannulee');
+    Route::get('/show_reservation_annulee/{id}', 'AdminController@showreservationannulee')->name('admin.showreservation_annulee');
+
+    
     
     //Liste des messages de l'admin à l'utilisateur
     Route::get('/user_messages/{id}', 'AdminController@messages')->name('admin.user_messages');
 
-    // Mettre les notifications comme lues
-    // Route::get('markAsRead', function(){
-    //     auth()->user()->unreadNotifications->markAsRead();
-    // });
     //Message de l'admin à l'utilisateur
     Route::post('/addMessage/{id}', 'AdminController@addMessage')->name('admin.addMessage');
 
@@ -124,26 +144,23 @@ Route::prefix('admin')->group(function () {
 
     //Gestion des hébergement
     Route::get('/house/editHouse/{id}', 'AdminController@editHouse')->name('admin.editHouse');
+    Route::get('/house/editHouseRead/{id}', 'AdminController@editHouseRead')->name('admin.editHouseRead');
     Route::post('/house/updateHouse/{id}', 'AdminController@updateHouse')->name('admin.updateHouse');
-    //Route::post('/house/statutHouse/{id}', 'AdminController@statutHouse')->name('admin.statutHouse');
     Route::get('/house/valideHouse/{id}', 'AdminController@valideHouse')->name('admin.valideHouse');
     Route::get('/house/refuseHouse/{id}', 'AdminController@refuseHouse')->name('admin.refuseHouse');
-    Route::get('/houses/deleteHouse/{id}', 'AdminController@disableHouse')->name('admin.disableHouse');
+    Route::get('/houses/deleteHouse/{id}', 'AdminController@deleteHouse')->name('admin.deleteHouse');
     
     //Liste des catégories
     Route::get('/categories', 'AdminController@listcategories')->name('admin.categories');
-    Route::get('/create/categorie', 'AdminController@createcategory')->name('admin.create_category');
     Route::post('/register/categorie', 'AdminController@registercategory')->name('admin.register_category');
-    Route::get('/enable/categorie/{id}', 'AdminController@enableCategory')->name('admin.enable_category');
-    Route::get('/disable/categorie/{id}', 'AdminController@disableCategory')->name('admin.disable_category');
+    Route::get('/delete/categorie/{id}', 'AdminController@deleteCategory')->name('admin.delete_category');
 
     //Activer Désactiver compte utilisateur
     Route::get('/disable/user/{id}', 'AdminController@disableUser')->name('admin.disable_user');
     Route::get('/activate/user/{id}', 'AdminController@activateUser')->name('admin.activate_user');
 
-    //Propriétés de la catégorie
+    //Equipements de la catégorie
     Route::get('/proprietes/{id}', 'AdminController@proprietescategory')->name('admin.proprietes_category');
-    Route::get('/create/propriete/{id}', 'AdminController@createpropriete')->name('admin.create_propriete');
     Route::post('/register/propriete', 'AdminController@registerpropriete')->name('admin.register_propriete');
     Route::get('/delete/propriete/{id}', 'AdminController@deletepropriete')->name('admin.delete_propriete');
 
@@ -160,9 +177,10 @@ Route::prefix('admin')->group(function () {
  });
 
 Route::middleware(['auth'])->group( function () {
-    Route::get('/profile/{id}', 'UsersController@profile');
+    Route::get('/profile', 'UsersController@profile');
+    Route::get('/delete/user/{id}', 'UsersController@delete_user_account')->name('user.deleteAccount');
     Route::get('/messages', 'MessagesController@messages')->name('user.messages');
-
+    Route::get('/logout', 'Auth\LoginController@logout')->name('user.logout');
     //Create a house, publish an offer
     Route::get('/house/create_step1', 'HousesController@create_step1')->name('house.create_step1');
     Route::post('/house/postcreate_step1', 'HousesController@postcreate_step1')->name('house.postcreate_step1');
@@ -187,6 +205,7 @@ Route::middleware(['auth'])->group( function () {
     Route::post('/reservations', 'ReservationsController@store');
     Route::get('/user/cancelreservation/{id}', 'UsersController@cancelreservation')->name('user.cancelreservation');
     Route::post('/comments', 'CommentsController@index');
+    Route::post('/comments', 'UsersController@addComment');
     Route::post('note', 'HousesController@note');
     //Route::get('/houses/update/{id}', 'HousesController@update');
     Route::get('/list-users', 'UsersController@list');
@@ -196,6 +215,11 @@ Route::middleware(['auth'])->group( function () {
 
     //Vue de détails de la reservation de l'utilisateur
     Route::get('/showreservations/{id}', 'UsersController@showreservations')->name('user.showreservations');
+
+    // Paiement Stripe
+    Route::get('addmoney/stripe', array('as' => 'addmoney.paywithstripe','uses' => 'ReservationsController@payWithStripe'));
+    Route::post('addmoney/stripe', array('as' => 'addmoney.stripe','uses' => 'ReservationsController@postPaymentWithStripe'));
+    Route::get('/confirmpaymentStripe', array('as' => 'addmoney.confirmpayment','uses' => 'ReservationsController@confirmpaymentStripe'));
 
     //User historiques
     Route::get('/user/historiques', 'UsersController@historiques')->name('user.historiques');
@@ -216,15 +240,9 @@ Route::middleware(['auth'])->group( function () {
 
 });
 
-Route::post('/create',    'UserController@create');
-Route::get('/user/{id}',  'UserController@get');
 Route::get('/users/confirmation{email_token}', 'Auth\RegisterController@confirmation');
 Route::get('/verifyemail/{token}', 'Auth\RegisterController@verify');
 Auth::routes();
 
-// Paiement Stripe
-Route::get('addmoney/stripe', array('as' => 'addmoney.paywithstripe','uses' => 'ReservationsController@payWithStripe'));
-Route::post('addmoney/stripe', array('as' => 'addmoney.stripe','uses' => 'ReservationsController@postPaymentWithStripe'));
-Route::get('/confirmpaymentStripe', array('as' => 'addmoney.confirmpayment','uses' => 'ReservationsController@confirmpaymentStripe'));
 
 

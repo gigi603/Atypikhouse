@@ -1,5 +1,25 @@
 @extends('layouts.app')
-@section('footer', 'Etape 4')
+@section('title', 'Etape 4')
+@section('styles')
+    <style>
+        .margin-top {
+            margin-top: 10vh;
+        }
+        .block-size {
+            min-height: 68vh !important;
+        }
+        .btn-color {
+            background-color: #3f4b30;
+            border-color: #3f4b30;
+            color:#FFFBFC;
+        }
+        .btn-color:hover {
+            background-color: #3f4b30;
+            border-color: #3f4b30;
+            color:#FFFBFC;
+        }
+    </style>
+@endsection
 @section('content')
 <div class="container margin-top block-size">
     <div class="row">
@@ -14,10 +34,11 @@
                         <p>4. Quel est le montant de votre bien ?</p>
                             
                         <div class="form-group{{ $errors->has('price') ? ' has-error' : '' }}">
-                            <label for="name" class="col-md-4 control-label">Prix la nuit</label>
+                            <label for="name" class="col-md-4 control-label">Prix de la nuit par personne</label>
 
                             <div class="col-md-6">
-                                <input id="name" required type="text" class="form-control" name="price" value="{{ $price }}">
+                                <input id="name" required type="text" class="form-control" name="price" placeholder="Saisir le prix d'une nuit par personnes"
+                                value="{{ !empty(old('price')) || old('price') == '0' ? old('price') : $price }}">
                                 @if ($errors->has('price'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('price') }}</strong>
@@ -38,15 +59,9 @@
     </div>         
 </div> 
 @endsection
-@section('footer', 'footer_absolute')
 @section('script')
     <script src="{{ asset('js/jquery.js') }}"></script>
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBBohiwddVUwXAr6a8oVcN59JBkyoB7bCU&libraries=places"></script>
     <script src="{{ asset('js/autocomplete_address.js') }}"></script>
     <script src="{{ asset('js/create_house.js') }}"></script>
-    <!--<script src="{{ asset('js/proprietes.js') }}"></script>-->
 @endsection
-{{-- @section('script')
-    <script src="{{ asset('js/jquery.js') }}"></script>
-    <script src="{{ asset('js/create_house.js') }}"></script>
-@endsection --}}

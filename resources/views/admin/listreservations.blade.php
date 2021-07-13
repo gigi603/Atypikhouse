@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title', 'Reservations')
+@section('title', 'Reservations en cours atypikhouse')
 @section('content')
     <div class="card mb-3">
         @if (Session::has('success'))
@@ -11,7 +11,7 @@
         <div class="card-header">
         <h1 style="font-size:20px;">
             <i class="fas fa-table"></i>
-            Liste des réservations
+            Liste des réservations en cours
         </h1>
         </div>
         <div class="card-body">
@@ -31,7 +31,7 @@
                         <tbody>
                             <tr>
                                 <td style="width:250px"><img src="{{ asset('img/houses/'.$reservation->house->photo) }}" class="photo-size"/></td>
-                                <td>{{$reservation->house->title}}</td>
+                                <td>{{$reservation->title}}</td>
                                 <td><?php \Date::setLocale('fr'); $startdate = Date::parse($reservation->start_date)->format('l j F Y'); echo($startdate);?></td>
                                 <td><?php \Date::setLocale('fr'); $enddate = Date::parse($reservation->end_date)->format('l j F Y'); echo($enddate);?></td>
                                 <td>{{$reservation->user->prenom}} {{$reservation->user->nom}}</td>
@@ -40,7 +40,14 @@
                             </tr>
                         </tbody>
                     @endforeach
-                </table>         
+                </table>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <span>{{ $reservations->links() }}</span>
+                        </div>
+                    </div>
+                </div>  
             </div>
         </div>
     </div>

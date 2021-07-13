@@ -1,5 +1,25 @@
 @extends('layouts.app')
 @section('title', 'Etape 5')
+@section('styles')
+    <style>
+        .margin-top {
+            margin-top: 10vh;
+        }
+        .block-size {
+            min-height: 68vh !important;
+        }
+        .btn-color {
+            background-color: #3f4b30;
+            border-color: #3f4b30;
+            color:#FFFBFC;
+        }
+        .btn-color:hover {
+            background-color: #3f4b30;
+            border-color: #3f4b30;
+            color:#FFFBFC;
+        }
+    </style>
+@endsection
 @section('content')
 <div class="container margin-top block-size">
     <div class="row">
@@ -15,7 +35,9 @@
                             <label for="name" class="col-md-4 control-label">Photo</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="file" class="form-control" name="photo" required value={{$photo}}>
+                                <input id="name" type="file" class="form-control" name="photo" required value="{{
+                                    old('photo') ? : (isset($photo) ? $photo : old('photo'))
+                                }}">
                                 @if ($errors->has('photo'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('photo') }}</strong>
@@ -38,7 +60,6 @@
     </div>
 </div>
 @endsection
-@section('footer', 'footer_absolute')
 @section('script')
     <script src="{{ asset('js/jquery.js') }}"></script>
     <script src="{{ asset('js/create_house.js') }}"></script>

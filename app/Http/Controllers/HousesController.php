@@ -14,7 +14,9 @@ use App\Message;
 use App\Post;
 use App\Admin;
 use App\Notifications\ReplyToAnnonce;
+use App\Notifications\ReplyToNewAnnonce;
 use Illuminate\Http\Request;
+use App\Http\Requests\SearchRequest;
 use App\Http\Requests\CreateHouseStep1Request;
 use App\Http\Requests\CreateHouseStep2Request;
 use App\Http\Requests\CreateHouseStep3Request;
@@ -32,6 +34,10 @@ use Image;
 use View;
 use GooglePlaces;
 use App\Http\Middleware\XSS;
+use App\Mail\SendAnnonceConfirmation;
+use App\Mail\SendAnnonceSuppression;
+use Illuminate\Support\Facades\Mail;
+
 
 class HousesController extends Controller
 {
@@ -43,33 +49,242 @@ class HousesController extends Controller
     public function index(House $house)
     {
         $today = Date::today()->format('Y-m-d');
-        $categories = category::all();
-        $houses = house::with('valuecatproprietes', 'proprietes', 'category')
+        $categories = category::where('statut', '=', 1)->get();
+        $houses = house::with('valuecatproprietes', 'proprietes', 'category', 'comments')
         ->where('end_date', '>=', $today)
         ->where('statut', 'Validé')
         ->where('disponible', 'oui')
         ->orderBy('id', 'desc')
-        ->get();
+        ->paginate(14);
+        
         return view('houses.index')->with('houses', $houses)
-                                   ->with('categories', $categories);
+                                    ->with('categories', $categories);
+    }
+
+    public function cabanes(House $house)
+    {
+        $today = Date::today()->format('Y-m-d');
+        $categories = category::all();
+        $houses = house::with('valuecatproprietes', 'proprietes', 'category')
+        ->where('end_date', '>=', $today)
+        ->where('statut', 'Validé')
+        ->where('category_id', 2)
+        ->where('disponible', 'oui')
+        ->orderBy('id', 'desc')
+        ->paginate(14);
+
+        $moyenneNote = 0;
+        $nb5etoiles = 0;
+        $nb4etoiles = 0;
+        $nb3etoiles = 0;
+        $nb2etoiles = 0;
+        $nb1etoiles = 0;
+        $nbTotalNote = 0;
+        foreach($house->comments as $comment){
+            if($comment->note > 0){
+                $moyenneNote = $moyenneNote + $comment->note;
+                $nbTotalNote++;
+            }
+            if($comment->note == 5){
+                $nb5etoiles = $nb5etoiles + 1;
+            }
+            if($comment->note == 4){
+                $nb4etoiles = $nb4etoiles + 1;
+            }
+            if($comment->note == 3){
+                $nb3etoiles = $nb3etoiles + 1;
+            }
+            if($comment->note == 2){
+                $nb2etoiles = $nb2etoiles + 1;
+            }
+            if($comment->note == 1){
+                $nb1etoiles = $nb1etoiles + 1;
+            }
+        }
+        if($moyenneNote > 0 && $nbTotalNote > 0){
+            $moyenneNote = $moyenneNote / $nbTotalNote;
+        }
+
+        if(count($houses) > 0){
+            return view('houses.index')->with('houses', $houses)
+            ->with('categories', $categories)
+            ->with('moyenneNote', $moyenneNote);
+        } else {
+            $houses = house::paginate(14);
+            return view('houses.index')->with('houses', $houses)
+            ->with('categories', $categories)
+            ->with('moyenneNote', $moyenneNote);
+        }
+    }
+
+    public function igloos(House $house)
+    {
+        $today = Date::today()->format('Y-m-d');
+        $categories = category::all();
+        $houses = house::with('valuecatproprietes', 'proprietes', 'category')
+        ->where('end_date', '>=', $today)
+        ->where('statut', 'Validé')
+        ->where('category_id', 3)
+        ->where('disponible', 'oui')
+        ->orderBy('id', 'desc')
+        ->paginate(14);
+
+        $moyenneNote = 0;
+        $nb5etoiles = 0;
+        $nb4etoiles = 0;
+        $nb3etoiles = 0;
+        $nb2etoiles = 0;
+        $nb1etoiles = 0;
+        $nbTotalNote = 0;
+
+        foreach($house->comments as $comment){
+            if($comment->note > 0){
+                $moyenneNote = $moyenneNote + $comment->note;
+                $nbTotalNote++;
+            }
+            if($comment->note == 5){
+                $nb5etoiles = $nb5etoiles + 1;
+            }
+            if($comment->note == 4){
+                $nb4etoiles = $nb4etoiles + 1;
+            }
+            if($comment->note == 3){
+                $nb3etoiles = $nb3etoiles + 1;
+            }
+            if($comment->note == 2){
+                $nb2etoiles = $nb2etoiles + 1;
+            }
+            if($comment->note == 1){
+                $nb1etoiles = $nb1etoiles + 1;
+            }
+        }
+
+        if(count($houses) > 0){
+            return view('houses.index')->with('houses', $houses)
+            ->with('categories', $categories)
+            ->with('moyenneNote', $moyenneNote);
+        } else {
+            $houses = house::paginate(14);
+            return view('houses.index')->with('houses', $houses)
+            ->with('categories', $categories)
+            ->with('moyenneNote', $moyenneNote);
+        }        
+    }
+
+    public function yourtes(House $house)
+    {
+        $today = Date::today()->format('Y-m-d');
+        $categories = category::all();
+        $houses = house::with('valuecatproprietes', 'proprietes', 'category')
+        ->where('end_date', '>=', $today)
+        ->where('statut', 'Validé')
+        ->where('category_id', 4)
+        ->where('disponible', 'oui')
+        ->orderBy('id', 'desc')
+        ->paginate(14);
+
+        $moyenneNote = 0;
+        $nb5etoiles = 0;
+        $nb4etoiles = 0;
+        $nb3etoiles = 0;
+        $nb2etoiles = 0;
+        $nb1etoiles = 0;
+        $nbTotalNote = 0;
+        foreach($houses as $house){
+        foreach($house->comments as $comment){
+            if($comment->note > 0){
+                $moyenneNote = $moyenneNote + $comment->note;
+                $nbTotalNote++;
+            }
+        }
+        if($moyenneNote > 0 && $nbTotalNote > 0){
+            $moyenneNote = $moyenneNote / $nbTotalNote;
+        }
+    }
+        if(count($houses) > 0){
+            return view('houses.index')->with('houses', $houses)
+            ->with('categories', $categories)
+            ->with('moyenneNote', $moyenneNote);
+        } else {
+            $houses = house::paginate(14);
+            return view('houses.index')->with('houses', $houses)
+            ->with('categories', $categories)
+            ->with('moyenneNote', $moyenneNote);
+        }
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Affiche les locations en fonction de ce qui est selectionné dans la barre de recherche
      *
-     * @param  \App\Category  $categories
-     * @param  \App\Ville  $villes
      * @return \Illuminate\Http\Response
      */
-    public function create(Category $categories, Ville $villes)
+    public function search(SearchRequest $request)
     {
-        $categories = category::all();
-        $villes = ville::all();
+        $categories = DB::table('categories')->where('statut','=', 1)->get();
+        $datas = $request->flashOnly([ 'category_id', 'start_date', 'end_date', 'nb_personnes']);
+        
+        $today = Date::today();
+        $start_date = Date::createFromFormat('!d/m/Y', $request->start_date)->format('Y-m-d');
+        $end_date = Date::createFromFormat('!d/m/Y', $request->end_date)->format('Y-m-d');
+        if($request->category_id == 1){
+            $houses = house::with('valuecatproprietes', 'proprietes', 'category')
+            ->where('statut', 'Validé')
+            ->where('end_date', '>', $today)
+            ->where('end_date', '>=', $end_date)
+            ->orWhere('nb_personnes', '>=', $request->nb_personnes)
+            ->where('disponible', '=', "oui")
+            ->orderBy('id','DESC')
+            ->paginate(6);
+            return view('houses.index')->with('houses', $houses)
+                                    ->with('categories', $categories)
+                                    ->with('datas', $datas);
+        }
+        if($request->category_id > 1){
+            $houses = house::with('valuecatproprietes', 'proprietes', 'category')
+                ->where('statut', 'Validé')
+                ->where('end_date', '>', $today)
+                ->where('end_date', '>=', $end_date)
+                ->where('disponible', '=', "oui")
+                ->where('category_id', '=', $request->category_id)
+                ->where('nb_personnes', '>=', $request->nb_personnes)
+                ->paginate(6);
 
-        return view('houses.create', [
-            'villes'=> $villes,
-            'categories' => $categories,
-        ]);
+            if(count($houses) > 0){
+                return view('houses.index')->with('houses', $houses)
+                ->with('categories', $categories)
+                ->with('datas', $datas)
+                ->with('start_date', $start_date)
+                ->with('end_date', $end_date)
+                ->with('nb_personnes', $request->nb_personnes);
+            } else {
+                $houses = house::with('valuecatproprietes', 'proprietes', 'category')
+                    ->where('statut', 'Validé')
+                    ->where('end_date', '>', $today)
+                    ->where('end_date', '>=', $end_date)
+                    ->where('nb_personnes', '>=', $request->nb_personnes)
+                    ->where('disponible', '=', "oui")
+                    ->orderBy('id','DESC')
+                    ->paginate(6);
+                    return view('houses.index')->with('houses', $houses)
+                                            ->with('categories', $categories)
+                                            ->with('datas', $datas);
+            }
+            
+        }
+        else {
+            $houses = house::with('valuecatproprietes', 'proprietes', 'category')
+            ->where('statut', 'Validé')
+            ->where('end_date', '>', $today)
+            ->where('end_date', '>=', $end_date)
+            ->where('disponible', '=', "oui")
+            ->where('category_id', '=', $request->category_id)
+            ->orWhere('nb_personnes', '>=', $request->nb_personnes)
+            ->orderBy('id','DESC')
+            ->paginate(6);
+            return view('houses.index')->with('houses', $houses)
+                                    ->with('categories', $categories)
+                                    ->with('datas', $datas);
+        }
     }
 
     public function create_step1(Request $request) { 
@@ -141,6 +356,8 @@ class HousesController extends Controller
         
         $categories = category::where('statut','=', 1)->get();
 
+        $housePropriete = $request->session()->get('houseProprietes');
+
         $houseNbPersonnes = $request->session()->get('houseNbPersonnes');
         if($houseNbPersonnes == NULL){
             $nb_personnes = "";
@@ -175,6 +392,7 @@ class HousesController extends Controller
             'phone' => $phone,
             'houseCategory' => $houseCategory,
             'categorySelected' => $categorySelected,
+            'housePropriete' => $housePropriete,
             'nb_personnes' => $nb_personnes,
             'start_date' => $start_date,
             'end_date' => $end_date,
@@ -201,11 +419,6 @@ class HousesController extends Controller
             $categorySelected = $request->category_id;
             return redirect()->back()->with('danger', 'Veuillez selectionner une categorie valide');
         }
-        // if($request->category_id > $lastCategory->id){
-        //     $request->category_id = "";
-        //     $houseCategory = null;
-        //     return redirect()->back();
-        // }
         
         $houseNbPersonnes = session('houseNbPersonnes', $request->nb_personnes);
         $request->session()->push('houseNbPersonnes', $request->nb_personnes);
@@ -295,9 +508,9 @@ class HousesController extends Controller
         $newFormat = Carbon::parse($date)->format('Y-m-d');
         $date2 = Carbon::createFromFormat('d/m/Y', last($houseEndDate));
         $newFormat2 = Carbon::parse($date2)->format('Y-m-d');
-        //$end_date = Carbon::createFromFormat('Y-m-d', $newFormat2);
         $house->start_date = $newFormat;
         $house->end_date = $newFormat2;
+
         $house->description = last($houseDescription);
         $house->price = last($housePrix);
         $house->statut = "En attente de validation";
@@ -319,15 +532,13 @@ class HousesController extends Controller
                 $valuecatProprietesHouse->category_id = $house->category_id;
                 $valuecatProprietesHouse->propriete_id = intval($proprietes);
                 $valuecatProprietesHouse->house_id = $house->id;
+                $valuecatProprietesHouse->reservation_id = 0;
                 
                 $valuecatProprietesHouse->save();
             }
         }
-        $message = new message;
-        $message->content = "Vous avez bien créé l'annonce ".$house->title.", notre équipe va vérifier le contenu et vous enverra un message, une fois votre annonce validée par notre équipe, elle sera consultable sur le site dans nos hébergements";
-        $message->user_id = $house->user_id;
-        $message->save();
-
+        
+        //Message à envoyer à l'admin
         $post = new post;
         $post->name = Auth::user()->nom.' '.Auth::user()->prenom;
         $post->email = Auth::user()->email;
@@ -338,10 +549,17 @@ class HousesController extends Controller
         $post->user_id = Auth::user()->id;
         $post->save();
 
+        //Notifications à envoyer à l'admin
         $admins = Admin::all();
         foreach ($admins as $admin) {
             $admin->notify(new ReplyToAnnonce($post));
         }
+
+        $user = User::find(Auth::user()->id);
+        $user->notify(new ReplyToNewAnnonce($post));
+
+        //envoi du mail de confirmation de la reservation
+        Mail::to(Auth::user()->email)->send(new SendAnnonceConfirmation($house));
 
         $request->session()->forget('houseAdresse');
         $request->session()->forget('houseTelephone');
@@ -369,6 +587,7 @@ class HousesController extends Controller
         $proprietes = propriete::where('category_id', $category)->get();
         $valuecatProprietesHouse = valuecatpropriete::where('category_id', $category) 
         ->where('house_id', $id)
+        ->where('reservation_id','=', 0)
         ->get();
 
         $valArray = array();
@@ -379,7 +598,6 @@ class HousesController extends Controller
                 }
             }
         }
-        //var_dump($valArray);
         return response()->json(["proprietes" => $proprietes,
                                  "house" => $house,
                                  "valArray" => $valArray]); 
@@ -397,61 +615,6 @@ class HousesController extends Controller
         return view('houses.show', compact('house', 'id'))->with('house', $house);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\House  $house
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(House $house, Category $categories, Ville $villes)
-    {
-        $house = house::find($house->id);
-        $categories = category::all();
-        $villes = ville::all();
-        return view('houses.edit', compact('house', 'id'))->with('categories', $categories)->with('villes', $villes);
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\House  $house
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, House $house)
-    {
-        $house = house::find($house->id);
-        $house->title = $request->get('title');
-        $house->category_id = $request->get('category_id');
-        $house->ville_id = $request->get('ville_id');
-        $house->adresse = $request->get('adresse');
-        $house->price = $request->get('price');
-        $house->photo = $request->get('photo');
-        $house->description = $request->get('description');
-        
-        $picture = $request->file('photo');
-        $filename  = time() . '.' . $picture->getClientOriginalExtension();
-        $path = public_path('img/houses/' . $filename);
-        Image::make($picture->getRealPath())->resize(350, 200)->save($path);
-        $house->photo = $filename;
-
-        $house->save();
-        return redirect('/houses/index');
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\House  $house
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(House $house)
-    {
-        $house = house::find($house->id);
-        $house->delete();
-        return redirect('houses/index');
-        
-    }
 
     public function mylocations($id) {
         $houseProfil = DB::table('users')

@@ -4,19 +4,26 @@
 <div class="admin-user-profil"> 
 <div class="container list-category">
     <div class="panel panel-default">
-        <div class="panel-heading"><h1 style="font-size:20px;">Messages envoyés à l'utilisateur</h1></div>
+        <div class="panel-heading"><h1 style="font-size:20px;">Messages envoyés par l'utilisateur</h1></div>
         <div class="panel-body">
             <div class="row">
                 <div class="col-md-12">
-                    @foreach ($messages as $message)
+                    @foreach ($posts as $post)
                         <div class="panel panel-default" style="margin: 0; border-radius: 0;">
                             <div class="panel-body">
                                 <div class="col-sm-9">
-                                    {{ $message->content }}
+                                    {{ $post->content }}
                                 </div>
                             </div>
                         </div>
                     @endforeach
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <span>{{ $posts->links() }}</span>
+                            </div>
+                        </div>
+                    </div>  
                     <div class="panel panel-default" style="margin: 0; border-radius: 0;">
                         <div class="panel-body">
                             <form action="{{ route('admin.addMessage', $user->id) }}" method="POST" style="display: flex;">
@@ -49,4 +56,6 @@
         </div>
     </div>
 </div>
+@endsection
+@section('script')
 @endsection

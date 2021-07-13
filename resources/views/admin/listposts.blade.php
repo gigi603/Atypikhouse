@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title', "Messages des clients")
+@section('title', "Liste des messages des clients")
 @section('content')
     @if ($success = Session::get('success'))
         <div class="alert alert-success">
@@ -32,7 +32,7 @@
                             <tr>
                                 <td>{{$post->name}}</td>
                                 <td>{{$post->email}}</td>
-                                <td><a href="{{route('admin.showmessages', $post->id)}}" class="btn btn-primary">Voir</a></td>
+                                <td><a href="{{route('admin.showmessages', $post->id)}}" class="btn btn-primary badge-new-message">Voir</a></td>
                             </tr>
                         </tbody>
                     @else
@@ -40,12 +40,19 @@
                             <tr>
                                 <td>{{$post->name}}</td>
                                 <td>{{$post->email}}</td>
-                                <td><a href="{{route('admin.showmessages', $post->id)}}" class="btn btn-primary">Voir</a></td>
+                                <td><a href="{{route('admin.showmessages', $post->id)}}" class="btn btn-primary badge-new-message">Voir</a></td>
                             </tr>
                         </tbody>
                     @endif
                 @endforeach
             </table>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <span>{{ $posts->links() }}</span>
+                    </div>
+                </div>
+            </div>  
             </div>
         </div>
         <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>

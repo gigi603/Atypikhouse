@@ -1,760 +1,120 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
     <url>
-        <loc>https://www.atypikhouse-projet.ovh/</loc>
+        <loc>http://127.0.0.1:8000</loc>
     
     
-        <lastmod>2020-10-09T15:20:19+02:00</lastmod>
+        <lastmod>2021-05-24T17:22:48+02:00</lastmod>
     
         <changefreq>daily</changefreq>
     
         <priority>1</priority>
     </url>
     <url>
-        <loc>https://www.atypikhouse-projet.ovh/addmoney/stripe</loc>
+        <loc>http://127.0.0.1:8000/apropos</loc>
     
     
-        <lastmod>2020-10-09T15:20:19+02:00</lastmod>
-    
-        <changefreq>daily</changefreq>
-    
-        <priority>0.5</priority>
-    </url>
-    <url>
-        <loc>https://www.atypikhouse-projet.ovh/addmoney/stripe</loc>
-    
-    
-        <lastmod>2020-10-09T15:20:19+02:00</lastmod>
+        <lastmod>2021-05-24T17:22:48+02:00</lastmod>
     
         <changefreq>daily</changefreq>
     
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://www.atypikhouse-projet.ovh/apropos</loc>
+        <loc>http://127.0.0.1:8000/cgu</loc>
     
     
-        <lastmod>2020-10-09T15:20:19+02:00</lastmod>
-    
-        <changefreq>daily</changefreq>
-    
-        <priority>0.5</priority>
-    </url>
-    <url>
-        <loc>https://www.atypikhouse-projet.ovh/cgu</loc>
-    
-    
-        <lastmod>2020-10-09T15:20:19+02:00</lastmod>
+        <lastmod>2021-05-24T17:22:48+02:00</lastmod>
     
         <changefreq>daily</changefreq>
     
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://www.atypikhouse-projet.ovh/cgv</loc>
+        <loc>http://127.0.0.1:8000/cgv</loc>
     
     
-        <lastmod>2020-10-09T15:20:19+02:00</lastmod>
-    
-        <changefreq>daily</changefreq>
-    
-        <priority>0.5</priority>
-    </url>
-    <url>
-        <loc>https://www.atypikhouse-projet.ovh/comments</loc>
-    
-    
-        <lastmod>2020-10-09T15:20:19+02:00</lastmod>
+        <lastmod>2021-05-24T17:22:48+02:00</lastmod>
     
         <changefreq>daily</changefreq>
     
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://www.atypikhouse-projet.ovh/confirmpaymentStripe</loc>
+        <loc>http://127.0.0.1:8000/faq</loc>
     
     
-        <lastmod>2020-10-09T15:20:19+02:00</lastmod>
-    
-        <changefreq>daily</changefreq>
-    
-        <priority>0.5</priority>
-    </url>
-    <url>
-        <loc>https://www.atypikhouse-projet.ovh/contact</loc>
-    
-    
-        <lastmod>2020-10-09T15:20:19+02:00</lastmod>
+        <lastmod>2021-05-24T17:22:48+02:00</lastmod>
     
         <changefreq>daily</changefreq>
     
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://www.atypikhouse-projet.ovh/create</loc>
+        <loc>http://127.0.0.1:8000/houses</loc>
     
     
-        <lastmod>2020-10-09T15:20:19+02:00</lastmod>
-    
-        <changefreq>daily</changefreq>
-    
-        <priority>0.5</priority>
-    </url>
-    <url>
-        <loc>https://www.atypikhouse-projet.ovh/faq</loc>
-    
-    
-        <lastmod>2020-10-09T15:20:19+02:00</lastmod>
+        <lastmod>2021-05-24T17:22:48+02:00</lastmod>
     
         <changefreq>daily</changefreq>
     
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://www.atypikhouse-projet.ovh/house/confirmation_create_house</loc>
+        <loc>http://127.0.0.1:8000/mentions_legales</loc>
     
     
-        <lastmod>2020-10-09T15:20:19+02:00</lastmod>
-    
-        <changefreq>daily</changefreq>
-    
-        <priority>0.5</priority>
-    </url>
-    <url>
-        <loc>https://www.atypikhouse-projet.ovh/house/create_step1</loc>
-    
-    
-        <lastmod>2020-10-09T15:20:19+02:00</lastmod>
+        <lastmod>2021-05-24T17:22:48+02:00</lastmod>
     
         <changefreq>daily</changefreq>
     
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://www.atypikhouse-projet.ovh/house/create_step2</loc>
+        <loc>http://127.0.0.1:8000/politique_de_confidentialite</loc>
     
     
-        <lastmod>2020-10-09T15:20:19+02:00</lastmod>
-    
-        <changefreq>daily</changefreq>
-    
-        <priority>0.5</priority>
-    </url>
-    <url>
-        <loc>https://www.atypikhouse-projet.ovh/house/create_step3</loc>
-    
-    
-        <lastmod>2020-10-09T15:20:19+02:00</lastmod>
+        <lastmod>2021-05-24T17:22:48+02:00</lastmod>
     
         <changefreq>daily</changefreq>
     
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://www.atypikhouse-projet.ovh/house/create_step4</loc>
+        <loc>http://127.0.0.1:8000/user/showHouse/1</loc>
     
     
-        <lastmod>2020-10-09T15:20:19+02:00</lastmod>
-    
-        <changefreq>daily</changefreq>
-    
-        <priority>0.5</priority>
-    </url>
-    <url>
-        <loc>https://www.atypikhouse-projet.ovh/house/create_step5</loc>
-    
-    
-        <lastmod>2020-10-09T15:20:19+02:00</lastmod>
-    
-        <changefreq>daily</changefreq>
-    
-        <priority>0.5</priority>
-    </url>
-    <url>
-        <loc>https://www.atypikhouse-projet.ovh/house/postcreate_step1</loc>
-    
-    
-        <lastmod>2020-10-09T15:20:19+02:00</lastmod>
-    
-        <changefreq>daily</changefreq>
-    
-        <priority>0.5</priority>
-    </url>
-    <url>
-        <loc>https://www.atypikhouse-projet.ovh/house/postcreate_step2</loc>
-    
-    
-        <lastmod>2020-10-09T15:20:19+02:00</lastmod>
-    
-        <changefreq>daily</changefreq>
-    
-        <priority>0.5</priority>
-    </url>
-    <url>
-        <loc>https://www.atypikhouse-projet.ovh/house/postcreate_step3</loc>
-    
-    
-        <lastmod>2020-10-09T15:20:19+02:00</lastmod>
-    
-        <changefreq>daily</changefreq>
-    
-        <priority>0.5</priority>
-    </url>
-    <url>
-        <loc>https://www.atypikhouse-projet.ovh/house/postcreate_step4</loc>
-    
-    
-        <lastmod>2020-10-09T15:20:19+02:00</lastmod>
-    
-        <changefreq>daily</changefreq>
-    
-        <priority>0.5</priority>
-    </url>
-    <url>
-        <loc>https://www.atypikhouse-projet.ovh/house/postcreate_step5</loc>
-    
-    
-        <lastmod>2020-10-09T15:20:19+02:00</lastmod>
-    
-        <changefreq>daily</changefreq>
-    
-        <priority>0.5</priority>
-    </url>
-    <url>
-        <loc>https://www.atypikhouse-projet.ovh/houses</loc>
-    
-    
-        <lastmod>2020-10-09T15:20:19+02:00</lastmod>
-    
-        <changefreq>daily</changefreq>
-    
-        <priority>0.5</priority>
-    </url>
-    <url>
-        <loc>https://www.atypikhouse-projet.ovh/list-users</loc>
-    
-    
-        <lastmod>2020-10-09T15:20:19+02:00</lastmod>
-    
-        <changefreq>daily</changefreq>
-    
-        <priority>0.5</priority>
-    </url>
-    <url>
-        <loc>https://www.atypikhouse-projet.ovh/login</loc>
-    
-    
-        <lastmod>2020-10-09T15:20:19+02:00</lastmod>
-    
-        <changefreq>daily</changefreq>
-    
-        <priority>0.5</priority>
-    </url>
-    <url>
-        <loc>https://www.atypikhouse-projet.ovh/login</loc>
-    
-    
-        <lastmod>2020-10-09T15:20:19+02:00</lastmod>
-    
-        <changefreq>daily</changefreq>
-    
-        <priority>0.5</priority>
-    </url>
-    <url>
-        <loc>https://www.atypikhouse-projet.ovh/logout</loc>
-    
-    
-        <lastmod>2020-10-09T15:20:19+02:00</lastmod>
-    
-        <changefreq>daily</changefreq>
-    
-        <priority>0.5</priority>
-    </url>
-    <url>
-        <loc>https://www.atypikhouse-projet.ovh/mentions_legales</loc>
-    
-    
-        <lastmod>2020-10-09T15:20:19+02:00</lastmod>
-    
-        <changefreq>daily</changefreq>
-    
-        <priority>0.5</priority>
-    </url>
-    <url>
-        <loc>https://www.atypikhouse-projet.ovh/messages</loc>
-    
-    
-        <lastmod>2020-10-09T15:20:19+02:00</lastmod>
-    
-        <changefreq>daily</changefreq>
-    
-        <priority>0.5</priority>
-    </url>
-    <url>
-        <loc>https://www.atypikhouse-projet.ovh/note</loc>
-    
-    
-        <lastmod>2020-10-09T15:20:19+02:00</lastmod>
-    
-        <changefreq>daily</changefreq>
-    
-        <priority>0.5</priority>
-    </url>
-    <url>
-        <loc>https://www.atypikhouse-projet.ovh/password/email</loc>
-    
-    
-        <lastmod>2020-10-09T15:20:19+02:00</lastmod>
-    
-        <changefreq>daily</changefreq>
-    
-        <priority>0.5</priority>
-    </url>
-    <url>
-        <loc>https://www.atypikhouse-projet.ovh/password/reset</loc>
-    
-    
-        <lastmod>2020-10-09T15:20:19+02:00</lastmod>
-    
-        <changefreq>daily</changefreq>
-    
-        <priority>0.5</priority>
-    </url>
-    <url>
-        <loc>https://www.atypikhouse-projet.ovh/password/reset</loc>
-    
-    
-        <lastmod>2020-10-09T15:20:19+02:00</lastmod>
-    
-        <changefreq>daily</changefreq>
-    
-        <priority>0.5</priority>
-    </url>
-    <url>
-        <loc>https://www.atypikhouse-projet.ovh/politique_de_confidentialite</loc>
-    
-    
-        <lastmod>2020-10-09T15:20:19+02:00</lastmod>
-    
-        <changefreq>daily</changefreq>
-    
-        <priority>0.5</priority>
-    </url>
-    <url>
-        <loc>https://www.atypikhouse-projet.ovh/profile/1</loc>
-    
-    
-        <lastmod>2020-10-09T15:20:19+02:00</lastmod>
+        <lastmod>2021-05-24T17:22:48+02:00</lastmod>
     
         <changefreq>daily</changefreq>
     
         <priority>1</priority>
     </url>
     <url>
-        <loc>https://www.atypikhouse-projet.ovh/profile/2</loc>
+        <loc>http://127.0.0.1:8000/user/showHouse/2</loc>
     
     
-        <lastmod>2020-10-09T15:20:19+02:00</lastmod>
-    
-        <changefreq>daily</changefreq>
-    
-        <priority>1</priority>
-    </url>
-    <url>
-        <loc>https://www.atypikhouse-projet.ovh/register</loc>
-    
-    
-        <lastmod>2020-10-09T15:20:19+02:00</lastmod>
-    
-        <changefreq>daily</changefreq>
-    
-        <priority>0.5</priority>
-    </url>
-    <url>
-        <loc>https://www.atypikhouse-projet.ovh/register</loc>
-    
-    
-        <lastmod>2020-10-09T15:20:19+02:00</lastmod>
-    
-        <changefreq>daily</changefreq>
-    
-        <priority>0.5</priority>
-    </url>
-    <url>
-        <loc>https://www.atypikhouse-projet.ovh/reservations</loc>
-    
-    
-        <lastmod>2020-10-09T15:20:19+02:00</lastmod>
-    
-        <changefreq>daily</changefreq>
-    
-        <priority>0.5</priority>
-    </url>
-    <url>
-        <loc>https://www.atypikhouse-projet.ovh/search</loc>
-    
-    
-        <lastmod>2020-10-09T15:20:19+02:00</lastmod>
-    
-        <changefreq>daily</changefreq>
-    
-        <priority>0.5</priority>
-    </url>
-    <url>
-        <loc>https://www.atypikhouse-projet.ovh/sendMessage</loc>
-    
-    
-        <lastmod>2020-10-09T15:20:19+02:00</lastmod>
-    
-        <changefreq>daily</changefreq>
-    
-        <priority>0.5</priority>
-    </url>
-    <url>
-        <loc>https://www.atypikhouse-projet.ovh/sendmail</loc>
-    
-    
-        <lastmod>2020-10-09T15:20:19+02:00</lastmod>
-    
-        <changefreq>daily</changefreq>
-    
-        <priority>0.5</priority>
-    </url>
-    <url>
-        <loc>https://www.atypikhouse-projet.ovh/showhistoriques/1</loc>
-    
-    
-        <lastmod>2020-10-09T15:20:19+02:00</lastmod>
+        <lastmod>2021-05-24T17:22:48+02:00</lastmod>
     
         <changefreq>daily</changefreq>
     
         <priority>1</priority>
     </url>
     <url>
-        <loc>https://www.atypikhouse-projet.ovh/showhistoriques/2</loc>
+        <loc>http://127.0.0.1:8000/user/showHouse/3</loc>
     
     
-        <lastmod>2020-10-09T15:20:19+02:00</lastmod>
-    
-        <changefreq>daily</changefreq>
-    
-        <priority>1</priority>
-    </url>
-    <url>
-        <loc>https://www.atypikhouse-projet.ovh/showreservations/3</loc>
-    
-    
-        <lastmod>2020-10-09T15:20:19+02:00</lastmod>
+        <lastmod>2021-05-24T17:22:48+02:00</lastmod>
     
         <changefreq>daily</changefreq>
     
         <priority>1</priority>
     </url>
     <url>
-        <loc>https://www.atypikhouse-projet.ovh/user/editHouse/1</loc>
+        <loc>http://127.0.0.1:8000/user/showHouse/4</loc>
     
     
-        <lastmod>2020-10-09T15:20:19+02:00</lastmod>
-    
-        <changefreq>daily</changefreq>
-    
-        <priority>1</priority>
-    </url>
-    <url>
-        <loc>https://www.atypikhouse-projet.ovh/user/editHouse/2</loc>
-    
-    
-        <lastmod>2020-10-09T15:20:19+02:00</lastmod>
-    
-        <changefreq>daily</changefreq>
-    
-        <priority>1</priority>
-    </url>
-    <url>
-        <loc>https://www.atypikhouse-projet.ovh/user/editHouse/3</loc>
-    
-    
-        <lastmod>2020-10-09T15:20:19+02:00</lastmod>
-    
-        <changefreq>daily</changefreq>
-    
-        <priority>1</priority>
-    </url>
-    <url>
-        <loc>https://www.atypikhouse-projet.ovh/user/editHouse/4</loc>
-    
-    
-        <lastmod>2020-10-09T15:20:19+02:00</lastmod>
-    
-        <changefreq>daily</changefreq>
-    
-        <priority>1</priority>
-    </url>
-    <url>
-        <loc>https://www.atypikhouse-projet.ovh/user/editHouse/5</loc>
-    
-    
-        <lastmod>2020-10-09T15:20:19+02:00</lastmod>
-    
-        <changefreq>daily</changefreq>
-    
-        <priority>1</priority>
-    </url>
-    <url>
-        <loc>https://www.atypikhouse-projet.ovh/user/editHouse/6</loc>
-    
-    
-        <lastmod>2020-10-09T15:20:19+02:00</lastmod>
-    
-        <changefreq>daily</changefreq>
-    
-        <priority>1</priority>
-    </url>
-    <url>
-        <loc>https://www.atypikhouse-projet.ovh/user/historiques</loc>
-    
-    
-        <lastmod>2020-10-09T15:20:19+02:00</lastmod>
-    
-        <changefreq>daily</changefreq>
-    
-        <priority>0.5</priority>
-    </url>
-    <url>
-        <loc>https://www.atypikhouse-projet.ovh/user/houses</loc>
-    
-    
-        <lastmod>2020-10-09T15:20:19+02:00</lastmod>
-    
-        <changefreq>daily</changefreq>
-    
-        <priority>0.5</priority>
-    </url>
-    <url>
-        <loc>https://www.atypikhouse-projet.ovh/user/reservations</loc>
-    
-    
-        <lastmod>2020-10-09T15:20:19+02:00</lastmod>
-    
-        <changefreq>daily</changefreq>
-    
-        <priority>0.5</priority>
-    </url>
-    <url>
-        <loc>https://www.atypikhouse-projet.ovh/user/reservationsannulees</loc>
-    
-    
-        <lastmod>2020-10-09T15:20:19+02:00</lastmod>
-    
-        <changefreq>daily</changefreq>
-    
-        <priority>0.5</priority>
-    </url>
-    <url>
-        <loc>https://www.atypikhouse-projet.ovh/user/showHouse/1</loc>
-    
-    
-        <lastmod>2020-10-09T15:20:19+02:00</lastmod>
-    
-        <changefreq>daily</changefreq>
-    
-        <priority>1</priority>
-    </url>
-    <url>
-        <loc>https://www.atypikhouse-projet.ovh/user/showHouse/2</loc>
-    
-    
-        <lastmod>2020-10-09T15:20:19+02:00</lastmod>
-    
-        <changefreq>daily</changefreq>
-    
-        <priority>1</priority>
-    </url>
-    <url>
-        <loc>https://www.atypikhouse-projet.ovh/user/showHouse/3</loc>
-    
-    
-        <lastmod>2020-10-09T15:20:19+02:00</lastmod>
-    
-        <changefreq>daily</changefreq>
-    
-        <priority>1</priority>
-    </url>
-    <url>
-        <loc>https://www.atypikhouse-projet.ovh/user/showhebergement/1</loc>
-    
-    
-        <lastmod>2020-10-09T15:20:19+02:00</lastmod>
-    
-        <changefreq>daily</changefreq>
-    
-        <priority>1</priority>
-    </url>
-    <url>
-        <loc>https://www.atypikhouse-projet.ovh/user/showhebergement/2</loc>
-    
-    
-        <lastmod>2020-10-09T15:20:19+02:00</lastmod>
-    
-        <changefreq>daily</changefreq>
-    
-        <priority>1</priority>
-    </url>
-    <url>
-        <loc>https://www.atypikhouse-projet.ovh/user/showhebergement/3</loc>
-    
-    
-        <lastmod>2020-10-09T15:20:19+02:00</lastmod>
-    
-        <changefreq>daily</changefreq>
-    
-        <priority>1</priority>
-    </url>
-    <url>
-        <loc>https://www.atypikhouse-projet.ovh/user/showhebergement/4</loc>
-    
-    
-        <lastmod>2020-10-09T15:20:19+02:00</lastmod>
-    
-        <changefreq>daily</changefreq>
-    
-        <priority>1</priority>
-    </url>
-    <url>
-        <loc>https://www.atypikhouse-projet.ovh/user/showhebergement/5</loc>
-    
-    
-        <lastmod>2020-10-09T15:20:19+02:00</lastmod>
-    
-        <changefreq>daily</changefreq>
-    
-        <priority>1</priority>
-    </url>
-    <url>
-        <loc>https://www.atypikhouse-projet.ovh/user/showhebergement/6</loc>
-    
-    
-        <lastmod>2020-10-09T15:20:19+02:00</lastmod>
-    
-        <changefreq>daily</changefreq>
-    
-        <priority>1</priority>
-    </url>
-    <url>
-        <loc>https://www.atypikhouse-projet.ovh/users/deleteHouse/1</loc>
-    
-    
-        <lastmod>2020-10-09T15:20:19+02:00</lastmod>
-    
-        <changefreq>daily</changefreq>
-    
-        <priority>1</priority>
-    </url>
-    <url>
-        <loc>https://www.atypikhouse-projet.ovh/users/deleteHouse/2</loc>
-    
-    
-        <lastmod>2020-10-09T15:20:19+02:00</lastmod>
-    
-        <changefreq>daily</changefreq>
-    
-        <priority>1</priority>
-    </url>
-    <url>
-        <loc>https://www.atypikhouse-projet.ovh/users/deleteHouse/3</loc>
-    
-    
-        <lastmod>2020-10-09T15:20:19+02:00</lastmod>
-    
-        <changefreq>daily</changefreq>
-    
-        <priority>1</priority>
-    </url>
-    <url>
-        <loc>https://www.atypikhouse-projet.ovh/users/deleteHouse/4</loc>
-    
-    
-        <lastmod>2020-10-09T15:20:19+02:00</lastmod>
-    
-        <changefreq>daily</changefreq>
-    
-        <priority>1</priority>
-    </url>
-    <url>
-        <loc>https://www.atypikhouse-projet.ovh/users/deleteHouse/5</loc>
-    
-    
-        <lastmod>2020-10-09T15:20:19+02:00</lastmod>
-    
-        <changefreq>daily</changefreq>
-    
-        <priority>1</priority>
-    </url>
-    <url>
-        <loc>https://www.atypikhouse-projet.ovh/users/deleteHouse/6</loc>
-    
-    
-        <lastmod>2020-10-09T15:20:19+02:00</lastmod>
-    
-        <changefreq>daily</changefreq>
-    
-        <priority>1</priority>
-    </url>
-    <url>
-        <loc>https://www.atypikhouse-projet.ovh/users/updateHouse/1</loc>
-    
-    
-        <lastmod>2020-10-09T15:20:19+02:00</lastmod>
-    
-        <changefreq>daily</changefreq>
-    
-        <priority>1</priority>
-    </url>
-    <url>
-        <loc>https://www.atypikhouse-projet.ovh/users/updateHouse/2</loc>
-    
-    
-        <lastmod>2020-10-09T15:20:19+02:00</lastmod>
-    
-        <changefreq>daily</changefreq>
-    
-        <priority>1</priority>
-    </url>
-    <url>
-        <loc>https://www.atypikhouse-projet.ovh/users/updateHouse/3</loc>
-    
-    
-        <lastmod>2020-10-09T15:20:19+02:00</lastmod>
-    
-        <changefreq>daily</changefreq>
-    
-        <priority>1</priority>
-    </url>
-    <url>
-        <loc>https://www.atypikhouse-projet.ovh/users/updateHouse/4</loc>
-    
-    
-        <lastmod>2020-10-09T15:20:19+02:00</lastmod>
-    
-        <changefreq>daily</changefreq>
-    
-        <priority>1</priority>
-    </url>
-    <url>
-        <loc>https://www.atypikhouse-projet.ovh/users/updateHouse/5</loc>
-    
-    
-        <lastmod>2020-10-09T15:20:19+02:00</lastmod>
-    
-        <changefreq>daily</changefreq>
-    
-        <priority>1</priority>
-    </url>
-    <url>
-        <loc>https://www.atypikhouse-projet.ovh/users/updateHouse/6</loc>
-    
-    
-        <lastmod>2020-10-09T15:20:19+02:00</lastmod>
+        <lastmod>2021-05-24T17:22:48+02:00</lastmod>
     
         <changefreq>daily</changefreq>
     

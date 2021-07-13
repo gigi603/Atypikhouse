@@ -27,12 +27,13 @@ class EditHouseRequest extends FormRequest
             'title' => 'required|max:50|regex:/^[\pL\s\-\']+$/u',
             'category_id' => 'required|required_if:category_id,0|numeric',
             'nb_personnes' => 'required|numeric|between:1,16',
+            'phone' =>'required|phone:FR,BE,IT,ES,DE',
             'price' => 'required|regex:/^[0-9]+$/u|max:4',
             'adresse' => 'required|regex:/^[0-9\pL\s\-\,\']+$/u|max:80',
             'photo' => 'image|mimes:jpg,png,jpeg|max:20000',
             'start_date' => 'required|date_format:d/m/Y',
             'end_date' => 'required|date_format:d/m/Y',
-            'description' => 'required|max:3000|regex:/^[0-9\pL\s\d\'\’\«»\-\_\€²\()\.\,\@\?\!\;\"\/\+\=\:\ ]*$/u',
+            'description' => 'required|max:3000|regex:/^[0-9\pL\s\d\'\’\«»\^\-\%\_\€²\()\.\,\@\?\!\;\"\/\+\=\:\ ]*$/u',
             // 'propriete' => 'required|max:500'
         ];
     }
@@ -57,6 +58,8 @@ class EditHouseRequest extends FormRequest
             'adresse.required' => 'Veuillez saisir votre adresse',
             'adresse.max' => 'Votre adresse ne doit pas dépasser 80 caractères',
             'adresse.regex' => 'Votre adresse ne doit pas contenir de caractères spéciaux',
+            'phone.required' => 'Veuillez saisir votre numéro de téléphone',
+            'phone.phone' => 'Veuillez saisir un numéro de telephone valide',
             'price.required' => 'Veuillez saisir le prix par nuit',
             'price.regex' => 'Veuillez saisir uniquement des chiffres',
             'price.max' => 'Vous ne pouvez pas mettre un montant de plus de 4 chiffres',

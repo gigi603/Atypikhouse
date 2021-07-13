@@ -13,20 +13,26 @@
         </div>
     @endif
     <div class="card-header">
-        <i class="fas fa-home"></i>
-    <h1 style="font-size:20px;">
-        Liste des catégories d'annonces</h1>
+        <h1 style="font-size:20px;">Liste des catégories d'annonces</h1>
     </div>
     <div class="card-body">
-        <div class="col-md-12 text-center">
+        <div class="text-center">
             <form class="form-group{{ $errors->has('category') ? ' has-error' : '' }}" method="POST" action="{{route('admin.register_category')}}" enctype="multipart/form-data">
-                <input id="name" type="text" class="form-control" name="category" autofocus value="{{ old('category')}}">
-                @if ($errors->has('category'))
-                    <span class="help-block">
-                        <strong>{{ $errors->first('category') }}</strong>
-                    </span>
-                @endif
-                <button class="btn btn-primary btn-add-category">Ajouter une catégorie</button>
+                <div class="row">
+                    <div class="col-md-3">
+                        <label class="control-label">Catégorie</label>
+                    </div>
+                    <div class="col-md-5">
+                        <input id="name" type="text" class="form-control" name="category" autofocus value="{{ old('category')}}">
+                        @if ($errors->has('category'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('category') }}</strong>
+                            </span>
+                        @endif
+                    </div>
+                    <div class="col-md-4 text-left">
+                        <button class="btn btn-primary btn-add-category">Ajouter une catégorie</button>
+                    </div>
             </form>
         </div>
         <div class="table-responsive">
@@ -42,14 +48,20 @@
                         <tr>
                             <td>{{$category->category}}</td>
                             <td>
-                                <a href="{{ route('admin.proprietes_category', $category->id)}}" class="btn btn-warning"> propriétés</a>
-                                <a href="{{ route('admin.enable_category', $category->id) }}" class="btn btn-success btn-color">Activer</a>
-                                <a href="{{ route('admin.disable_category', $category->id) }}" class="delete btn btn-danger">Désactiver</a>
+                                <a href="{{ route('admin.proprietes_category', $category->id)}}" class="btn btn-warning"> équipements</a>
+                                <a href="{{ route('admin.delete_category', $category->id) }}" class="delete btn btn-danger">Supprimer</a>
                             </td>
                         </tr>
                     </tbody>
                 @endforeach
             </table>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <span>{{ $categories->links() }}</span>
+                    </div>
+                </div>
+            </div>  
         </div>
     </div>
 </div>    

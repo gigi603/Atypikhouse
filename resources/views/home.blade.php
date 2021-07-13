@@ -1,19 +1,238 @@
 @extends('layouts.app')
 @section('title', "Atypikhouse offre les meilleurs espaces atypiques en europe")
 @section('meta_description', "Atypikhouse contient des espaces atypiques un peu partout en europe notamment en france à grenoble, seine et marne, vous pouvez réserver à tout moment et profitez de nos promotions pouvant aller jusqu'à 60% de réduction à ne pas manquer")
+@section('styles')
+    <link href="{{ asset('css/jquery-ui.min.css') }}" rel="stylesheet">
+    <style>
+        @font-face {
+            font-family: 'Comfortaa';
+            src: url('/fonts/Comfortaa/static/Comfortaa-Bold.ttf') format('truetype');
+        }
+        .banner {
+            background: url("/img/home.jpg") no-repeat bottom scroll;
+            background-size: cover;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            display: table;
+            width: 100%;
+            max-width: 100%;
+        }
+        .cadre-home {
+            background-color: #FFF;
+            padding: 20px 0;
+            border-radius: 4px !important;
+            margin: 18.6vh 0;
+        }
+        .intro-body {
+            display: table-cell;
+            vertical-align: middle;
+            text-align: center;
+        }
+        .title-intro {
+            color: #000;
+            font-size: 30px;
+        }
+        .label-custom {
+            color: black;
+            line-height: 1.4;
+            letter-spacing: 1px;
+            margin: 0;
+        }
+        .form-horizontal .form-group {
+            margin: 0;
+            padding: 10px;
+        }
+        .cadre {
+            background-color: #FFF;
+            padding: 20px 0;
+            border-radius: 4px !important;
+        }
+        .reservation-search {
+            display:block;
+        }
+        .field-home {
+            width: 200px;
+            height: 50px;
+            border-radius: 5px;
+            font-size: 15px;
+            margin-bottom: 20px !important;
+        }
+        .date-field-home {
+            width: 50% !important;
+            height: 50px;
+            border-radius: 5px;
+            margin-bottom: 20px !important;
+        }
+        .btn-principal-white {
+            background-color: #FFF;
+            color: #000 !important;
+            padding: 12px 24px;
+            font-size: 18px;
+            border-radius: 30px;
+            text-align: center;
+            border-color: #FFF;
+        }
+
+        .btn-principal-white:hover {
+            background-color: #DCDCDC;
+            color: #000 !important;
+            padding: 12px 24px;
+            font-size: 18px;
+            border-radius: 30px;
+            text-align: center;
+            border-color: #DCDCDC;
+        }
+        .btn-principal {
+            background-color: #008802;
+            /*background-color: #3f4b30;*/
+            color: #FFFBFC !important;
+            border-color: #008802;
+            padding: 12px 24px;
+            font-size: 18px;
+            border-radius: 30px;
+            margin-top: 5vh;
+            transition: transform .2s;
+        }
+        .btn-principal:hover {
+            background-color: #007A02;
+            color: #FFFBFC;
+            border-color: #007A02;
+            transform: scale(1.1);
+        }
+        .hebergement-title {
+            text-align: center;
+            margin: 60px;
+            color: #FFF !important;
+            font-family: 'Comfortaa', cursive;
+        }
+        .background-houses {
+            background-color: #3f4b30;
+        }
+        .card-houses {
+            position: relative;
+            background-color: #fff;
+            transition: transform .2s;
+            margin: 0 auto;
+            margin-bottom: 40px;
+            width: 350px;
+        }
+        .card-block-home {
+            padding: 15px 15px;
+            background-color: #000;
+        }
+
+        
+        @media screen and (max-width: 765px) {
+            .vertical-center {
+                position: relative;
+                text-align: center;
+                margin-bottom: 40px;
+            }
+            .col-md-3 {
+                width: 100%;
+            }
+        }
+
+        @media screen and (min-width: 765px) and (max-width: 1200px) {
+            .vertical-center {
+                position: relative;
+                margin-top: 150px;
+                margin-bottom: 8%;
+                text-align: center;
+            }
+            .col-md-3 {
+                width: 50%;
+            }
+        }
+
+        @media screen and (min-width: 1200px) and (max-width: 1480px){
+            .vertical-center {
+                position: relative;
+                text-align: center;
+                margin: 0 auto;
+                margin-bottom: 40px;
+                width: 100% !important;
+            }
+            .col-lg-3 {
+                width: 33%;
+            }
+        }
+
+        @media screen and (min-width: 1480px) {
+            .vertical-center {
+                position: relative;
+                margin-top: 150px;
+                /*margin-bottom: 8%;*/
+                text-align: center;
+            }
+        }
+        .img-houses-list {
+            display: block;
+            width: 100%;
+            height: 250px;
+            background-color: gray;
+        }
+        #block_home_2 {
+            position: relative;
+            background-color: white;
+            color: #3f4b30 !important;
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: space-around;
+            padding: 5vh 0;
+        }
+        .block_home_2_child {
+            width: 350px;
+            text-align: center;
+            margin: 0 20px;
+            padding: 20px;
+        }
+        .block_home_2_child i,
+        .block_home_2_child h2,
+        .block_home_2_child p {
+            margin: 15px 0;
+            color: #3f4b30 !important;
+        }
+        .nature_yours {
+            background-color: #FFF;
+            color: #000;
+            font-family: 'Open Sans', sans-serif;
+            font-family: 'Comfortaa', cursive;
+            font-size: 60px;
+            padding-top: 5%;
+        }
+        #hebergement-title{
+            font-family: 'Comfortaa', cursive;
+        }
+        .voyage {
+            border-radius: 20px;
+            width:100%;
+        }
+        .avantage-font {
+            font-family: 'Comfortaa', cursive;
+        }
+        .become_hote {
+            background-color: #FFF;
+            color: #000;
+            font-family: 'Comfortaa', cursive;
+            font-size: 60px;
+            padding: 10% 0 5% 0;  
+        }
+    </style>
+@endsection
 @section('content')
     <div class="container-fluid banner">
         <div class="intro-body">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-lg-12 col-md-12 col-sm-12">
-                        <div class="input-group reservation-search">
-                            <div class="row">
-                                <div class="col-lg-4 col-md-4 col-sm-12 cadre">
-                                    <h1 class="title title-intro">Atypikhouse offre les meilleurs espaces atypiques en Europe !</h1>
-                                    <div class="form-group reservation-search">
-                                        @include('search',['url'=>'search','link'=>'search'])
-                                    </div>
+                    <div class="input-group reservation-search">
+                        <form class="form-horizontal" method="get" action="{{url('search')}}" enctype="multipart/form-data">
+                            {{ csrf_field() }}
+                            <div class="col-lg-4 col-md-4 col-sm-12 cadre-home">
+                                <h1 class="title title-intro">Atypikhouse offre les meilleurs espaces atypiques en Europe !</h1>
+                                <div class="form-group reservation-search">
+                                    @include('search',['url'=>'search','link'=>'search'])
                                 </div>
                             </div>
                         </div>
@@ -21,48 +240,90 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>    
+    <div class="container-fluid nature_yours">
+        <div class="row">
+            <div class="col-md-6 text-center">
+                <h2 style="font-size:50px;margin-top:10vh;">La nature vous appartient</h2>
+                <h2 style="margin-top:5%;">Parcourez le monde et explorez des endroits inconnus</h2>
+                <a href="{{ route('houses') }}" class="btn btn-principal" style="margin:0 auto;">Réservez maintenant !</a>
 
-    <div id="block_home_2" role="avantages">
-        <div id="tranquilite" class="block_home_2_child">
-            <i class="fas fa-procedures fa-5x"></i>
+            </div>
+            <div class="col-md-5">
+                <img data-src="{{ asset('img/voyage_demo.jpg')}}" class="voyage" alt="voyage-atypikhouse"/>
+            </div>
+        </div>
+    </div>
+    <div id="block_home_2" role="avantages" class="avantage-font">
+        <div class="block_home_2_child">
             <h2>Tranquilité</h2>
             <p>Rester au calme pendant votre séjour dans nos habitats insolite. Nos cabanes et yourtes sauront combler vos désirs les plus variés</p>
         </div>
-        <div id="depaysement" class="block_home_2_child">
-            <i class="fab fa-angellist fa-5x"></i>
+        <div class="block_home_2_child">
             <h2>Dépaysement</h2>
             <p>Sortez de la routine quotidienne et venez vivre des expérience unique dans des décors à couper le souffle</p>
         </div>
-        <div id="money" class="block_home_2_child">
-            <i class="far fa-money-bill-alt fa-5x"></i>
+        <div class="block_home_2_child">
             <h2>Economie</h2>
             <p>Profitez de promotions toute l'année sur de nombreuses locations atypique tels que les cabanes, les cocons pour amoureux et bien d'autres. </p>
         </div>
     </div>
-    <div class="container-fluid" role="annonces">
-        <h2 id="hebergements">Nos hébergements</h3>
+    
+    <div class="container-fluid background-houses" role="annonces">
+        <h2 class="hebergement-title">Nos hebergements atypikhouse sont à votre disposition</h2>
         <div class="row">
-            @foreach($houses as $house)
-                @if($house->statut == "Validé")
-                    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">         
-                        <div class="card-houses h-100">       
-                            <a href="{{action('UsersController@showHouse', $house['id'])}}"><img class="img-houses-list" src="{{ asset('img/houses/'.$house->photo) }}" alt="Hébergement insolite - {{$house->title}}"></a>
-                            <div class="card-block">
-                                <div class="card-body">
-                                    <h3 class="card-title title-houses"><a href="{{action('UsersController@showHouse', $house->id)}}"> {{$house->title}} </a></h3>
-                                </div>
-                                <p class="price"> {{$house->price}}€ / nuit</p>
-                            </div>
-                        </div>
+            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 text-center">         
+                <div class="card-houses">       
+                    <img class="img-houses-list" data-src="{{ asset('img/maison_foret.jpg') }}" alt="Hébergement insolite - maison_foret">
+                    <div class="card-block-home">
+                        <a href="{{ route('cabanes') }}" class="btn btn-principal-white" aria-label="Accéder aux cabanes Atypikhouse"> Voir nos cabanes </a>
                     </div>
-                @endif  
-            @endforeach
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 text-center">         
+                <div class="card-houses">       
+                    <img class="img-houses-list" data-src="{{ asset('img/igloo_demo.jpg') }}" alt="Hébergement insolite - igloo">
+                    <div class="card-block-home">
+                        <a href="{{ route('igloos') }}" class="btn btn-principal-white" aria-label="Accéder aux igloos Atypikhouse"> Voir nos igloos </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 text-center">         
+                <div class="card-houses">       
+                    <img class="img-houses-list" data-src="{{ asset('img/yourte_demo.jpg') }}" alt="Hébergement insolite - yourte">
+                    <div class="card-block-home">
+                        <a href="{{ route('yourtes') }}" class="btn btn-principal-white" aria-label="Accéder aux yourtes Atypikhouse"> Voir nos yourtes </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 vertical-center"> 
+                <a href="{{ route('houses') }}" class="btn btn-principal-white" aria-label="Voir nos hebergements atypikhouse">Voir nos hebergements atypikhouse</a>
+            </div>
         </div>
     </div>
-    @section('script')
-        <script src="{{ asset('js/jquery.js') }}"></script>
-        <script src="{{ asset('js/jquery-ui.min.js') }}"></script>
-        <script src="{{ asset('js/calendarHome.js') }}"></script>
-    @endsection
+    <div class="container-fluid become_hote" id="become_hote">
+        <div class="row">
+            <div class="col-md-6 text-center">
+                <h3 class="text-center" style="font-size:50px;margin-top:10vh;">Partagez votre logement sur Atypikhouse</h3>
+                <h3 class="text-center" style="margin-top: 5%;">Rejoignez une communauté dynamique d'hôtes, créez des expériences mémorables pour les voyageurs et gagnez de l'argent pour vivre vos passions.</h3>
+                    @if(Auth::check())
+                        <a href="{{ route('house.create_step1') }}" class="btn btn-principal" style="margin:0 auto;">Devenir hôte</a>
+                    @else
+                        <a href="{{ route('register') }}" class="btn btn-principal" style="margin:0 auto;">Devenir hôte</a>
+                    @endif
+            </div>
+            <div class="col-md-5">
+                <img data-src="{{ asset('img/proprietaire.jpg')}}" class="voyage" alt="proprietaire-atypikhouse"/>
+            </div>
+        </div>
+    </div>
+@endsection
+@section('script')
+    <script>
+        $('#hote_link').click(function() {
+            $('html, body').animate({
+                scrollTop: $("#become_hote").offset().top
+            }, 1000);
+        });
+    </script>
 @endsection

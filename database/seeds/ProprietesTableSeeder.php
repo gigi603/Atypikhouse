@@ -14,50 +14,62 @@ class ProprietesTableSeeder extends Seeder
         $proprietes = [
             [
                 'propriete' => 'wifi',
+                'statut' => 1,
                 'category_id' => 1
             ],
             [
                 'propriete' => 'wifi',
+                'statut' => 1,
                 'category_id' => 2
             ],
             [
                 'propriete' => 'wifi',
+                'statut' => 1,
                 'category_id' => 3
             ],
             [
                 'propriete' => 'wifi',
+                'statut' => 1,
                 'category_id' => 4
             ],
             [
                 'propriete' => 'wifi',
+                'statut' => 1,
                 'category_id' => 5
             ],
             [
                 'propriete' => 'wifi',
+                'statut' => 1,
                 'category_id' => 6
             ],
             [
                 'propriete' => 'chauffage',
+                'statut' => 1,
                 'category_id' => 1
             ],
             [
                 'propriete' => 'chauffage',
+                'statut' => 1,
                 'category_id' => 2
             ],
             [
                 'propriete' => 'chauffage',
+                'statut' => 1,
                 'category_id' => 3
             ],
             [
                 'propriete' => 'chauffage',
+                'statut' => 1,
                 'category_id' => 4
             ],
             [
                 'propriete' => 'chauffage',
+                'statut' => 1,
                 'category_id' => 5
             ],
             [
                 'propriete' => 'chauffage',
+                'statut' => 1,
                 'category_id' => 6
             ]
         ];

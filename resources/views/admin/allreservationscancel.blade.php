@@ -9,9 +9,9 @@
             </div>
         @endif
         <div class="card-header">
-        <h1 style="font-size:20px;">
-            <i class="fas fa-table">Réservation annulées</i>
-        </h1>
+            <h1 style="font-size:20px;">
+                Liste des réservations annulées
+            </h1>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -22,7 +22,7 @@
                             <th>Titre</th>
                             <th>Date de début</th>
                             <th>Date de fin</th>
-                            <th>Annonceur</th>
+                            <th>Client</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -30,7 +30,7 @@
                         <tbody>
                             <tr>
                                 <td style="width:250px"><img src="{{ asset('img/houses/'.$reservation->house->photo) }}" class="photo-size"/></td>
-                                <td>{{$reservation->house->title}}</td>
+                                <td>{{$reservation->title}}</td>
                                 <td><?php \Date::setLocale('fr'); $startdate = Date::parse($reservation->start_date)->format('l j F Y'); echo($startdate);?></td>
                                 <td><?php \Date::setLocale('fr'); $enddate = Date::parse($reservation->end_date)->format('l j F Y'); echo($enddate);?></td>
                                 <td>{{$reservation->user->prenom}} {{$reservation->user->nom}}</td>
@@ -38,7 +38,14 @@
                             </tr>
                         </tbody>
                     @endforeach
-                </table>         
+                </table>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <span>{{ $reservations->links() }}</span>
+                        </div>
+                    </div>
+                </div>         
             </div>
         </div>
     </div>

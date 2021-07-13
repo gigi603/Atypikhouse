@@ -17,7 +17,7 @@ class CreatePostsTable extends Migration
             $table->increments('id'); 
             $table->string('name'); 
             $table->string('email'); 
-            $table->string('content');
+            $table->longText('content');
             $table->string('type');
             $table->integer('house_id');
             $table->integer('reservation_id');

@@ -1,5 +1,17 @@
 /* Infos : Commenter bien votre code afin qu'il soit plus lisible, merci. */
 /* Générale */
+
+/* Font utilisés */
+@font-face {
+	font-family: "Archivo";
+	src: url('/fonts/Archivo/Archivo-Regular.ttf') format('truetype'),
+}
+/* Sur la page d'accueil seulement */
+@font-face {
+	font-family: 'Comfortaa';
+	src: url('/fonts/Comfortaa/static/Comfortaa-Bold.ttf') format('truetype');
+}
+
 html, body {
 	font-family: 'Archivo', sans-serif;
 	margin: 0;
@@ -13,18 +25,30 @@ html, body {
 	min-height:100vh;
 }
 
+.alert-comment {
+	border: 1px solid lightgray !important;
+    border-radius: 4px !important;
+}
+
+.badge-success {
+	background-color: #3f4b30;
+	color: #FFF;
+}
+
 .margin-top {
 	margin-top: 10vh;
 }
 
 .block-size {
-	min-height: 68vh !important;
+	min-height: 80vh !important;
 }
 
 .block {
 	padding: 10px;
 	margin: 10vh;
+	min-height: 80vh;
 }
+
 
 .block h1, .block h2, .block h3 {
 	text-align: center;
@@ -58,6 +82,53 @@ html, body {
 
 .link-position {
 	padding-top: 10px;
+}
+
+/* Pagination */
+.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover {
+    z-index: 3;
+    color: #fff;
+    background-color: #3f4b30;
+    border-color: #3f4b30;
+    cursor: default;
+}
+
+.pagination>li>a, .pagination>li>span {
+    position: relative;
+    float: left;
+    padding: 6px 12px;
+    line-height: 1.6;
+    text-decoration: none;
+    color: #3f4b30;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    margin-left: -1px;
+}
+
+.pagination>li>a, .pagination>li>span {
+    position: relative;
+    float: left;
+    padding: 6px 12px;
+    line-height: 1.6;
+    text-decoration: none;
+    color: #3f4b30;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    margin-left: -1px;
+}
+
+.pagination>.disabled>a, .pagination>.disabled>a:focus, .pagination>.disabled>a:hover, .pagination>.disabled>span, .pagination>.disabled>span:focus, .pagination>.disabled>span:hover {
+    color: #3f4b30;
+    background-color: #fff;
+    border-color: #ddd;
+    cursor: not-allowed;
+}
+
+.pagination>li>a:focus, .pagination>li>a:hover, .pagination>li>span:focus, .pagination>li>span:hover {
+    z-index: 2;
+    color: #3f4b30;
+    background-color: #eee;
+    border-color: #ddd;
 }
 
 
@@ -109,14 +180,13 @@ html, body {
 	background-color: #FFF;
 	padding: 20px 0;
 	border-radius: 4px !important;
-	margin: 10vh 0;
 }
 .title-intro {
 	color: #000;
 	font-size: 30px;
 }
 
-.price {
+.bold {
 	font-weight: 500;
 	font-size: 22px;
 	color: #000;
@@ -151,7 +221,7 @@ p {
 	margin: 0;
 }
 
-.label-home {
+.label-custom {
 	color: black;
 	line-height: 1.4;
 	letter-spacing: 1px;
@@ -245,12 +315,21 @@ nav.navbar.navbar-default {
 
 /* HomePage */
 .banner {
-	background: url("/img/carte_monde_2.jpg") no-repeat center bottom scroll;
+	background: url("/img/home.jpg") no-repeat bottom scroll;
 	background-size: cover;
+	-webkit-background-size: cover;
+  	-moz-background-size: cover;
+ 	-o-background-size: cover;
 	display: table;
-	height: 100%;
     width: 100%;
     max-width: 100%;
+}
+
+.cadre-home {
+	background-color: #FFF;
+	padding: 20px 0;
+	border-radius: 4px !important;
+	margin: 18.6vh 0;
 }
 
 .intro-body {
@@ -263,18 +342,41 @@ nav.navbar.navbar-default {
 	width: 50%;
 }
 
-.btn-searchbar{
+.btn-principal-black{
+	background-color: #000;
+	color: #FFF;
+	border-color: #000;
+	padding: 12px 24px;
+	font-size: 18px;
+	border-radius: 30px;
+	text-align: center;
+	margin: 15vh 5vh 0 5vh;
+}
+
+.btn-principal-black:hover {
+	background-color: #FFF;
+	color: #000;
+	border-color: #000;
+}
+
+.btn-principal {
 	background-color: #3f4b30;
 	color: #FFFBFC;
 	border-color: #3f4b30;
 	padding: 12px 24px;
 	font-size: 18px;
+	border-radius: 30px;
+	margin-top: 5vh;
+	transition: transform .2s;
 }
-.btn-searchbar:hover {
+
+.btn-principal:hover {
 	background-color: #3f4b30;
 	color: #FFFBFC;
 	border-color: #3f4b30;
+	transform: scale(1.1);
 }
+
 .annonces-block {
 	margin-top: 120px;
 	min-height: 500px !important;
@@ -299,6 +401,13 @@ nav.navbar.navbar-default {
 	color: #000;
 }
 
+.hebergement-title {
+	text-align: center;
+	margin: 60px;
+	color: #FFF;
+	font-family: 'Comfortaa', cursive;
+}
+
 .list-category {
 	min-height: 500px !important;
 }
@@ -318,6 +427,10 @@ nav.navbar.navbar-default {
 	text-overflow: ellipsis;
 }
 
+.background-houses {
+	background-color: #3f4b30;
+}
+
 .card-houses {
 	position: relative;
 	background-color: #fff;
@@ -330,10 +443,24 @@ nav.navbar.navbar-default {
 	transform: scale(1.1);
 }
 
+.card-block-home {
+	padding: 15px 15px;
+	background-color: #000;
+}
+
+.card-title-home a{
+	color: #FFF;
+}
 .card-block {
 	padding: 15px 15px;
-	background-color: #FFFFFF;
+	background-color: #FFF;
 }
+
+.card-title a{
+	color: #000;
+}
+
+
 
 .card-center {
 	display: block;
@@ -358,11 +485,11 @@ nav.navbar.navbar-default {
 	display: block;
 	width: 100%;
 	height: 250px;
+	background-color: gray;
 }
 
 .img-house-detail {
-	width: 100%;
-	height: auto;
+	max-width: 100%;
 }
 
 .card-show {
@@ -381,9 +508,7 @@ nav.navbar.navbar-default {
 	padding: 15px 0px;
 }
 
-.card-title a{
-	color: #000;
-}
+
 
 .space-top {
 	padding-top: 30px;
@@ -391,6 +516,13 @@ nav.navbar.navbar-default {
 
 .space-top p {
 	padding:20px 20px;
+}
+
+.space-top span {
+	color: black;
+    line-height: 1.4;
+    letter-spacing: 1px;
+    margin: 0;
 }
 
 .breadcrumb {
@@ -420,6 +552,7 @@ nav.navbar.navbar-default {
 	display: flex;
 	flex-flow: row wrap;
 	justify-content: space-around;
+	padding: 5vh 0;
 }
 .block_home_2_child {
 	width: 350px;
@@ -435,39 +568,78 @@ nav.navbar.navbar-default {
 	color: #3f4b30;
 }
 
+.nature_yours {
+	background-color: #FFF;
+	color: #000;
+	font-family: 'Open Sans', sans-serif;
+	font-family: 'Comfortaa', cursive;
+	font-size: 60px;
+	padding-top: 5%;
+}
+
+#hebergement-title{
+	font-family: 'Comfortaa', cursive;
+}
+
+.voyage {
+	border-radius: 20px;
+	width:100%;
+}
+
+.avantage-title {
+	font-family: 'Comfortaa', cursive;
+}
+
+.become_hote {
+	background-color: #FFF;
+	color: #000;
+	font-family: 'Comfortaa', cursive;
+	font-size: 60px;
+	padding: 13% 0 5% 0;
+	
+}
+
+/* Telephone */
+
+.telephonefield-size {
+	width: 100% !important;
+}
+  
 
 /* Registration */
 
-
+.captcha-label {
+	visibility: hidden;
+}
 .notifications-panel {
 	min-height: 500px !important;
 }
 
 /* Footer */
 footer {
-	background-color: #fff;
+	background-color: #ededeb;
 	padding: 20px;
-	position:relative;
+	position: absolute;
 	bottom: 0;
 	width: 100%;
 	clear: both;
+	border: solid 1px #ededeb
 }
 
-.footer-absolute {
-	background-color: #fff;
+/* .footer-absolute {
+	background-color: #ededeb;
 	padding: 20px;
 	position:absolute !important;
 	bottom: 0;
 	width: 100%;
 	clear: both;
-}
+} */
 
 .img-cgv {
 	display: block;
 	margin: 0 auto;
 	width: 800px;
 }
-
 
 footer li {
 	list-style: none;
@@ -533,14 +705,34 @@ input[type=textarea] {
 	margin-top: 150px;
 }
 
-.rating {
-	float:left;
-	width: 250px;
+.note-title {
+	padding-left:10.5%;
 }
-.rating:hover {
-	float:left;
+
+.notes span {
+	color: black;
+}
+
+.moyenne-title {
+	padding-left: 22%;
+}
+
+#etoilesNoteGenerale {
+	pointer-events: none;
+}
+.star-size {
+	width: 30px;
+	height: 30px;
+}
+
+.rating span {
+	vertical-align: top;
+}
+
+.rating-comment:hover {
+	float: left;
 	width: 250px;
-	color: green;
+	color:#3f4b30;
 }
 
   /* :not(:checked) is a filter, so that browsers that don’t support :checked don’t 
@@ -548,20 +740,19 @@ input[type=textarea] {
 	it doesn’t make the test unnecessarily selective */
   .rating:not(:checked) > input {
 	  position:absolute;
-	  top:-9999px;
-	  clip:rect(0,0,0,0);
+	  visibility:hidden;
   }
 
   .rating:not(:checked) > label {
 	  float:right;
 	  width:1em;
-	  padding:0 .2em;
+	  padding:0;
 	  overflow:hidden;
 	  white-space:nowrap;
 	  cursor:pointer;
 	  font-size:150%;
-	  /* line-height:1.2; */
-	  color:#3f4b30;
+	  color: lightgray;
+	  /*background-color: #3f4b30;*/
   }
 
   .rating:not(:checked) > label:before {
@@ -572,12 +763,14 @@ input[type=textarea] {
 
   .rating > input:checked ~ label {
 	  color: #3f4b30;
+	  background-color: #FFF;
 	  
   }
 
   .rating:not(:checked) > label:hover,
   .rating:not(:checked) > label:hover ~ label {
-	  color: #ededeb;
+	  color: #3f4b30;
+	  background-color: #FFF;
 	  
   }
 

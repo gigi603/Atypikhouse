@@ -17,10 +17,6 @@ class CategoriesTableSeeder extends Seeder
                 'statut' => 1
             ],
             [
-                'category' => 'Autre',
-                'statut' => 1
-            ],
-            [
                 'category' => 'Cabane',
                 'statut' => 1
             ],
@@ -32,14 +28,6 @@ class CategoriesTableSeeder extends Seeder
                 'category' => 'Yourte',
                 'statut' => 1
             ],
-            [
-                'category' => 'Chateau - tour',
-                'statut' => 1
-            ],
-            [
-                'category' => 'Train',
-                'statut' => 1
-            ]
         ];
         DB::table('categories')->insert($categories);
     }

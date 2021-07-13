@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title', "Messages des clients")
+@section('title', "Liste des clients")
 @section('content')
     @if ($success = Session::get('success'))
         <div class="alert alert-success">
@@ -15,7 +15,7 @@
         <div class="card-header">
         <h1 style="font-size:20px;">
             <i class="fas fa-table"></i>
-            Utilisateur inscrit
+            Liste des clients
         </h1>
     </div>
         <div class="card-body">
@@ -34,7 +34,7 @@
                             <tr>
                                 <td>{{$post->name}}</td>
                                 <td>{{$post->email}}</td>
-                                <td><a href="{{route('admin.showmessages_user', $post->id)}}" class="btn btn-primary">Voir</a></td>
+                                <td><a href="{{route('admin.showmessages_user', $post->id)}}" class="btn btn-primary detail-new-user">Voir</a></td>
                             </tr>
                         </tbody>
                     @else
@@ -42,12 +42,19 @@
                             <tr>
                                 <td>{{$post->name}}</td>
                                 <td>{{$post->email}}</td>
-                                <td><a href="{{route('admin.showmessages_user', $post->id)}}" class="btn btn-primary">Voir</a></td>
+                                <td><a href="{{route('admin.showmessages_user', $post->id)}}" class="btn btn-primary detail-new-user">Voir</a></td>
                             </tr>
                         </tbody>
                     @endif
                 @endforeach
             </table>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <span>{{ $posts->links() }}</span>
+                    </div>
+                </div>
+            </div>  
             </div>
         </div>
         <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>

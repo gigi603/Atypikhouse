@@ -106,13 +106,13 @@ return [
         ],
         'nom' => [
             'required' => 'Vous devez saisir votre nom',
-            'min' => 'Votre nom ne doit pas moins de 1 caractère',
+            'min' => 'Votre nom ne doit pas moins de 2 caractère',
             'max' => 'Votre nom ne doit pas dépasser 100 caractères',
             'regex' => 'Votre nom ne doit pas contenir de chiffres ou caractère speciaux',
         ],
         'prenom' => [
             'required' => 'Vous devez saisir votre prenom',
-            'min' => 'Votre prénom ne doit pas moins de 1 caractère',
+            'min' => 'Votre prénom ne doit pas moins de 2 caractère',
             'max' => 'Votre prénom ne doit pas dépasser 100 caractères',
             'regex' => 'Votre prénom ne doit pas contenir de chiffres ou caractère speciaux'
         ],

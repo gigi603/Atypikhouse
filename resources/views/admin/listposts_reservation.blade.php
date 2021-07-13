@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title', "Messages des clients")
+@section('title', "Reservations en cours atypikhouse")
 @section('content')
     @if ($success = Session::get('success'))
         <div class="alert alert-success">
@@ -15,7 +15,7 @@
         <div class="card-header">
         <h1 style="font-size:20px;">
             <i class="fas fa-table"></i>
-            Réservations</h1></div>
+            Liste des réservations en cours</h1></div>
         <div class="card-body">
             <div class="table-responsive">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -30,19 +30,26 @@
                         <tbody style="background-color:#dff0d8">
                             <tr>
                                 <td>{{$post->name}}</td>
-                                <td><a href="{{route('admin.showmessages_reservation', $post->id)}}" class="btn btn-primary">Voir la notification</a></td>
+                                <td><a href="{{route('admin.showreservation', $post->id)}}" class="btn btn-primary">Voir</a></td>
                             </tr>
                         </tbody>
                     @else
                         <tbody>
                             <tr>
                                 <td>{{$post->name}}</td>
-                                <td><a href="{{route('admin.showmessages_reservation', $post->id)}}" class="btn btn-primary">Voir la notification</a></td>
+                                <td><a href="{{route('admin.showreservation', $post->id)}}" class="btn btn-primary">Voir</a></td>
                             </tr>
                         </tbody>
                     @endif
                 @endforeach
             </table>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <span>{{ $posts->links() }}</span>
+                    </div>
+                </div>
+            </div>  
             </div>
         </div>
         <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
